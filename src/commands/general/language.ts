@@ -40,6 +40,6 @@ export default class LanguageCommand extends Command {
 			}
 		);
 
-		await editLocalized(interaction, { keys: 'language:success' });
+		await editLocalized(interaction, { keys: 'validation:language.success' });
 	}
 }

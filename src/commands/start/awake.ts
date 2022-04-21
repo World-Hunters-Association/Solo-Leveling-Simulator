@@ -32,7 +32,7 @@ export default class AwakeCommand extends Command {
 		const hunter = await db.collection('hunterinfo').countDocuments({ uid: interaction.user.id });
 
 		if (hunter) {
-			await editLocalized(interaction, { keys: 'awake:awaken' });
+			await editLocalized(interaction, { keys: 'validation:awake.awaken' });
 			return;
 		}
 
