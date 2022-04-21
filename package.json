@@ -50,13 +50,17 @@
 		"typescript": "^4.5.5"
 	},
 	"scripts": {
-		"build": "tsc&cpy src/languages/**/*.json dist/languages/",
-		"watch": "tsc -w",
-		"start": "node dist/client.js",
-		"dev": "npm run build&run-p watch chokidar start",
 		"commit": "git-cz",
 		"prepare": "husky install .github/.husky",
-		"chokidar": "chokidar \"src/languages/**/*.json\" -c \"cpy src/languages/**/*.json dist/languages/\""
+		"watch": "tsc -w",
+		"chokidar": "chokidar \"src/languages/**/*.json\" -c \"cpy src/languages/**/*.json dist/languages/\"",
+		"build": "tsc&cpy src/languages/**/*.json dist/languages/",
+		"start:p": "node dist/index.js",
+		"start": "run-p watch chokidar start:p",
+		"build:dev": "npm run build",
+		"prebuild:dev": "rd /s /q dist",
+		"start:dev": "node dist/client.js",
+		"dev": "npm run build:dev&run-p watch chokidar start:dev"
 	},
 	"lint-staged": {
 		"*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts"
