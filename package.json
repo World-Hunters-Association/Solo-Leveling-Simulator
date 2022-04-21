@@ -50,15 +50,12 @@
 		"typescript": "^4.5.5"
 	},
 	"scripts": {
-		"build": "tsc",
+		"build": "tsc&cpy src/languages/**/*.json dist/languages/",
 		"watch": "tsc -w",
 		"start": "node dist/client.js",
-		"dev": "run-p watch chokidar start",
-		"watch:postbuild": "tsc-watch --onSuccess \"cpy src/languages/**/*.json dist/languages/\"",
-		"format": "prettier --write \"src/**/*.ts\"",
+		"dev": "npm run build&run-p watch chokidar start",
 		"commit": "git-cz",
 		"prepare": "husky install .github/.husky",
-		"postbuild": "cpy src/languages/**/*.json dist/languages/",
 		"chokidar": "chokidar \"src/languages/**/*.json\" -c \"cpy src/languages/**/*.json dist/languages/\""
 	},
 	"lint-staged": {
