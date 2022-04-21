@@ -70,7 +70,7 @@ export default class System extends SapphireClient {
 			i18n: {
 				fetchLanguage: async (context: InternationalizationContext) => {
 					const userSettings = await db.collection('language').findOne({ uid: context.user?.id });
-					return userSettings?.language || 'en';
+					return userSettings?.language || 'en-US';
 				},
 				defaultLanguageDirectory: join(__dirname, 'languages'),
 				hmr: {
