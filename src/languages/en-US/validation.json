@@ -1,0 +1,17 @@
+{
+	"awake": {
+		"awaken": "bruh it's not that easy to reawake you know",
+		"request": "You are new here, right {{mention}}? `/awake`"
+	},
+	"language": {
+		"success": "Your language has been changed to English."
+	},
+	"reset": {
+		"warning": "**WARNING!!!!!!** This process is irreversible, are you sure you want to reset your progress **{{mention}}**?",
+		"success": "Reset successfully hunter **{{mention}}**.",
+		"decline": "*Phew, okay...*",
+		"timeout": "Time out! *Phew, so stressful...*",
+		"error": "Something went wrong please reset again!",
+		"processing": "Processing..."
+	}
+}

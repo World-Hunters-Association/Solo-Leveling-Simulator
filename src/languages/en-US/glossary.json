@@ -1,0 +1,18 @@
+{
+	"WHA": "World Hunters Association",
+	"SLS": "Solo Leveling Simulator",
+	"currencies": {
+		"gold_one": "gold",
+		"gold_other": "golds",
+		"goldWithCount_one": "{{count}} $t(gold_one)",
+		"goldWithCount_other": "{{count}} $t(gold_other)",
+		"manaCrystal_one": "mana crystal",
+		"manaCrystal_other": "mana crystals",
+		"manaCrystalWithCount_one": "{{count}} $t(manacrystal_one)",
+		"manaCrystalWithCount_other": "{{count}} $t(manacrystal_other)",
+		"magicCore_one": "magic core",
+		"magicCore_other": "magic cores",
+		"magicCoreWithCount_one": "{{count}} $t(magiccore_one)",
+		"magicCoreWithCount_other": "{{count}} $t(magiccore_other)"
+	}
+}
