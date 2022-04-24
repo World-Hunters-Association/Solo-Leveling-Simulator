@@ -1,5 +1,12 @@
 {
+	"bigTurn": "Big turn",
 	"cancel": "Cancel",
+	"chooseClass": "Choose class",
 	"help": "Help",
-	"rule": "Rules"
+	"links": "Useful links",
+	"party": "Party",
+	"profile": "Profile",
+	"rule": "Rules",
+	"smallTurn": "Small turn",
+	"welcome": "Welcome"
 }

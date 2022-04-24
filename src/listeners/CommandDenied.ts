@@ -12,6 +12,6 @@ export default class CommandDeniedListener extends Listener {
 
 	public async run(error: UserError, { interaction }: ChatInputCommandDeniedPayload) {
 		if (error.identifier !== 'IsHunter') return;
-		await editLocalized(interaction, { keys: 'awake:request', formatOptions: { mention: interaction.user.toString() } });
+		await editLocalized(interaction, { keys: 'validation:awake.request', formatOptions: { mention: interaction.user.toString() } });
 	}
 }
