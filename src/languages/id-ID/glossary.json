@@ -1,0 +1,18 @@
+{
+	"WHA": "Serikat Pemburu Dunia",
+	"SLS": "Solo Leveling Simulator",
+	"currencies": {
+		"gold_one": "Emas",
+		"gold_other": "Emas",
+		"goldWithCount_one": "{{count}} $t(gold_one)",
+		"goldWithCount_other": "{{count}} $t(gold_other)",
+		"manaCrystal_one": "kristal mana",
+		"manaCrystal_other": "kristal mana",
+		"manaCrystalWithCount_one": "{{count}} $t(manacrystal_one)",
+		"manaCrystalWithCount_other": "{{count}} $t(manacrystal_other)",
+		"magicCore_one": "Inti Magis",
+		"magicCore_other": "Inti Magis",
+		"magicCoreWithCount_one": "{{count}} $t(magiccore_one)",
+		"magicCoreWithCount_other": "{{count}} $t(magiccore_other)"
+	}
+}
