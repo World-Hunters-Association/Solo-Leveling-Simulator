@@ -22,7 +22,11 @@ export default class LanguageCommand extends Command {
 					.setName('language')
 					.setDescription('Language configuration')
 					.setRequired(true)
-					.addChoices({ name: 'English', value: 'en-US' }, { name: 'Tiếng Việt', value: 'vi-VN' })
+					.addChoices(
+						{ name: 'English', value: 'en-US' },
+						{ name: 'Tiếng Việt', value: 'vi-VN' },
+						{ name: 'Bahasa Indonesia', value: 'id-ID' }
+					)
 			);
 		registry.registerChatInputCommand(builder, {
 			idHints: ['964369443574665216'],
