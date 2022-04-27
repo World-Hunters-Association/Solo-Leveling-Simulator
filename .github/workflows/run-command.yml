@@ -1,0 +1,20 @@
+name: Run Command
+
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: The pm2 command
+        required: true
+
+jobs:
+  build:
+    name: Run
+    runs-on: [self-hosted, sls-test]
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - run: pm2 ${{ github.event.inputs.command }} sls
