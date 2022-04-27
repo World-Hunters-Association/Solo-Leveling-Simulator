@@ -1,6 +1,5 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Args, Command, CommandOptions } from '@sapphire/framework';
-import { Type } from '@sapphire/type';
 import { codeBlock, isThenable } from '@sapphire/utilities';
 import type { Message } from 'discord.js';
 import { inspect } from 'util';
@@ -17,7 +16,7 @@ export class UserCommand extends Command {
 	public async messageRun(message: Message, args: Args) {
 		const code = await args.rest('string');
 
-		const { result, success, type } = await this.eval(message, code, {
+		const { result, success } = await this.eval(message, code, {
 			async: args.getFlags('async'),
 			depth: Number(args.getOption('depth')) ?? 0,
 			showHidden: args.getFlags('hidden', 'showHidden')
@@ -26,7 +25,7 @@ export class UserCommand extends Command {
 		const output = success ? codeBlock('js', result) : `**ERROR**: ${codeBlock('bash', result)}`;
 		if (args.getFlags('silent', 's')) return null;
 
-		const typeFooter = `**Type**: ${codeBlock('typescript', type)}`;
+		const typeFooter = `**Type**: ${codeBlock('typescript', result.toString())}`;
 
 		if (output.length > 2000) {
 			return message.channel.send({
@@ -59,7 +58,6 @@ export class UserCommand extends Command {
 			success = false;
 		}
 
-		const type = new Type(result).toString();
 		if (isThenable(result)) result = await result;
 
 		if (typeof result !== 'string') {
@@ -69,6 +67,6 @@ export class UserCommand extends Command {
 			});
 		}
 
-		return { result, success, type };
+		return { result, success };
 	}
 }

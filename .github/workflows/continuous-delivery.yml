@@ -1,0 +1,46 @@
+name: Continuous Delivery
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: The branch that is being deployed. Should be a branch on the given repository
+        required: false
+        default: main
+      repository:
+        description: The {owner}/{repository} that is being deployed.
+        required: false
+        default: World-Hunters-Association/Solo-Leveling-Simulator
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Deploy
+    runs-on: [self-hosted, sls-test]
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Stop process
+        run: pm2 stop sls
+      - name: Checkout Project
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          repository: ${{ github.event.inputs.repository || 'World-Hunters-Association/Solo-Leveling-Simulator' }}
+          ref: ${{ github.event.inputs.ref || 'main' }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+      - name: Build
+        run: |
+          cd ~/test/_work/Solo-Leveling-Simulator/Solo-Leveling-Simulator/
+          yarn install
+          yarn build:p
+          npm prune --production

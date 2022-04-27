@@ -3,7 +3,6 @@ process.env.NODE_ENV ??= 'development';
 
 import '@devtomio/plugin-botlist/register';
 import '@kaname-png/plugin-statcord/register';
-import '@sapphire/plugin-api/register';
 import '@sapphire/plugin-hmr/register';
 import '@sapphire/plugin-i18next/register';
 import '@sapphire/plugin-logger/register';
