@@ -11,9 +11,6 @@ on:
         description: The {owner}/{repository} that is being deployed.
         required: false
         default: World-Hunters-Association/Solo-Leveling-Simulator
-  push:
-    branches:
-      - main
 
 jobs:
   build:
