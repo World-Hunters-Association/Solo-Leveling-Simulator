@@ -38,9 +38,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: yarn
+      - name: Locate source
+        run: cd ~/test/_work/Solo-Leveling-Simulator/Solo-Leveling-Simulator/
+      - name: Install dependencies
+        run: yarn install
       - name: Build
-        run: |
-          cd ~/test/_work/Solo-Leveling-Simulator/Solo-Leveling-Simulator/
-          yarn install
-          yarn build:p
-          npm prune --production
+        run: yarn build:p
+      - name: Prune Dev-dependencies
+        run: npm prune --production
