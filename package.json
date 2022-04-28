@@ -52,7 +52,7 @@
 		"build:p": "npm run build && cp -R src/languages dist/languages",
 		"chokidar:p": "chokidar \"src/languages/**/*.json\" -c \"cp -R src/languages dist/languages\"",
 		"start:p": "node dist/index.js",
-		"staging": "npm run build:p && run-p watch chokidar:p start:dev",
+		"staging": "run-p watch chokidar:p start:dev",
 		"build": "tsc",
 		"start": "run-p watch chokidar:p start:p",
 		"build:dev": "npm run build&cpy src/languages/**/*.json dist/languages/",
