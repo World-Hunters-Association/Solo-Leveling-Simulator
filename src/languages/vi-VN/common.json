@@ -4,10 +4,13 @@
 	"chooseClass": "Chọn thiên chức",
 	"help": "Trợ giúp",
 	"links": "Useful links",
+	"no": "Không",
 	"party": "Tổ đội",
 	"profile": "Hồ sơ",
 	"rule": "Luật",
 	"selectMenuPlaceholder": "Lựa chọn",
 	"smallTurn": "Lượt phụ",
-	"welcome": "Chào mừng"
+	"timeout": "Hết giờ",
+	"welcome": "Chào mừng",
+	"yes": "Có"
 }

@@ -4,10 +4,13 @@
 	"chooseClass": "Pilih pekerjaan",
 	"help": "Bantuan",
 	"links": "Useful links",
+	"no": "Tidak",
 	"party": "tim",
 	"profile": "Profil",
 	"rule": "Peraturan",
 	"selectMenuPlaceholder": "Tentukan Pilihan",
 	"smallTurn": "Small turn",
-	"welcome": "Selamat datang"
+	"timeout": "Waktu telah habis",
+	"welcome": "Selamat datang",
+	"yes": "Ya"
 }

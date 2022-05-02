@@ -4,14 +4,24 @@
 		"request": "Bạn là người chơi mới phải không, {{mention}}? `/awake`"
 	},
 	"language": {
+		"decline": "Được rồi, tôi không thay đổi ngôn ngữ của bạn.",
+		"disclaimer": "Ngôn ngữ này **KHÔNG ĐƯỢC** dịch bởi **Staff của $t(glossary:WHA:)**. **Bạn có chắc chắn về việc thay đổi ngôn ngữ không?**.\nNếu bạn có bản dịch tốt hơn, xin vui lòng liên hệ với chúng tôi!",
 		"success": "Ngôn ngữ của bạn đã chuyển thành Tiếng Việt."
 	},
 	"reset": {
-		"warning": "**CHÚ Ý!!!!!!** Quá trình này không thể hoàn tác, bạn có chắc chắn muốn xóa tiến trình của mình không **{{mention}}**?",
-		"success": "Đã xóa tiến trình của **{{mention}}** thành công.",
 		"decline": "*Phew, okay...*",
-		"timeout": "Hết giờ! *Phew, okay...*",
 		"error": "Đã xảy ra lỗi, vui lòng thử lại!",
-		"processing": "Đang thực thi..."
+		"processing": "Đang thực thi...",
+		"success": "Đã xóa tiến trình của **{{mention}}** thành công.",
+		"timeout": "$t(common:timeout)! *Phew, okay...*",
+		"warning": "**CHÚ Ý!!!!!!** Quá trình này không thể hoàn tác, bạn có chắc chắn muốn xóa tiến trình của mình không **{{mention}}**?"
+	},
+	"rule": {
+		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
+		"ruleFooter": "Vi phạm bất kỳ quy tắc nào ở trên sẽ dẫn đến việc bị cấm và đưa vào danh sách đen!",
+		"ruleOne": "**KHÔNG** giao dịch/buôn bán tiền/vật phẩm trong trò chơi cho bất kỳ thứ gì không liên quan đến **$t(glossary:WHA)**.",
+		"ruleThree": "**KHÔNG** lạm dụng hoặc hưởng lợi từ lỗi. Mà hãy báo cáo trực tiếp cho <#729245705578741842> [**$t(glossary:WHA)**]({{invite}})",
+		"ruleTos": "Cuối cùng, hãy tuân thủ **Discord TOS!!**",
+		"ruleTwo": "**KHÔNG** gian lận bằng bất kỳ hình thức nào ||*(self-bot, macro, v.v.)*||"
 	}
 }

@@ -4,14 +4,24 @@
 		"request": "You are new here, right {{mention}}? `/awake`"
 	},
 	"language": {
+		"decline": "Okay, I didn't change your language.",
+		"disclaimer": "This language is **NOT** translated by **$t(glossary:WHA)'s Staff**. **Are you sure about changing language?**.\nIf you have better translation, please contact us!",
 		"success": "Your language has been changed to English."
 	},
 	"reset": {
-		"warning": "**WARNING!!!!!!** This process is irreversible, are you sure you want to reset your progress **{{mention}}**?",
-		"success": "Reset successfully hunter **{{mention}}**.",
 		"decline": "*Phew, okay...*",
-		"timeout": "Time out! *Phew, so stressful...*",
 		"error": "Something went wrong please reset again!",
-		"processing": "Processing..."
+		"processing": "Processing...",
+		"success": "Reset successfully hunter **{{mention}}**.",
+		"timeout": "$t(common:timeout)! *Phew, so stressful...*",
+		"warning": "**WARNING!!!!!!** This process is irreversible, are you sure you want to reset your progress **{{mention}}**?"
+	},
+	"rule": {
+		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
+		"ruleFooter": "Breaking any rules above will result in getting banned and blacklisted!",
+		"ruleOne": "Do **NOT** trade/sell in-game currency/items for anything outside the **$t(glossary:WHA)**.",
+		"ruleThree": "Do **NOT** abuse or benefit from bugs. Report it directly to <#729245705578741842> [**$t(glossary:WHA)**]({{invite}})",
+		"ruleTos": "Finally, follow **Discord TOS!!**",
+		"ruleTwo": "Do **NOT** cheating on the bot by any form of automation ||*(self-bot, macros, etc.)*||"
 	}
 }

@@ -1,9 +1,10 @@
 import { SlashCommandBuilder, SlashCommandStringOption } from '@discordjs/builders';
 import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
-import { editLocalized } from '@sapphire/plugin-i18next';
+import { editLocalized, resolveKey } from '@sapphire/plugin-i18next';
 
-import type { CommandInteraction } from 'discord.js';
+import { CommandInteraction, Message, MessageActionRow, MessageButton } from 'discord.js';
+import { EMOJIS } from '../../lib/constants';
 
 @ApplyOptions<CommandOptions>({
 	name: 'language',
@@ -35,15 +36,60 @@ export default class LanguageCommand extends Command {
 	}
 
 	public async chatInputRun(interaction: CommandInteraction) {
-		await this.container.db.collection('language').updateOne(
-			{ uid: interaction.user.id },
-			{
-				$set: {
-					language: interaction.options.getString('language', true) as 'en-US'
-				}
-			}
-		);
+		const staffLanguages = ['en-US', 'vi-VN', 'id-ID'];
 
-		await editLocalized(interaction, { keys: 'validation:language.success' });
+		const language = interaction.options.getString('language', true) as 'en-US';
+
+		const changeLang = async () => {
+			await this.container.db.collection('language').updateOne({ uid: interaction.user.id }, { $set: { language } });
+
+			await editLocalized(interaction, { keys: 'validation:language.success' });
+		};
+
+		if (staffLanguages.includes(language)) await changeLang();
+		else {
+			let components = [
+				new MessageActionRow().setComponents([
+					new MessageButton()
+						.setCustomId(`Yes`)
+						.setLabel(await resolveKey(interaction, 'common:yes'))
+						.setStyle('SECONDARY')
+						.setEmoji(EMOJIS.UI.YES),
+					new MessageButton()
+						.setCustomId(`No`)
+						.setLabel(await resolveKey(interaction, 'common:no'))
+						.setStyle('PRIMARY')
+						.setEmoji(EMOJIS.UI.CANCEL)
+				])
+			];
+
+			const message = await editLocalized(interaction, { keys: 'validation:language.disclaimer', components, fetchReply: true });
+
+			components = components.map((row) => {
+				row.components = row.components.map((button) => button.setDisabled(true));
+				return row;
+			});
+
+			const collector = (message as Message).createMessageComponentCollector({
+				filter: (i) => i.user.id === interaction.user.id,
+				time: 30000,
+				max: 1
+			});
+
+			collector.on('collect', async (i) => {
+				await i.deferUpdate();
+				switch (i.customId) {
+					case 'Yes':
+						await changeLang();
+						break;
+					case 'No':
+						await editLocalized(i, { keys: 'validation:language.decline', components });
+				}
+			});
+
+			collector.on('end', async (_collected, reason) => {
+				if (reason === 'time') await editLocalized(interaction, { keys: 'common:timeout', components });
+			});
+		}
 	}
 }

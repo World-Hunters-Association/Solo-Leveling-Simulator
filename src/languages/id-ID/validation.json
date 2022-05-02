@@ -4,14 +4,24 @@
 		"request": "Anda baru di sini, kan? {{mention}}? `/awake`"
 	},
 	"language": {
+		"decline": "Oke, saya tidak mengubah bahasa Anda.",
+		"disclaimer": "Bahasa ini **TIDAK** diterjemahkan oleh **$t(glossary:WHA)'s Staff**. **Apakah Anda yakin akan mengubah bahasa?**.\nJika Anda memiliki terjemahan yang lebih baik, silakan hubungi kami!",
 		"success": "Bahasa Anda telah diubah ke Indonesia."
 	},
 	"reset": {
-		"warning": "**PERHATIAN!!!!!!!!** Proses ini tidak dapat dibatalkan, apakah Anda yakin ingin menghapus seluruh progres Anda **{{mention}}**?",
-		"success": "Setel ulang berhasil pemburu **{{mention}}**.",
 		"decline": "*Ahh, baiklah...*",
-		"timeout": "Waktu telah habis! *Ahh, sangat melelahkan...*",
 		"error": "Sepertinya ada yang salah, harap ulangi lagi!",
-		"processing": "Sedang berlangsung harap tunggu sebentar..."
+		"processing": "Sedang berlangsung harap tunggu sebentar...",
+		"success": "Setel ulang berhasil pemburu **{{mention}}**.",
+		"timeout": "$t(common:timeout)! *Ahh, sangat melelahkan...*",
+		"warning": "**PERHATIAN!!!!!!!!** Proses ini tidak dapat dibatalkan, apakah Anda yakin ingin menghapus seluruh progres Anda **{{mention}}**?"
+	},
+	"rule": {
+		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
+		"ruleFooter": "Melanggar aturan di atas akan mengakibatkan dilarang dan masuk daftar hitam!",
+		"ruleOne": "**JANGAN** memperdagangkan/menjual mata uang/item dalam game untuk apa pun di luar **$t(glossary:WHA)**.",
+		"ruleThree": "**JANGAN** menyalahgunakan atau memanfaatkan bug. Laporkan langsung ke <#729245705578741842> [**$t(glossary:WHA)**]({{invite}})",
+		"ruleTos": "Terakhir, ikuti **Discord TOS!!**",
+		"ruleTwo": "**JANGAN** menipu bot dengan segala bentuk otomatisasi ||*(self-bot, macros, dll.)*||"
 	}
 }

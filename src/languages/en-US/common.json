@@ -4,10 +4,13 @@
 	"chooseClass": "Choose class",
 	"help": "Help",
 	"links": "Useful links",
+	"no": "No",
 	"party": "Party",
 	"profile": "Profile",
 	"rule": "Rules",
 	"selectMenuPlaceholder": "Make a selection",
 	"smallTurn": "Small turn",
-	"welcome": "Welcome"
+	"timeout": "Time out",
+	"welcome": "Welcome",
+	"yes": "Yes"
 }
