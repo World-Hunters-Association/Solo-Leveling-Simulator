@@ -95,7 +95,8 @@ export default class StartCommand extends Command {
 					`${await resolveKey(interaction, 'common:smallTurn')} 2`,
 					`${await resolveKey(interaction, 'common:smallTurn')} 3`
 				][ind - 1]
-			}));
+			}))
+			.setSelectMenuPlaceholder(await resolveKey(interaction, 'common:selectMenuPlaceholder'));
 
 		await message.run(interaction);
 	}
