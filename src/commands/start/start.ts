@@ -39,7 +39,7 @@ export default class StartCommand extends Command {
 						run: () => {
 							this.container.applicationCommandRegistries.acquire('rule').command?.chatInputRun!(interaction, {
 								commandName: 'rule',
-								commandId: ''
+								commandId: '970712020779401277'
 							});
 						}
 					},
