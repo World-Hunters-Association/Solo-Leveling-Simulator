@@ -3,6 +3,21 @@
 		"awaken": "hey gak semudah itu untuk dibangkitkan lagi lho",
 		"request": "Anda baru di sini, kan? {{mention}}? `/awake`"
 	},
+	"chooseClass": {
+		"descriptions": {
+			"assassin": "",
+			"cancelled": "",
+			"confirm": "",
+			"confirmed": "",
+			"embed": "",
+			"fighter": "",
+			"healer": "",
+			"mage": "",
+			"ranger": "",
+			"tanker": ""
+		},
+		"twice": ""
+	},
 	"language": {
 		"decline": "Oke, saya tidak mengubah bahasa Anda.",
 		"disclaimer": "Bahasa ini **TIDAK** diterjemahkan oleh **$t(glossary:WHA)'s Staff**. **Apakah Anda yakin akan mengubah bahasa?**.\nJika Anda memiliki terjemahan yang lebih baik, silakan hubungi kami!",

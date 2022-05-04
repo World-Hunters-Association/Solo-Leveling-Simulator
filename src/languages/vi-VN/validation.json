@@ -3,6 +3,21 @@
 		"awaken": "nah nó không dễ để tái thức tỉnh như vậy đâu!",
 		"request": "Bạn là người chơi mới phải không, {{mention}}? `/awake`"
 	},
+	"chooseClass": {
+		"descriptions": {
+			"assassin": "Thiên chức chuyên về dao găm và tốc độ. Gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
+			"cancelled": "Đã hủy!",
+			"confirm": "Bạn có chắc chắn với sự lựa chọn của mình không? \n**Bạn không thể chọn lại thiên chức của mình đâu.**",
+			"confirmed": "Hoàn thành! Đó một lựa chọn tuyệt vời.",
+			"embed": "Bấm vào nút của thên chức tương ứng để xem thông tin của thiên chức đó.",
+			"fighter": "Thiên chức chuyên về vũ khí cận chiến. Họ có lượng sát thương ổn định và khả năng phòng thủ tốt.",
+			"healer": "Thiên chức chuyên về phép thuật chữa trị và cường hóa sát thương. Nhưng họ lại rất mỏng manh.",
+			"mage": "Thiên chức chuyên về tấn công bằng ma thuật, gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
+			"ranger": "Thiên chức chuyên tấn công tầm xa.",
+			"tanker": "Là thiên chức chuyên về phòng thủ, thu hút ma thú về mình và bảo vệ những đồng minh có sức phòng thủ thấp."
+		},
+		"twice": "Bạn không thể chọn thiên chức hai lần!"
+	},
 	"language": {
 		"decline": "Được rồi, tôi không thay đổi ngôn ngữ của bạn.",
 		"disclaimer": "Ngôn ngữ này **KHÔNG ĐƯỢC** dịch bởi **Staff của $t(glossary:WHA:)**. **Bạn có chắc chắn về việc thay đổi ngôn ngữ không?**.\nNếu bạn có bản dịch tốt hơn, xin vui lòng liên hệ với chúng tôi!",

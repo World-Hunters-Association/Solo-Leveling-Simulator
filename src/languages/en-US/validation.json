@@ -3,6 +3,21 @@
 		"awaken": "bruh it's not that easy to reawake you know",
 		"request": "You are new here, right {{mention}}? `/awake`"
 	},
+	"chooseClass": {
+		"descriptions": {
+			"assassin": "A class that specializes in dagger and speed. They deal high damage yet has low defenses.",
+			"cancelled": "Canceled!",
+			"confirm": "Are you sure about your choice? **You can't choose your class again after this.**",
+			"confirmed": "Done! Great choice.",
+			"embed": "Click on the button of the class to see the information of it.",
+			"fighter": "A class that specializes on melee weapons. They have good damage output and good defenses.",
+			"healer": "A class that specializes on healing magic and providing attack buffs. Though they are very weak.",
+			"mage": "A class that specializes on magic base attacks, dealing high damage yet having low defenses such as healers.",
+			"ranger": "A class that specializes on ranged attacks.",
+			"tanker": "A class that specializes in defense, attracting magic beasts to themselves and protecting low defense allies."
+		},
+		"twice": "You cannot choose your class twice!"
+	},
 	"language": {
 		"decline": "Okay, I didn't change your language.",
 		"disclaimer": "This language is **NOT** translated by **$t(glossary:WHA)'s Staff**. **Are you sure about changing language?**.\nIf you have better translation, please contact us!",

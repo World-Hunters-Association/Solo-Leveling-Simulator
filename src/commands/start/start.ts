@@ -64,8 +64,8 @@ export default class StartCommand extends Command {
 						type: 'BUTTON',
 						run: () => {
 							this.container.applicationCommandRegistries.acquire('chooseClass').command?.chatInputRun!(interaction, {
-								commandName: 'chooseClass',
-								commandId: ''
+								commandName: 'chooseclass',
+								commandId: '971018017678958602'
 							});
 						}
 					},

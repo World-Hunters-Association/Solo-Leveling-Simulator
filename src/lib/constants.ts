@@ -444,3 +444,30 @@ export const EMOJIS = {
 		OPAL: '<:Opal:922699694323433493>'
 	}
 };
+
+export const CLASSES_INFO = {
+	ASSASSIN: {
+		EMOJI: EMOJIS.CLASSES[CLASSES['Assassin']],
+		BASE_STATS: BaseStats['Assassin']
+	},
+	FIGHTER: {
+		EMOJI: EMOJIS.CLASSES[CLASSES['Fighter']],
+		BASE_STATS: BaseStats['Fighter']
+	},
+	HEALER: {
+		EMOJI: EMOJIS.CLASSES[CLASSES['Healer']],
+		BASE_STATS: BaseStats['Healer']
+	},
+	MAGE: {
+		EMOJI: EMOJIS.CLASSES[CLASSES['Mage']],
+		BASE_STATS: BaseStats['Mage']
+	},
+	RANGER: {
+		EMOJI: EMOJIS.CLASSES[CLASSES['Ranger']],
+		BASE_STATS: BaseStats['Ranger']
+	},
+	TANKER: {
+		EMOJI: EMOJIS.CLASSES[CLASSES['Tanker']],
+		BASE_STATS: BaseStats['Tanker']
+	}
+};

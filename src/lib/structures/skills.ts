@@ -146,7 +146,7 @@ export const HUNTER_SKILLS: readonly HunterSkills[] = [
 		emoji: EMOJIS.SKILLS.FLAMESPEAR,
 		target: 1,
 		rank: RANK['E-Rank'],
-		description: 'Create spears of fire and launches it at enemies.',
+		description: 'Create spears of fire and launch them at enemies.',
 		levelDepends: {
 			cost: '25:30:40',
 			amount: '1:2:4',
@@ -232,7 +232,7 @@ export const HUNTER_SKILLS: readonly HunterSkills[] = [
 		emoji: EMOJIS.SKILLS.POWERSMASH,
 		rank: RANK['E-Rank'],
 		target: false,
-		description: "Launch a heavy smash that breaks the enemy's bones. Deals physical damage",
+		description: "Launch a heavy smash that breaks the enemy's bones.",
 		levelDepends: {
 			cost: '20:25:30',
 			cooldown: '2:2:2',
@@ -273,7 +273,7 @@ export const HUNTER_SKILLS: readonly HunterSkills[] = [
 		emoji: EMOJIS.SKILLS.EVADE,
 		rank: RANK['E-Rank'],
 		target: false,
-		description: "Enhance visual and trying to dodge enemy's attack. Dodge chance depends on your Agility and Defence/Magic resistance.",
+		description: "Enhance visual and trying to dodge enemy's attack. Dodge chance depends on your Agility and Defence/Magic Resistance.",
 		levelDepends: {
 			cost: '20:25:30',
 			cooldown: '3:2:2'
@@ -285,7 +285,7 @@ export const HUNTER_SKILLS: readonly HunterSkills[] = [
 		emoji: EMOJIS.SKILLS.WEAKSPOTS,
 		rank: RANK['E-Rank'],
 		target: 1,
-		description: "Find the vitals of enemies. Your next attack will deal 20% target's max HP.",
+		description: "Find the vitals of enemies. Your next attack will deal more damage with the amount of 20% target's max HP.",
 		levelDepends: {
 			cost: '20:25:30',
 			cooldown: '3:2:1',

@@ -61,6 +61,7 @@ export interface Boxes {
 
 export interface Busy {
 	uid: Snowflake;
+	reason?: string;
 }
 
 export interface Code {
