@@ -1,3 +1,7 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { ApplyOptions } from '@sapphire/decorators';
+import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
+import { editLocalized } from '@sapphire/plugin-i18next';
 import {
 	Collection,
 	CommandInteraction,
@@ -8,19 +12,13 @@ import {
 	MessageSelectMenu,
 	SelectMenuInteraction
 } from 'discord.js';
-
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { ApplyOptions } from '@sapphire/decorators';
-import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
-import { editLocalized, resolveKey } from '@sapphire/plugin-i18next';
-
 import { BaseStats, CLASSES, CLASSES_INFO, EMOJIS, STATS } from '../../lib/constants';
 import { HUNTER_SKILLS } from '../../lib/structures/skills';
 
 @ApplyOptions<CommandOptions>({
 	name: 'chooseclass',
 	description: 'Choose hunter class',
-	preconditions: ['Defer'],
+	preconditions: ['Defer', 'IsHunter'],
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })
@@ -35,6 +33,7 @@ export default class ChooseClassCommand extends Command {
 	public async chatInputRun(interaction: CommandInteraction) {
 		const uid = interaction.user.id;
 		const result = await this.container.db.collection('hunterinfo').findOne({ uid });
+		const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
 
 		if (result?.classid !== 6) {
 			await editLocalized(interaction, 'validation:chooseClass.twice');
@@ -43,84 +42,81 @@ export default class ChooseClassCommand extends Command {
 
 		await this.container.db.collection('busy').insertOne({ uid, reason: 'chooseClass' });
 
-		const embedGenerator = async () => {
+		const embedGenerator = () => {
 			return new MessageEmbed()
-				.setTitle((await resolveKey(interaction, 'common:chooseClass')).toUpperCase())
+				.setTitle(this.container.i18n.getT(locale)('common:chooseClass').toUpperCase())
 				.setColor('BLUE')
 				.setTimestamp()
-				.setDescription(await resolveKey(interaction, 'validation:chooseClass.descriptions.embed'));
+				.setDescription(this.container.i18n.getT(locale)('validation:chooseClass.descriptions.embed'));
 		};
 
-		const componentsGenerator = async () => [
+		const componentsGenerator = () => [
 			new MessageActionRow().addComponents([
 				new MessageSelectMenu()
 					.setCustomId(`chooseClass:Classes:${uid}`)
 					.setMaxValues(1)
-					.setPlaceholder(await resolveKey(interaction, 'common:selectMenuPlaceholder'))
+					.setPlaceholder(this.container.i18n.getT(locale)('common:selectMenuPlaceholder'))
 					.addOptions([
 						{
-							label: await resolveKey(interaction, 'common:assassin'),
+							label: this.container.i18n.getT(locale)('common:assassin'),
 							value: 'Assassin',
 							emoji: '741716520920678451',
-							description: (await resolveKey(interaction, 'validation:chooseClass.descriptions.assassin')).replace(
-								/^(.{0,96}).*/,
-								'$1...'
-							)
+							description: this.container.i18n
+								.getT(locale)('validation:chooseClass.descriptions.assassin')
+								.replace(/^(.{0,96}).*/, '$1...')
 						},
 						{
-							label: await resolveKey(interaction, 'common:fighter'),
+							label: this.container.i18n.getT(locale)('common:fighter'),
 							value: 'Fighter',
 							emoji: '741716521147170836',
-							description: (await resolveKey(interaction, 'validation:chooseClass.descriptions.fighter')).replace(
-								/^(.{0,96}).*/,
-								'$1...'
-							)
+							description: this.container.i18n
+								.getT(locale)('validation:chooseClass.descriptions.fighter')
+								.replace(/^(.{0,96}).*/, '$1...')
 						},
 						{
-							label: await resolveKey(interaction, 'common:tanker'),
+							label: this.container.i18n.getT(locale)('common:tanker'),
 							value: 'Tanker',
 							emoji: '741716521365274654',
-							description: (await resolveKey(interaction, 'validation:chooseClass.descriptions.tanker')).replace(
-								/^(.{0,96}).*/,
-								'$1...'
-							)
+							description: this.container.i18n
+								.getT(locale)('validation:chooseClass.descriptions.tanker')
+								.replace(/^(.{0,96}).*/, '$1...')
 						},
 						{
-							label: await resolveKey(interaction, 'common:healer'),
+							label: this.container.i18n.getT(locale)('common:healer'),
 							value: 'Healer',
 							emoji: '741716521088188476',
-							description: (await resolveKey(interaction, 'validation:chooseClass.descriptions.healer')).replace(
-								/^(.{0,96}).*/,
-								'$1...'
-							)
+							description: this.container.i18n
+								.getT(locale)('validation:chooseClass.descriptions.healer')
+								.replace(/^(.{0,96}).*/, '$1...')
 						},
 						{
-							label: await resolveKey(interaction, 'common:mage'),
+							label: this.container.i18n.getT(locale)('common:mage'),
 							value: 'Mage',
 							emoji: '741716521109159996',
-							description: (await resolveKey(interaction, 'validation:chooseClass.descriptions.mage')).replace(/^(.{0,96}).*/, '$1...')
+							description: this.container.i18n
+								.getT(locale)('validation:chooseClass.descriptions.mage')
+								.replace(/^(.{0,96}).*/, '$1...')
 						},
 						{
-							label: await resolveKey(interaction, 'common:ranger'),
+							label: this.container.i18n.getT(locale)('common:ranger'),
 							value: 'Ranger',
 							emoji: '741716521083994255',
-							description: (await resolveKey(interaction, 'validation:chooseClass.descriptions.ranger')).replace(
-								/^(.{0,96}).*/,
-								'$1...'
-							)
+							description: this.container.i18n
+								.getT(locale)('validation:chooseClass.descriptions.ranger')
+								.replace(/^(.{0,96}).*/, '$1...')
 						}
 					])
 			]),
 			new MessageActionRow().addComponents([
 				new MessageButton()
-					.setLabel(await resolveKey(interaction, 'common:cancel'))
+					.setLabel(this.container.i18n.getT(locale)('common:cancel'))
 					.setEmoji('🛑')
 					.setCustomId(`chooseClass:Cancel:${uid}`)
 					.setStyle('DANGER')
 			])
 		];
 
-		const message = await interaction.editReply({ embeds: [await embedGenerator()], components: await componentsGenerator() });
+		const message = await interaction.editReply({ embeds: [embedGenerator()], components: componentsGenerator() });
 
 		const collector = (message as Message).createMessageComponentCollector({
 			filter: (i) => i.user.id === interaction.user.id,
@@ -131,10 +127,10 @@ export default class ChooseClassCommand extends Command {
 			await i.deferUpdate();
 			switch (i.customId.split(':')[1]) {
 				case 'Cancel': {
-					const embed = await embedGenerator();
-					const components = await componentsGenerator();
+					const embed = embedGenerator();
+					const components = componentsGenerator();
 
-					embed.setDescription(await resolveKey(interaction, 'validation:chooseClass.descriptions.cancelled'));
+					embed.setDescription(this.container.i18n.getT(locale)('validation:chooseClass.descriptions.cancelled'));
 
 					components.forEach((row) => row.components.forEach((co) => co.setDisabled(true)));
 
@@ -144,10 +140,10 @@ export default class ChooseClassCommand extends Command {
 					break;
 				}
 				case 'Yes': {
-					const embed = await embedGenerator();
-					const components = await componentsGenerator();
+					const embed = embedGenerator();
+					const components = componentsGenerator();
 
-					embed.setDescription(await resolveKey(interaction, 'validation:chooseClass.descriptions.confirmed'));
+					embed.setDescription(this.container.i18n.getT(locale)('validation:chooseClass.descriptions.confirmed'));
 
 					const baseStats = { ...BaseStats[CLASSES[Number(i.customId.split(':')[2])] as 'Assassin'] };
 					const stats = {
@@ -174,7 +170,7 @@ export default class ChooseClassCommand extends Command {
 					components[1]
 						.addComponents([
 							new MessageButton()
-								.setLabel(await resolveKey(i, 'common:yes'))
+								.setLabel(this.container.i18n.getT(locale)('common:yes'))
 								.setEmoji(EMOJIS.UI.YES)
 								.setCustomId(`chooseClass:Yes:${interaction.user.id}`)
 								.setStyle('SECONDARY')
@@ -188,8 +184,8 @@ export default class ChooseClassCommand extends Command {
 					break;
 				}
 				default: {
-					const embed = await embedGenerator();
-					const components = await componentsGenerator();
+					const embed = embedGenerator();
+					const components = componentsGenerator();
 					const $class = (i as SelectMenuInteraction).values[0];
 					const classInfo = CLASSES_INFO[$class.toUpperCase() as 'ASSASSIN'];
 					const [big, small] = new Collection(Object.entries(classInfo.BASE_STATS)).partition(
@@ -198,14 +194,14 @@ export default class ChooseClassCommand extends Command {
 					const skills = HUNTER_SKILLS.filter((skill) => skill.class === CLASSES[$class as 'Assassin']);
 
 					embed
-						.setDescription(await resolveKey(i, 'validation:chooseClass.descriptions.confirm'))
+						.setDescription(this.container.i18n.getT(locale)('validation:chooseClass.descriptions.confirm'))
 						.addField(
-							await resolveKey(interaction, `common:${$class.toLowerCase()}`),
-							await resolveKey(i, `validation:chooseClass.descriptions.${$class.toLowerCase()}`)
+							this.container.i18n.getT(locale)(`common:${$class.toLowerCase()}`),
+							this.container.i18n.getT(locale)(`validation:chooseClass.descriptions.${$class.toLowerCase()}`)
 						)
 						.addFields([
 							{
-								name: await resolveKey(i, 'common:baseStats'),
+								name: this.container.i18n.getT(locale)('common:baseStats'),
 								value: big
 									.map(
 										(value, key) =>
@@ -232,12 +228,15 @@ export default class ChooseClassCommand extends Command {
 							},
 							{ name: '** **', value: '** **', inline: true },
 							{
-								name: await resolveKey(i, 'common:skills'),
+								name: this.container.i18n.getT(locale)('common:skills'),
 								value: (
 									await Promise.all(
 										skills
 											.filter((_skill, ind) => ind <= Math.ceil(skills.length / 2) - 1)
-											.map(async (skill) => `${skill.emoji} **${await resolveKey(i, `glossary:skills.${skill.name}.name`)}**`)
+											.map(
+												(skill) =>
+													`${skill.emoji} **${this.container.i18n.getT(locale)(`glossary:skills.${skill.name}.name`)}**`
+											)
 									)
 								).join('\n'),
 								inline: true
@@ -248,7 +247,10 @@ export default class ChooseClassCommand extends Command {
 									await Promise.all(
 										skills
 											.filter((_skill, ind) => ind > Math.ceil(skills.length / 2) - 1)
-											.map(async (skill) => `${skill.emoji} **${await resolveKey(i, `glossary:skills.${skill.name}.name`)}**`)
+											.map(
+												(skill) =>
+													`${skill.emoji} **${this.container.i18n.getT(locale)(`glossary:skills.${skill.name}.name`)}**`
+											)
 									)
 								).join('\n'),
 								inline: true
@@ -259,7 +261,7 @@ export default class ChooseClassCommand extends Command {
 
 					components[1].addComponents([
 						new MessageButton()
-							.setLabel(await resolveKey(i, 'common:yes'))
+							.setLabel(this.container.i18n.getT(locale)('common:yes'))
 							.setEmoji(EMOJIS.UI.YES)
 							.setCustomId(`chooseClass:Yes:${CLASSES[$class as 'Assassin']}:${interaction.user.id}`)
 							.setStyle('SECONDARY')
@@ -273,9 +275,9 @@ export default class ChooseClassCommand extends Command {
 
 		collector.on('end', async (_collected, reason) => {
 			if (reason === 'time') {
-				const components = await componentsGenerator();
+				const components = componentsGenerator();
 				components.forEach((c) => c.components.forEach((co) => co.setDisabled(true)));
-				await (message as Message).edit({ embeds: [await embedGenerator()], components });
+				await (message as Message).edit({ embeds: [embedGenerator()], components });
 				await this.container.db.collection('busy').deleteOne({ uid });
 			}
 		});

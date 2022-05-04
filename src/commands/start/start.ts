@@ -6,7 +6,6 @@ import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 
 import { EMOJIS } from '../../lib/constants';
-import { resolveKey } from '@sapphire/plugin-i18next';
 
 @ApplyOptions<CommandOptions>({
 	name: 'start',
@@ -25,6 +24,7 @@ export default class StartCommand extends Command {
 	}
 
 	public async chatInputRun(interaction: CommandInteraction) {
+		const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
 		const message = new PaginatedMessage({
 			template: new MessageEmbed().setColor('BLUE')
 		})
@@ -32,7 +32,7 @@ export default class StartCommand extends Command {
 				[
 					{
 						customId: 'Start:Rule',
-						label: await resolveKey(interaction, 'common:rule'),
+						label: this.container.i18n.getT(locale)('common:rule'),
 						style: 'DANGER',
 						emoji: EMOJIS.UI.RULE,
 						type: 'BUTTON',
@@ -45,7 +45,7 @@ export default class StartCommand extends Command {
 					},
 					{
 						customId: 'Start:Help',
-						label: await resolveKey(interaction, 'common:help'),
+						label: this.container.i18n.getT(locale)('common:help'),
 						style: 'SECONDARY',
 						emoji: EMOJIS.UI.HELP,
 						type: 'BUTTON',
@@ -58,12 +58,12 @@ export default class StartCommand extends Command {
 					},
 					{
 						customId: 'Start:Choose class',
-						label: await resolveKey(interaction, 'common:chooseClass'),
+						label: this.container.i18n.getT(locale)('common:chooseClass'),
 						style: 'SECONDARY',
 						emoji: EMOJIS.UI.CHOOSE_CLASS,
 						type: 'BUTTON',
 						run: () => {
-							this.container.applicationCommandRegistries.acquire('chooseClass').command?.chatInputRun!(interaction, {
+							this.container.applicationCommandRegistries.acquire('chooseclass').command?.chatInputRun!(interaction, {
 								commandName: 'chooseclass',
 								commandId: '971018017678958602'
 							});
@@ -71,7 +71,7 @@ export default class StartCommand extends Command {
 					},
 					{
 						url: 'https://linktr.ee/mzato0001',
-						label: await resolveKey(interaction, 'common:links'),
+						label: this.container.i18n.getT(locale)('common:links'),
 						style: 'LINK',
 						type: 'BUTTON'
 					}
@@ -85,18 +85,18 @@ export default class StartCommand extends Command {
 			.addPageEmbed((embed) => embed.setImage('https://media.discordapp.net/attachments/914004331525734410/914004396566790275/SmallTurn1.png'))
 			.addPageEmbed((embed) => embed.setImage('https://media.discordapp.net/attachments/914004331525734410/914004396784885811/SmallTurn2.png'))
 			.addPageEmbed((embed) => embed.setImage('https://media.discordapp.net/attachments/914004331525734410/914004397019758662/SmallTurn3.png'))
-			.setSelectMenuOptions(async (ind) => ({
+			.setSelectMenuOptions((ind) => ({
 				label: [
-					await resolveKey(interaction, 'common:welcome'),
-					await resolveKey(interaction, 'common:profile'),
-					await resolveKey(interaction, 'common:party'),
-					await resolveKey(interaction, 'common:bigTurn'),
-					`${await resolveKey(interaction, 'common:smallTurn')} 1`,
-					`${await resolveKey(interaction, 'common:smallTurn')} 2`,
-					`${await resolveKey(interaction, 'common:smallTurn')} 3`
+					this.container.i18n.getT(locale)('common:welcome'),
+					this.container.i18n.getT(locale)('common:profile'),
+					this.container.i18n.getT(locale)('common:party'),
+					this.container.i18n.getT(locale)('common:bigTurn'),
+					`${this.container.i18n.getT(locale)('common:smallTurn')} 1`,
+					`${this.container.i18n.getT(locale)('common:smallTurn')} 2`,
+					`${this.container.i18n.getT(locale)('common:smallTurn')} 3`
 				][ind - 1]
 			}))
-			.setSelectMenuPlaceholder(await resolveKey(interaction, 'common:selectMenuPlaceholder'));
+			.setSelectMenuPlaceholder(this.container.i18n.getT(locale)('common:selectMenuPlaceholder'));
 
 		await message.run(interaction);
 	}

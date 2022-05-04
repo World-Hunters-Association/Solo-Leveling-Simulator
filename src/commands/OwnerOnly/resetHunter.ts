@@ -3,7 +3,7 @@ import { ContextMenuInteraction, Message, MessageActionRow, MessageButton } from
 import { ContextMenuCommandBuilder } from '@discordjs/builders';
 import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Args, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
-import { editLocalized, resolveKey, sendLocalized } from '@sapphire/plugin-i18next';
+import { editLocalized, sendLocalized } from '@sapphire/plugin-i18next';
 
 import { EMOJIS } from '../../lib/constants';
 
@@ -32,16 +32,17 @@ export default class ResetHunterCommand extends Command {
 	}
 
 	private async reset({ interaction, message }: { interaction?: ContextMenuInteraction; message?: Message }, args?: Args) {
+		const locale = (await this.container.i18n.fetchLanguage(interaction! || message!)) || 'en-US';
 		let components = [
 			new MessageActionRow().setComponents([
 				new MessageButton()
 					.setCustomId(`Yes`)
-					.setLabel(await resolveKey(interaction! || message!, 'common:yes'))
+					.setLabel(this.container.i18n.getT(locale)('common:yes'))
 					.setStyle('SECONDARY')
 					.setEmoji(EMOJIS.UI.YES),
 				new MessageButton()
 					.setCustomId(`No`)
-					.setLabel(await resolveKey(interaction! || message!, 'common:no'))
+					.setLabel(this.container.i18n.getT(locale)('common:no'))
 					.setStyle('PRIMARY')
 					.setEmoji(EMOJIS.UI.CANCEL)
 			])

@@ -1,9 +1,10 @@
+import { CommandInteraction, Message, MessageActionRow, MessageButton } from 'discord.js';
+
 import { SlashCommandBuilder, SlashCommandStringOption } from '@discordjs/builders';
 import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
-import { editLocalized, resolveKey } from '@sapphire/plugin-i18next';
+import { editLocalized } from '@sapphire/plugin-i18next';
 
-import { CommandInteraction, Message, MessageActionRow, MessageButton } from 'discord.js';
 import { EMOJIS } from '../../lib/constants';
 
 @ApplyOptions<CommandOptions>({
@@ -48,16 +49,17 @@ export default class LanguageCommand extends Command {
 
 		if (staffLanguages.includes(language)) await changeLang();
 		else {
+			const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
 			let components = [
 				new MessageActionRow().setComponents([
 					new MessageButton()
 						.setCustomId(`Yes`)
-						.setLabel(await resolveKey(interaction, 'common:yes'))
+						.setLabel(this.container.i18n.getT(locale)('common:yes'))
 						.setStyle('SECONDARY')
 						.setEmoji(EMOJIS.UI.YES),
 					new MessageButton()
 						.setCustomId(`No`)
-						.setLabel(await resolveKey(interaction, 'common:no'))
+						.setLabel(this.container.i18n.getT(locale)('common:no'))
 						.setStyle('PRIMARY')
 						.setEmoji(EMOJIS.UI.CANCEL)
 				])
