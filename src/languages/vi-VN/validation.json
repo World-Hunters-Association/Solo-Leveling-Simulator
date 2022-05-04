@@ -31,6 +31,7 @@
 		"timeout": "$t(common:timeout)! *Phew, okay...*",
 		"warning": "**CHÚ Ý!!!!!!** Quá trình này không thể hoàn tác, bạn có chắc chắn muốn xóa tiến trình của mình không **{{mention}}**?"
 	},
+	"retry": ["Hmm...thử lại nào.", "Có gì đó sai sai. Thử lại đi?", "Hơi nhanh đó. Hãy thử lại."],
 	"rule": {
 		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
 		"ruleFooter": "Vi phạm bất kỳ quy tắc nào ở trên sẽ dẫn đến việc bị cấm và đưa vào danh sách đen!",

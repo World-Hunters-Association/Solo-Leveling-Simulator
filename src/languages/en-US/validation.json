@@ -31,12 +31,13 @@
 		"timeout": "$t(common:timeout)! *Phew, so stressful...*",
 		"warning": "**WARNING!!!!!!** This process is irreversible, are you sure you want to reset your progress **{{mention}}**?"
 	},
+	"retry": ["Hmm...try again.", "Somwthing went wrong! Retry?", "Errr.. a lil fast. Re-attempt in a sec."],
 	"rule": {
 		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
 		"ruleFooter": "Breaking any rules above will result in getting banned and blacklisted!",
 		"ruleOne": "Do **NOT** trade/sell in-game currency/items for anything outside the **$t(glossary:WHA)**.",
 		"ruleThree": "Do **NOT** abuse or benefit from bugs. Report it directly to <#729245705578741842> [**$t(glossary:WHA)**]({{invite}})",
 		"ruleTos": "Finally, follow **Discord TOS!!**",
-		"ruleTwo": "Do **NOT** cheating on the bot by any form of automation ||*(self-bot, macros, etc.)*||"
+		"ruleTwo": "Do **NOT** cheat on the bot by any form of automation ||*(self-bot, macros, etc.)*||"
 	}
 }

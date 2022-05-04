@@ -1,8 +1,7 @@
 import type { SapphireClient } from '@sapphire/framework';
+import { resolveKey } from '@sapphire/plugin-i18next';
 import type { APIMessage } from 'discord-api-types';
-import { BaseCommandInteraction, Message, MessageComponentInteraction, MessageEmbed } from 'discord.js';
-
-import { RandomLoadingMessage } from './constants';
+import { BaseCommandInteraction, Message, MessageComponentInteraction } from 'discord.js';
 
 export default class Utils {
 	public constructor(public client: SapphireClient) {}
@@ -15,14 +14,21 @@ export default class Utils {
 		return Math.round(100 + level * 5 + int * 0.5);
 	}
 
-	public sendLoadingMessage(target: Message): Promise<Message>;
-	public sendLoadingMessage(target: BaseCommandInteraction | MessageComponentInteraction): Promise<APIMessage | Message>;
-	public sendLoadingMessage(target: Message | BaseCommandInteraction | MessageComponentInteraction): Promise<APIMessage | Message> {
+	public async sendRetryMessage(target: Message): Promise<Message>;
+	public async sendRetryMessage(target: BaseCommandInteraction | MessageComponentInteraction): Promise<APIMessage | Message>;
+	public async sendRetryMessage(target: Message | BaseCommandInteraction | MessageComponentInteraction): Promise<APIMessage | Message> {
+		const RandomRetryMessage = (await resolveKey(target, 'validation:retry', { returnObjects: true })) as string[];
+
 		if (target instanceof Message) {
-			return target.channel.send({ embeds: [new MessageEmbed().setDescription(this.pickRandom(RandomLoadingMessage)).setColor('#FF0000')] });
+			return target.channel.send({ content: this.pickRandom(RandomRetryMessage) });
 		}
 
-		return target.editReply({ embeds: [new MessageEmbed().setDescription(this.pickRandom(RandomLoadingMessage)).setColor('#FF0000')] });
+		if (target.replied || target.deferred) return target.editReply({ content: this.pickRandom(RandomRetryMessage) });
+
+		return target.reply({
+			content: this.pickRandom(RandomRetryMessage),
+			fetchReply: true
+		});
 	}
 
 	public pickRandom<T>(array: readonly T[]): T {

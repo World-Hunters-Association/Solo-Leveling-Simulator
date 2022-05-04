@@ -31,6 +31,7 @@
 		"timeout": "$t(common:timeout)! *Ahh, sangat melelahkan...*",
 		"warning": "**PERHATIAN!!!!!!!!** Proses ini tidak dapat dibatalkan, apakah Anda yakin ingin menghapus seluruh progres Anda **{{mention}}**?"
 	},
+	"retry": ["", "", ""],
 	"rule": {
 		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
 		"ruleFooter": "Melanggar aturan di atas akan mengakibatkan dilarang dan masuk daftar hitam!",
