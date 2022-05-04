@@ -8,5 +8,6 @@
 	"i18n-ally.keepFulfilled": true,
 	"i18n-ally.namespace": true,
 	"i18n-ally.preferredDelimiter": ":",
-	"i18n-ally.enabledFrameworks": ["sapphire-i18next"]
+	"i18n-ally.enabledFrameworks": ["sapphire-i18next"],
+	"i18n-ally.keysInUse": ["validation.retry*", "glossary.WHA", "glossary.SLS", "glossary.skills.*", "validation.rule.*"]
 }

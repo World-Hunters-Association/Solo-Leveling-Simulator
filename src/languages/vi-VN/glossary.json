@@ -16,8 +16,8 @@
 		"manaCrystal_other": "đá năng lượng"
 	},
 	"effects": {
-		"Bless": "",
-		"Grievous Wounds": ""
+		"Bless": "Phước",
+		"Grievous Wounds": "Vết Thương Sâu"
 	},
 	"skills": {
 		"Arrow rain": {
@@ -37,7 +37,7 @@
 			"name": "Ngấu nghiến"
 		},
 		"Buff": {
-			"description": "Nếu sử dụng trên mục tiêu được \"$t(common:bless)\", cường hóa sát thương tiếp theo của mục tiêu. Nếu không, nó sẽ làm giảm sát thương tiếp theo của chúng.",
+			"description": "Nếu sử dụng trên mục tiêu được \"Ban $t(common:bless)\", cường hóa sát thương tiếp theo của mục tiêu. Nếu không, nó sẽ làm giảm sát thương tiếp theo của chúng.",
 			"name": "Cường hóa"
 		},
 		"Camouflage": {
