@@ -3,6 +3,7 @@ import { CommandInteraction, MessageEmbed } from 'discord.js';
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
+import { EMOJIS } from '../../lib/constants';
 
 @ApplyOptions<CommandOptions>({
 	name: 'rule',
@@ -22,7 +23,7 @@ export default class RuleCommand extends Command {
 	public async chatInputRun(interaction: CommandInteraction) {
 		const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
 		const embed = new MessageEmbed()
-			.setTitle(`📜 ${this.container.i18n.getT(locale)('common:rule').toUpperCase()} 📜`)
+			.setTitle(`${EMOJIS.UI.RULE} ${this.container.i18n.getT(locale)('common:rule').toUpperCase()}`)
 			.setColor('BLUE')
 			.setDescription(`${this.container.i18n.getT(locale)('validation:rule.rule', { invite: 'https://discord.gg/x8MgGnaNK5' })}`);
 
