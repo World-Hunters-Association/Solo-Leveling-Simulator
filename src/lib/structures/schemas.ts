@@ -201,7 +201,7 @@ export interface Keys {
 	uprank: number;
 }
 
-type Languages = 'en-US' | 'vi-VN' | 'id-ID';
+type Languages = 'en-US' | 'vi' | 'id-ID';
 
 export interface Language {
 	uid: Snowflake;

@@ -18,11 +18,71 @@
 		},
 		"twice": "You cannot choose your class twice!"
 	},
+	"help": {
+		"defaultEmbed": {
+			"commands": "$t(constant:emojis:guild) **Statistics commands** $t(constant:emojis:guild)\n`profile` | `inventory` | `top` | `guild`* | `title`\n\n$t(constant:emojis:pvp) **Leveling commands** $t(constant:emojis:quest)\n`gate` | `duel`* | `quest`* | `recover` | `add` | `equip` | `unequip`\n\n$t(constant:emojis:shop) **Economy commands** $t(constant:emojis:shop)\n`shop` | `buy` | `sell` | `open`* | `use` | `trade`* | `give`\n\n$t(constant:emojis:blacksmith) **Working commands** $t(constant:emojis:blacksmith)\n`chop`* | `mine`* | `craft`* | `blacksmith`*\n\n$t(constant:emojis:gambling) **Gambling commands** $t(constant:emojis:gambling)\n`lottery` | `slots`* | `blackjack` | `coinflip` | `dice`* | `threecards`\n\n$t(constant:emojis:gold) ** More Golds** $t(constant:emojis:gold)\n`vote` | `daily` | `weekly` | `redeem`* | `codes`",
+			"footer": "These * commands are not implemented yet.\nClick on the button to see details.",
+			"moreInfo": "**For more information about command/item/skill: `\\help [command/item/skill]`**",
+			"tutorial": "See the tutorial with `\\start`"
+		},
+		"desccriptions": {
+			"commands": {
+				"ADD": "Distribute your stats points into stats.",
+				"BLACKJACK": "Play blackjack with NPC",
+				"BLACKSMITH": "***Not developed yet***",
+				"BUY": "Buy an item from shop\nUse `\\shop` to show the shop.",
+				"CHOP": "***Not developed yet***",
+				"CODES": "Show your available codes (use `redeem` to claim rewards)",
+				"COINFLIP": "Bet your golds by flipping a coin",
+				"CONFIG": "Configure your gate.\n`stats` on will auto show stats each turn.\n`logs` on will show logs each turn.\n`ping` will auto ping you when its your turn.",
+				"COOLDOWN": "Show your cooldowns",
+				"CRAFT": "***Not developed yet***",
+				"DAILY": "Get $t(constant:emojis.gold), $t(constant:emojis.life potion) and $t(constant:emojis.mana potion) depending on your level and streak",
+				"DICE": "***Not developed yet***",
+				"DONATOR": "Show the donator status\n*(Only works in the $t(glossary:WHA))*",
+				"DUEL": "Fight with the mentioned hunter, the hunter who win the fight will get golds and exp",
+				"EQUIP": "Show your equipments or equip a new item",
+				"GATE": "Open a gate to enter a dungeon\n*`\\guide`* to see more info",
+				"GIVE": "Give another hunter golds",
+				"GUIDE": "Show the guide",
+				"GUILD": "Show your guild or the guild(server) you are playing in\nUse `\\guild help` to see more commands",
+				"INFO": "Show info about the bot",
+				"INVENTORY": "Show your inventory",
+				"INVITE": "Get the bot's invite link and support server link",
+				"LOTTERY": "Buy $t(constant:emojis.lottery ticket) Lottery tickets to join the lottery",
+				"MINE": "***Not developed yet***",
+				"MONEY": "**Donator command**\nShow your money",
+				"OPEN": "***Not developed yet***, Open a `box`\nBoxes are got from quest, or bought in the shop\nUse `\\box` to see more info!",
+				"PARTY": "The more the merrier! You can invite up to 5 people to your party, and do dungeons with them.\nThere's also party bonus in gate's rewards.\n\n**Party leader**\n`\\party invite @user` - adds a user to the party\n`\\party kick @user` - removes a user from the party\n`\\party disband` - deletes the party\n`\\party give @user <loot id> <amount>` - to give the party member the mentioned loot\n`\\party create` - to create a new party\n`\\party transfer` - to transfer the leadership to another member\n**Party member**\n`\\party leave` - to leave the current party\n`\\party info` - to shows information of the party  \n`\\party loots` - to shows the list of drops that the party have earned",
+				"PING": "Ping the bot",
+				"PROFILE": "Show your profile or other hunter's profile",
+				"PROGRESS": "**Donator command**\nShow your progress",
+				"QUEST": "Show your current quest or your quest list",
+				"RECOVER": "Use `status recovery` got from daily quest",
+				"REDEEM": "Redeem some rewards from `codes` (Cannot redeem in beta)",
+				"REFERRAL": "Refer code for some rewards (might be delete soon)",
+				"SELL": "Sell an item into golds.",
+				"SHOP": "Show the shop\nUse `\\buy <item_name> [amount]` to buy an item from it",
+				"SLOTS": "***Not developed yet***",
+				"STATS": "**Donator command**\nShow your stats\n\nIf you need help with stats, you might wanna find `\\help add` or `\\help <whatever stats>`",
+				"THREECARDS": "Play threecards with NPC",
+				"TITLE": "Choose a title, use `\\title` to see all titles",
+				"TOP": "See the top hunter/guild/etc. in specified category\n**Available categories:**\n> **Server rankings:** `level`, `rank`, `golds` (up to 5 pages)\n> **Global rankings:** `global rank`, `global level`, `global golds`, `shadows`, `guild`",
+				"TRADE": "***Not developed yet*** Trade with **mentioned hunter**",
+				"UNEQUIP": "Unequip an item",
+				"USE": "Use consumable items from your inventory",
+				"VOTE": "You can vote for **$t(glossary:SLS)** and **$t(glossary:WHA)** every 12 hours\nThis commands will show you the cooldowns and the link to vote.\n__*REWARDS*__:\n**$t(glossary:SLS)**\n> 1 vote point (2 in the weekend)\n> $t(constant:emojis.gold) **Golds** depending on your level\n> **Life potions** | **Mana potion** depending on your level\n> **Keys** depending on your rank\n> **Status Recovery** - Only on weekend (Fri - Sun UTC)\n**$t(glossary:WHA)**\n> 3 vote points",
+				"WEEKLY": "Get $t(constant:emojis.gold) and $t(constant:emojis.random box) (boxes are not implemented yet)"
+			}
+		},
+		"footer": "This is not what you looking for? Click on other suggestions below."
+	},
 	"language": {
 		"decline": "Okay, I didn't change your language.",
 		"disclaimer": "This language is **NOT** translated by **$t(glossary:WHA)'s Staff**. **Are you sure about changing language?**.\nIf you have better translation, please contact us!",
 		"success": "Your language has been changed to English."
 	},
+	"links": "[**Invite link**]($t(constant:botInvite)) | [**Support server**]($t(constant:serverInvite)) | [**Vote**]($t(constant:botVote)) | [**Donate (Patreon)**]($t(constant:patreon)) | [**Donate (Donate Bot)**]($t(constant:donateBot, { \"uid\": \"{{uid}}\" }))",
 	"reset": {
 		"decline": "*Phew, okay...*",
 		"error": "Something went wrong please reset again!",
@@ -36,7 +96,7 @@
 		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
 		"ruleFooter": "Breaking any rules above will result in getting banned and blacklisted!",
 		"ruleOne": "Do **NOT** trade/sell in-game currency/items for anything outside the **$t(glossary:WHA)**.",
-		"ruleThree": "Do **NOT** abuse or benefit from bugs. Report it directly to <#729245705578741842> [**$t(glossary:WHA)**]({{invite}})",
+		"ruleThree": "Do **NOT** abuse or benefit from bugs. Report it directly to <#729245705578741842> [**$t(glossary:WHA)**]($t(constant:serverInvite))",
 		"ruleTos": "Finally, follow **Discord TOS!!**",
 		"ruleTwo": "Do **NOT** cheat on the bot by any form of automation ||*(self-bot, macros, etc.)*||"
 	}

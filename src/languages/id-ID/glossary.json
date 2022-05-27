@@ -17,7 +17,129 @@
 	},
 	"effects": {
 		"Bless": "",
-		"Grievous Wounds": ""
+		"Grievous Wounds": "",
+		"Slow": "",
+		"Stun": ""
+	},
+	"equipments": {
+		"Broken Sword": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Casual Gloves": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Casual Hood": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Dagger": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Grass Ring": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Handwritten Bible": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Hunter's Bow": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Leather tunic": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Seashell Necklace": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Stick": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Wanderer Shoes": {
+			"description": "",
+			"name": "",
+			"type": ""
+		},
+		"Wooden Shield": {
+			"description": "",
+			"name": "",
+			"type": ""
+		}
+	},
+	"items": {
+		"A-rank key": {
+			"name": ""
+		},
+		"B-rank key": {
+			"name": ""
+		},
+		"C-rank key": {
+			"name": ""
+		},
+		"D-rank key": {
+			"name": ""
+		},
+		"E-rank key": {
+			"name": ""
+		},
+		"Lottery ticket": {
+			"description": "",
+			"name": ""
+		},
+		"Random Blessed Box": {
+			"description": "",
+			"name": ""
+		},
+		"Random Box": {
+			"description": "",
+			"name": ""
+		},
+		"Random Cursed Box": {
+			"description": "",
+			"name": ""
+		},
+		"S-rank key": {
+			"name": ""
+		},
+		"SS-rank key": {
+			"name": ""
+		},
+		"Status Recovery": {
+			"description": "",
+			"name": ""
+		},
+		"Uprank key": {
+			"name": ""
+		},
+		"life potion": {
+			"description": "",
+			"name": ""
+		},
+		"mana potion": {
+			"description": "",
+			"name": ""
+		},
+		"thunder stone": {
+			"description": "",
+			"name": ""
+		}
 	},
 	"skills": {
 		"Arrow rain": {
@@ -158,5 +280,51 @@
 		"mr": "",
 		"str": "",
 		"vit": ""
+	},
+	"terms": {
+		"AGILITY": {
+			"description": "",
+			"name": ""
+		},
+		"DEFENSE": {
+			"description": "",
+			"name": ""
+		},
+		"DONATE": {
+			"description": "",
+			"name": ""
+		},
+		"GRIEVOUS WOUNDS": {
+			"description": "",
+			"name": ""
+		},
+		"Hunter Slayer": {
+			"description": "",
+			"name": ""
+		},
+		"INTELLIGENCE": {
+			"description": "",
+			"name": ""
+		},
+		"MAGIC RESISTANCE": {
+			"description": "",
+			"name": ""
+		},
+		"SLOW": {
+			"description": "",
+			"name": ""
+		},
+		"STRENGTH": {
+			"description": "",
+			"name": ""
+		},
+		"STUN": {
+			"description": "",
+			"name": ""
+		},
+		"VITALITY": {
+			"description": "",
+			"name": ""
+		}
 	}
 }

@@ -1,7 +1,9 @@
 import type { SapphireClient } from '@sapphire/framework';
-import { resolveKey } from '@sapphire/plugin-i18next';
-import type { APIMessage } from 'discord-api-types';
 import { BaseCommandInteraction, Message, MessageComponentInteraction } from 'discord.js';
+
+import { resolveKey } from '@sapphire/plugin-i18next';
+
+import type { APIMessage } from 'discord.js/node_modules/discord-api-types/v10';
 
 export default class Utils {
 	public constructor(public client: SapphireClient) {}

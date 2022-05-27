@@ -26,7 +26,7 @@ export default class LanguageCommand extends Command {
 					.setRequired(true)
 					.addChoices(
 						{ name: 'English', value: 'en-US' },
-						{ name: 'Tiếng Việt', value: 'vi-VN' },
+						{ name: 'Tiếng Việt', value: 'vi' },
 						{ name: 'Bahasa Indonesia', value: 'id-ID' }
 					)
 			);
@@ -37,7 +37,7 @@ export default class LanguageCommand extends Command {
 	}
 
 	public async chatInputRun(interaction: CommandInteraction) {
-		const staffLanguages = ['en-US', 'vi-VN', 'id-ID'];
+		const staffLanguages = ['en-US', 'vi', 'id-ID'];
 
 		const language = interaction.options.getString('language', true) as 'en-US';
 

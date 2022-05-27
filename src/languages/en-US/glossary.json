@@ -2,22 +2,144 @@
 	"SLS": "Solo Leveling Simulator",
 	"WHA": "World Hunters Association",
 	"currencies": {
-		"goldWithCount_one": "{{count}} $t(gold_one)",
-		"goldWithCount_other": "{{count}} $t(gold_other)",
+		"goldWithCount_one": "{{count}} $t(glossary:currencies.gold_one)",
+		"goldWithCount_other": "{{count}} $t(glossary:currencies.gold_other)",
 		"gold_one": "Gold",
 		"gold_other": "Golds",
-		"magicCoreWithCount_one": "{{count}} $t(magiccore_one)",
-		"magicCoreWithCount_other": "{{count}} $t(magiccore_other)",
+		"magicCoreWithCount_one": "{{count}} $t(glossary:currencies.magicCore_one)",
+		"magicCoreWithCount_other": "{{count}} $t(glossary:currencies.magicCore_other)",
 		"magicCore_one": "Magic Core",
 		"magicCore_other": "Magic Cores",
-		"manaCrystalWithCount_one": "{{count}} $t(manacrystal_one)",
-		"manaCrystalWithCount_other": "{{count}} $t(manacrystal_other)",
+		"manaCrystalWithCount_one": "{{count}} $t(glossary:currencies.manaCrystal_one)",
+		"manaCrystalWithCount_other": "{{count}} $t(glossary:currencies.manaCrystal_other)",
 		"manaCrystal_one": "Mana Crystal",
 		"manaCrystal_other": "Mana Crystals"
 	},
 	"effects": {
 		"Bless": "Bless",
-		"Grievous Wounds": "Grievous Wounds"
+		"Grievous Wounds": "Grievous Wounds",
+		"Slow": "Slow",
+		"Stun": "Stun"
+	},
+	"equipments": {
+		"Broken Sword": {
+			"description": "I believe someone tried to use it on a Rasaka…",
+			"name": "Broken Sword",
+			"type": "$t(common:weapon)"
+		},
+		"Casual Gloves": {
+			"description": "A pair of gloves you can find at any equipment shops",
+			"name": "Casual Gloves",
+			"type": "$t(common:gloves)"
+		},
+		"Casual Hood": {
+			"description": "A hood that suits anyone",
+			"name": "Casual Hood",
+			"type": "$t(common:helmet)"
+		},
+		"Dagger": {
+			"description": "What? You want a fancier name?",
+			"name": "Dagger",
+			"type": "$t(common:weapon)"
+		},
+		"Grass Ring": {
+			"description": "How much does youth cost?",
+			"name": "Grass Ring",
+			"type": "$t(common:ring)"
+		},
+		"Handwritten Bible": {
+			"description": "Someone has written this during their free time.",
+			"name": "Handwritten Bible",
+			"type": "$t(common:weapon)"
+		},
+		"Hunter's Bow": {
+			"description": "We have a bow, we have a hunter. Uh! Hunter's bow!",
+			"name": "Hunter's Bow",
+			"type": "$t(common:weapon)"
+		},
+		"Leather tunic": {
+			"description": "A tunic made of low quality leather",
+			"name": "Leather tunic",
+			"type": "$t(common:armor)"
+		},
+		"Seashell Necklace": {
+			"description": "A necklace that hurts your neck.",
+			"name": "Seashell Necklace",
+			"type": "$t(common:necklace)"
+		},
+		"Stick": {
+			"description": "Hmm… as long as it works.",
+			"name": "Stick",
+			"type": "$t(common:weapon)"
+		},
+		"Wanderer Shoes": {
+			"description": "A pair of shoes for those who like to move it move it",
+			"name": "Wanderer Shoes",
+			"type": "$t(common:shoes)"
+		},
+		"Wooden Shield": {
+			"description": "I don't think this is reliable. You should get a better one as soon as possible.",
+			"name": "Wooden Shield",
+			"type": "$t(common:weapon)"
+		}
+	},
+	"items": {
+		"A-rank key": {
+			"name": "A-rank key"
+		},
+		"B-rank key": {
+			"name": "B-rank key"
+		},
+		"C-rank key": {
+			"name": "C-rank key"
+		},
+		"D-rank key": {
+			"name": "D-rank key"
+		},
+		"E-rank key": {
+			"name": "E-rank key"
+		},
+		"Lottery ticket": {
+			"description": "Used to join lottery. You can buy up to 5 tickets.",
+			"name": "Lottery ticket"
+		},
+		"Random Blessed Box": {
+			"description": "As it name.",
+			"name": "Random Blessed Box"
+		},
+		"Random Box": {
+			"description": "As it name.",
+			"name": "Random Box"
+		},
+		"Random Cursed Box": {
+			"description": "As it name.",
+			"name": "Random Cursed Box"
+		},
+		"S-rank key": {
+			"name": "S-rank key"
+		},
+		"SS-rank key": {
+			"name": "SS-rank key"
+		},
+		"Status Recovery": {
+			"description": "One ability of the System. It's restore your HP, MP. It's also remove all bad effects if you have any.",
+			"name": "Status Recovery"
+		},
+		"Uprank key": {
+			"name": "Uprank key"
+		},
+		"life potion": {
+			"description": "a bottle filled with blood. Yes blood!\nUse `heal` to restore your HP",
+			"name": "life potion"
+		},
+		"mana potion": {
+			"description": "a bottle filled with water. Just water!\nUse `drink` to restore your MP",
+			"name": "mana potion"
+		},
+		"thunder stone": {
+			"description": "A stone from The Lightning Monarch's garden\nUsed to reset stats point",
+			"name": "thunder stone"
+		}
 	},
 	"skills": {
 		"Arrow rain": {
@@ -69,7 +191,7 @@
 			"name": "Flame Spear"
 		},
 		"Heal": {
-			"description": "If the $t(glossary:skills.Judge.name)'s result is \"$t(common:bless)\" this skill will heal the target otherwise will deal damage to them.",
+			"description": "If the $t(glossary:skills.Judge.name)'s result is \"$t(glossary:effects.Bless)\" this skill will heal the target otherwise will deal damage to them.",
 			"name": "Heal"
 		},
 		"Immobile curse": {
@@ -158,5 +280,51 @@
 		"mr": "Magic Resistance",
 		"str": "Strength",
 		"vit": "Vitality"
+	},
+	"terms": {
+		"AGILITY": {
+			"description": "Increase move range.\n\n**Note**: 5/35/80/140/215 $t(glossary:stats.agi) give you 1/2/3/4/5 move range.",
+			"name": "$t(glossary:stats.agi)"
+		},
+		"DEFENSE": {
+			"description": "Increase your physical defense.",
+			"name": "$t(glossary:stats.def)"
+		},
+		"DONATE": {
+			"description": "Donate via $t(constant:patreon) or $t(constant:donateBot).",
+			"name": "Donate"
+		},
+		"GRIEVOUS WOUNDS": {
+			"description": "Reduce healing HP effect by 50%.",
+			"name": "$t(glossary:effects.Grievous Wounds)"
+		},
+		"Hunter Slayer": {
+			"description": "The more hunters you kill, the less EXP you can earn.",
+			"name": "Hunter Slayer"
+		},
+		"INTELLIGENCE": {
+			"description": "Increase magic damage output and your MP.\n\n**Rate**: 2 INT = 1 MP.",
+			"name": "$t(glossary:stats.int)"
+		},
+		"MAGIC RESISTANCE": {
+			"description": "Increase your magic defense.",
+			"name": "$t(glossary:stats.mr)"
+		},
+		"SLOW": {
+			"description": "Reduces the move range of target by 1.",
+			"name": "$t(glossary:effects.Slow)"
+		},
+		"STRENGTH": {
+			"description": "Increase physical damage output.",
+			"name": "$t(glossary:stats.str)"
+		},
+		"STUN": {
+			"description": "Stuns the target. The target cannot attack, move or using potions.",
+			"name": "$t(glossary:effects.Stun)"
+		},
+		"VITALITY": {
+			"description": "Increase your $t(glossary:stats:hp).\n\n**Rate**: 1 $t(glossary:stats:vit) = 3 $t(glossary:stats:hp).",
+			"name": "$t(glossary:stats.vit)"
+		}
 	}
 }

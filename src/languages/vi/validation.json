@@ -1,0 +1,103 @@
+{
+	"awake": {
+		"awaken": "nah nó không dễ để tái thức tỉnh như vậy đâu!",
+		"request": "Bạn là người chơi mới phải không, {{mention}}? `/awake`"
+	},
+	"chooseClass": {
+		"descriptions": {
+			"assassin": "Thiên chức chuyên về dao găm và tốc độ. Gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
+			"cancelled": "Đã hủy!",
+			"confirm": "Bạn có chắc chắn với sự lựa chọn của mình không? \n**Bạn không thể chọn lại thiên chức của mình đâu.**",
+			"confirmed": "Hoàn thành! Đó một lựa chọn tuyệt vời.",
+			"embed": "Bấm vào nút của thên chức tương ứng để xem thông tin của thiên chức đó.",
+			"fighter": "Thiên chức chuyên về vũ khí cận chiến. Họ có lượng sát thương ổn định và khả năng phòng thủ tốt.",
+			"healer": "Thiên chức chuyên về phép thuật chữa trị và cường hóa sát thương. Nhưng họ lại rất mỏng manh.",
+			"mage": "Thiên chức chuyên về tấn công bằng ma thuật, gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
+			"ranger": "Thiên chức chuyên tấn công tầm xa.",
+			"tanker": "Là thiên chức chuyên về phòng thủ, thu hút ma thú về mình và bảo vệ những đồng minh có sức phòng thủ thấp."
+		},
+		"twice": "Bạn không thể chọn thiên chức hai lần!"
+	},
+	"help": {
+		"defaultEmbed": {
+			"commands": "$t(constant:emojis:guild) **Statistics commands** $t(constant:emojis:guild)\n`profile` | `inventory` | `top` | `guild`* | `title`\n\n$t(constant:emojis:pvp) **Leveling commands** $t(constant:emojis:quest)\n`gate` | `duel`* | `quest`* | `recover` | `add` | `equip` | `unequip`\n\n$t(constant:emojis:shop) **Economy commands** $t(constant:emojis:shop)\n`shop` | `buy` | `sell` | `open`* | `use` | `trade`* | `give`\n\n$t(constant:emojis:blacksmith) **Working commands** $t(constant:emojis:blacksmith)\n`chop`* | `mine`* | `craft`* | `blacksmith`*\n\n$t(constant:emojis:gambling) **Gambling commands** $t(constant:emojis:gambling)\n`lottery` | `slots`* | `blackjack` | `coinflip` | `dice`* | `threecards`\n\n$t(constant:emojis:gold) ** More Golds** $t(constant:emojis:gold)\n`vote` | `daily` | `weekly` | `redeem`* | `codes`",
+			"footer": "Các lệnh được đánh dấu * là các lệnh chưa thể sử dụng.\nNhấp vào nút để xem chi tiết.",
+			"moreInfo": "**Để biết thêm thông tin về command/item/skill: `\\help [command/item/skill]`**",
+			"tutorial": "Xem hướng dẫn với `\\start`"
+		},
+		"desccriptions": {
+			"commands": {
+				"ADD": "Nâng điểm chỉ số của bạn.",
+				"BLACKJACK": "Chơi blackjack với NPC",
+				"BLACKSMITH": "***Chưa thể sử dụng***",
+				"BUY": "Mua một vật dụng từ cửa hàng\nSử dụng `\\shop` để hiển thị cửa hàng.",
+				"CHOP": "***Chưa thể sử dụng***",
+				"CODES": "Hiển thị các mã nhận thưởng của bạn (sử dụng `redeem` để nhận phần thưởng)",
+				"COINFLIP": "Đặt cược số vàng của bạn bằng cách tung đồng xu",
+				"CONFIG": "Cài đặt cổng của bạn.\nBật `stats` sẽ tự động hiển thị số liệu thống kê mỗi lượt.\nBật `log` sẽ hiển thị các dữ liệu mỗi lượt. \nBật `ping` sẽ tự động ping bạn khi đến lượt của bạn.",
+				"COOLDOWN": "Hiển thị thời gian hồi chiêu của bạn",
+				"CRAFT": "***Chưa thể sử dụng***",
+				"DAILY": "Nhận $t(constant:emojis.gold), $t(constant:emojis.life potion) và $t(constant:emojis.mana potion) tùy thuộc vào cấp độ và chuỗi của bạn",
+				"DICE": "***Chưa thể sử dụng***",
+				"DONATOR": "Hiển thị trạng thái donater\n*(Chỉ hoạt động trong $t(glossary:WHA))*",
+				"DUEL": "Chiến đấu với thợ săn được nhắc đến, thợ săn thắng cuộc chiến sẽ nhận được vàng và điểm kinh nghiệm",
+				"EQUIP": "Hiển thị trang bị của bạn hoặc trang bị một vật phẩm mới",
+				"GATE": "Mở cổng để vào hầm ngục\n*`\\guide`* để xem thêm thông tin",
+				"GIVE": "Gửi vàng tới thợ săn khác",
+				"GUIDE": "Hiển thị hướng dẫn",
+				"GUILD": "Hiển thị bang hội của bạn hoặc bang hội (máy chủ) bạn đang chơi\nSử dụng `\\guild help` để xem thêm lệnh",
+				"INFO": "Hiển thị thông tin về bot",
+				"INVENTORY": "Hiển thị kho đồ của bạn",
+				"INVITE": "Nhận liên kết mời của bot và liên kết máy chủ hỗ trợ",
+				"LOTTERY": "Mua $t(constant:emojis.lottery ticket) Vé số để tham gia xổ số",
+				"MINE": "***Chưa thể sử dụng***",
+				"MONEY": "**Donator command**\nHiển thị tiền của bạn",
+				"OPEN": "***Chưa thể sử dụng***, Mở hộp\nHộp có được từ nhiệm vụ hoặc mua trong cửa hàng\nSử dụng `\\box` để xem thêm thông tin!",
+				"PARTY": "Càng đông càng vui! Bạn có thể mời tối đa 5 người tham gia tổ đội của mình và vào hầm ngục cùng họ.\nChơi cùng tổ đội sẽ nhận được phần thưởng cộng thêm.\n\n**Chủ tổ đội**\n`\\party invite @user` - thêm người dùng vào tổ đội\n`\\party kick @ user` - xóa một người dùng khỏi tổ đội\n`\\party disband` - xóa tổ đội\n`\\party give @user <loot id> <amount>`- đưa cho thành viên trong tổ đội chiến lợi phẩm đã đề cập\n`\\party create` - để tạo một tổ đội mới\n`\\party transfer` - chuyển giao quyền lãnh đạo cho một thành viên khác\n**Thành viên của tổ đội**\n`\\party left` - rời khỏi tổ đội hiện tại\n`\\party info` - để hiển thị thông tin tổ đội\n`\\party loots` - để hiển thị danh sách các phần thưởng mà tổ đội đã kiếm được",
+				"PING": "Ping bot",
+				"PROFILE": "Hiển thị hồ sơ của bạn hoặc hồ sơ của thợ săn khác",
+				"PROGRESS": "**Donator command**\nMở tiến trình của bạn",
+				"QUEST": "Hiển thị nhiệm vụ hiện tại của bạn hoặc danh sách nhiệm vụ của bạn",
+				"RECOVER": "Sử dụng `phục hồi trạng thái` nhận được từ nhiệm vụ hàng ngày",
+				"REDEEM": "Đổi một số phần thưởng từ `codes` (Không thể đổi trong phiên bản beta)",
+				"REFERRAL": "Giới thiệu mã để nhận một số phần thưởng (có thể bị xóa)",
+				"SELL": "Bán một vật dụng thành vàng.",
+				"SHOP": "Hiển thị cửa hàng\nSử dụng `\\buy <item_name> [số lượng]` để mua một mặt hàng từ đó",
+				"SLOTS": "***Chưa thể sử dụng***",
+				"STATS": "**Donator command**\nHiển thị chỉ số\n\nNếu bạn cần trợ giúp về chỉ số, bạn có thể tìm `\\help add` hoặc` \\help <chỉ số>`",
+				"THREECARDS": "Chơi ba cây với NPC",
+				"TITLE": "Chọn một danh hiệu, sử dụng `\\title` để xem tất cả các danh hiệu",
+				"TOP": "Xem top thợ săn/bang hội/vv. trong danh mục cụ thể\n**Danh mục:**\n> **Thứ hạng máy chủ:** `level`, `rank`, `golds` (tối đa 5 trang)\n> **Bảng xếp hạng toàn cầu:** `global rank`, `global level`, `global golds`, `shadows`, `guild`",
+				"TRADE": "***Chưa thể sử dụng*** Giao dịch với thợ săn khác",
+				"UNEQUIP": "Tháo trang bị",
+				"USE": "Sử dụng các vật phẩm tiêu thụ từ kho của bạn",
+				"VOTE": "You can vote for **$t(glossary:SLS)** and **$t(glossary:WHA)** every 12 hours\nThis commands will show you the cooldowns and the link to vote.\n__*REWARDS*__:\n**$t(glossary:SLS)**\n> 1 vote point (2 in the weekend)\n> $t(constant:emojis.gold) **Golds** depending on your level\n> **Life potions** | **Mana potion** depending on your level\n> **Keys** depending on your rank\n> **Status Recovery** - Only on weekend (Fri - Sun UTC)\n**$t(glossary:WHA)**\n> 3 vote points",
+				"WEEKLY": "Nhận $t(constant:emojis.gold) và $t(constant:emojis.random box) (chưa thể sử dụng rương)"
+			}
+		},
+		"footer": "Đây không phải là thứ bạn đang tìm? Nhấp vào các đề xuất khác bên dưới."
+	},
+	"language": {
+		"decline": "Được rồi, tôi không thay đổi ngôn ngữ của bạn.",
+		"disclaimer": "Ngôn ngữ này **KHÔNG ĐƯỢC** dịch bởi **Staff của $t(glossary:WHA:)**. **Bạn có chắc chắn về việc thay đổi ngôn ngữ không?**.\nNếu bạn có bản dịch tốt hơn, xin vui lòng liên hệ với chúng tôi!",
+		"success": "Ngôn ngữ của bạn đã chuyển thành Tiếng Việt."
+	},
+	"links": "[**Invite link**]($t(constant:botInvite)) | [**Support server**]($t(constant:serverInvite)) | [**Vote**]($t(constant:botVote)) | [**Donate (Patreon)**]($t(constant:patreon)) | [**Donate (Donate Bot)**]($t(constant:donateBot, { \"uid\": \"{{uid}}\" }))",
+	"reset": {
+		"decline": "*Phew, okay...*",
+		"error": "Đã xảy ra lỗi, vui lòng thử lại!",
+		"processing": "Đang thực thi...",
+		"success": "Đã xóa tiến trình của **{{mention}}** thành công.",
+		"timeout": "$t(common:timeout)! *Phew, okay...*",
+		"warning": "**CHÚ Ý!!!!!!** Quá trình này không thể hoàn tác, bạn có chắc chắn muốn xóa tiến trình của mình không **{{mention}}**?"
+	},
+	"retry": ["Hmm...thử lại nào.", "Có gì đó sai sai. Thử lại đi?", "Hơi nhanh đó. Hãy thử lại."],
+	"rule": {
+		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
+		"ruleFooter": "Vi phạm bất kỳ quy tắc nào ở trên sẽ dẫn đến việc bị cấm và đưa vào danh sách đen!",
+		"ruleOne": "**KHÔNG** giao dịch/buôn bán tiền/vật phẩm trong trò chơi cho bất kỳ thứ gì không liên quan đến **$t(glossary:WHA)**.",
+		"ruleThree": "**KHÔNG** lạm dụng hoặc hưởng lợi từ lỗi. Mà hãy báo cáo trực tiếp cho <#729245705578741842> [**$t(glossary:WHA)**]($t(constant:serverInvite)).",
+		"ruleTos": "Cuối cùng, hãy tuân thủ **Discord TOS!!**",
+		"ruleTwo": "**KHÔNG** gian lận bằng bất kỳ hình thức nào ||*(self-bot, macro, v.v.)*||"
+	}
+}

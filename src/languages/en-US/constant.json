@@ -1,0 +1,22 @@
+{
+	"botInvite": "https://discord.com/oauth2/authorize?client_id=703043558483034223&permissions=277025770560&scope=bot+applications.commands",
+	"botVote": "https://top.gg/bot/703043558483034223/vote",
+	"donateBot": "https://donatebot.io/checkout/724186681124716544?buyer={{uid}}",
+	"donateBot_markdown": "[Donate Bot](https://donatebot.io/checkout/724186681124716544?buyer={{uid}})",
+	"emojis": {
+		"blacksmith": "<:BlackSmith:724541953890320384>",
+		"gambling": "<:Gambling:724541954066743347>",
+		"gold": "<:Golds:729535888912154754>",
+		"guild": "<:Guild:724541954796421151>",
+		"life potion": "<:Lifepotion1000:740053804463947776>",
+		"lottery ticket": "<:Lotteryticket:763331798423044097>",
+		"mana potion": "<:Manapotion1000:740053804480856074>",
+		"pvp": "<:PvP:724541953978662972>",
+		"quest": "<:Quest:724541953961623572>",
+		"random box": "<:RandomBox:748805857587757077>",
+		"shop": "<:Shop:724541954150498335>"
+	},
+	"patreon": "https://www.patreon.com/sololevelingsimulator",
+	"patreon_markdown": "[Patreon](https://www.patreon.com/sololevelingsimulator)",
+	"serverInvite": "https://discord.gg/x8MgGnaNK5"
+}

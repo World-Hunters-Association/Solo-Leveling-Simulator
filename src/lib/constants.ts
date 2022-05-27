@@ -469,3 +469,326 @@ export const CLASSES_INFO = {
 		BASE_STATS: BaseStats['Tanker']
 	}
 };
+
+export const COMMANDS = {
+	HELP: {
+		DESCRIPTION: 'Displays a list of available commands, or detailed information for a specified command/item.',
+		STATISTICS: {
+			GUILD: {
+				ALIASES: '`guild`',
+				USAGE: '`sl guild`',
+				EXAMPLES: `sl guild`
+			},
+			INVENTORY: {
+				ALIASES: '`inventory` | `inv` | `i`',
+				USAGE: '`sl inventory [@hunter]`',
+				EXAMPLES: `sl i @Mzato#0001`
+			},
+			PROFILE: {
+				ALIASES: '`profile` | `p`',
+				USAGE: '`sl profile [@hunter]`',
+				EXAMPLES: `sl p @Mzato#0001`
+			},
+			TITLE: {
+				ALIASES: '`title`',
+				USAGE: '`sl title [id]`',
+				EXAMPLES: `sl title 2`
+			},
+			TOP: {
+				ALIASES: '`top`',
+				USAGE: '`sl top [type]`',
+				EXAMPLES: `sl top global rank`
+			}
+		},
+		LEVELING: {
+			DUEL: {
+				ALIASES: '`duel`',
+				USAGE: '`sl duel <@hunter>`',
+				EXAMPLES: `sl duel @Mzato#0001`
+			},
+			PARTY: {
+				ALIASES: '`party` | `pt`',
+				USAGE: '`sl party [command]`',
+				EXAMPLES: `sl pt`
+			},
+			GATE: {
+				ALIASES: '`gate`',
+				USAGE: '`sl gate <key_type>`',
+				EXAMPLES: `sl gate e`
+			},
+			QUEST: {
+				ALIASES: '`quest`',
+				USAGE: '`sl quest`',
+				EXAMPLES: `sl quest`
+			},
+			RECOVER: {
+				ALIASES: '`recover`',
+				USAGE: '`sl recover`',
+				EXAMPLES: `sl recover`
+			},
+			ADD: {
+				ALIASES: '`add`',
+				USAGE: '`sl add <str|int|def|mr|vit|agi> <amount>`',
+				EXAMPLES: `sl add def 36`
+			},
+			COOLDOWN: {
+				ALIASES: '`cooldown` | `cd`',
+				USAGE: '`sl cooldown`',
+				EXAMPLES: `sl cooldown`
+			},
+			CONFIG: {
+				ALIASES: '`config`',
+				USAGE: '`sl config <stats|logs|ping> <on|off>`',
+				EXAMPLES: `sl config ping on`
+			},
+			EQUIP: {
+				ALIASES: '`equip` | `eq`',
+				USAGE: '`sl equip [item_id]`',
+				EXAMPLES: `sl eq nj3MH`
+			},
+			UNEQUIP: {
+				ALIASES: '`unequip` | `uneq`',
+				USAGE: '`sl unequip [item_id]`',
+				EXAMPLES: `sl uneq nj3MH`
+			}
+		},
+		ECONOMY: {
+			BUY: {
+				ALIASES: '`buy`',
+				USAGE: '`sl buy [amount] <item_name>`',
+				EXAMPLES: `sl buy kamish dagger`
+			},
+			GIVE: {
+				ALIASES: '`give`',
+				USAGE: '`sl give <amount>`',
+				EXAMPLES: `sl give half`
+			},
+			OPEN: {
+				ALIASES: '`open`',
+				USAGE: '??', // '`sl open <box_name/all>`',
+				EXAMPLES: '??' // `sl open exclusive`,
+			},
+			SELL: {
+				ALIASES: '`sell`',
+				USAGE: '`sl sell <item_name> [amount]`',
+				EXAMPLES: `sl sell dagger`
+			},
+			SHOP: {
+				ALIASES: '`shop`',
+				USAGE: '`sl shop [type/pages]`',
+				EXAMPLES: `sl shop 4`
+			},
+			TRADE: {
+				ALIASES: '`trade`',
+				USAGE: '??', // '`sl trade <@hunter> <item_name> [amount]`',
+				EXAMPLES: '??' // `sl trade @Mzato#0001 kamish dagger`,
+			},
+			USE: {
+				ALIASES: '`use`',
+				USAGE: '`sl use <item_name> [amount]`',
+				EXAMPLES: `sl use mana potion`
+			}
+		},
+		MORE_GOLDS: {
+			VOTE: {
+				ALIASES: '`vote`',
+				USAGE: '`sl vote`',
+				EXAMPLES: `sl vote`
+			},
+			DAILY: {
+				ALIASES: '`daily`',
+				USAGE: '`sl daily`',
+				EXAMPLES: `sl daily`
+			},
+			WEEKLY: {
+				ALIASES: '`weekly`',
+				USAGE: '`sl weekly`',
+				EXAMPLES: `sl weekly`
+			},
+			CODES: {
+				ALIASES: '`codes`',
+				USAGE: '`sl codes`',
+				EXAMPLES: `sl codes`
+			},
+			REDEEM: {
+				ALIASES: '`redeem`',
+				USAGE: '`sl redeem <code>`',
+				EXAMPLES: `sl redeem Mzato *(ye its one of my codes)*`
+			},
+			REFERRAL: {
+				ALIASES: '`referral` | `ref`',
+				USAGE: '`sl ref <code>`',
+				EXAMPLES: `sl ref`
+			}
+		},
+		WORKING: {
+			CHOP: {
+				ALIASES: '`chop`',
+				USAGE: '??',
+				EXAMPLES: '??'
+			},
+			MINE: {
+				ALIASES: '`mine`',
+				USAGE: '??',
+				EXAMPLES: '??'
+			},
+			CRAFT: {
+				ALIASES: '`craft`',
+				USAGE: '??',
+				EXAMPLES: '??'
+			},
+			BLACKSMITH: {
+				ALIASES: '`blacksmith`',
+				USAGE: '??',
+				EXAMPLES: '??'
+			}
+		},
+		GAMBLING: {
+			LOTTERY: {
+				ALIASES: '`lottery` | `lt`',
+				USAGE: '`sl lottery`',
+				EXAMPLES: `sl lottery`
+			},
+			SLOTS: {
+				ALIASES: '`slots`',
+				USAGE: '`sl slots <gold>`',
+				EXAMPLES: `sl slots <gold>`
+			},
+			BLACKJACK: {
+				ALIASES: '`blackjack` | `bj`',
+				USAGE: '`sl blackjack <golds>`',
+				EXAMPLES: `sl blackjack 12345`
+			},
+			COINFLIP: {
+				ALIASES: '`coinflip` | `cf`',
+				USAGE: '`sl coinflip <h|t|heads|tails> <golds>`',
+				EXAMPLES: `sl coinflip h 12345`
+			},
+			DICE: {
+				ALIASES: '`dice`',
+				USAGE: '`sl dice <golds>`',
+				EXAMPLES: `sl dice 12345`
+			},
+			THREECARDS: {
+				ALIASES: '`threecards` | `tc`',
+				USAGE: '`sl threecards <golds>`',
+				EXAMPLES: `sl threecards 12345`
+			}
+		},
+		OTHERS: {
+			INFO: {
+				ALIASES: '`info`',
+				USAGE: '`sl info`',
+				EXAMPLES: `sl info`
+			},
+			PING: {
+				ALIASES: '`ping`',
+				USAGE: '`sl ping`',
+				EXAMPLES: `sl ping`
+			},
+			INVITE: {
+				ALIASES: '`invite`',
+				USAGE: '`sl invite`',
+				EXAMPLES: `sl invite`
+			},
+			MONEY: {
+				ALIASES: '`money` | `wallet` | `bal` | `balance`',
+				USAGE: '`sl money`',
+				EXAMPLES: `sl money`
+			},
+			PROGRESS: {
+				ALIASES: '`progress` | `pr`',
+				USAGE: '`sl progress`',
+				EXAMPLES: `sl progress`
+			},
+			STATS: {
+				ALIASES: '`stats` | `stat`',
+				USAGE: '`sl stats`',
+				EXAMPLES: `sl stats`
+			},
+			GUIDE: {
+				ALIASES: '`guide` | `start`',
+				USAGE: '`sl guide`',
+				EXAMPLES: `sl guide`
+			},
+			DONATOR: {
+				ALIASES: '`donator` | `donor`',
+				USAGE: '`sl donator`',
+				EXAMPLES: `sl donator`
+			}
+		},
+		TERMS: {
+			STRENGTH: {
+				ALIASES: '`str` | `strength`',
+				EMOJI: EMOJIS.STATS.STRENGTH,
+				EMBED: {
+					description: 'Increase physical damage output.'
+				}
+			},
+			AGILITY: {
+				ALIASES: '`agi` | `agility`',
+				EMOJI: EMOJIS.STATS.AGILITY,
+				EMBED: {
+					description: 'Increase move range.\n\n**Note**: 5/35/80/140/215 Agility give you 1/2/3/4/5 move range.'
+				}
+			},
+			INTELLIGENCE: {
+				ALIASES: '`int` | `intelligence`',
+				EMOJI: EMOJIS.STATS.INTELLIGENCE,
+				EMBED: {
+					description: 'Increase magic damage output and your MP.\n\n**Rate**: 2 INT = 1 MP.'
+				}
+			},
+			VITALITY: {
+				ALIASES: '`vit` | `vitality`',
+				EMOJI: EMOJIS.STATS.VITALITY,
+				EMBED: {
+					description: 'Increase your HP.\n\n**Rate**: 1 VIT = 3 HP.'
+				}
+			},
+			DEFENSE: {
+				ALIASES: '`def` | `defence`',
+				EMOJI: EMOJIS.STATS.DEFENCE,
+				EMBED: {
+					description: 'Increase your physical defense.'
+				}
+			},
+			'MAGIC RESISTANCE': {
+				ALIASES: '`mr` | `magic resistance`',
+				EMOJI: EMOJIS.STATS['MAGIC_RESISTANCE'],
+				EMBED: {
+					description: 'Increase your magic defense.'
+				}
+			},
+			SLOW: {
+				EMOJI: EMOJIS.EFFECTS.SLOW,
+				EMBED: {
+					description: 'Reduces the move range of target by 1.'
+				}
+			},
+			STUN: {
+				EMOJI: EMOJIS.EFFECTS.STUN,
+				EMBED: {
+					description: 'Stuns the target. The target cannot attack, move or using potions.'
+				}
+			},
+			'GRIEVOUS WOUNDS': {
+				EMOJI: EMOJIS.EFFECTS['GRIEVOUS_WOUNDS'],
+				EMBED: {
+					description: 'Reduce healing HP effect by 50%.'
+				}
+			},
+			DONATE: {
+				EMBED: {
+					description: `Donate via`,
+					image: { url: 'https://cdn.discordapp.com/attachments/736792355931422801/920735252119453706/unknown.png' }
+				}
+			},
+			'Hunter Slayer': {
+				EMBED: {
+					description: `The more hunters you kill, the less EXP you can earn.`
+				}
+			}
+		}
+	}
+};

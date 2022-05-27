@@ -52,7 +52,7 @@ export default class StartCommand extends Command {
 						run: () => {
 							this.container.applicationCommandRegistries.acquire('help').command?.chatInputRun!(interaction, {
 								commandName: 'help',
-								commandId: ''
+								commandId: '924315533854277632'
 							});
 						}
 					},

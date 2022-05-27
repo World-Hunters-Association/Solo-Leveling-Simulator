@@ -99,15 +99,39 @@
 	"Register a Context Menu Command": {
 		"prefix": "contextBuilder",
 		"body": [
-		  "registry.registerContextMenuCommand(",
-		  "    new ContextMenuCommandBuilder()",
-		  "        .setName(this.name)",
-		  "        .setType(${1|2,3|}),",
-		  "    {",
-		  "        idHints: [''],",
-		  "        behaviorWhenNotIdentical: RegisterBehavior.Overwrite",
-		  "    });"
+			"registry.registerContextMenuCommand(",
+			"    new ContextMenuCommandBuilder()",
+			"        .setName(this.name)",
+			"        .setType(${1|2,3|}),",
+			"    {",
+			"        idHints: [''],",
+			"        behaviorWhenNotIdentical: RegisterBehavior.Overwrite",
+			"    });"
 		],
 		"description": "Register a Context Menu Command"
-	  }
+	},
+	"Create interaction handler structure": {
+		"prefix": "interaction handler",
+		"body": [
+			"import { ApplyOptions } from '@sapphire/decorators';",
+			"import { InteractionHandler, InteractionHandlerOptions, InteractionHandlerTypes } from '@sapphire/framework';",
+			"",
+			"import type { ${1|Autocomplete,Button,MessageComponent,SelectMenu|}Interaction } from 'discord.js';",
+			"",
+			"@ApplyOptions<InteractionHandlerOptions>({",
+			"    interactionHandlerType: InteractionHandlerTypes.${1|Autocomplete,Button,MessageComponent,SelectMenu|}",
+			"})",
+			"export class ${1|Autocomplete,Button,MessageComponent,SelectMenu|}InteractionHandler extends InteractionHandler {",
+			"    public override async parse(interaction: ${1|Autocomplete,Button,MessageComponent,SelectMenu|}Interaction) {",
+			"        return this.some();$0",
+			"    }",
+			"",
+			"    public override async run(interaction: ${1|Autocomplete,Button,MessageComponent,SelectMenu|}Interaction) {",
+			"",
+			"    }",
+			"}",
+			""
+		],
+		"description": "Create interaction handler structure"
+	}
 }
