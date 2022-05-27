@@ -77,9 +77,14 @@ export default class HelpCommand extends Command {
 		const fuse = await this.fuse(interaction);
 		const type = fuse.search({
 			$or: [
-				{ label: (interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values[0] || '' },
-				{ name: (interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values[0] || '' },
-				{ aliases: (interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values[0] || '' }
+				{
+					label: (interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values?.[0] || ''
+				},
+				{ name: (interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values?.[0] || '' },
+				{
+					aliases:
+						(interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values?.[0] || ''
+				}
 			]
 		});
 		let embed = new MessageEmbed({ footer: { text: await resolveKey(interaction, 'validation:help.footer', { lng: locale }) } }).setColor('BLUE');
