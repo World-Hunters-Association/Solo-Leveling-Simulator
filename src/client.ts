@@ -4,13 +4,12 @@ import { Collection, GuildEmoji, LimitedCollection, Message } from 'discord.js';
 import { Db, MongoClient } from 'mongodb';
 import { join } from 'path';
 
-import { BucketScope, SapphireClient } from '@sapphire/framework';
+import { Awaitable, BucketScope, SapphireClient } from '@sapphire/framework';
 import { container } from '@sapphire/pieces';
-
-import Utils from './lib/Utils';
 
 import type { InternationalizationContext } from '@sapphire/plugin-i18next';
 import type { AlpetaOptions } from './lib/setup';
+import { UtilsStore } from './lib/structures/UtilsStore';
 
 export default class System extends SapphireClient {
 	public config: AlpetaOptions;
@@ -70,7 +69,9 @@ export default class System extends SapphireClient {
 			i18n: {
 				fetchLanguage: async (context: InternationalizationContext) => {
 					const userSettings = await db.collection('language').findOne({ uid: context.user?.id });
-					return userSettings?.language || 'en-US';
+					return container.constants.SUPPORTED_LANGUAGES.includes(userSettings?.language || '')
+						? userSettings?.language || 'en-US'
+						: 'en-US';
 				},
 				defaultLanguageDirectory: join(__dirname, 'languages'),
 				hmr: {
@@ -93,14 +94,13 @@ export default class System extends SapphireClient {
 
 		this.config = config;
 
+		this.stores.register(new UtilsStore().registerPath(join(__dirname, 'utils')));
+
 		container.db = db;
-		container.utils = new Utils(this);
+
+		container.i18n.fetchLanguageWithDefault = container.i18n.fetchLanguage as (context: InternationalizationContext) => Awaitable<string>;
 
 		process.on('unhandledRejection', () => ({}));
-	}
-
-	public async start() {
-		return this.login(this.config.token);
 	}
 }
 
@@ -113,5 +113,5 @@ void new MongoClient(process.env.MONGO_URL!).connect().then(async (mClient) => {
 		},
 		mClient.db(process.env.DB || 'leveling-solo-simulator')
 	);
-	await client.start();
+	await client.login(client.config.token);
 });

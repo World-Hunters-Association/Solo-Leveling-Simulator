@@ -1,19 +1,26 @@
 {
 	"SLS": "Solo Leveling Simulator",
 	"WHA": "World Hunters Association",
+	"challenges": {
+		"hunterSlayer": "**Hunter Slayer**: {{count}}"
+	},
 	"currencies": {
-		"goldWithCount_one": "{{count}} $t(glossary:currencies.gold_one)",
-		"goldWithCount_other": "{{count}} $t(glossary:currencies.gold_other)",
-		"gold_one": "Gold",
+		"gold": "Gold",
+		"gold_count_one": "{{number}} $t(glossary:currencies.gold)",
+		"gold_count_other": "{{number}} $t(glossary:currencies.gold_other)",
 		"gold_other": "Golds",
-		"magicCoreWithCount_one": "{{count}} $t(glossary:currencies.magicCore_one)",
-		"magicCoreWithCount_other": "{{count}} $t(glossary:currencies.magicCore_other)",
-		"magicCore_one": "Magic Core",
+		"magicCore": "Magic Core",
+		"magicCore_count_one": "{{number}} $t(glossary:currencies.magicCore)",
+		"magicCore_count_other": "{{number}} $t(glossary:currencies.magicCore_other)",
 		"magicCore_other": "Magic Cores",
-		"manaCrystalWithCount_one": "{{count}} $t(glossary:currencies.manaCrystal_one)",
-		"manaCrystalWithCount_other": "{{count}} $t(glossary:currencies.manaCrystal_other)",
-		"manaCrystal_one": "Mana Crystal",
-		"manaCrystal_other": "Mana Crystals"
+		"manaCrystal": "Mana Crystal",
+		"manaCrystal_count_one": "{{number}} $t(glossary:currencies.manaCrystal)",
+		"manaCrystal_count_other": "{{number}} $t(glossary:currencies.manaCrystal_other)",
+		"manaCrystal_other": "Mana Crystals",
+		"votePoint": "Vote Point",
+		"votePoint_count_one": "{{number}} $t(glossary:currencies.votePoint)",
+		"votePoint_count_other": "{{number}} $t(glossary:currencies.votePoint_other)",
+		"votePoint_other": "Vote Points"
 	},
 	"effects": {
 		"Bless": "Bless",

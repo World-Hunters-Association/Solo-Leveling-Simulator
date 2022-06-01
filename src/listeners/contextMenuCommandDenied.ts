@@ -10,6 +10,6 @@ export default class ContextMenuCommandDeniedListener extends Listener {
 	}
 
 	public async run(error: UserError, { interaction }: ContextMenuCommandDeniedPayload) {
-		if (error.identifier === 'preconditionCooldown') await this.container.utils.sendRetryMessage(interaction);
+		if (error.identifier === 'preconditionCooldown') await this.container.functions.sendRetryMessage(interaction);
 	}
 }

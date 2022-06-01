@@ -17,3 +17,9 @@ export class UserCommand extends Command {
 		return message.channel.send(content);
 	}
 }
+
+declare module '@sapphire/framework' {
+	interface CommandStore {
+		get(name: 'ping'): UserCommand;
+	}
+}

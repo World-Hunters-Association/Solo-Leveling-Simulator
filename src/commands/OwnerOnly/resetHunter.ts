@@ -5,8 +5,6 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Args, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 import { editLocalized, sendLocalized } from '@sapphire/plugin-i18next';
 
-import { EMOJIS } from '../../lib/constants';
-
 @ApplyOptions<CommandOptions>({
 	name: 'reset',
 	description: 'Delete the hunter progress',
@@ -14,7 +12,7 @@ import { EMOJIS } from '../../lib/constants';
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })
-export default class ResetHunterCommand extends Command {
+export default class UserCommand extends Command {
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
 		registry.registerContextMenuCommand(new ContextMenuCommandBuilder().setName(this.name).setType(2).setDefaultPermission(false), {
 			idHints: ['966351012740862053'],
@@ -32,19 +30,19 @@ export default class ResetHunterCommand extends Command {
 	}
 
 	private async reset({ interaction, message }: { interaction?: ContextMenuInteraction; message?: Message }, args?: Args) {
-		const locale = (await this.container.i18n.fetchLanguage(interaction! || message!)) || 'en-US';
+		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction! || message!);
 		let components = [
 			new MessageActionRow().setComponents([
 				new MessageButton()
 					.setCustomId(`Yes`)
 					.setLabel(this.container.i18n.getT(locale)('common:yes'))
 					.setStyle('SECONDARY')
-					.setEmoji(EMOJIS.UI.YES),
+					.setEmoji(this.container.constants.EMOJIS.UI.YES),
 				new MessageButton()
 					.setCustomId(`No`)
 					.setLabel(this.container.i18n.getT(locale)('common:no'))
 					.setStyle('PRIMARY')
-					.setEmoji(EMOJIS.UI.CANCEL)
+					.setEmoji(this.container.constants.EMOJIS.UI.CANCEL)
 			])
 		];
 
@@ -100,7 +98,7 @@ export default class ResetHunterCommand extends Command {
 						this.container.db.collection('material').deleteOne({ uid: targetId }),
 						this.container.db.collection('hunter_skills').deleteOne({ uid: targetId }),
 						this.container.db.collection('config').deleteOne({ uid: targetId }),
-						this.container.db.collection('achievements').deleteOne({ uid: targetId }),
+						this.container.db.collection('challenges').deleteOne({ uid: targetId }),
 						this.container.db.collection('gems').deleteOne({ uid: targetId }),
 						this.container.db.collection('language').deleteOne({ uid: targetId })
 					]).then(async (changes) => {
@@ -121,5 +119,11 @@ export default class ResetHunterCommand extends Command {
 			if (reason === 'time')
 				await editLocalized(interaction! || msg!, { keys: 'validation:reset.timeout', components, formatOptions: { lng: language } });
 		});
+	}
+}
+
+declare module '@sapphire/framework' {
+	interface CommandStore {
+		get(name: 'reset'): UserCommand;
 	}
 }

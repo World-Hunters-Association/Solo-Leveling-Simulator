@@ -3,6 +3,11 @@
 		"awaken": "bruh it's not that easy to reawake you know",
 		"request": "You are new here, right {{mention}}? `/awake`"
 	},
+	"buy": {
+		"max": "Max: {{quantity}} ({{price}} {{currency}})",
+		"quantity": "{{quantity}} ({{price}} {{currency}})",
+		"success": "Successfully bought **{{quantity}} {{emoji}} {{name}}** for **{{price}} $t(glossary:currencies.{{currency}}, {\"count\":{{priceCount}}})**!"
+	},
 	"chooseClass": {
 		"descriptions": {
 			"assassin": "A class that specializes in dagger and speed. They deal high damage yet has low defenses.",
@@ -28,16 +33,18 @@
 		"desccriptions": {
 			"commands": {
 				"ADD": "Distribute your stats points into stats.",
+				"AWAKE": "Awake and become a Hunter",
 				"BLACKJACK": "Play blackjack with NPC",
 				"BLACKSMITH": "***Not developed yet***",
 				"BUY": "Buy an item from shop\nUse `\\shop` to show the shop.",
+				"CHOOSE_CLASS": "Choose your hunter class",
 				"CHOP": "***Not developed yet***",
 				"CODES": "Show your available codes (use `redeem` to claim rewards)",
 				"COINFLIP": "Bet your golds by flipping a coin",
 				"CONFIG": "Configure your gate.\n`stats` on will auto show stats each turn.\n`logs` on will show logs each turn.\n`ping` will auto ping you when its your turn.",
 				"COOLDOWN": "Show your cooldowns",
 				"CRAFT": "***Not developed yet***",
-				"DAILY": "Get $t(constant:emojis.gold), $t(constant:emojis.life potion) and $t(constant:emojis.mana potion) depending on your level and streak",
+				"DAILY": "Get $t(constant:emojis.currencies.gold), $t(constant:emojis.life potion) and $t(constant:emojis.mana potion) depending on your level and streak",
 				"DICE": "***Not developed yet***",
 				"DONATOR": "Show the donator status\n*(Only works in the $t(glossary:WHA))*",
 				"DUEL": "Fight with the mentioned hunter, the hunter who win the fight will get golds and exp",
@@ -46,9 +53,11 @@
 				"GIVE": "Give another hunter golds",
 				"GUIDE": "Show the guide",
 				"GUILD": "Show your guild or the guild(server) you are playing in\nUse `\\guild help` to see more commands",
+				"HELP": "Displays a list of available commands, or detailed information for a specified command/item.",
 				"INFO": "Show info about the bot",
 				"INVENTORY": "Show your inventory",
 				"INVITE": "Get the bot's invite link and support server link",
+				"LANGUAGE": "Language configuration",
 				"LOTTERY": "Buy $t(constant:emojis.lottery ticket) Lottery tickets to join the lottery",
 				"MINE": "***Not developed yet***",
 				"MONEY": "**Donator command**\nShow your money",
@@ -61,9 +70,11 @@
 				"RECOVER": "Use `status recovery` got from daily quest",
 				"REDEEM": "Redeem some rewards from `codes` (Cannot redeem in beta)",
 				"REFERRAL": "Refer code for some rewards (might be delete soon)",
+				"RULE": "Show the bot's rules",
 				"SELL": "Sell an item into golds.",
 				"SHOP": "Show the shop\nUse `\\buy <item_name> [amount]` to buy an item from it",
 				"SLOTS": "***Not developed yet***",
+				"START": "Show start guide",
 				"STATS": "**Donator command**\nShow your stats\n\nIf you need help with stats, you might wanna find `\\help add` or `\\help <whatever stats>`",
 				"THREECARDS": "Play threecards with NPC",
 				"TITLE": "Choose a title, use `\\title` to see all titles",
@@ -71,8 +82,8 @@
 				"TRADE": "***Not developed yet*** Trade with **mentioned hunter**",
 				"UNEQUIP": "Unequip an item",
 				"USE": "Use consumable items from your inventory",
-				"VOTE": "You can vote for **$t(glossary:SLS)** and **$t(glossary:WHA)** every 12 hours\nThis commands will show you the cooldowns and the link to vote.\n__*REWARDS*__:\n**$t(glossary:SLS)**\n> 1 vote point (2 in the weekend)\n> $t(constant:emojis.gold) **Golds** depending on your level\n> **Life potions** | **Mana potion** depending on your level\n> **Keys** depending on your rank\n> **Status Recovery** - Only on weekend (Fri - Sun UTC)\n**$t(glossary:WHA)**\n> 3 vote points",
-				"WEEKLY": "Get $t(constant:emojis.gold) and $t(constant:emojis.random box) (boxes are not implemented yet)"
+				"VOTE": "You can vote for **$t(glossary:SLS)** and **$t(glossary:WHA)** every 12 hours\nThis commands will show you the cooldowns and the link to vote.\n__*REWARDS*__:\n**$t(glossary:SLS)**\n> 1 vote point (2 in the weekend)\n> $t(constant:emojis.currencies.gold) **Golds** depending on your level\n> **Life potions** | **Mana potion** depending on your level\n> **Keys** depending on your rank\n> **Status Recovery** - Only on weekend (Fri - Sun UTC)\n**$t(glossary:WHA)**\n> 3 vote points",
+				"WEEKLY": "Get $t(constant:emojis.currencies.gold) and $t(constant:emojis.random box) (boxes are not implemented yet)"
 			}
 		},
 		"footer": "This is not what you looking for? Click on other suggestions below."
@@ -83,6 +94,33 @@
 		"success": "Your language has been changed to English."
 	},
 	"links": "[**Invite link**]($t(constant:botInvite)) | [**Support server**]($t(constant:serverInvite)) | [**Vote**]($t(constant:botVote)) | [**Donate (Patreon)**]($t(constant:patreon)) | [**Donate (Donate Bot)**]($t(constant:donateBot, { \"uid\": \"{{uid}}\" }))",
+	"mentionNotHunter": "You cannot do this because **{{mention}}** is not a $t(common:hunter)!",
+	"profile": {
+		"author": "{{name}}'s profile",
+		"information": {
+			"left": "**$t(common:class)**: $t(constant:emojis.class.{{class}}) $t(common:{{class}})\n**$t(common:rank)**: $t(constant:emojis.rank.{{rank}})",
+			"right": "**$t(common:level)**: {{level}} ({{exp}} / {{maxExp}})\n**$t(common:guild)**: {{guild}}"
+		},
+		"money": {
+			"gold": "$t(constant:emojis.currencies.gold) **$t(glossary:currencies.gold, {\"count\":{{count}}})**: {{gold}} ",
+			"magicCore": "$t(constant:emojis.currencies.magicCore) **$t(glossary:currencies.magicCore, {\"count\":{{count}}})**: {{magicCore}}",
+			"manaCrystal": "$t(constant:emojis.currencies.manaCrystal) **$t(glossary:currencies.manaCrystal, {\"count\":{{count}}})**: {{manaCrystal}}",
+			"money": "$t(validation:profile.money.manaCrystal, {\"count\":{{countManaCrystal}},\"manaCrystal\":{{manaCrystal}}})\n$t(validation:profile.money.gold, {\"count\":{{countGold}},\"gold\":{{gold}}})\n$t(validation:profile.money.magicCore, {\"count\":{{countMagicCore}},\"magicCore\":{{magicCore}}})"
+		},
+		"stats": {
+			"agi": "$t(constant:emojis.stats.agi) **$t(glossary:stats:agi)**: {{agi}} (+{{eqAgi}})",
+			"def": "$t(constant:emojis.stats.def) **$t(glossary:stats:def)**: {{def}} (+{{eqDef}})",
+			"hp": "$t(constant:emojis.stats.hp) **$t(glossary:stats:hp)**: {{hp}}/{{maxHp}}",
+			"int": "$t(constant:emojis.stats.int) **$t(glossary:stats:int)**: {{int}} (+{{eqInt}})",
+			"left": "$t(validation:profile.stats.hp, {\"hp\":\"{{hp}}\",\"maxHp\":\"{{maxHp}}\"})\n$t(validation:profile.stats.str, {\"context\":\"equipment\",\"str\":\"{{str}}\",\"eqStr\":\"{{eqStr}}\"})\n$t(validation:profile.stats.def, {\"context\":\"equipment\",\"def\":\"{{def}}\",\"eqDef\":\"{{eqDef}}\"})\n$t(validation:profile.stats.vit, {\"context\":\"equipment\",\"vit\":\"{{vit}}\",\"eqVit\":\"{{eqVit}}\"})",
+			"mp": "$t(constant:emojis.stats.mp) **$t(glossary:stats:mp)**: {{mp}}/{{maxMp}}",
+			"mr": "$t(constant:emojis.stats.mr) **$t(glossary:stats:mr)**: {{mr}} (+{{eqMr}})",
+			"right": "$t(validation:profile.stats.mp, {\"mp\":\"{{mp}}\",\"maxMp\":\"{{maxMp}}\"})\n$t(validation:profile.stats.int, {\"context\":\"equipment\",\"int\":\"{{int}}\",\"eqInt\":\"{{eqInt}}\"})\n$t(validation:profile.stats.mr, {\"context\":\"equipment\",\"mr\":\"{{mr}}\",\"eqMr\":\"{{eqMr}}\"})\n$t(validation:profile.stats.agi, {\"context\":\"equipment\",\"agi\":\"{{agi}}\",\"eqAgi\":\"{{eqAgi}}\"})",
+			"str": "$t(constant:emojis.stats.str) **$t(glossary:stats:str)**: {{str}} (+{{eqStr}})",
+			"vit": "$t(constant:emojis.stats.vit) **$t(glossary:stats:vit)**: {{vit}} (+{{eqVit}})"
+		},
+		"statsPoint": "**Available stats points**: {{count}}"
+	},
 	"reset": {
 		"decline": "*Phew, okay...*",
 		"error": "Something went wrong please reset again!",

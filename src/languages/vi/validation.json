@@ -3,6 +3,11 @@
 		"awaken": "nah nó không dễ để tái thức tỉnh như vậy đâu!",
 		"request": "Bạn là người chơi mới phải không, {{mention}}? `/awake`"
 	},
+	"buy": {
+		"max": "Tối đa: {{quantity}} ({{price}} {{currency}})",
+		"quantity": "{{quantity}} ({{price}} {{currency}})",
+		"success": "Đã mua **{{quantity}} {{emoji}} {{name}}** thành công với **{{price}} $t(glossary:currencies.{{currency}}, {\"count\":{{priceCount}}})**!"
+	},
 	"chooseClass": {
 		"descriptions": {
 			"assassin": "Thiên chức chuyên về dao găm và tốc độ. Gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
@@ -28,16 +33,18 @@
 		"desccriptions": {
 			"commands": {
 				"ADD": "Nâng điểm chỉ số của bạn.",
+				"AWAKE": "Thức tỉnh thành Thợ săn",
 				"BLACKJACK": "Chơi blackjack với NPC",
 				"BLACKSMITH": "***Chưa thể sử dụng***",
 				"BUY": "Mua một vật dụng từ cửa hàng\nSử dụng `\\shop` để hiển thị cửa hàng.",
+				"CHOOSE_CLASS": "Chọn thiên chức của bạn",
 				"CHOP": "***Chưa thể sử dụng***",
 				"CODES": "Hiển thị các mã nhận thưởng của bạn (sử dụng `redeem` để nhận phần thưởng)",
 				"COINFLIP": "Đặt cược số vàng của bạn bằng cách tung đồng xu",
 				"CONFIG": "Cài đặt cổng của bạn.\nBật `stats` sẽ tự động hiển thị số liệu thống kê mỗi lượt.\nBật `log` sẽ hiển thị các dữ liệu mỗi lượt. \nBật `ping` sẽ tự động ping bạn khi đến lượt của bạn.",
 				"COOLDOWN": "Hiển thị thời gian hồi chiêu của bạn",
 				"CRAFT": "***Chưa thể sử dụng***",
-				"DAILY": "Nhận $t(constant:emojis.gold), $t(constant:emojis.life potion) và $t(constant:emojis.mana potion) tùy thuộc vào cấp độ và chuỗi của bạn",
+				"DAILY": "Nhận $t(constant:emojis.currencies.gold), $t(constant:emojis.life potion) và $t(constant:emojis.mana potion) tùy thuộc vào cấp độ và chuỗi của bạn",
 				"DICE": "***Chưa thể sử dụng***",
 				"DONATOR": "Hiển thị trạng thái donater\n*(Chỉ hoạt động trong $t(glossary:WHA))*",
 				"DUEL": "Chiến đấu với thợ săn được nhắc đến, thợ săn thắng cuộc chiến sẽ nhận được vàng và điểm kinh nghiệm",
@@ -46,9 +53,11 @@
 				"GIVE": "Gửi vàng tới thợ săn khác",
 				"GUIDE": "Hiển thị hướng dẫn",
 				"GUILD": "Hiển thị bang hội của bạn hoặc bang hội (máy chủ) bạn đang chơi\nSử dụng `\\guild help` để xem thêm lệnh",
+				"HELP": "Hiển thị danh sách lệnh hiện có hoặc thông tin cụ thể của một lệnh/vật dụng.",
 				"INFO": "Hiển thị thông tin về bot",
 				"INVENTORY": "Hiển thị kho đồ của bạn",
 				"INVITE": "Nhận liên kết mời của bot và liên kết máy chủ hỗ trợ",
+				"LANGUAGE": "Tùy chỉnh ngôn ngữ",
 				"LOTTERY": "Mua $t(constant:emojis.lottery ticket) Vé số để tham gia xổ số",
 				"MINE": "***Chưa thể sử dụng***",
 				"MONEY": "**Donator command**\nHiển thị tiền của bạn",
@@ -61,9 +70,11 @@
 				"RECOVER": "Sử dụng `phục hồi trạng thái` nhận được từ nhiệm vụ hàng ngày",
 				"REDEEM": "Đổi một số phần thưởng từ `codes` (Không thể đổi trong phiên bản beta)",
 				"REFERRAL": "Giới thiệu mã để nhận một số phần thưởng (có thể bị xóa)",
+				"RULE": "Xem luật của bot",
 				"SELL": "Bán một vật dụng thành vàng.",
 				"SHOP": "Hiển thị cửa hàng\nSử dụng `\\buy <item_name> [số lượng]` để mua một mặt hàng từ đó",
 				"SLOTS": "***Chưa thể sử dụng***",
+				"START": "Mở hướng dẫn chơi",
 				"STATS": "**Donator command**\nHiển thị chỉ số\n\nNếu bạn cần trợ giúp về chỉ số, bạn có thể tìm `\\help add` hoặc` \\help <chỉ số>`",
 				"THREECARDS": "Chơi ba cây với NPC",
 				"TITLE": "Chọn một danh hiệu, sử dụng `\\title` để xem tất cả các danh hiệu",
@@ -71,8 +82,8 @@
 				"TRADE": "***Chưa thể sử dụng*** Giao dịch với thợ săn khác",
 				"UNEQUIP": "Tháo trang bị",
 				"USE": "Sử dụng các vật phẩm tiêu thụ từ kho của bạn",
-				"VOTE": "You can vote for **$t(glossary:SLS)** and **$t(glossary:WHA)** every 12 hours\nThis commands will show you the cooldowns and the link to vote.\n__*REWARDS*__:\n**$t(glossary:SLS)**\n> 1 vote point (2 in the weekend)\n> $t(constant:emojis.gold) **Golds** depending on your level\n> **Life potions** | **Mana potion** depending on your level\n> **Keys** depending on your rank\n> **Status Recovery** - Only on weekend (Fri - Sun UTC)\n**$t(glossary:WHA)**\n> 3 vote points",
-				"WEEKLY": "Nhận $t(constant:emojis.gold) và $t(constant:emojis.random box) (chưa thể sử dụng rương)"
+				"VOTE": "You can vote for **$t(glossary:SLS)** and **$t(glossary:WHA)** every 12 hours\nThis commands will show you the cooldowns and the link to vote.\n__*REWARDS*__:\n**$t(glossary:SLS)**\n> 1 vote point (2 in the weekend)\n> $t(constant:emojis.currencies.gold) **Golds** depending on your level\n> **Life potions** | **Mana potion** depending on your level\n> **Keys** depending on your rank\n> **Status Recovery** - Only on weekend (Fri - Sun UTC)\n**$t(glossary:WHA)**\n> 3 vote points",
+				"WEEKLY": "Nhận $t(constant:emojis.currencies.gold) và $t(constant:emojis.random box) (chưa thể sử dụng rương)"
 			}
 		},
 		"footer": "Đây không phải là thứ bạn đang tìm? Nhấp vào các đề xuất khác bên dưới."
@@ -83,6 +94,33 @@
 		"success": "Ngôn ngữ của bạn đã chuyển thành Tiếng Việt."
 	},
 	"links": "[**Invite link**]($t(constant:botInvite)) | [**Support server**]($t(constant:serverInvite)) | [**Vote**]($t(constant:botVote)) | [**Donate (Patreon)**]($t(constant:patreon)) | [**Donate (Donate Bot)**]($t(constant:donateBot, { \"uid\": \"{{uid}}\" }))",
+	"mentionNotHunter": "Không thể thực thi vì **{{mention}}** không phải là một $t(common:hunter)!",
+	"profile": {
+		"author": "Hồ sơ của {{name}}",
+		"information": {
+			"left": "**$t(common:class)**: $t(constant:emojis.class.{{class}}) $t(common:{{class}})\n**$t(common:rank)**: $t(constant:emojis.rank.{{rank}})",
+			"right": "**$t(common:level)**: {{level}} ({{exp}} / {{maxExp}})\n**$t(common:guild)**: {{guild}}"
+		},
+		"money": {
+			"gold": "$t(constant:emojis.currencies.gold) **$t(glossary:currencies.gold, {\"count\":{{count}}})**: {{gold}} ",
+			"magicCore": "$t(constant:emojis.currencies.magicCore) **$t(glossary:currencies.magicCore, {\"count\":{{count}}})**: {{magicCore}}",
+			"manaCrystal": "$t(constant:emojis.currencies.manaCrystal) **$t(glossary:currencies.manaCrystal, {\"count\":{{count}}})**: {{manaCrystal}}",
+			"money": "$t(validation:profile.money.manaCrystal, {\"count\":{{countManaCrystal}},\"manaCrystal\":{{manaCrystal}}})\n$t(validation:profile.money.gold, {\"count\":{{countGold}},\"gold\":{{gold}}})\n$t(validation:profile.money.magicCore, {\"count\":{{countMagicCore}},\"magicCore\":{{magicCore}}})"
+		},
+		"stats": {
+			"agi": "$t(constant:emojis.stats.agi) **$t(glossary:stats:agi)**: {{agi}} (+{{eqAgi}})",
+			"def": "$t(constant:emojis.stats.def) **$t(glossary:stats:def)**: {{def}} (+{{eqDef}})",
+			"hp": "$t(constant:emojis.stats.hp) **$t(glossary:stats:hp)**: {{hp}}/{{maxHp}}",
+			"int": "$t(constant:emojis.stats.int) **$t(glossary:stats:int)**: {{int}} (+{{eqInt}})",
+			"left": "$t(validation:profile.stats.hp, {\"hp\":\"{{hp}}\",\"maxHp\":\"{{maxHp}}\"})\n$t(validation:profile.stats.str, {\"context\":\"equipment\",\"str\":\"{{str}}\",\"eqStr\":\"{{eqStr}}\"})\n$t(validation:profile.stats.def, {\"context\":\"equipment\",\"def\":\"{{def}}\",\"eqDef\":\"{{eqDef}}\"})\n$t(validation:profile.stats.vit, {\"context\":\"equipment\",\"vit\":\"{{vit}}\",\"eqVit\":\"{{eqVit}}\"})",
+			"mp": "$t(constant:emojis.stats.mp) **$t(glossary:stats:mp)**: {{mp}}/{{maxMp}}",
+			"mr": "$t(constant:emojis.stats.mr) **$t(glossary:stats:mr)**: {{mr}} (+{{eqMr}})",
+			"right": "$t(validation:profile.stats.mp, {\"mp\":\"{{mp}}\",\"maxMp\":\"{{maxMp}}\"})\n$t(validation:profile.stats.int, {\"context\":\"equipment\",\"int\":\"{{int}}\",\"eqInt\":\"{{eqInt}}\"})\n$t(validation:profile.stats.mr, {\"context\":\"equipment\",\"mr\":\"{{mr}}\",\"eqMr\":\"{{eqMr}}\"})\n$t(validation:profile.stats.agi, {\"context\":\"equipment\",\"agi\":\"{{agi}}\",\"eqAgi\":\"{{eqAgi}}\"})",
+			"str": "$t(constant:emojis.stats.str) **$t(glossary:stats:str)**: {{str}} (+{{eqStr}})",
+			"vit": "$t(constant:emojis.stats.vit) **$t(glossary:stats:vit)**: {{vit}} (+{{eqVit}})"
+		},
+		"statsPoint": "**Điểm chỉ số khả dụng**: {{count}}"
+	},
 	"reset": {
 		"decline": "*Phew, okay...*",
 		"error": "Đã xảy ra lỗi, vui lòng thử lại!",

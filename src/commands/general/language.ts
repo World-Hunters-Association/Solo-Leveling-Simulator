@@ -5,8 +5,6 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 import { editLocalized } from '@sapphire/plugin-i18next';
 
-import { EMOJIS } from '../../lib/constants';
-
 @ApplyOptions<CommandOptions>({
 	name: 'language',
 	description: 'Language configuration',
@@ -14,7 +12,7 @@ import { EMOJIS } from '../../lib/constants';
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })
-export default class LanguageCommand extends Command {
+export default class UserCommand extends Command {
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
 		const builder = new SlashCommandBuilder()
 			.setName(this.name)
@@ -30,6 +28,13 @@ export default class LanguageCommand extends Command {
 						{ name: 'Bahasa Indonesia', value: 'id-ID' }
 					)
 			);
+
+		this.container.functions.setNameAndDescriptions(
+			builder,
+			['common:language', 'validation:help.desccriptions.commands.LANGUAGE'],
+			['common:language', 'common:descriptions.language']
+		);
+
 		registry.registerChatInputCommand(builder, {
 			idHints: ['964369443574665216'],
 			behaviorWhenNotIdentical: RegisterBehavior.Overwrite
@@ -49,19 +54,19 @@ export default class LanguageCommand extends Command {
 
 		if (staffLanguages.includes(language)) await changeLang();
 		else {
-			const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
+			const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
 			let components = [
 				new MessageActionRow().setComponents([
 					new MessageButton()
 						.setCustomId(`Yes`)
 						.setLabel(this.container.i18n.getT(locale)('common:yes'))
 						.setStyle('SECONDARY')
-						.setEmoji(EMOJIS.UI.YES),
+						.setEmoji(this.container.constants.EMOJIS.UI.YES),
 					new MessageButton()
 						.setCustomId(`No`)
 						.setLabel(this.container.i18n.getT(locale)('common:no'))
 						.setStyle('PRIMARY')
-						.setEmoji(EMOJIS.UI.CANCEL)
+						.setEmoji(this.container.constants.EMOJIS.UI.CANCEL)
 				])
 			];
 
@@ -93,5 +98,11 @@ export default class LanguageCommand extends Command {
 				if (reason === 'time') await editLocalized(interaction, { keys: 'common:timeout', components });
 			});
 		}
+	}
+}
+
+declare module '@sapphire/framework' {
+	interface CommandStore {
+		get(name: 'language'): UserCommand;
 	}
 }

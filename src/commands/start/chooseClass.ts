@@ -1,7 +1,3 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { ApplyOptions } from '@sapphire/decorators';
-import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
-import { editLocalized } from '@sapphire/plugin-i18next';
 import {
 	Collection,
 	CommandInteraction,
@@ -12,8 +8,13 @@ import {
 	MessageSelectMenu,
 	SelectMenuInteraction
 } from 'discord.js';
-import { BaseStats, CLASSES, CLASSES_INFO, EMOJIS, STATS } from '../../lib/constants';
-import { HUNTER_SKILLS } from '../../lib/structures/skills';
+
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { ApplyOptions } from '@sapphire/decorators';
+import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
+import { editLocalized } from '@sapphire/plugin-i18next';
+
+import { CLASSES, STATS } from '../../utils/constants';
 
 @ApplyOptions<CommandOptions>({
 	name: 'chooseclass',
@@ -22,18 +23,24 @@ import { HUNTER_SKILLS } from '../../lib/structures/skills';
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })
-export default class ChooseClassCommand extends Command {
+export default class UserCommand extends Command {
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
-		registry.registerChatInputCommand(new SlashCommandBuilder().setName(this.name).setDescription(this.description), {
+		const builder = new SlashCommandBuilder();
+
+		this.container.functions.setNameAndDescriptions(builder, ['common:chooseClass', 'validation:help.desccriptions.commands.CHOOSE_CLASS']);
+
+		registry.registerChatInputCommand(builder, {
 			idHints: ['971018017678958602'],
 			behaviorWhenNotIdentical: RegisterBehavior.Overwrite
 		});
 	}
 
 	public async chatInputRun(interaction: CommandInteraction) {
+		const { BaseStats, CLASSES_INFO, EMOJIS, HUNTER_SKILLS } = this.container.constants;
+
 		const uid = interaction.user.id;
 		const result = await this.container.db.collection('hunterinfo').findOne({ uid });
-		const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
+		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
 
 		if (result?.classid !== 6) {
 			await editLocalized(interaction, 'validation:chooseClass.twice');
@@ -281,5 +288,11 @@ export default class ChooseClassCommand extends Command {
 				await this.container.db.collection('busy').deleteOne({ uid });
 			}
 		});
+	}
+}
+
+declare module '@sapphire/framework' {
+	interface CommandStore {
+		get(name: 'chooseclass'): UserCommand;
 	}
 }

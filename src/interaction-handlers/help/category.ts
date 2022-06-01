@@ -4,8 +4,6 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { InteractionHandler, InteractionHandlerOptions, InteractionHandlerTypes } from '@sapphire/framework';
 import { resolveKey } from '@sapphire/plugin-i18next';
 
-import { COMMANDS } from '../../lib/constants';
-
 @ApplyOptions<InteractionHandlerOptions>({
 	interactionHandlerType: InteractionHandlerTypes.SelectMenu
 })
@@ -17,12 +15,14 @@ export class ButtonInteractionHandler extends InteractionHandler {
 	}
 
 	public override async run(interaction: SelectMenuInteraction) {
-		const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
+		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
 		const embed = new MessageEmbed({
 			footer: { text: await resolveKey(interaction, 'validation:help.defaultEmbed.footer', { lng: locale }) }
 		}).setColor('BLUE');
 
-		const coll = new Collection<string, { [key: string]: string }>(Object.entries(COMMANDS.HELP[interaction.values[0] as 'STATISTICS']));
+		const coll = new Collection<string, { [key: string]: string }>(
+			Object.entries(this.container.constants.COMMANDS.HELP[interaction.values[0] as 'STATISTICS'])
+		);
 
 		await interaction.editReply({
 			embeds: [
@@ -38,5 +38,11 @@ export class ButtonInteractionHandler extends InteractionHandler {
 					.setTitle(interaction.values[0])
 			]
 		});
+	}
+}
+
+declare module '@sapphire/framework' {
+	interface InteractionHandlerStore {
+		get(name: 'category'): ButtonInteractionHandler;
 	}
 }

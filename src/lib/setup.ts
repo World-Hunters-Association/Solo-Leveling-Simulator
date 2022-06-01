@@ -13,15 +13,17 @@ import { config } from 'dotenv-cra';
 import { join } from 'path';
 import { inspect } from 'util';
 
-import { srcDir } from './constants';
-
+import type { InternationalizationContext } from '@sapphire/plugin-i18next';
+import type { Awaitable } from '@sapphire/utilities';
 import type { Snowflake } from 'discord.js';
 import type { Code, Db } from 'mongodb';
+import type ConstantsUtils from '../utils/constants';
+import type FunctionsUtils from '../utils/functions';
 import type {
-	Achievements,
 	Blacklist,
 	Boxes,
 	Busy,
+	Challenges,
 	Config,
 	Cooldowns,
 	Daily,
@@ -49,10 +51,10 @@ import type {
 	Stone,
 	Top
 } from './structures/schemas';
-import type Utils from './Utils';
+import type { UtilsStore } from './structures/UtilsStore';
 
 // Read env var
-config({ path: join(srcDir, '.env') });
+config({ path: join(join(join(__dirname, '..', '..'), 'src'), '.env') });
 
 // Set default inspection depth
 inspect.defaultOptions.depth = 1;
@@ -66,6 +68,12 @@ export interface AlpetaOptions {
 	root: string;
 }
 
+declare module '@sapphire/plugin-i18next' {
+	interface InternationalizationHandler {
+		fetchLanguageWithDefault: (context: InternationalizationContext) => Awaitable<string>;
+	}
+}
+
 declare module '@sapphire/framework' {
 	interface SapphireClient {
 		config: AlpetaOptions;
@@ -74,43 +82,48 @@ declare module '@sapphire/framework' {
 
 declare module '@sapphire/pieces' {
 	interface Container {
+		constants: ConstantsUtils;
 		db: Db;
-		utils: Utils;
+		functions: FunctionsUtils;
+	}
+
+	interface StoreRegistryEntries {
+		utils: UtilsStore;
 	}
 }
 
 declare module 'mongodb' {
 	interface Db {
-		collection(name: 'achievements', options?: CollectionOptions | undefined): Collection<Achievements>;
-		collection(name: 'blacklist', options?: CollectionOptions | undefined): Collection<Blacklist>;
-		collection(name: 'boxes', options?: CollectionOptions | undefined): Collection<Boxes>;
-		collection(name: 'busy', options?: CollectionOptions | undefined): Collection<Busy>;
-		collection(name: 'code', options?: CollectionOptions | undefined): Collection<Code>;
-		collection(name: 'config', options?: CollectionOptions | undefined): Collection<Config>;
-		collection(name: 'cooldowns', options?: CollectionOptions | undefined): Collection<Cooldowns>;
-		collection(name: 'daily', options?: CollectionOptions | undefined): Collection<Daily>;
-		collection(name: 'dbl', options?: CollectionOptions | undefined): Collection<DBL>;
-		collection(name: 'donator', options?: CollectionOptions | undefined): Collection<Donator>;
-		collection(name: 'equipment', options?: CollectionOptions | undefined): Collection<Equipment>;
-		collection(name: 'gate_channel', options?: CollectionOptions | undefined): Collection<GateChannel>;
-		collection(name: 'gems', options?: CollectionOptions | undefined): Collection<Gems>;
-		collection(name: 'hunter_skills', options?: CollectionOptions | undefined): Collection<Hunter_Skills>;
-		collection(name: 'hunter_fighting', options?: CollectionOptions | undefined): Collection<Hunter_Fighting>;
-		collection(name: 'hunterinfo', options?: CollectionOptions | undefined): Collection<HunterInfo>;
-		collection(name: 'hunterstats', options?: CollectionOptions | undefined): Collection<HunterStats>;
-		collection(name: 'keys', options?: CollectionOptions | undefined): Collection<Keys>;
-		collection(name: 'language', options?: CollectionOptions | undefined): Collection<Language>;
-		collection(name: 'lottery', options?: CollectionOptions | undefined): Collection<Lottery>;
-		collection(name: 'material', options?: CollectionOptions | undefined): Collection<Material>;
-		collection(name: 'mob_fighting', options?: CollectionOptions | undefined): Collection<Mob_Fighting>;
-		collection(name: 'money', options?: CollectionOptions | undefined): Collection<Money>;
-		collection(name: 'party', options?: CollectionOptions | undefined): Collection<Party>;
-		collection(name: 'penalty', options?: CollectionOptions | undefined): Collection<Penalty>;
-		collection(name: 'potions', options?: CollectionOptions | undefined): Collection<Potions>;
-		collection(name: 'recover', options?: CollectionOptions | undefined): Collection<Recover>;
-		collection(name: 'referral', options?: CollectionOptions | undefined): Collection<Referral>;
-		collection(name: 'spam', options?: CollectionOptions | undefined): Collection<Spam>;
-		collection(name: 'stone', options?: CollectionOptions | undefined): Collection<Stone>;
-		collection(name: 'top', options?: CollectionOptions | undefined): Collection<Top>;
+		collection(name: 'blacklist', options?: CollectionOptions): Collection<Blacklist>;
+		collection(name: 'boxes', options?: CollectionOptions): Collection<Boxes>;
+		collection(name: 'busy', options?: CollectionOptions): Collection<Busy>;
+		collection(name: 'challenges', options?: CollectionOptions): Collection<Challenges>;
+		collection(name: 'code', options?: CollectionOptions): Collection<Code>;
+		collection(name: 'config', options?: CollectionOptions): Collection<Config>;
+		collection(name: 'cooldowns', options?: CollectionOptions): Collection<Cooldowns>;
+		collection(name: 'daily', options?: CollectionOptions): Collection<Daily>;
+		collection(name: 'dbl', options?: CollectionOptions): Collection<DBL>;
+		collection(name: 'donator', options?: CollectionOptions): Collection<Donator>;
+		collection(name: 'equipment', options?: CollectionOptions): Collection<Equipment>;
+		collection(name: 'gate_channel', options?: CollectionOptions): Collection<GateChannel>;
+		collection(name: 'gems', options?: CollectionOptions): Collection<Gems>;
+		collection(name: 'hunter_skills', options?: CollectionOptions): Collection<Hunter_Skills>;
+		collection(name: 'hunter_fighting', options?: CollectionOptions): Collection<Hunter_Fighting>;
+		collection(name: 'hunterinfo', options?: CollectionOptions): Collection<HunterInfo>;
+		collection(name: 'hunterstats', options?: CollectionOptions): Collection<HunterStats>;
+		collection(name: 'keys', options?: CollectionOptions): Collection<Keys>;
+		collection(name: 'language', options?: CollectionOptions): Collection<Language>;
+		collection(name: 'lottery', options?: CollectionOptions): Collection<Lottery>;
+		collection(name: 'material', options?: CollectionOptions): Collection<Material>;
+		collection(name: 'mob_fighting', options?: CollectionOptions): Collection<Mob_Fighting>;
+		collection(name: 'money', options?: CollectionOptions): Collection<Money>;
+		collection(name: 'party', options?: CollectionOptions): Collection<Party>;
+		collection(name: 'penalty', options?: CollectionOptions): Collection<Penalty>;
+		collection(name: 'potions', options?: CollectionOptions): Collection<Potions>;
+		collection(name: 'recover', options?: CollectionOptions): Collection<Recover>;
+		collection(name: 'referral', options?: CollectionOptions): Collection<Referral>;
+		collection(name: 'spam', options?: CollectionOptions): Collection<Spam>;
+		collection(name: 'stone', options?: CollectionOptions): Collection<Stone>;
+		collection(name: 'top', options?: CollectionOptions): Collection<Top>;
 	}
 }

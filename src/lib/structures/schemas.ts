@@ -1,6 +1,5 @@
 import type { Snowflake } from 'discord.js';
-import type { CLASSES, KEYS, RANK, RANK_TITLES } from '../constants';
-import type { Mobs } from './mobs';
+import type { CLASSES, KEYS, Mobs, RANK, RANK_TITLES } from '../../utils/constants';
 
 // #region Others
 
@@ -35,11 +34,11 @@ type Effects = {
 
 // #endregion
 
-type AchievementsList = 'Kill:Hunter';
+type ChallengesList = 'Kill:Hunter';
 
-export interface Achievements {
+export interface Challenges {
 	uid: Snowflake;
-	achievements: { [key in AchievementsList]?: number };
+	challenges: { [key in ChallengesList]?: number };
 }
 
 export interface Blacklist {
@@ -89,7 +88,6 @@ export interface Daily {
 
 export interface DBL {
 	uid: Snowflake;
-	points: number;
 	bot?: number;
 	server?: number;
 }
@@ -240,11 +238,15 @@ export interface Mob_Fighting {
 	};
 }
 
-export interface Money {
+export interface Currencies {
+	gold: number;
+	magicCore: number;
+	manaCrystal: number;
+	votePoint: number;
+}
+
+export interface Money extends Currencies {
 	uid: Snowflake;
-	golds: number;
-	magiccore: number;
-	manacrystal: number;
 }
 
 export interface Party {

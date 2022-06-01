@@ -2,7 +2,6 @@ import {
 	AutocompleteInteraction,
 	Collection,
 	CommandInteraction,
-	Interaction,
 	MessageActionRow,
 	MessageButton,
 	MessageEmbed,
@@ -16,14 +15,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 import { resolveKey } from '@sapphire/plugin-i18next';
 
-import { CLASSES, CLASSES_INFO, COMMANDS, EMOJIS, RANK, STATS } from '../../lib/constants';
-import { Equipments, EQUIPMENTS } from '../../lib/structures/equipments';
-import { Items, ITEMS } from '../../lib/structures/items';
-import { Mobs, MOBS } from '../../lib/structures/mobs';
-import { HUNTER_SKILLS, MOB_SKILLS } from '../../lib/structures/skills';
-
-import type { HunterSkills, MobSkills } from '../../lib/structures/skills';
-import { DROPS } from '../../lib/structures/drops';
+import { CLASSES, Equipments, HunterSkills, Items, Mobs, MobSkills, RANK, STATS } from '../../utils/constants';
 
 @ApplyOptions<CommandOptions>({
 	name: 'help',
@@ -32,61 +24,42 @@ import { DROPS } from '../../lib/structures/drops';
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })
-export default class HelpCommand extends Command {
+export default class UserCommand extends Command {
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
-		registry.registerChatInputCommand(
-			new SlashCommandBuilder()
-				.setName(this.name)
-				.setDescription(this.description)
-				.addStringOption(
-					new SlashCommandStringOption()
-						.setAutocomplete(true)
-						.setName(this.container.i18n.format('en-US', 'common:term').toLowerCase())
-						.setNameLocalizations({
-							'en-US': this.container.i18n.format('en-US', 'common:term').toLowerCase(),
-							vi: this.container.i18n.format('vi', 'common:term').toLowerCase().replace(/\s*/g, '-')
-						})
-						.setDescription(this.container.i18n.format('en-US', 'common:descriptions.term'))
-						.setDescriptionLocalizations({
-							'en-US': this.container.i18n.format('en-US', 'common:descriptions.term'),
-							vi: this.container.i18n.format('vi', 'common:descriptions.term')
-						})
-				),
-			{
-				idHints: ['924315533854277632'],
-				behaviorWhenNotIdentical: RegisterBehavior.Overwrite
-			}
+		const builder = new SlashCommandBuilder().addStringOption(new SlashCommandStringOption().setAutocomplete(true));
+
+		this.container.functions.setNameAndDescriptions(
+			builder,
+			['common:help', 'validation:help.desccriptions.commands.HELP'],
+			['common:term', 'common:descriptions.term']
 		);
+
+		registry.registerChatInputCommand(builder, {
+			idHints: ['924315533854277632'],
+			behaviorWhenNotIdentical: RegisterBehavior.Overwrite
+		});
 	}
 
 	public async autocompleteRun(interaction: AutocompleteInteraction) {
-		const fuse = await this.fuse(interaction);
+		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
+		const fuse = this.fuse(locale);
 
 		const p = `${interaction.options.getFocused()}`;
 
 		await interaction.respond(
 			fuse
-				.search({ $or: [{ label: p }, { name: p }, { aliases: p }] })
-				.filter((_result, ind) => ind < 25)
+				.search({ $or: [{ label: p }, { name: p }, { aliases: p }] }, { limit: 25 })
 				.map((result) => ({ name: result.item.label, value: result.item.name, emoji: result.item.emoji }))
 		);
 	}
 
 	public async chatInputRun(interaction: CommandInteraction | SelectMenuInteraction) {
-		const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
-		const fuse = await this.fuse(interaction);
-		const type = fuse.search({
-			$or: [
-				{
-					label: (interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values?.[0] || ''
-				},
-				{ name: (interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values?.[0] || '' },
-				{
-					aliases:
-						(interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values?.[0] || ''
-				}
-			]
-		});
+		const { COMMANDS, EMOJIS, MOBS, MOB_SKILLS, HUNTER_SKILLS, DROPS } = this.container.constants;
+		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
+		const fuse = this.fuse(locale);
+		const p = (interaction as CommandInteraction).options?.getString('terms') || (interaction as SelectMenuInteraction).values?.[0] || '';
+
+		const type = fuse.search({ $or: [{ label: p }, { name: p }, { aliases: p }] });
 		let embed = new MessageEmbed({ footer: { text: await resolveKey(interaction, 'validation:help.footer', { lng: locale }) } }).setColor('BLUE');
 		let components: MessageActionRow[] = [];
 		if (type?.length > 1)
@@ -280,9 +253,11 @@ export default class HelpCommand extends Command {
 				if (isFinite(info.price))
 					embed.addField(
 						`${await resolveKey(interaction, 'common:sellValue', { lng: locale })}`,
-						`**${Intl.NumberFormat().format(Math.floor(info.price * 0.7))} ${await resolveKey(interaction, 'glossary:currencies.gold', {
+						`**${await resolveKey(interaction, 'glossary:currencies.gold', {
 							count: info.price * 0.7,
-							lng: locale
+							lng: locale,
+							context: 'count',
+							number: this.container.functions.formatNumber(Math.floor(info.price * 0.7))
 						})}**`
 					);
 				if (info.description)
@@ -303,7 +278,7 @@ export default class HelpCommand extends Command {
 						})}\n\n**${await resolveKey(interaction, 'common:type', { lng: locale })}**: ${info.type.replace(/^\w/, (l) =>
 							l.toUpperCase()
 						)}\n**${await resolveKey(interaction, 'common:sellValue', { lng: locale })}**: ${
-							info.sellPrice ? Intl.NumberFormat().format(info.sellPrice) : '??'
+							info.sellPrice ? this.container.functions.formatNumber(info.sellPrice) : '??'
 						} Golds`
 					)
 					.addField(
@@ -444,8 +419,8 @@ export default class HelpCommand extends Command {
 		await interaction.editReply({ embeds: [embed], components });
 	}
 
-	private async fuse(interaction: Interaction) {
-		const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
+	private fuse(locale: string) {
+		const { CLASSES_INFO, COMMANDS, EMOJIS, EQUIPMENTS, ITEMS, MOBS, MOB_SKILLS, HUNTER_SKILLS } = this.container.constants;
 		return new Fuse(
 			ITEMS.filter((i) => !EQUIPMENTS.some((eq) => eq.name.toLowerCase() === i.name.toLowerCase()))
 				.map((i) => ({
@@ -536,5 +511,11 @@ export default class HelpCommand extends Command {
 				fieldNormWeight: 1
 			}
 		);
+	}
+}
+
+declare module '@sapphire/framework' {
+	interface CommandStore {
+		get(name: 'help'): UserCommand;
 	}
 }

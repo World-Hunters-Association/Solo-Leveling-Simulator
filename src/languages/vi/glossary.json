@@ -1,19 +1,26 @@
 {
 	"SLS": "Solo Leveling Simulator",
 	"WHA": "Hiệp hội thợ săn thế giới",
+	"challenges": {
+		"hunterSlayer": "**Thợ Săn Người**: {{count}}"
+	},
 	"currencies": {
-		"goldWithCount_one": "{{count}} $t(glossary:currencies.gold_one)",
-		"goldWithCount_other": "{{count}} $t(glossary:currencies.gold_other)",
-		"gold_one": "vàng",
-		"gold_other": "vàng",
-		"magicCoreWithCount_one": "{{count}} $t(glossary:currencies.magicCore_one)",
-		"magicCoreWithCount_other": "{{count}} $t(glossary:currencies.magicCore_other)",
-		"magicCore_one": "ma thạch",
-		"magicCore_other": "ma thạch",
-		"manaCrystalWithCount_one": "{{count}} $t(glossary:currencies.manaCrystal_one)",
-		"manaCrystalWithCount_other": "{{count}} $t(glossary:currencies.manaCrystal_other)",
-		"manaCrystal_one": "đá năng lượng",
-		"manaCrystal_other": "đá năng lượng"
+		"gold": "Vàng",
+		"gold_count_one": "{{number}} $t(glossary:currencies.gold)",
+		"gold_count_other": "{{number}} $t(glossary:currencies.gold_other)",
+		"gold_other": "Vàng",
+		"magicCore": "Ma Thạch",
+		"magicCore_count_one": "{{number}} $t(glossary:currencies.magicCore)",
+		"magicCore_count_other": "{{number}} $t(glossary:currencies.magicCore_other)",
+		"magicCore_other": "Ma Thạch",
+		"manaCrystal": "Đá Năng Lượng",
+		"manaCrystal_count_one": "{{number}} $t(glossary:currencies.manaCrystal)",
+		"manaCrystal_count_other": "{{number}} $t(glossary:currencies.manaCrystal_other)",
+		"manaCrystal_other": "Đá Năng Lượng",
+		"votePoint": "Điểm bình chọn",
+		"votePoint_count_one": "{{number}} $t(glossary:currencies.votePoint)",
+		"votePoint_count_other": "{{number}} $t(glossary:currencies.votePoint_other)",
+		"votePoint_other": "Điểm bình chọn"
 	},
 	"effects": {
 		"Bless": "Phước",
@@ -130,15 +137,15 @@
 		},
 		"life potion": {
 			"description": "một chai máu. Bạn không nhầm đâu. Là máu! \nSử dụng `heal` để khôi phục HP của bạn",
-			"name": "bình máu"
+			"name": "Bình máu"
 		},
 		"mana potion": {
 			"description": "một chai chứa đầy nước. Chỉ có nước!\nSử dụng `drink` để khôi phục lại MP của bạn",
-			"name": "bình năng lượng"
+			"name": "Bình năng lượng"
 		},
 		"thunder stone": {
 			"description": "Một viên đá từ khu vườn của Chúa tể Sấm sét\nĐược sử dụng để đặt lại điểm kĩ năng",
-			"name": "đá sấm sét"
+			"name": "Đá sấm sét"
 		}
 	},
 	"skills": {

@@ -5,8 +5,6 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 
-import { EMOJIS } from '../../lib/constants';
-
 @ApplyOptions<CommandOptions>({
 	name: 'start',
 	description: 'Show start guide',
@@ -14,9 +12,12 @@ import { EMOJIS } from '../../lib/constants';
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })
-export default class StartCommand extends Command {
+export default class UserCommand extends Command {
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
-		const builder = new SlashCommandBuilder().setName(this.name).setDescription(this.description);
+		const builder = new SlashCommandBuilder();
+
+		this.container.functions.setNameAndDescriptions(builder, ['common:start', 'validation:help.desccriptions.commands.START']);
+
 		registry.registerChatInputCommand(builder, {
 			idHints: ['964148504962404462'],
 			behaviorWhenNotIdentical: RegisterBehavior.Overwrite
@@ -24,7 +25,7 @@ export default class StartCommand extends Command {
 	}
 
 	public async chatInputRun(interaction: CommandInteraction) {
-		const locale = (await this.container.i18n.fetchLanguage(interaction)) || 'en-US';
+		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
 		const message = new PaginatedMessage({
 			template: new MessageEmbed().setColor('BLUE')
 		})
@@ -34,7 +35,7 @@ export default class StartCommand extends Command {
 						customId: 'Start:Rule',
 						label: this.container.i18n.getT(locale)('common:rule'),
 						style: 'DANGER',
-						emoji: EMOJIS.UI.RULE,
+						emoji: this.container.constants.EMOJIS.UI.RULE,
 						type: 'BUTTON',
 						run: () => {
 							this.container.applicationCommandRegistries.acquire('rule').command?.chatInputRun!(interaction, {
@@ -47,7 +48,7 @@ export default class StartCommand extends Command {
 						customId: 'Start:Help',
 						label: this.container.i18n.getT(locale)('common:help'),
 						style: 'SECONDARY',
-						emoji: EMOJIS.UI.HELP,
+						emoji: this.container.constants.EMOJIS.UI.HELP,
 						type: 'BUTTON',
 						run: () => {
 							this.container.applicationCommandRegistries.acquire('help').command?.chatInputRun!(interaction, {
@@ -60,7 +61,7 @@ export default class StartCommand extends Command {
 						customId: 'Start:Choose class',
 						label: this.container.i18n.getT(locale)('common:chooseClass'),
 						style: 'SECONDARY',
-						emoji: EMOJIS.UI.CHOOSE_CLASS,
+						emoji: this.container.constants.EMOJIS.UI.CHOOSE_CLASS,
 						type: 'BUTTON',
 						run: () => {
 							this.container.applicationCommandRegistries.acquire('chooseclass').command?.chatInputRun!(interaction, {
@@ -99,5 +100,11 @@ export default class StartCommand extends Command {
 			.setSelectMenuPlaceholder(this.container.i18n.getT(locale)('common:selectMenuPlaceholder'));
 
 		await message.run(interaction);
+	}
+}
+
+declare module '@sapphire/framework' {
+	interface CommandStore {
+		get(name: 'start'): UserCommand;
 	}
 }
