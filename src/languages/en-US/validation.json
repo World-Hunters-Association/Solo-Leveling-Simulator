@@ -137,5 +137,17 @@
 		"ruleThree": "Do **NOT** abuse or benefit from bugs. Report it directly to <#729245705578741842> [**$t(glossary:WHA)**]($t(constant:serverInvite))",
 		"ruleTos": "Finally, follow **Discord TOS!!**",
 		"ruleTwo": "Do **NOT** cheat on the bot by any form of automation ||*(self-bot, macros, etc.)*||"
+	},
+	"use": {
+		"life": "Your HP has been restored!",
+		"mana": "Your MP has been restored!",
+		"maxHp": "Your HP is maxed out!",
+		"maxMp": "Your MP is maxed out!",
+		"recovery": {
+			"confirm": "Please confirm that you want to use **$t(constant:emojis.status recovery) Status Recovery** right now?",
+			"decline": "Okay, not now.",
+			"success": "You've used $t(constant:emojis.Status Recovery) **$t(glossary:items.Status Recovery.name)** and restored:\n{{hp}} $t(constant:emojis.stats.hp) $t(glossary:stats.hp)\n{{mp}} $t(constant:emojis.stats.mp) $t(glossary:stats.mp)\nAnd all of your bad effects have been removed!"
+		},
+		"runOut": "You're trying to find a **$t(constant:emojis.{{what}}) $t(glossary:items.{{what}}.name)** in your inventory while you don't have any."
 	}
 }

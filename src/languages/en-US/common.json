@@ -17,7 +17,8 @@
 		"hunterProfile": "The hunter to show.",
 		"language": "The language you want",
 		"showProfile": "Should the profile be shown to other people?",
-		"term": "The things you need help"
+		"term": "The things you need help",
+		"useItem": "The item you wanna use."
 	},
 	"drink": "Drink",
 	"drop": "Drops",
@@ -57,6 +58,7 @@
 	"quantity": "Quantity",
 	"ranger": "Ranger",
 	"rank": "Rank",
+	"recover": "Recover",
 	"ring": "Ring",
 	"rule": "Rules",
 	"selectMenuPlaceholder": "Make a selection",
@@ -73,6 +75,7 @@
 	"type": "Type",
 	"unspecialized": "Unspecialized",
 	"usage": "Usage",
+	"use": "Use",
 	"weapon": "Weapon",
 	"welcome": "Welcome",
 	"yes": "Yes"

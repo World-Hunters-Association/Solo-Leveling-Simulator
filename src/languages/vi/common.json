@@ -17,7 +17,8 @@
 		"hunterProfile": "Người bạn muốn xem.",
 		"language": "Ngôn ngữ mà bạn muốn đổi",
 		"showProfile": "Có nên hiển thị hồ sơ cho người khác không?",
-		"term": "Thứ mà bạn cần trợ giúp"
+		"term": "Thứ mà bạn cần trợ giúp",
+		"useItem": "Vật phẩm mà bạn muốn sử dụng."
 	},
 	"drink": "Hồi năng lượng",
 	"drop": "Vật phẩm",
@@ -57,6 +58,7 @@
 	"quantity": "Số lượng",
 	"ranger": "Xạ thủ",
 	"rank": "Hạng",
+	"recover": "Hồi phục",
 	"ring": "Nhẫn",
 	"rule": "Luật",
 	"selectMenuPlaceholder": "Lựa chọn",
@@ -73,6 +75,7 @@
 	"type": "Loại",
 	"unspecialized": "Tán nhân",
 	"usage": "Sử dụng",
+	"use": "Sử dụng",
 	"weapon": "Vũ khí",
 	"welcome": "Chào mừng",
 	"yes": "Có"

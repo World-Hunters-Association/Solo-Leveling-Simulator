@@ -4,6 +4,7 @@
 	"donateBot": "https://donatebot.io/checkout/724186681124716544?buyer={{uid}}",
 	"donateBot_markdown": "[Donate Bot](https://donatebot.io/checkout/724186681124716544?buyer={{uid}})",
 	"emojis": {
+		"Status Recovery": "<:s:743406575405891586>",
 		"blacksmith": "<:s:724541953890320384>",
 		"class": {
 			"assassin": "<:s:741716520920678451>",

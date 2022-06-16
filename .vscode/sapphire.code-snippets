@@ -2,7 +2,7 @@
 	"Create a command structure": {
 		"prefix": "command",
 		"body": [
-			"import { ContextMenuCommandBuilder, SlashCommandBuilder } from '@discordjs/builders';",
+			"import { SlashCommandBuilder } from '@discordjs/builders';",
 			"import { ApplyOptions } from '@sapphire/decorators';",
 			"import {",
 			"    ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior",

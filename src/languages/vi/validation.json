@@ -137,5 +137,17 @@
 		"ruleThree": "**KHÔNG** lạm dụng hoặc hưởng lợi từ lỗi. Mà hãy báo cáo trực tiếp cho <#729245705578741842> [**$t(glossary:WHA)**]($t(constant:serverInvite)).",
 		"ruleTos": "Cuối cùng, hãy tuân thủ **Discord TOS!!**",
 		"ruleTwo": "**KHÔNG** gian lận bằng bất kỳ hình thức nào ||*(self-bot, macro, v.v.)*||"
+	},
+	"use": {
+		"life": "HP của bạn đã được khôi phục!",
+		"mana": "MP của bạn đã được khôi phục!",
+		"maxHp": "HP của bạn đã đạt đến mức tối đa!",
+		"maxMp": "MP của bạn đã đạt mức tối đa!",
+		"recovery": {
+			"confirm": "Bạn có chắc chắn muốn sử dụng **$t(constant:emojis.Status Recovery) Phục hồi trạng thái** bây giờ không?",
+			"decline": "Được rồi, không phải bây giờ.",
+			"success": "Bạn vừa sử dụng $t(constant:emojis.Status Recovery) **$t(glossary:items.Status Recovery.name)** để hồi phục:\n{{hp}} $t(constant:emojis.stats.hp) $t(glossary:stats.hp)\n{{mp}} $t(constant:emojis.stats.mp) $t(glossary:stats.mp)\nVà tất cả các hiệu ứng xấu đã được loại bỏ!"
+		},
+		"runOut": "Bạn đang cố tìm một **$t(constant:emojis.{{what}}) $t(glossary:items.{{what}}.name)** trong túi đồ nhưng nó đã hết."
 	}
 }

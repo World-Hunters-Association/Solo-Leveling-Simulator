@@ -1,6 +1,6 @@
 import type { PieceContext } from '@sapphire/framework';
+import { Locale } from 'discord-api-types/v9';
 import { Collection, Snowflake } from 'discord.js';
-import { Locale } from 'discord.js/node_modules/discord-api-types/v10';
 import { join } from 'path';
 import type { Currencies } from '../lib/structures/schemas';
 

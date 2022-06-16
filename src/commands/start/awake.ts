@@ -61,10 +61,20 @@ export default class UserCommand extends Command {
 				agi: 10
 			}),
 			db.collection('money').insertOne({ uid: interaction.user.id, manaCrystal: 0, magicCore: 0, gold: 550, votePoint: 0 }),
-			db.collection('keys').insertOne({ uid: interaction.user.id, e: 10, d: 3, c: 0, b: 0, a: 0, s: 0, ss: 0, uprank: 0 }),
-			db.collection('potions').insertOne({ uid: interaction.user.id, life: 0, mana: 0 }),
+			db.collection('keys').insertOne({
+				uid: interaction.user.id,
+				'E-rank key': 10,
+				'D-rank key': 3,
+				'C-rank key': 0,
+				'B-rank key': 0,
+				'A-rank key': 0,
+				'S-rank key': 0,
+				'SS-rank key': 0,
+				'Uprank key': 0
+			}),
+			db.collection('potions').insertOne({ uid: interaction.user.id, 'life potion': 0, 'mana potion': 0 }),
 			db.collection('penalty').insertOne({ uid: interaction.user.id, quest: 0, warn: 0, captcha: 100 }),
-			db.collection('stone').insertOne({ uid: interaction.user.id, thunder: 1 }),
+			db.collection('stone').insertOne({ uid: interaction.user.id, 'thunder stone': 1 }),
 			db.collection('recover').insertOne({ uid: interaction.user.id, has: true }),
 			db.collection('cooldowns').insertOne({ uid: interaction.user.id, gate: 0, skills: {} }),
 			db.collection('daily').insertOne({ uid: interaction.user.id, streak: 0 }),

@@ -52,9 +52,9 @@ export interface Blacklist {
 }
 
 export interface Boxes {
-	blessed?: number;
-	cursed?: number;
-	normal?: number;
+	'Random Blessed Box'?: number;
+	'Random Cursed Box'?: number;
+	'Random Box'?: number;
 	uid: Snowflake;
 }
 
@@ -105,6 +105,11 @@ export interface Equipment {
 	equipped: { [key in EQUIPMENTS]?: string };
 }
 
+interface Rewards extends Partial<Pick<Currencies, 'gold' | 'manaCrystal'>> {
+	exp?: number;
+	drops?: Material['materials'];
+}
+
 export interface GateChannel {
 	cid: `${Snowflake}:${string}`;
 	uid: Snowflake;
@@ -116,12 +121,7 @@ export interface GateChannel {
 	 */
 	logs: { [key: string]: string[] };
 	rewards: {
-		[key: string]: {
-			golds?: number;
-			exp?: number;
-			manacrystal?: number;
-			drops?: { [key: string]: number };
-		};
+		[key: string]: Rewards;
 	};
 }
 
@@ -189,14 +189,14 @@ export interface HunterStats {
 
 export interface Keys {
 	uid: Snowflake;
-	a: number;
-	b: number;
-	c: number;
-	d: number;
-	e: number;
-	s: number;
-	ss: number;
-	uprank: number;
+	'A-rank key': number;
+	'B-rank key': number;
+	'C-rank key': number;
+	'D-rank key': number;
+	'E-rank key': number;
+	'S-rank key': number;
+	'SS-rank key': number;
+	'Uprank key': number;
 }
 
 type Languages = 'en-US' | 'vi' | 'id-ID';
@@ -264,8 +264,8 @@ export interface Penalty {
 
 export interface Potions {
 	uid: Snowflake;
-	life: number;
-	mana: number;
+	'life potion': number;
+	'mana potion': number;
 }
 
 export interface Recover {
@@ -286,7 +286,7 @@ export interface Spam {
 
 export interface Stone {
 	uid: Snowflake;
-	thunder: number;
+	'thunder stone': number;
 }
 
 export interface Top {
