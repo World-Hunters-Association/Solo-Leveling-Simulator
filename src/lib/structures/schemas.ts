@@ -52,9 +52,11 @@ export interface Blacklist {
 }
 
 export interface Boxes {
-	'Random Blessed Box'?: number;
-	'Random Cursed Box'?: number;
-	'Random Box'?: number;
+	boxes: {
+		'Random Blessed Box'?: number;
+		'Random Cursed Box'?: number;
+		'Random Box'?: number;
+	};
 	uid: Snowflake;
 }
 
@@ -189,14 +191,16 @@ export interface HunterStats {
 
 export interface Keys {
 	uid: Snowflake;
-	'A-rank key': number;
-	'B-rank key': number;
-	'C-rank key': number;
-	'D-rank key': number;
-	'E-rank key': number;
-	'S-rank key': number;
-	'SS-rank key': number;
-	'Uprank key': number;
+	keys: {
+		'A-rank key': number;
+		'B-rank key': number;
+		'C-rank key': number;
+		'D-rank key': number;
+		'E-rank key': number;
+		'S-rank key': number;
+		'SS-rank key': number;
+		'Uprank key': number;
+	};
 }
 
 type Languages = 'en-US' | 'vi' | 'id-ID';
@@ -264,8 +268,10 @@ export interface Penalty {
 
 export interface Potions {
 	uid: Snowflake;
-	'life potion': number;
-	'mana potion': number;
+	potions: {
+		'life potion': number;
+		'mana potion': number;
+	};
 }
 
 export interface Recover {
@@ -286,7 +292,9 @@ export interface Spam {
 
 export interface Stone {
 	uid: Snowflake;
-	'thunder stone': number;
+	stones: {
+		'thunder stone': number;
+	};
 }
 
 export interface Top {

@@ -277,7 +277,7 @@ export default class ConstantsUtils extends Utils {
 			sellPrice: 70,
 			currency: 'manaCrystal',
 			type: 'key',
-			category: 'Usable keys',
+			category: 'Keys',
 			emoji: '<:KeyE:740054291158532178>',
 			weight: 1
 		},
@@ -287,7 +287,7 @@ export default class ConstantsUtils extends Utils {
 			sellPrice: 1400,
 			currency: 'manaCrystal',
 			type: 'key',
-			category: 'Usable keys',
+			category: 'Keys',
 			emoji: '<:KeyD:740054291326304408>',
 			weight: 2
 		},
@@ -297,7 +297,7 @@ export default class ConstantsUtils extends Utils {
 			sellPrice: 7000,
 			currency: 'manaCrystal',
 			type: 'key',
-			category: 'Usable keys',
+			category: 'Keys',
 			emoji: '<:KeyC:740054291217252363>',
 			weight: 3
 		},
@@ -307,7 +307,7 @@ export default class ConstantsUtils extends Utils {
 			sellPrice: 14000,
 			currency: 'manaCrystal',
 			type: 'key',
-			category: 'Usable keys',
+			category: 'Keys',
 			emoji: '<:KeyB:740054291984678966>',
 			weight: 4
 		},
@@ -317,7 +317,7 @@ export default class ConstantsUtils extends Utils {
 			sellPrice: 70000,
 			currency: 'manaCrystal',
 			type: 'key',
-			category: 'Usable keys',
+			category: 'Keys',
 			emoji: '<:KeyA:740054291414384770>',
 			weight: 5
 		},
@@ -327,7 +327,7 @@ export default class ConstantsUtils extends Utils {
 			sellPrice: 140000,
 			currency: 'manaCrystal',
 			type: 'key',
-			category: 'Usable keys',
+			category: 'Keys',
 			emoji: '<:KeyS:740054291317784639>',
 			weight: 6
 		},
@@ -337,7 +337,7 @@ export default class ConstantsUtils extends Utils {
 			sellPrice: 700000,
 			currency: 'manaCrystal',
 			type: 'key',
-			category: 'Usable keys',
+			category: 'Keys',
 			weight: 7,
 			emoji: '<:keySS2:740423956208812113>'
 		},
@@ -346,7 +346,7 @@ export default class ConstantsUtils extends Utils {
 			price: Infinity,
 			currency: 'manaCrystal',
 			type: 'key',
-			category: 'Usable keys',
+			category: 'Keys',
 			weight: 8,
 			emoji: '<:KeyUprank:740175804339585024>'
 		},
@@ -2019,7 +2019,7 @@ export interface Items {
 	readonly sellPrice?: number;
 	readonly currency: keyof Currencies;
 	readonly type: 'potion' | 'key' | 'stone' | 'other';
-	readonly category?: 'Consumables' | 'Usable keys' | 'Items' | 'Equipment';
+	readonly category?: 'Consumables' | 'Keys' | 'Items' | 'Equipment';
 	readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>`;
 	readonly weight: number;
 }

@@ -47,12 +47,14 @@
 				"DAILY": "Nhận $t(constant:emojis.currencies.gold), $t(constant:emojis.life potion) và $t(constant:emojis.mana potion) tùy thuộc vào cấp độ và chuỗi của bạn",
 				"DICE": "***Chưa thể sử dụng***",
 				"DONATOR": "Hiển thị trạng thái donater\n*(Chỉ hoạt động trong $t(glossary:WHA))*",
+				"DRINK": "Uống một bình năng lượng trong kho đồ của bạn.",
 				"DUEL": "Chiến đấu với thợ săn được nhắc đến, thợ săn thắng cuộc chiến sẽ nhận được vàng và điểm kinh nghiệm",
 				"EQUIP": "Hiển thị trang bị của bạn hoặc trang bị một vật phẩm mới",
 				"GATE": "Mở cổng để vào hầm ngục\n*`\\guide`* để xem thêm thông tin",
 				"GIVE": "Gửi vàng tới thợ săn khác",
 				"GUIDE": "Hiển thị hướng dẫn",
 				"GUILD": "Hiển thị bang hội của bạn hoặc bang hội (máy chủ) bạn đang chơi\nSử dụng `\\guild help` để xem thêm lệnh",
+				"HEAL": "Sử dụng một bình máu trong kho đồ của bạn.",
 				"HELP": "Hiển thị danh sách lệnh hiện có hoặc thông tin cụ thể của một lệnh/vật dụng.",
 				"INFO": "Hiển thị thông tin về bot",
 				"INVENTORY": "Hiển thị kho đồ của bạn",
@@ -87,6 +89,10 @@
 			}
 		},
 		"footer": "Đây không phải là thứ bạn đang tìm? Nhấp vào các đề xuất khác bên dưới."
+	},
+	"inventory": {
+		"author": "Kho đồ của {{name}}",
+		"item": "{{emoji}} **{{name}}**: {{amount}}"
 	},
 	"language": {
 		"decline": "Được rồi, tôi không thay đổi ngôn ngữ của bạn.",

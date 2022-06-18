@@ -63,25 +63,28 @@ export default class UserCommand extends Command {
 			db.collection('money').insertOne({ uid: interaction.user.id, manaCrystal: 0, magicCore: 0, gold: 550, votePoint: 0 }),
 			db.collection('keys').insertOne({
 				uid: interaction.user.id,
-				'E-rank key': 10,
-				'D-rank key': 3,
-				'C-rank key': 0,
-				'B-rank key': 0,
-				'A-rank key': 0,
-				'S-rank key': 0,
-				'SS-rank key': 0,
-				'Uprank key': 0
+				keys: {
+					'E-rank key': 10,
+					'D-rank key': 3,
+					'C-rank key': 0,
+					'B-rank key': 0,
+					'A-rank key': 0,
+					'S-rank key': 0,
+					'SS-rank key': 0,
+					'Uprank key': 0
+				}
 			}),
-			db.collection('potions').insertOne({ uid: interaction.user.id, 'life potion': 0, 'mana potion': 0 }),
+			db.collection('potions').insertOne({ uid: interaction.user.id, potions: { 'life potion': 0, 'mana potion': 0 } }),
 			db.collection('penalty').insertOne({ uid: interaction.user.id, quest: 0, warn: 0, captcha: 100 }),
-			db.collection('stone').insertOne({ uid: interaction.user.id, 'thunder stone': 1 }),
+			db.collection('stone').insertOne({ uid: interaction.user.id, stones: { 'thunder stone': 1 } }),
 			db.collection('recover').insertOne({ uid: interaction.user.id, has: true }),
 			db.collection('cooldowns').insertOne({ uid: interaction.user.id, gate: 0, skills: {} }),
 			db.collection('daily').insertOne({ uid: interaction.user.id, streak: 0 }),
-			db.collection('referral').insertOne({ uid: interaction.user.id, give: 0, receive: 0, codes: [] }),
 			db.collection('lottery').insertOne({ uid: interaction.user.id, amount: 0 }),
 			db.collection('equipment').insertOne({ uid: interaction.user.id, equipped: {}, unequipped: {} }),
-			db.collection('boxes').insertOne({ uid: interaction.user.id }),
+			db
+				.collection('boxes')
+				.insertOne({ uid: interaction.user.id, boxes: { 'Random Box': 0, 'Random Cursed Box': 0, 'Random Blessed Box': 0 } }),
 			db.collection('material').insertOne({ uid: interaction.user.id, materials: {} }),
 			db.collection('hunter_skills').insertOne({ uid: interaction.user.id, skills: { Punch: 0 } }),
 			db.collection('config').insertOne({ uid: interaction.user.id, stats: false, logs: false, ping: true }),

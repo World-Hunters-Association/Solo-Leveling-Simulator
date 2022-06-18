@@ -47,12 +47,14 @@
 				"DAILY": "Get $t(constant:emojis.currencies.gold), $t(constant:emojis.life potion) and $t(constant:emojis.mana potion) depending on your level and streak",
 				"DICE": "***Not developed yet***",
 				"DONATOR": "Show the donator status\n*(Only works in the $t(glossary:WHA))*",
+				"DRINK": "Use a mana potion in your inventory.",
 				"DUEL": "Fight with the mentioned hunter, the hunter who win the fight will get golds and exp",
 				"EQUIP": "Show your equipments or equip a new item",
 				"GATE": "Open a gate to enter a dungeon\n*`\\guide`* to see more info",
 				"GIVE": "Give another hunter golds",
 				"GUIDE": "Show the guide",
 				"GUILD": "Show your guild or the guild(server) you are playing in\nUse `\\guild help` to see more commands",
+				"HEAL": "Use a life potion in your inventory.",
 				"HELP": "Displays a list of available commands, or detailed information for a specified command/item.",
 				"INFO": "Show info about the bot",
 				"INVENTORY": "Show your inventory",
@@ -87,6 +89,10 @@
 			}
 		},
 		"footer": "This is not what you looking for? Click on other suggestions below."
+	},
+	"inventory": {
+		"author": "{{name}}'s inventory",
+		"item": "{{emoji}} **{{name}}**: {{amount}}"
 	},
 	"language": {
 		"decline": "Okay, I didn't change your language.",

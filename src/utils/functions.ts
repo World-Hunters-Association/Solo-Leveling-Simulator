@@ -62,10 +62,13 @@ export default class FunctionsUtils extends Utils {
 		return array[Math.floor(Math.random() * length)];
 	}
 
-	public setNameAndDescriptions(constructor: Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>, ...keys: [string, string][]) {
-		const [nameKey, descriptionKey] = keys.shift()!;
-		this.setNameAndDescription(constructor, nameKey, descriptionKey);
-		if (Boolean(keys.length)) constructor.options.forEach((option, ind) => this.setNameAndDescription(option, keys[ind][0], keys[ind][1]));
+	public setNameAndDescriptions<
+		T extends Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>,
+		nameKey extends string,
+		desccriptionKey extends string
+	>(constructor: T, mainKey: [nameKey, desccriptionKey], ...keys: [nameKey, desccriptionKey, nameKey[]?][]) {
+		this.setNameAndDescription(constructor, ...mainKey);
+		if (Boolean(keys.length)) constructor.options.forEach((option, ind) => this.setNameAndDescription(option, ...keys[ind]));
 	}
 
 	public reduceString(string: string, maxLength: number) {
@@ -73,13 +76,22 @@ export default class FunctionsUtils extends Utils {
 		return `${string.slice(0, maxLength - 3)}...`;
 	}
 
-	private setNameAndDescription(constructor: any, nameKey: string, descriptionKey: string) {
+	private setNameAndDescription(constructor: any, nameKey: string, descriptionKey: string, choices?: string[]) {
 		const names = this.slashNameLocalizations(nameKey);
 		const descriptions = this.slashDescriptionLocalizations(descriptionKey);
 		Reflect.set(constructor, 'name', names['en-US']);
 		Reflect.set(constructor, 'description', descriptions['en-US']);
 		Reflect.set(constructor, 'name_localizations', names);
 		Reflect.set(constructor, 'description_localizations', descriptions);
+		if (choices)
+			Reflect.set(
+				constructor,
+				'choices',
+				choices.map((key) => {
+					const names = this.slashDescriptionLocalizations(key);
+					return { name: names['en-US'], value: names['en-US'], name_localizations: names };
+				})
+			);
 	}
 
 	private slashNameLocalizations(key: string): LocalizationMap {

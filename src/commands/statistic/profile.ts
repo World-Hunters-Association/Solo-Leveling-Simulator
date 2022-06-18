@@ -34,12 +34,14 @@ export default class UserCommand extends Command {
 	public async chatInputRun(interaction: CommandInteraction) {
 		await interaction.deferReply({ ephemeral: !interaction.options.getBoolean('show') ?? true });
 
+		// TODO: WHA Staffs can see all profiles
 		// TODO: Require profile skill to see others profiles
 		// TODO: Cannot see others profiles if they have a higher level than you
 
 		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
 
-		const tid = interaction.options.getUser('hunter')?.id || interaction.user.id;
+		const target = interaction.options.getUser('hunter');
+		const tid = target?.id || interaction.user.id;
 		const { titleid, name, classid, rankid } = (await this.container.db.collection('hunterinfo').findOne({ uid: tid }))!;
 		const { exp, hp, mp, int, str, mr, def, sp, vit, agi } = (await this.container.db.collection('hunterstats').findOne({ uid: tid }))!;
 		const { challenges } = (await this.container.db.collection('challenges').findOne({ uid: tid }))!;
@@ -72,10 +74,10 @@ export default class UserCommand extends Command {
 			.setColor('BLUE')
 			.setAuthor({
 				name: await resolveKey(interaction, 'validation:profile.author', { name, lng: locale }),
-				iconURL: interaction.user.displayAvatarURL({ dynamic: true })
+				iconURL: (target ? target : interaction.user).displayAvatarURL({ dynamic: true })
 			})
 			.setTitle(RANK_TITLES[titleid as 1])
-			.setThumbnail(interaction.user.displayAvatarURL({ dynamic: true }))
+			.setThumbnail((target ? target : interaction.user).displayAvatarURL({ dynamic: true }))
 			.addFields(
 				{
 					name: await resolveKey(interaction, 'common:information', { lng: locale }),

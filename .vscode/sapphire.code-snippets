@@ -12,7 +12,6 @@
 			"",
 			"@ApplyOptions<CommandOptions>({",
 			"    name: '${TM_FILENAME_BASE/(\\w*)/${1:/downcase}/}',",
-			"    description: '${2:description}',",
 			"    preconditions: ['${1|Defer,EphemeralDefer|}'],",
 			"    requiredClientPermissions: [BigInt(277025770560)],",
 			"    requiredUserPermissions: ['USE_EXTERNAL_EMOJIS'],",

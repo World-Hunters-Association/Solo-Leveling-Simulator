@@ -17,7 +17,7 @@ import {
 
 @ApplyOptions<CommandOptions>({
 	name: 'use',
-	preconditions: ['EphemeralDefer'],
+	preconditions: ['EphemeralDefer', 'IsHunter'],
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })
@@ -28,7 +28,16 @@ export default class UserCommand extends Command {
 		this.container.functions.setNameAndDescriptions(
 			builder,
 			['common:use', 'validation:help.desccriptions.commands.USE'],
-			['common:item', 'common:descriptions.useItem']
+			[
+				'common:item',
+				'common:descriptions.useItem',
+				[
+					'glossary:items.life potion.name',
+					'glossary:items.mana potion.name',
+					'glossary:items.thunder stone.name',
+					'glossary:items.Status Recovery.name'
+				]
+			]
 		);
 
 		registry.registerChatInputCommand(builder, {
@@ -65,62 +74,9 @@ export default class UserCommand extends Command {
 		}
 
 		switch (item.name.toLowerCase()) {
-			case 'status recovery':
-				await this.recover(interaction, locale);
-				break;
 			default:
 				await this.use(interaction, item.name.toLowerCase() as 'life potion', locale);
 		}
-	}
-
-	public async recover(interaction: BaseCommandInteraction | MessageComponentInteraction, locale: string) {
-		let components = [
-			new MessageActionRow().setComponents([
-				new MessageButton()
-					.setCustomId(`Yes`)
-					.setLabel(this.container.i18n.getT(locale)('common:yes'))
-					.setStyle('SECONDARY')
-					.setEmoji(this.container.constants.EMOJIS.UI.YES),
-				new MessageButton()
-					.setCustomId(`No`)
-					.setLabel(this.container.i18n.getT(locale)('common:no'))
-					.setStyle('PRIMARY')
-					.setEmoji(this.container.constants.EMOJIS.UI.CANCEL)
-			])
-		];
-
-		const msg = await editLocalized(interaction, {
-			keys: 'validation:use.recovery.confirm',
-			components,
-			fetchReply: true,
-			formatOptions: { lng: locale }
-		});
-
-		components = components.map((row) => {
-			row.components = row.components.map((button) => button.setDisabled(true));
-			return row;
-		});
-
-		const collector = (msg as Message).createMessageComponentCollector({
-			filter: (i) => i.user.id === interaction.user.id,
-			time: 30000,
-			max: 1
-		});
-
-		collector.on('collect', async (i) => {
-			await i.deferUpdate();
-			switch (i.customId) {
-				case 'Yes':
-					await this.use(interaction, 'status recovery', locale);
-					break;
-				case 'No':
-					await editLocalized(i, { keys: 'validation:use.recovery.decline', formatOptions: { lng: locale } });
-			}
-		});
-
-		collector.on('end', async (_collected, reason) => {
-			if (reason === 'time') await editLocalized(interaction! || msg!, { keys: 'common:timeout', components, formatOptions: { lng: locale } });
-		});
 	}
 
 	public async use(
@@ -133,8 +89,8 @@ export default class UserCommand extends Command {
 
 		switch (name) {
 			case 'life potion': {
-				const { 'life potion': life } = (await this.container.db.collection('potions').findOne({ uid: interaction.user.id }))!;
-				if (life <= 0) {
+				const { potions } = (await this.container.db.collection('potions').findOne({ uid: interaction.user.id }))!;
+				if (potions['life potion'] <= 0) {
 					await editLocalized(interaction, {
 						keys: 'validation:use.runOut',
 						formatOptions: { lng: locale, what: 'life potion' }
@@ -156,8 +112,8 @@ export default class UserCommand extends Command {
 				break;
 			}
 			case 'mana potion': {
-				const { 'mana potion': mana } = (await this.container.db.collection('potions').findOne({ uid: interaction.user.id }))!;
-				if (mana <= 0) {
+				const { potions } = (await this.container.db.collection('potions').findOne({ uid: interaction.user.id }))!;
+				if (potions['mana potion'] <= 0) {
 					await editLocalized(interaction, {
 						keys: 'validation:use.runOut',
 						formatOptions: { lng: locale, what: 'mana potion' }
@@ -179,8 +135,8 @@ export default class UserCommand extends Command {
 				break;
 			}
 			case 'thunder stone': {
-				const { 'thunder stone': thunder } = (await this.container.db.collection('stone').findOne({ uid: interaction.user.id }))!;
-				if (thunder <= 0) {
+				const { stones } = (await this.container.db.collection('stone').findOne({ uid: interaction.user.id }))!;
+				if (stones['thunder stone'] <= 0) {
 					await editLocalized(interaction, {
 						keys: 'validation:use.runOut',
 						formatOptions: { lng: locale, what: 'thunder stone' }
@@ -200,26 +156,75 @@ export default class UserCommand extends Command {
 					return;
 				}
 
-				await editLocalized(interaction, { keys: 'validation:use.recovery.success', formatOptions: { lng: locale } });
-				await Promise.all([
-					this.container.db.collection('stone').updateOne({ uid: interaction.user.id }, { $set: { has: false } }),
-					this.container.db
-						.collection('hunterstats')
-						.updateOne(
-							{ uid: interaction.user.id },
-							{ $set: { hp: this.container.functions.MaxHPCalc(vit, level), mp: this.container.functions.MaxMPCalc(int, level) } }
-						),
-					this.container.db.collection('hunter_fighting').updateOne(
-						{ uid: interaction.user.id },
-						{
-							$set: {
-								'stats.hp': this.container.functions.MaxHPCalc(vit, level),
-								'stats.mp': this.container.functions.MaxMPCalc(int, level),
-								recovery: false
-							}
-						}
-					)
-				]);
+				const components = [
+					new MessageActionRow().setComponents([
+						new MessageButton()
+							.setCustomId(`Yes`)
+							.setLabel(this.container.i18n.getT(locale)('common:yes'))
+							.setStyle('SECONDARY')
+							.setEmoji(this.container.constants.EMOJIS.UI.YES),
+						new MessageButton()
+							.setCustomId(`No`)
+							.setLabel(this.container.i18n.getT(locale)('common:no'))
+							.setStyle('PRIMARY')
+							.setEmoji(this.container.constants.EMOJIS.UI.CANCEL)
+					])
+				];
+
+				const msg = await editLocalized(interaction, {
+					keys: 'validation:use.recovery.confirm',
+					components,
+					fetchReply: true,
+					formatOptions: { lng: locale }
+				});
+
+				const collector = (msg as Message).createMessageComponentCollector({
+					filter: (i) => i.user.id === interaction.user.id,
+					time: 30000,
+					max: 1
+				});
+
+				collector.on('collect', async (i) => {
+					await i.deferUpdate();
+					switch (i.customId) {
+						case 'Yes':
+							await editLocalized(interaction, {
+								keys: 'validation:use.recovery.success',
+								formatOptions: { lng: locale },
+								components: []
+							});
+							await Promise.all([
+								this.container.db.collection('recover').updateOne({ uid: interaction.user.id }, { $set: { has: false } }),
+								this.container.db.collection('hunterstats').updateOne(
+									{ uid: interaction.user.id },
+									{
+										$set: {
+											hp: this.container.functions.MaxHPCalc(vit, level),
+											mp: this.container.functions.MaxMPCalc(int, level)
+										}
+									}
+								),
+								this.container.db.collection('hunter_fighting').updateOne(
+									{ uid: interaction.user.id },
+									{
+										$set: {
+											'stats.hp': this.container.functions.MaxHPCalc(vit, level),
+											'stats.mp': this.container.functions.MaxMPCalc(int, level),
+											recovery: false
+										}
+									}
+								)
+							]);
+							break;
+						case 'No':
+							await editLocalized(i, { keys: 'validation:use.recovery.decline', formatOptions: { lng: locale }, components: [] });
+					}
+				});
+
+				collector.on('end', async (_collected, reason) => {
+					if (reason === 'time')
+						await editLocalized(interaction! || msg!, { keys: 'common:timeout', components: [], formatOptions: { lng: locale } });
+				});
 			}
 		}
 	}

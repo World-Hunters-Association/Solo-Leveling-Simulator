@@ -143,7 +143,7 @@ export default class UserCommand extends Command {
 		// TODO Lottery ticket
 
 		if (item.type === 'stone')
-			await this.container.db.collection('stone').updateOne({ uid: interaction.user.id }, { $inc: { 'thunder stone': quantity } });
+			await this.container.db.collection('stone').updateOne({ uid: interaction.user.id }, { $inc: { 'stones.thunder stone': quantity } });
 
 		if (this.container.constants.EQUIPMENTS.find((eq) => item.name === eq.name)) {
 			const eq = this.container.constants.EQUIPMENTS.find((eq) => item.name === eq.name)!;
@@ -154,10 +154,10 @@ export default class UserCommand extends Command {
 		}
 
 		if (item.type === 'potion')
-			await this.container.db.collection('potions').updateOne({ uid: interaction.user.id }, { $inc: { [item.name]: quantity } });
+			await this.container.db.collection('potions').updateOne({ uid: interaction.user.id }, { $inc: { [`potions.${item.name}`]: quantity } });
 
 		if (item.type === 'key')
-			await this.container.db.collection('keys').updateOne({ uid: interaction.user.id }, { $inc: { [item.name]: quantity } });
+			await this.container.db.collection('keys').updateOne({ uid: interaction.user.id }, { $inc: { [`keys.${item.name}`]: quantity } });
 
 		await this.container.db.collection('money').updateOne({ uid: interaction.user.id }, { $inc: { [item.currency]: -(item.price! * quantity) } });
 		await editLocalized(interaction, {
