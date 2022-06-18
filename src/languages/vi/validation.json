@@ -6,7 +6,7 @@
 	"buy": {
 		"max": "Tối đa: {{quantity}} ({{price}} {{currency}})",
 		"quantity": "{{quantity}} ({{price}} {{currency}})",
-		"success": "Đã mua **{{quantity}} {{emoji}} {{name}}** thành công với **{{price}} $t(glossary:currencies.{{currency}}, {\"count\":{{priceCount}}})**!"
+		"success": "Đã mua **{{quantity}} {{emoji}} $t(glossary:items.{{name}}.name)** thành công với **{{price}} $t(glossary:currencies.{{currency}}, {\"count\":{{priceCount}}})**!"
 	},
 	"chooseClass": {
 		"descriptions": {
@@ -92,7 +92,7 @@
 	},
 	"inventory": {
 		"author": "Kho đồ của {{name}}",
-		"item": "{{emoji}} **{{name}}**: {{amount}}"
+		"item": "{{emoji}} **$t(glossary:items.{{name}}.name)**: {{amount}}"
 	},
 	"language": {
 		"decline": "Được rồi, tôi không thay đổi ngôn ngữ của bạn.",

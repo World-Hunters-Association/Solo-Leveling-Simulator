@@ -30,16 +30,16 @@ jobs:
           fetch-depth: 0
           repository: ${{ github.event.inputs.repository || 'World-Hunters-Association/Solo-Leveling-Simulator' }}
           ref: ${{ github.event.inputs.ref || 'main' }}
-      # - name: Use Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd # tag=v3
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-      #     cache: yarn
-      # - name: Locate source
-      #   run: cd ~/test/_work/Solo-Leveling-Simulator/Solo-Leveling-Simulator/
-      # - name: Install dependencies
-      #   run: yarn install
-      # - name: Build
-      #   run: yarn build:p
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd # tag=v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+      - name: Locate source
+        run: cd ~/test/_work/Solo-Leveling-Simulator/Solo-Leveling-Simulator/
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build:p
       # - name: Prune Dev-dependencies
       #   run: npm prune --production

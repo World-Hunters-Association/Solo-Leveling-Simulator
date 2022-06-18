@@ -6,7 +6,7 @@
 	"buy": {
 		"max": "Max: {{quantity}} ({{price}} {{currency}})",
 		"quantity": "{{quantity}} ({{price}} {{currency}})",
-		"success": "Successfully bought **{{quantity}} {{emoji}} {{name}}** for **{{price}} $t(glossary:currencies.{{currency}}, {\"count\":{{priceCount}}})**!"
+		"success": "Successfully bought **{{quantity}} {{emoji}} $t(glossary:items.{{name}}.name)** for **{{price}} $t(glossary:currencies.{{currency}}, {\"count\":{{priceCount}}})**!"
 	},
 	"chooseClass": {
 		"descriptions": {
@@ -92,7 +92,7 @@
 	},
 	"inventory": {
 		"author": "{{name}}'s inventory",
-		"item": "{{emoji}} **{{name}}**: {{amount}}"
+		"item": "{{emoji}} **$t(glossary:items.{{name}}.name)**: {{amount}}"
 	},
 	"language": {
 		"decline": "Okay, I didn't change your language.",
@@ -150,7 +150,7 @@
 		"maxHp": "Your HP is maxed out!",
 		"maxMp": "Your MP is maxed out!",
 		"recovery": {
-			"confirm": "Please confirm that you want to use **$t(constant:emojis.status recovery) Status Recovery** right now?",
+			"confirm": "Please confirm that you want to use **$t(constant:emojis.Status Recovery) Status Recovery** right now?",
 			"decline": "Okay, not now.",
 			"success": "You've used $t(constant:emojis.Status Recovery) **$t(glossary:items.Status Recovery.name)** and restored:\n{{hp}} $t(constant:emojis.stats.hp) $t(glossary:stats.hp)\n{{mp}} $t(constant:emojis.stats.mp) $t(glossary:stats.mp)\nAnd all of your bad effects have been removed!"
 		},
