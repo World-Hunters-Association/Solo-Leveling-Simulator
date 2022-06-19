@@ -112,14 +112,14 @@ export default class UserCommand extends Command {
 				{
 					name: await resolveKey(interaction, 'common:baseStats', { lng: locale }),
 					value: await resolveKey(interaction, 'validation:profile.stats.left', {
-						hp: Intl.NumberFormat().format(hp),
-						maxHp: Intl.NumberFormat().format(this.container.functions.MaxHPCalc(vit, level)),
-						str: Intl.NumberFormat().format(str),
-						eqStr: Intl.NumberFormat().format(eqStr || 0),
-						def: Intl.NumberFormat().format(def),
-						eqDef: Intl.NumberFormat().format(eqDef || 0),
-						vit: Intl.NumberFormat().format(vit),
-						eqVit: Intl.NumberFormat().format(eqVit || 0),
+						hp,
+						maxHp: this.container.functions.MaxHPCalc(vit, level),
+						str,
+						eqStr: eqStr || 0,
+						def,
+						eqDef: eqDef || 0,
+						vit,
+						eqVit: eqVit || 0,
 						lng: locale
 					}),
 					inline: true
@@ -127,14 +127,14 @@ export default class UserCommand extends Command {
 				{
 					name: '** **',
 					value: await resolveKey(interaction, 'validation:profile.stats.right', {
-						mp: Intl.NumberFormat().format(mp),
-						maxMp: Intl.NumberFormat().format(this.container.functions.MaxMPCalc(int, level)),
-						int: Intl.NumberFormat().format(int),
-						eqInt: Intl.NumberFormat().format(eqInt || 0),
-						mr: Intl.NumberFormat().format(mr),
-						eqMr: Intl.NumberFormat().format(eqMr || 0),
-						agi: Intl.NumberFormat().format(agi),
-						eqAgi: Intl.NumberFormat().format(eqAgi || 0),
+						mp,
+						maxMp: this.container.functions.MaxMPCalc(int, level),
+						int,
+						eqInt: eqInt || 0,
+						mr,
+						eqMr: eqMr || 0,
+						agi,
+						eqAgi: eqAgi || 0,
 						lng: locale
 					}),
 					inline: true
@@ -146,12 +146,9 @@ export default class UserCommand extends Command {
 				{
 					name: await resolveKey(interaction, 'common:money', { lng: locale }),
 					value: await resolveKey(interaction, 'validation:profile.money.money', {
-						manaCrystal: Intl.NumberFormat().format(manaCrystal),
-						countManaCrystal: manaCrystal,
-						gold: Intl.NumberFormat().format(gold),
-						countGold: gold,
-						magicCore: Intl.NumberFormat().format(magicCore),
-						countMagicCore: magicCore,
+						manaCrystal,
+						gold,
+						magicCore,
 						lng: locale
 					})
 				}

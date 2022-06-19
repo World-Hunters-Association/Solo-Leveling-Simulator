@@ -10,6 +10,7 @@ import { container } from '@sapphire/pieces';
 import type { InternationalizationContext } from '@sapphire/plugin-i18next';
 import type { AlpetaOptions } from './lib/setup';
 import { UtilsStore } from './lib/structures/UtilsStore';
+import { DurationFormatter } from '@sapphire/time-utilities';
 
 export default class System extends SapphireClient {
 	public config: AlpetaOptions;
@@ -76,7 +77,21 @@ export default class System extends SapphireClient {
 				defaultLanguageDirectory: join(__dirname, 'languages'),
 				hmr: {
 					enabled: true
-				}
+				},
+				formatters: [
+					{
+						name: 'lowercase',
+						format: (value: string) => value.toLowerCase()
+					},
+					{
+						name: 'duration',
+						format: (value: number, lng: string) => new DurationFormatter(container.functions.timeUnitsLocalizations(lng)).format(value)
+					},
+					{
+						name: 'eqStats',
+						format: (value: number) => (value >= 0 ? `+` : `-`) + Intl.NumberFormat().format(value)
+					}
+				]
 			},
 			botList: {
 				clientId: '703043558483034223',

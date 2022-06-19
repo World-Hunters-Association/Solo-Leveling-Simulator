@@ -4,24 +4,24 @@
 		"request": "Bạn là người chơi mới phải không, {{mention}}? `/awake`"
 	},
 	"buy": {
-		"max": "Tối đa: {{quantity}} ({{price}} {{currency}})",
-		"quantity": "{{quantity}} ({{price}} {{currency}})",
-		"success": "Đã mua **{{quantity}} {{emoji}} $t(glossary:items.{{name}}.name)** thành công với **{{price}} $t(glossary:currencies.{{currency}}, {\"count\":{{priceCount}}})**!"
+		"max": "Tối đa: {{quantity, number}} ({{currency}})",
+		"quantity": "{{quantity, number}} ({{currency}})",
+		"success": "Đã mua **{{quantity, number}} {{emoji}} $t(glossary:items.{{name}}.name)** thành công với **$t(glossary:currencies.{{currency}}, {\"count\":{{price}},\"context\":\"count\"})**!"
 	},
 	"chooseClass": {
 		"descriptions": {
-			"assassin": "Thiên chức chuyên về dao găm và tốc độ. Gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
+			"assassin": "$t(common:class) chuyên về dao găm và tốc độ. Gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
 			"cancelled": "Đã hủy!",
-			"confirm": "Bạn có chắc chắn với sự lựa chọn của mình không? \n**Bạn không thể chọn lại thiên chức của mình đâu.**",
+			"confirm": "Bạn có chắc chắn với sự lựa chọn của mình không? \n**Bạn không thể chọn lại nghề của mình đâu.**",
 			"confirmed": "Hoàn thành! Đó một lựa chọn tuyệt vời.",
-			"embed": "Bấm vào nút của thên chức tương ứng để xem thông tin của thiên chức đó.",
-			"fighter": "Thiên chức chuyên về vũ khí cận chiến. Họ có lượng sát thương ổn định và khả năng phòng thủ tốt.",
-			"healer": "Thiên chức chuyên về phép thuật chữa trị và cường hóa sát thương. Nhưng họ lại rất mỏng manh.",
-			"mage": "Thiên chức chuyên về tấn công bằng ma thuật, gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
-			"ranger": "Thiên chức chuyên tấn công tầm xa.",
-			"tanker": "Là thiên chức chuyên về phòng thủ, thu hút ma thú về mình và bảo vệ những đồng minh có sức phòng thủ thấp."
+			"embed": "Bấm vào nút của thên chức tương ứng để xem thông tin của nghề đó.",
+			"fighter": "$t(common:class) chuyên về vũ khí cận chiến. Họ có lượng sát thương ổn định và khả năng phòng thủ tốt.",
+			"healer": "$t(common:class) chuyên về phép thuật chữa trị và cường hóa sát thương. Nhưng họ lại rất mỏng manh.",
+			"mage": "$t(common:class) chuyên về tấn công bằng ma thuật, gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
+			"ranger": "$t(common:class) chuyên tấn công tầm xa.",
+			"tanker": "Là nghề chuyên về phòng thủ, thu hút ma thú về mình và bảo vệ những đồng minh có sức phòng thủ thấp."
 		},
-		"twice": "Bạn không thể chọn thiên chức hai lần!"
+		"twice": "Bạn không thể chọn nghề hai lần!"
 	},
 	"cooldown": {
 		"author": "Cooldown của {{name}}",
@@ -41,7 +41,7 @@
 				"BLACKJACK": "Chơi blackjack với NPC",
 				"BLACKSMITH": "***Chưa thể sử dụng***",
 				"BUY": "Mua một vật dụng từ cửa hàng\nSử dụng `\\shop` để hiển thị cửa hàng.",
-				"CHOOSE_CLASS": "Chọn thiên chức của bạn",
+				"CHOOSE_CLASS": "Chọn nghề của bạn",
 				"CHOP": "***Chưa thể sử dụng***",
 				"CODES": "Hiển thị các mã nhận thưởng của bạn (sử dụng `redeem` để nhận phần thưởng)",
 				"COINFLIP": "Đặt cược số vàng của bạn bằng cách tung đồng xu",
@@ -114,27 +114,27 @@
 		"author": "Hồ sơ của {{name}}",
 		"information": {
 			"left": "**$t(common:class)**: $t(constant:emojis.class.{{class}}) $t(common:{{class}})\n**$t(common:rank)**: $t(constant:emojis.rank.{{rank}})",
-			"right": "**$t(common:level)**: {{level}} ({{exp}} / {{maxExp}})\n**$t(common:guild)**: {{guild}}"
+			"right": "**$t(common:level)**: {{level, number}} ({{exp, number}} / {{maxExp, number}})\n**$t(common:guild)**: {{guild}}"
 		},
 		"money": {
-			"gold": "$t(constant:emojis.currencies.gold) **$t(glossary:currencies.gold, {\"count\":{{count}}})**: {{gold}} ",
-			"magicCore": "$t(constant:emojis.currencies.magicCore) **$t(glossary:currencies.magicCore, {\"count\":{{count}}})**: {{magicCore}}",
-			"manaCrystal": "$t(constant:emojis.currencies.manaCrystal) **$t(glossary:currencies.manaCrystal, {\"count\":{{count}}})**: {{manaCrystal}}",
-			"money": "$t(validation:profile.money.manaCrystal, {\"count\":{{countManaCrystal}},\"manaCrystal\":{{manaCrystal}}})\n$t(validation:profile.money.gold, {\"count\":{{countGold}},\"gold\":{{gold}}})\n$t(validation:profile.money.magicCore, {\"count\":{{countMagicCore}},\"magicCore\":{{magicCore}}})"
+			"gold": "$t(constant:emojis.currencies.gold) **$t(glossary:currencies.gold, {\"count\":{{count}}})**: {{gold, number}} ",
+			"magicCore": "$t(constant:emojis.currencies.magicCore) **$t(glossary:currencies.magicCore, {\"count\":{{count}}})**: {{magicCore, number}}",
+			"manaCrystal": "$t(constant:emojis.currencies.manaCrystal) **$t(glossary:currencies.manaCrystal, {\"count\":{{count}}})**: {{manaCrystal, number}}",
+			"money": "$t(validation:profile.money.manaCrystal, {\"count\":{{manaCrystal}}})\n$t(validation:profile.money.gold, {\"count\":{{gold}}})\n$t(validation:profile.money.magicCore, {\"count\":{{magicCore}}})"
 		},
 		"stats": {
-			"agi": "$t(constant:emojis.stats.agi) **$t(glossary:stats:agi)**: {{agi}} (+{{eqAgi}})",
-			"def": "$t(constant:emojis.stats.def) **$t(glossary:stats:def)**: {{def}} (+{{eqDef}})",
-			"hp": "$t(constant:emojis.stats.hp) **$t(glossary:stats:hp)**: {{hp}}/{{maxHp}}",
-			"int": "$t(constant:emojis.stats.int) **$t(glossary:stats:int)**: {{int}} (+{{eqInt}})",
+			"agi": "$t(constant:emojis.stats.agi) **$t(glossary:stats:agi)**: {{agi, number}} ({{eqAgi, eqStats}})",
+			"def": "$t(constant:emojis.stats.def) **$t(glossary:stats:def)**: {{def, number}} ({{eqDef, eqStats}})",
+			"hp": "$t(constant:emojis.stats.hp) **$t(glossary:stats:hp)**: {{hp, number}}/{{maxHp, number}}",
+			"int": "$t(constant:emojis.stats.int) **$t(glossary:stats:int)**: {{int, number}} ({{eqInt, eqStats}})",
 			"left": "$t(validation:profile.stats.hp, {\"hp\":\"{{hp}}\",\"maxHp\":\"{{maxHp}}\"})\n$t(validation:profile.stats.str, {\"context\":\"equipment\",\"str\":\"{{str}}\",\"eqStr\":\"{{eqStr}}\"})\n$t(validation:profile.stats.def, {\"context\":\"equipment\",\"def\":\"{{def}}\",\"eqDef\":\"{{eqDef}}\"})\n$t(validation:profile.stats.vit, {\"context\":\"equipment\",\"vit\":\"{{vit}}\",\"eqVit\":\"{{eqVit}}\"})",
-			"mp": "$t(constant:emojis.stats.mp) **$t(glossary:stats:mp)**: {{mp}}/{{maxMp}}",
-			"mr": "$t(constant:emojis.stats.mr) **$t(glossary:stats:mr)**: {{mr}} (+{{eqMr}})",
+			"mp": "$t(constant:emojis.stats.mp) **$t(glossary:stats:mp)**: {{mp, number}}/{{maxMp, number}}",
+			"mr": "$t(constant:emojis.stats.mr) **$t(glossary:stats:mr)**: {{mr, number}} ({{eqMr, eqStats}})",
 			"right": "$t(validation:profile.stats.mp, {\"mp\":\"{{mp}}\",\"maxMp\":\"{{maxMp}}\"})\n$t(validation:profile.stats.int, {\"context\":\"equipment\",\"int\":\"{{int}}\",\"eqInt\":\"{{eqInt}}\"})\n$t(validation:profile.stats.mr, {\"context\":\"equipment\",\"mr\":\"{{mr}}\",\"eqMr\":\"{{eqMr}}\"})\n$t(validation:profile.stats.agi, {\"context\":\"equipment\",\"agi\":\"{{agi}}\",\"eqAgi\":\"{{eqAgi}}\"})",
-			"str": "$t(constant:emojis.stats.str) **$t(glossary:stats:str)**: {{str}} (+{{eqStr}})",
-			"vit": "$t(constant:emojis.stats.vit) **$t(glossary:stats:vit)**: {{vit}} (+{{eqVit}})"
+			"str": "$t(constant:emojis.stats.str) **$t(glossary:stats:str)**: {{str, number}} ({{eqStr, eqStats}})",
+			"vit": "$t(constant:emojis.stats.vit) **$t(glossary:stats:vit)**: {{vit, number}} ({{eqVit, eqStats}})"
 		},
-		"statsPoint": "**Điểm chỉ số khả dụng**: {{count}}"
+		"statsPoint": "**Điểm chỉ số khả dụng**: {{count, number}}"
 	},
 	"reset": {
 		"decline": "*Phew, okay...*",

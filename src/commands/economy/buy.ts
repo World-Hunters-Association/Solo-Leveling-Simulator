@@ -92,9 +92,8 @@ export default class UserCommand extends Command {
 					const quantity = Math.floor(wallet / item.price);
 					choices.push({
 						name: this.container.i18n.format(locale, 'validation:buy.max', {
-							quantity: Intl.NumberFormat().format(quantity),
-							price: Intl.NumberFormat().format(quantity * item.price),
-							currency: `$t(glossary:currencies.${item.currency}, {"count":${item.price}})`
+							quantity,
+							currency: `$t(glossary:currencies.${item.currency}, {"count":${quantity * item.price},"context":"count"})`
 						}),
 						value: quantity
 					});
@@ -103,9 +102,8 @@ export default class UserCommand extends Command {
 				if (wallet >= item.price * value && Boolean(value))
 					choices.unshift({
 						name: this.container.i18n.format(locale, 'validation:buy.quantity', {
-							quantity: Intl.NumberFormat().format(value),
-							price: Intl.NumberFormat().format(value * item.price),
-							currency: `$t(glossary:currencies.${item.currency}, {"count":${item.price}})`
+							quantity: value,
+							currency: `$t(glossary:currencies.${item.currency}, {"count":${value * item.price},"context":"count"})`
 						}),
 						value
 					});
@@ -164,11 +162,10 @@ export default class UserCommand extends Command {
 			keys: 'validation:buy.success',
 			formatOptions: {
 				lng: locale,
-				quantity: Intl.NumberFormat().format(quantity),
+				quantity,
 				emoji: item.emoji,
 				name: item.name,
-				price: Intl.NumberFormat().format(item.price * quantity),
-				priceCount: item.price * quantity,
+				price: item.price * quantity,
 				currency: item.currency
 			}
 		});

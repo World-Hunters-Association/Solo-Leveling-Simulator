@@ -4,9 +4,9 @@
 		"request": "You are new here, right {{mention}}? `/awake`"
 	},
 	"buy": {
-		"max": "Max: {{quantity}} ({{price}} {{currency}})",
-		"quantity": "{{quantity}} ({{price}} {{currency}})",
-		"success": "Successfully bought **{{quantity}} {{emoji}} $t(glossary:items.{{name}}.name)** for **{{price}} $t(glossary:currencies.{{currency}}, {\"count\":{{priceCount}}})**!"
+		"max": "Max: {{quantity, number}} ({{currency}})",
+		"quantity": "{{quantity, number}} ({{currency}})",
+		"success": "Successfully bought **{{quantity, number}} {{emoji}} $t(glossary:items.{{name}}.name)** for **$t(glossary:currencies.{{currency}}, {\"count\":{{price}},\"context\":\"count\"})**!"
 	},
 	"chooseClass": {
 		"descriptions": {
@@ -114,27 +114,27 @@
 		"author": "{{name}}'s profile",
 		"information": {
 			"left": "**$t(common:class)**: $t(constant:emojis.class.{{class}}) $t(common:{{class}})\n**$t(common:rank)**: $t(constant:emojis.rank.{{rank}})",
-			"right": "**$t(common:level)**: {{level}} ({{exp}} / {{maxExp}})\n**$t(common:guild)**: {{guild}}"
+			"right": "**$t(common:level)**: {{level, number}} ({{exp, number}} / {{maxExp, number}})\n**$t(common:guild)**: {{guild}}"
 		},
 		"money": {
-			"gold": "$t(constant:emojis.currencies.gold) **$t(glossary:currencies.gold, {\"count\":{{count}}})**: {{gold}} ",
-			"magicCore": "$t(constant:emojis.currencies.magicCore) **$t(glossary:currencies.magicCore, {\"count\":{{count}}})**: {{magicCore}}",
-			"manaCrystal": "$t(constant:emojis.currencies.manaCrystal) **$t(glossary:currencies.manaCrystal, {\"count\":{{count}}})**: {{manaCrystal}}",
-			"money": "$t(validation:profile.money.manaCrystal, {\"count\":{{countManaCrystal}},\"manaCrystal\":{{manaCrystal}}})\n$t(validation:profile.money.gold, {\"count\":{{countGold}},\"gold\":{{gold}}})\n$t(validation:profile.money.magicCore, {\"count\":{{countMagicCore}},\"magicCore\":{{magicCore}}})"
+			"gold": "$t(constant:emojis.currencies.gold) **$t(glossary:currencies.gold, {\"count\":{{count}}})**: {{count, number}} ",
+			"magicCore": "$t(constant:emojis.currencies.magicCore) **$t(glossary:currencies.magicCore, {\"count\":{{count}}})**: {{count, number}}",
+			"manaCrystal": "$t(constant:emojis.currencies.manaCrystal) **$t(glossary:currencies.manaCrystal, {\"count\":{{count}}})**: {{count, number}}",
+			"money": "$t(validation:profile.money.manaCrystal, {\"count\":{{manaCrystal}}})\n$t(validation:profile.money.gold, {\"count\":{{gold}}})\n$t(validation:profile.money.magicCore, {\"count\":{{magicCore}}})"
 		},
 		"stats": {
-			"agi": "$t(constant:emojis.stats.agi) **$t(glossary:stats:agi)**: {{agi}} (+{{eqAgi}})",
-			"def": "$t(constant:emojis.stats.def) **$t(glossary:stats:def)**: {{def}} (+{{eqDef}})",
-			"hp": "$t(constant:emojis.stats.hp) **$t(glossary:stats:hp)**: {{hp}}/{{maxHp}}",
-			"int": "$t(constant:emojis.stats.int) **$t(glossary:stats:int)**: {{int}} (+{{eqInt}})",
+			"agi": "$t(constant:emojis.stats.agi) **$t(glossary:stats:agi)**: {{agi, number}} ({{eqAgi, eqStats}})",
+			"def": "$t(constant:emojis.stats.def) **$t(glossary:stats:def)**: {{def, number}} ({{eqDef, eqStats}})",
+			"hp": "$t(constant:emojis.stats.hp) **$t(glossary:stats:hp)**: {{hp, number}}/{{maxHp, number}}",
+			"int": "$t(constant:emojis.stats.int) **$t(glossary:stats:int)**: {{int, number}} ({{eqInt, eqStats}})",
 			"left": "$t(validation:profile.stats.hp, {\"hp\":\"{{hp}}\",\"maxHp\":\"{{maxHp}}\"})\n$t(validation:profile.stats.str, {\"context\":\"equipment\",\"str\":\"{{str}}\",\"eqStr\":\"{{eqStr}}\"})\n$t(validation:profile.stats.def, {\"context\":\"equipment\",\"def\":\"{{def}}\",\"eqDef\":\"{{eqDef}}\"})\n$t(validation:profile.stats.vit, {\"context\":\"equipment\",\"vit\":\"{{vit}}\",\"eqVit\":\"{{eqVit}}\"})",
-			"mp": "$t(constant:emojis.stats.mp) **$t(glossary:stats:mp)**: {{mp}}/{{maxMp}}",
-			"mr": "$t(constant:emojis.stats.mr) **$t(glossary:stats:mr)**: {{mr}} (+{{eqMr}})",
+			"mp": "$t(constant:emojis.stats.mp) **$t(glossary:stats:mp)**: {{mp, number}}/{{maxMp, number}}",
+			"mr": "$t(constant:emojis.stats.mr) **$t(glossary:stats:mr)**: {{mr, number}} ({{eqMr, eqStats}})",
 			"right": "$t(validation:profile.stats.mp, {\"mp\":\"{{mp}}\",\"maxMp\":\"{{maxMp}}\"})\n$t(validation:profile.stats.int, {\"context\":\"equipment\",\"int\":\"{{int}}\",\"eqInt\":\"{{eqInt}}\"})\n$t(validation:profile.stats.mr, {\"context\":\"equipment\",\"mr\":\"{{mr}}\",\"eqMr\":\"{{eqMr}}\"})\n$t(validation:profile.stats.agi, {\"context\":\"equipment\",\"agi\":\"{{agi}}\",\"eqAgi\":\"{{eqAgi}}\"})",
-			"str": "$t(constant:emojis.stats.str) **$t(glossary:stats:str)**: {{str}} (+{{eqStr}})",
-			"vit": "$t(constant:emojis.stats.vit) **$t(glossary:stats:vit)**: {{vit}} (+{{eqVit}})"
+			"str": "$t(constant:emojis.stats.str) **$t(glossary:stats:str)**: {{str, number}} ({{eqStr, eqStats}})",
+			"vit": "$t(constant:emojis.stats.vit) **$t(glossary:stats:vit)**: {{vit, number}} ({{eqVit, eqStats}})"
 		},
-		"statsPoint": "**Available stats points**: {{count}}"
+		"statsPoint": "**Available stats points**: {{count, number}}"
 	},
 	"reset": {
 		"decline": "*Phew, okay...*",

@@ -8,8 +8,8 @@
 	"buy": "Mua",
 	"cancel": "Hủy",
 	"challenges": "Thử thách",
-	"chooseClass": "Chọn thiên chức",
-	"class": "Thiên chức",
+	"chooseClass": "Chọn nghề",
+	"class": "Nghề",
 	"consumables": "Tiêu thụ",
 	"cooldown": "Cooldown",
 	"daily": "Hàng ngày",
@@ -88,13 +88,34 @@
 	"tanker": "Đỡ đòn",
 	"term": "Thuật ngữ",
 	"timeUnits": {
-		"year": { "DEFAULT": "năm" },
-		"month": { "DEFAULT": "tháng" },
-		"week": { "DEFAULT": "tuần" },
-		"day": { "DEFAULT": "ngày" },
-		"hour": { "DEFAULT": "giờ" },
-		"minute": { "DEFAULT": "phút" },
-		"second": { "DEFAULT": "giây" }
+		"day": {
+			"1": "ngày",
+			"DEFAULT": "ngày"
+		},
+		"hour": {
+			"1": "giờ",
+			"DEFAULT": "giờ"
+		},
+		"minute": {
+			"1": "phút",
+			"DEFAULT": "phút"
+		},
+		"month": {
+			"1": "tháng",
+			"DEFAULT": "tháng"
+		},
+		"second": {
+			"1": "giây",
+			"DEFAULT": "giây"
+		},
+		"week": {
+			"1": "tuần",
+			"DEFAULT": "tuần"
+		},
+		"year": {
+			"1": "năm",
+			"DEFAULT": "năm"
+		}
 	},
 	"timeout": "Hết giờ",
 	"type": "Loại",
