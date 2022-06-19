@@ -96,8 +96,13 @@ export default class UserCommand extends Command {
 				await resolveKey(interaction, 'common:materials', { lng: locale }),
 				(
 					await Promise.all(
-						materials.map(async ([k, v]) =>
-							resolveKey(interaction, 'validation:inventory.item', { name: k, emoji: `$t(constant:emojis.materials.${k})`, amount: v })
+						materials.map(
+							async ([k, v]) =>
+								`${await resolveKey(interaction, 'validation:inventory.item', {
+									name: k,
+									emoji: `$t(constant:emojis.materials.${k})`,
+									amount: v
+								})}${k === 'Status Recovery' ? ` (${await resolveKey(interaction, 'common:max', { lng: locale })})` : ''}`
 						)
 					)
 				)

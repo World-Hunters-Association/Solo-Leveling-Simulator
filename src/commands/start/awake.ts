@@ -78,7 +78,7 @@ export default class UserCommand extends Command {
 			db.collection('penalty').insertOne({ uid: interaction.user.id, quest: 0, warn: 0, captcha: 100 }),
 			db.collection('stone').insertOne({ uid: interaction.user.id, stones: { 'thunder stone': 1 } }),
 			db.collection('recover').insertOne({ uid: interaction.user.id, has: true }),
-			db.collection('cooldowns').insertOne({ uid: interaction.user.id, gate: 0, skills: {} }),
+			db.collection('cooldowns').insertOne({ uid: interaction.user.id, commands: { daily: 0, gate: 0, weekly: 0 }, skills: {} }),
 			db.collection('daily').insertOne({ uid: interaction.user.id, streak: 0 }),
 			db.collection('lottery').insertOne({ uid: interaction.user.id, amount: 0 }),
 			db.collection('equipment').insertOne({ uid: interaction.user.id, equipped: {}, unequipped: {} }),

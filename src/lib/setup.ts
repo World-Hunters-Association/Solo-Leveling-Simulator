@@ -46,7 +46,6 @@ import type {
 	Penalty,
 	Potions,
 	Recover,
-	Referral,
 	Spam,
 	Stone,
 	Top
@@ -121,7 +120,6 @@ declare module 'mongodb' {
 		collection(name: 'penalty', options?: CollectionOptions): Collection<Penalty>;
 		collection(name: 'potions', options?: CollectionOptions): Collection<Potions>;
 		collection(name: 'recover', options?: CollectionOptions): Collection<Recover>;
-		collection(name: 'referral', options?: CollectionOptions): Collection<Referral>;
 		collection(name: 'spam', options?: CollectionOptions): Collection<Spam>;
 		collection(name: 'stone', options?: CollectionOptions): Collection<Stone>;
 		collection(name: 'top', options?: CollectionOptions): Collection<Top>;

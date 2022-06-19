@@ -6,6 +6,7 @@ import { resolveKey } from '@sapphire/plugin-i18next';
 
 import { Utils } from '../lib/structures/Utils';
 
+import type { DurationFormatAssetsTime } from '@sapphire/time-utilities';
 import type { APIMessage, LocalizationMap } from 'discord.js/node_modules/discord-api-types/v10';
 export default class FunctionsUtils extends Utils {
 	public constructor(context: PieceContext) {
@@ -76,6 +77,10 @@ export default class FunctionsUtils extends Utils {
 		return `${string.slice(0, maxLength - 3)}...`;
 	}
 
+	public timeUnitsLocalizations(locale: string): DurationFormatAssetsTime {
+		return this.container.i18n.format(locale, 'common:timeUnits', { returnObjects: true });
+	}
+
 	private setNameAndDescription(constructor: any, nameKey: string, descriptionKey: string, choices?: string[]) {
 		const names = this.slashNameLocalizations(nameKey);
 		const descriptions = this.slashDescriptionLocalizations(descriptionKey);
@@ -96,7 +101,7 @@ export default class FunctionsUtils extends Utils {
 
 	private slashNameLocalizations(key: string): LocalizationMap {
 		return Object.fromEntries(
-			this.container.constants.DISCORD_SUPPORTED_LANGUAGES.map((locale) => {
+			this.container.constants.SUPPORTED_LANGUAGES.map((locale) => {
 				const t = this.container.i18n.format(locale, `${key}`).toLowerCase().replace(/\s+/g, '-');
 				if (t.length > 32)
 					throw new Error(`Command name length cannot be more than 32 characters. At language key: ${key}, locale: ${locale}`);
@@ -107,7 +112,7 @@ export default class FunctionsUtils extends Utils {
 
 	private slashDescriptionLocalizations(key: string): LocalizationMap {
 		return Object.fromEntries(
-			this.container.constants.DISCORD_SUPPORTED_LANGUAGES.map((locale) => {
+			this.container.constants.SUPPORTED_LANGUAGES.map((locale) => {
 				const t = this.container.i18n.format(locale, `${key}`);
 				return [locale, this.reduceString(t.split('\n')[0], 100)];
 			})

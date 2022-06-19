@@ -23,6 +23,10 @@
 		},
 		"twice": "You cannot choose your class twice!"
 	},
+	"cooldown": {
+		"author": "{{name}}'s cooldowns",
+		"command": "{{emoji}} >> {{name}} ({{cooldown}})"
+	},
 	"help": {
 		"defaultEmbed": {
 			"commands": "$t(constant:emojis:guild) **Statistics commands** $t(constant:emojis:guild)\n`profile` | `inventory` | `top` | `guild`* | `title`\n\n$t(constant:emojis:pvp) **Leveling commands** $t(constant:emojis:quest)\n`gate` | `duel`* | `quest`* | `recover` | `add` | `equip` | `unequip`\n\n$t(constant:emojis:shop) **Economy commands** $t(constant:emojis:shop)\n`shop` | `buy` | `sell` | `open`* | `use` | `trade`* | `give`\n\n$t(constant:emojis:blacksmith) **Working commands** $t(constant:emojis:blacksmith)\n`chop`* | `mine`* | `craft`* | `blacksmith`*\n\n$t(constant:emojis:gambling) **Gambling commands** $t(constant:emojis:gambling)\n`lottery` | `slots`* | `blackjack` | `coinflip` | `dice`* | `threecards`\n\n$t(constant:emojis:gold) ** More Golds** $t(constant:emojis:gold)\n`vote` | `daily` | `weekly` | `redeem`* | `codes`",
@@ -93,6 +97,11 @@
 	"inventory": {
 		"author": "{{name}}'s inventory",
 		"item": "{{emoji}} **$t(glossary:items.{{name}}.name)**: {{amount}}"
+	},
+	"invite": {
+		"bot": "Invite me!",
+		"description": "Click on the bottom buttons to invite/join!",
+		"server": "Join Support Server"
 	},
 	"language": {
 		"decline": "Okay, I didn't change your language.",

@@ -77,10 +77,12 @@ export interface Config {
 	ping: boolean;
 }
 
+type cooldownCommands = 'gate' | 'daily' | 'weekly';
+
 export interface Cooldowns {
 	uid: Snowflake;
 	skills: { [key: string]: number };
-	gate: number;
+	commands: { [key in cooldownCommands]: number };
 }
 
 export interface Daily {
@@ -277,13 +279,6 @@ export interface Potions {
 export interface Recover {
 	uid: Snowflake;
 	has: boolean;
-}
-
-export interface Referral {
-	uid: Snowflake;
-	give: number;
-	receive: number;
-	codes: Snowflake[];
 }
 
 export interface Spam {

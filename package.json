@@ -17,6 +17,7 @@
 		"@sapphire/plugin-hmr": "^1.2.0",
 		"@sapphire/plugin-i18next": "^2.5.2",
 		"@sapphire/plugin-logger": "^2.2.1",
+		"@sapphire/time-utilities": "^1.7.4",
 		"@sapphire/ts-config": "^3.3.4",
 		"@sapphire/utilities": "^3.6.2",
 		"chokidar-cli": "^3.0.0",

@@ -6,6 +6,11 @@ export class Utils<O extends Utils.Options = Utils.Options> extends AliasPiece<O
 		super(context, { ...options, name: (options.name ?? context.name).toLowerCase() });
 		this.description = options.description ?? '';
 	}
+
+	public onLoad() {
+		// @ts-ignore ignore the name check
+		this.container[this.name] = this;
+	}
 }
 
 export interface UtilsOptions extends AliasPiece.Options {

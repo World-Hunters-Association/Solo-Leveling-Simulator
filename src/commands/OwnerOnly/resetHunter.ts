@@ -91,7 +91,6 @@ export default class UserCommand extends Command {
 						this.container.db.collection('recover').deleteOne({ uid: targetId }),
 						this.container.db.collection('cooldowns').deleteOne({ uid: targetId }),
 						this.container.db.collection('daily').deleteOne({ uid: targetId }),
-						this.container.db.collection('referral').deleteOne({ uid: targetId }),
 						this.container.db.collection('lottery').deleteOne({ uid: targetId }),
 						this.container.db.collection('equipment').deleteOne({ uid: targetId }),
 						this.container.db.collection('boxes').deleteOne({ uid: targetId }),
