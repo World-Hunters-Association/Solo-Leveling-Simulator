@@ -117,6 +117,8 @@ interface Rewards extends Partial<Pick<Currencies, 'gold' | 'manaCrystal'>> {
 export interface GateChannel {
 	cid: `${Snowflake}:${string}`;
 	uid: Snowflake;
+	/** @description Party leader ID */
+	plid?: Snowflake;
 	isRed: boolean;
 	rank: KEYS;
 	/**
@@ -139,6 +141,8 @@ export interface Gems {
 export interface Hunter_Fighting {
 	uid: Snowflake;
 	cid: Snowflake;
+	/** @description Party leader ID */
+	plid?: Snowflake;
 	class: CLASSES;
 	exp: number;
 	effect: Effects;
@@ -257,8 +261,9 @@ export interface Money extends Currencies {
 
 export interface Party {
 	uid: Snowflake;
-	members: Snowflake[];
+	members: { uid: Snowflake; name: string }[];
 	loots: { [key: string]: number };
+	name: string;
 }
 
 export interface Penalty {

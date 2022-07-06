@@ -27,6 +27,11 @@
 		"author": "Cooldown của {{name}}",
 		"command": "{{emoji}} >> {{name}} ({{cooldown}})"
 	},
+	"give": {
+		"notEnoughGold": "Bạn là một người tốt.. nhưng hãy xem lại số dư của mình!",
+		"self": "Không thể tự gửi tiền cho chính mình!",
+		"success": "Đã gửi **{{name}} {{quantity}}**"
+	},
 	"help": {
 		"defaultEmbed": {
 			"commands": "$t(constant:emojis:guild) **Statistics commands** $t(constant:emojis:guild)\n`profile` | `inventory` | `top` | `guild`* | `title`\n\n$t(constant:emojis:pvp) **Leveling commands** $t(constant:emojis:quest)\n`gate` | `duel`* | `quest`* | `recover` | `add` | `equip` | `unequip`\n\n$t(constant:emojis:shop) **Economy commands** $t(constant:emojis:shop)\n`shop` | `buy` | `sell` | `open`* | `use` | `trade`* | `give`\n\n$t(constant:emojis:blacksmith) **Working commands** $t(constant:emojis:blacksmith)\n`chop`* | `mine`* | `craft`* | `blacksmith`*\n\n$t(constant:emojis:gambling) **Gambling commands** $t(constant:emojis:gambling)\n`lottery` | `slots`* | `blackjack` | `coinflip` | `dice`* | `threecards`\n\n$t(constant:emojis:gold) ** More Golds** $t(constant:emojis:gold)\n`vote` | `daily` | `weekly` | `redeem`* | `codes`",
@@ -96,7 +101,8 @@
 	},
 	"inventory": {
 		"author": "Kho đồ của {{name}}",
-		"item": "{{emoji}} **$t(glossary:items.{{name}}.name)**: {{amount}}"
+		"item": "{{emoji}} **$t(glossary:items.{{name}}.name)**: {{amount}}",
+		"material": "{{emoji}} **$t(glossary:materials.{{name}}.name)**: {{amount}}"
 	},
 	"invite": {
 		"bot": "Hãy thêm tôi!",
@@ -110,6 +116,104 @@
 	},
 	"links": "[**Invite link**]($t(constant:botInvite)) | [**Support server**]($t(constant:serverInvite)) | [**Vote**]($t(constant:botVote)) | [**Donate (Patreon)**]($t(constant:patreon)) | [**Donate (Donate Bot)**]($t(constant:donateBot, { \"uid\": \"{{uid}}\" }))",
 	"mentionNotHunter": "Không thể thực thi vì **{{mention}}** không phải là một $t(common:hunter)!",
+	"party": {
+		"create": {
+			"alreadyHave": "Hiện giờ bạn đã đang ở trong một tổ đội."
+		},
+		"disband": "Tổ đội của bạn đã giải thể!",
+		"give": {
+			"invalidItem": "Hãy xem lại tên của chiến lợi phẩm mà bạn muốn phát!",
+			"max": "$t(common:max): {{count, number}}",
+			"notEnough": "Không đủ chiến lợi phẩm để phát.",
+			"success": "Đã gửi **{{name}}** {{quantity, number}} $t(constant:emojis.materials.{{item}}) $t(glossary:materials.{{item}}.name)."
+		},
+		"info": {
+			"author": {
+				"name": "{{name}}"
+			},
+			"color": "BLUE",
+			"fields": [
+				{
+					"inline": true,
+					"name": "Thành viên",
+					"value": "{{members}}"
+				},
+				{
+					"inline": true,
+					"name": "Chiến lợi phẩm (5 thứ đầu tiên)",
+					"value": "{{loots}}\n*Sử dụng `/{{commandParty}} {{subcommandLoots, lowercase}}` để xem thêm*"
+				}
+			]
+		},
+		"invite": {
+			"accepted": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}** đã gia nhập **{{partyName}}**!"
+			},
+			"alreadyHave": "**{{name}}** đã đang là thành viên của một tổ đội!",
+			"declined": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "{{name}} đã từ chối lời mòi gia nhập!"
+			},
+			"full": "Tổ đội của bạn hiện đang đầy!",
+			"invitation": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}**, Bạn được mời tham gia **{{partyName}}**.",
+				"footer": {
+					"text": "Trả lời bằng cách nhấn vào các nút bên dưới tin nhắn này."
+				}
+			},
+			"timeout": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "$t(common:timeout)!"
+			}
+		},
+		"kick": {
+			"inGate": "Bạn không thể đá thành viên đang trong cổng!",
+			"success": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}** đã bị đá ra khỏi **{{partyName}}**!"
+			}
+		},
+		"leave": {
+			"author": {
+				"name": "{{partyName}}"
+			},
+			"color": "BLUE",
+			"description": "**{{name}}** đã rời khỏi **{{partyName}}**!"
+		},
+		"loots": {
+			"loot": "$t(constant:emojis.materials.{{name}}) **$t(glossary:materials.{{name}}.name)**: {{count, number}}"
+		},
+		"memberInGate": "Vẫn còn thành viên trong cổng!",
+		"name": "Tổ đội của {{name}}",
+		"noParty": "Hiện bạn đang không ở trong một tổ đội nào!",
+		"notInParty": "**{{name}}** không phải là thành viên của **{{partyName}}**!",
+		"notLeader": "Bạn không phải là đội trưởng của bất cứ tổ đội nào!",
+		"transfer": {
+			"author": {
+				"name": "{{partyName}}"
+			},
+			"color": "BLUE",
+			"description": "**{{name}}** đã trở thành đội trưởng của **{{partyName}}**!"
+		},
+		"ungivenLoots": "Vẫn còn chiến lợi phẩm chưa được phân phát!"
+	},
 	"profile": {
 		"author": "Hồ sơ của {{name}}",
 		"information": {
@@ -152,6 +256,10 @@
 		"ruleThree": "**KHÔNG** lạm dụng hoặc hưởng lợi từ lỗi. Mà hãy báo cáo trực tiếp cho <#729245705578741842> [**$t(glossary:WHA)**]($t(constant:serverInvite)).",
 		"ruleTos": "Cuối cùng, hãy tuân thủ **Discord TOS!!**",
 		"ruleTwo": "**KHÔNG** gian lận bằng bất kỳ hình thức nào ||*(self-bot, macro, v.v.)*||"
+	},
+	"sell": {
+		"quantity": "{{quantity, number}} ({{currency}})",
+		"success": "Đã bán {{emoji}} **{{name}}** với {{currency}}!"
 	},
 	"use": {
 		"life": "HP của bạn đã được khôi phục!",

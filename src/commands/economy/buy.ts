@@ -3,7 +3,7 @@ import Fuse from 'fuse.js';
 import { SlashCommandBuilder, SlashCommandNumberOption, SlashCommandStringOption } from '@discordjs/builders';
 import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, container, RegisterBehavior } from '@sapphire/framework';
-import { editLocalized, resolveKey } from '@sapphire/plugin-i18next';
+import { editLocalized } from '@sapphire/plugin-i18next';
 
 import type { AutocompleteInteraction, CommandInteraction } from 'discord.js';
 
@@ -121,20 +121,24 @@ export default class UserCommand extends Command {
 		const quantity = interaction.options.getNumber(this.container.i18n.format('en-US', 'common:quantity').toLowerCase()) || 1;
 
 		if (!item) {
-			await interaction.editReply(
-				this.container.i18n.format(locale, 'common:missingField', {
-					fields: this.container.i18n.format('en-US', 'common:item').toLowerCase()
-				})
-			);
+			await editLocalized(interaction, {
+				keys: 'common:missingField',
+				formatOptions: {
+					fields: this.container.i18n.format('en-US', 'common:item').toLowerCase(),
+					lng: locale
+				}
+			});
+			return;
 		}
 
 		if (quantity < 0) {
-			await interaction.editReply(
-				await resolveKey(interaction, 'common:notEnough', {
+			await editLocalized(interaction, {
+				keys: 'common:notEnough',
+				formatOptions: {
 					what: `$t(glossary:currencies.${item.currency}, {"count":${item.price}})`,
 					lng: locale
-				})
-			);
+				}
+			});
 			return;
 		}
 

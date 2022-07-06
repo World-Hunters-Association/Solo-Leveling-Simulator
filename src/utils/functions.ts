@@ -1,5 +1,19 @@
-import type { SlashCommandBuilder } from '@discordjs/builders';
+import type {
+	SlashCommandAttachmentOption,
+	SlashCommandBooleanOption,
+	SlashCommandBuilder,
+	SlashCommandChannelOption,
+	SlashCommandIntegerOption,
+	SlashCommandMentionableOption,
+	SlashCommandNumberOption,
+	SlashCommandRoleOption,
+	SlashCommandStringOption,
+	SlashCommandSubcommandBuilder,
+	SlashCommandSubcommandGroupBuilder,
+	SlashCommandUserOption
+} from '@discordjs/builders';
 import type { PieceContext } from '@sapphire/framework';
+import { ApplicationCommandOptionType } from 'discord-api-types/v9';
 import { BaseCommandInteraction, Message, MessageComponentInteraction } from 'discord.js';
 
 import { resolveKey } from '@sapphire/plugin-i18next';
@@ -64,12 +78,50 @@ export default class FunctionsUtils extends Utils {
 	}
 
 	public setNameAndDescriptions<
-		T extends Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>,
+		T extends Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'> | SlashCommandBuilder | SlashCommandSubcommandBuilder,
 		nameKey extends string,
-		desccriptionKey extends string
-	>(constructor: T, mainKey: [nameKey, desccriptionKey], ...keys: [nameKey, desccriptionKey, nameKey[]?][]) {
-		this.setNameAndDescription(constructor, ...mainKey);
-		if (Boolean(keys.length)) constructor.options.forEach((option, ind) => this.setNameAndDescription(option, ...keys[ind]));
+		desccriptionKey extends string,
+		type extends keyof OptionTypes,
+		options extends OptionTypes[type]
+	>(
+		constructor: T,
+		mainKey: [
+			nameKey,
+			desccriptionKey,
+			[nameKey?, desccriptionKey?, [nameKey, desccriptionKey, [nameKey, desccriptionKey, nameKey[]?, Partial<options>?, type?][]?][]?][]?
+		],
+		...keys: [nameKey, desccriptionKey, nameKey[]?, Partial<options>?, type?][]
+	) {
+		this.setNameAndDescription(constructor, mainKey.shift() as '', mainKey.shift() as '');
+		if (mainKey.length) {
+			const Keys = mainKey.shift() as [
+				nameKey?,
+				desccriptionKey?,
+				[nameKey, desccriptionKey, [nameKey, desccriptionKey, nameKey[]?, Partial<options>?, type?][]?][]?
+			][];
+			Keys.forEach((p) => {
+				if (Boolean(p[0]) && Boolean(p[1]))
+					(constructor as SlashCommandBuilder).addSubcommandGroup((g) => {
+						this.setNameAndDescription(g, p[0]!, p[1]!);
+						this.addSubcommandAndSetNameAndDescription(g, p[2]!);
+						return g;
+					});
+				if (!p[0] && !p[1] && Boolean(p[2])) {
+					this.addSubcommandAndSetNameAndDescription(constructor as SlashCommandBuilder, p[2]!);
+				}
+			});
+		}
+		if (Boolean(keys.length)) {
+			keys.forEach((key, ind) => {
+				if (Boolean(key[3]))
+					constructor[`add${ApplicationCommandOptionType[key[3]!.type!] as 'String'}Option`]((o) => {
+						this.setNameAndDescription(o, ...key);
+						Object.entries(key[3]!).forEach(([k, v]) => Reflect.set(o, k, v));
+						return o;
+					});
+				else this.setNameAndDescription(constructor.options[ind], ...key);
+			});
+		}
 	}
 
 	public reduceString(string: string, maxLength: number) {
@@ -81,7 +133,52 @@ export default class FunctionsUtils extends Utils {
 		return this.container.i18n.format(locale, 'common:timeUnits', { returnObjects: true });
 	}
 
-	private setNameAndDescription(constructor: any, nameKey: string, descriptionKey: string, choices?: string[]) {
+	public slashNameLocalizations(key: string): LocalizationMap {
+		return Object.fromEntries(
+			this.container.constants.SUPPORTED_LANGUAGES.map((locale) => {
+				const t = this.container.i18n.format(locale, `${key}`).toLowerCase().replace(/\s+/g, '-');
+				if (t.length > 32)
+					throw new Error(`Command name length cannot be more than 32 characters. At language key: ${key}, locale: ${locale}`);
+				return [locale, t];
+			})
+		);
+	}
+
+	public slashDescriptionLocalizations(key: string): LocalizationMap {
+		return Object.fromEntries(
+			this.container.constants.SUPPORTED_LANGUAGES.map((locale) => {
+				const t = this.container.i18n.format(locale, `${key}`);
+				return [locale, this.reduceString(t.split('\n')[0], 100)];
+			})
+		);
+	}
+
+	private addSubcommandAndSetNameAndDescription<
+		nameKey extends string,
+		desccriptionKey extends string,
+		type extends keyof OptionTypes,
+		options extends OptionTypes[type]
+	>(
+		constructor: SlashCommandBuilder | SlashCommandSubcommandGroupBuilder,
+		keys: [nameKey, desccriptionKey, [nameKey, desccriptionKey, nameKey[]?, Partial<options>?, type?][]?][]
+	) {
+		keys.forEach((k) =>
+			constructor.addSubcommand((s) => {
+				if (Boolean(k[2])) this.setNameAndDescriptions(s, [k[0]!, k[1]!], ...k[2]!);
+				else this.setNameAndDescriptions(s, [k[0]!, k[1]!]);
+				return s;
+			})
+		);
+	}
+
+	private setNameAndDescription<type extends keyof OptionTypes, options extends OptionTypes[type]>(
+		constructor: any,
+		nameKey: string,
+		descriptionKey: string,
+		choices?: string[],
+		_?: Partial<options>,
+		__?: type
+	) {
 		const names = this.slashNameLocalizations(nameKey);
 		const descriptions = this.slashDescriptionLocalizations(descriptionKey);
 		Reflect.set(constructor, 'name', names['en-US']);
@@ -98,30 +195,22 @@ export default class FunctionsUtils extends Utils {
 				})
 			);
 	}
-
-	private slashNameLocalizations(key: string): LocalizationMap {
-		return Object.fromEntries(
-			this.container.constants.SUPPORTED_LANGUAGES.map((locale) => {
-				const t = this.container.i18n.format(locale, `${key}`).toLowerCase().replace(/\s+/g, '-');
-				if (t.length > 32)
-					throw new Error(`Command name length cannot be more than 32 characters. At language key: ${key}, locale: ${locale}`);
-				return [locale, t];
-			})
-		);
-	}
-
-	private slashDescriptionLocalizations(key: string): LocalizationMap {
-		return Object.fromEntries(
-			this.container.constants.SUPPORTED_LANGUAGES.map((locale) => {
-				const t = this.container.i18n.format(locale, `${key}`);
-				return [locale, this.reduceString(t.split('\n')[0], 100)];
-			})
-		);
-	}
 }
 
 declare module '../lib/structures/UtilsStore' {
 	interface UtilsStore {
 		get(name: 'functions'): FunctionsUtils;
 	}
+}
+
+interface OptionTypes {
+	String: SlashCommandStringOption;
+	Integer: SlashCommandIntegerOption;
+	Boolean: SlashCommandBooleanOption;
+	User: SlashCommandUserOption;
+	Channel: SlashCommandChannelOption;
+	Role: SlashCommandRoleOption;
+	Mentionable: SlashCommandMentionableOption;
+	Number: SlashCommandNumberOption;
+	Attachment: SlashCommandAttachmentOption;
 }

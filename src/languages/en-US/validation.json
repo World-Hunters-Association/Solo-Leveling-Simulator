@@ -27,6 +27,11 @@
 		"author": "{{name}}'s cooldowns",
 		"command": "{{emoji}} >> {{name}} ({{cooldown}})"
 	},
+	"give": {
+		"notEnoughGold": "A gud guy... But check your money first!",
+		"self": "You cannot give to yoursolf!",
+		"success": "Successfully gave **{{name}} {{quantity}}**"
+	},
 	"help": {
 		"defaultEmbed": {
 			"commands": "$t(constant:emojis:guild) **Statistics commands** $t(constant:emojis:guild)\n`profile` | `inventory` | `top` | `guild`* | `title`\n\n$t(constant:emojis:pvp) **Leveling commands** $t(constant:emojis:quest)\n`gate` | `duel`* | `quest`* | `recover` | `add` | `equip` | `unequip`\n\n$t(constant:emojis:shop) **Economy commands** $t(constant:emojis:shop)\n`shop` | `buy` | `sell` | `open`* | `use` | `trade`* | `give`\n\n$t(constant:emojis:blacksmith) **Working commands** $t(constant:emojis:blacksmith)\n`chop`* | `mine`* | `craft`* | `blacksmith`*\n\n$t(constant:emojis:gambling) **Gambling commands** $t(constant:emojis:gambling)\n`lottery` | `slots`* | `blackjack` | `coinflip` | `dice`* | `threecards`\n\n$t(constant:emojis:gold) ** More Golds** $t(constant:emojis:gold)\n`vote` | `daily` | `weekly` | `redeem`* | `codes`",
@@ -96,7 +101,8 @@
 	},
 	"inventory": {
 		"author": "{{name}}'s inventory",
-		"item": "{{emoji}} **$t(glossary:items.{{name}}.name)**: {{amount}}"
+		"item": "{{emoji}} **$t(glossary:items.{{name}}.name)**: {{amount}}",
+		"material": "{{emoji}} **$t(glossary:materials.{{name}}.name)**: {{amount}}"
 	},
 	"invite": {
 		"bot": "Invite me!",
@@ -110,6 +116,104 @@
 	},
 	"links": "[**Invite link**]($t(constant:botInvite)) | [**Support server**]($t(constant:serverInvite)) | [**Vote**]($t(constant:botVote)) | [**Donate (Patreon)**]($t(constant:patreon)) | [**Donate (Donate Bot)**]($t(constant:donateBot, { \"uid\": \"{{uid}}\" }))",
 	"mentionNotHunter": "You cannot do this because **{{mention}}** is not a $t(common:hunter)!",
+	"party": {
+		"create": {
+			"alreadyHave": "You have participated in a party already."
+		},
+		"disband": "Your party has been disbanded!",
+		"give": {
+			"invalidItem": "Please recheck loots name!",
+			"max": "$t(common:max): {{count, number}}",
+			"notEnough": "Your party's loots does not have enough this item to give.",
+			"success": "Gave **{{name}}** {{quantity, number}} $t(constant:emojis.materials.{{item}}) $t(glossary:materials.{{item}}.name)."
+		},
+		"info": {
+			"author": {
+				"name": "{{name}}"
+			},
+			"color": "BLUE",
+			"fields": [
+				{
+					"inline": true,
+					"name": "Members",
+					"value": "{{members}}"
+				},
+				{
+					"inline": true,
+					"name": "Loots (First 5)",
+					"value": "{{loots}}\n*Uses `/{{commandParty}} {{subcommandLoots, lowercase}}` to see more*"
+				}
+			]
+		},
+		"invite": {
+			"accepted": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "{{name}} just joined {{partyName}}!"
+			},
+			"alreadyHave": "**{{name}}** has participated in a party already!",
+			"declined": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "{{name}} declined the invitation!"
+			},
+			"full": "Your party is currently full!",
+			"invitation": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}**, You have been invited to join **{{partyName}}**.\nAnswer with the buttons below.",
+				"footer": {
+					"text": "Answers by clicking on the below buttons."
+				}
+			},
+			"timeout": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "Time up!"
+			}
+		},
+		"kick": {
+			"inGate": "You cannot kick a member that still in the gate!",
+			"success": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}** has been kicked!"
+			}
+		},
+		"leave": {
+			"author": {
+				"name": "{{partyName}}"
+			},
+			"color": "BLUE",
+			"description": "**{{name}}** has left **{{partyName}}**!"
+		},
+		"loots": {
+			"loot": "$t(constant:emojis.materials.{{name}}) **$t(glossary:materials.{{name}}.name)**: {{count, number}}"
+		},
+		"memberInGate": "Aren't there still some members in the gate?",
+		"name": "{{name}}'s party",
+		"noParty": "You aren't participated in any party!",
+		"notInParty": "**{{name}}** aren't member of **{{partyName}}**!",
+		"notLeader": "You aren't the leader of any party!",
+		"transfer": {
+			"author": {
+				"name": "{{partyName}}"
+			},
+			"color": "BLUE",
+			"description": "**{{name}}** has became the leader of **{{partyName}}**!"
+		},
+		"ungivenLoots": "There're still ungiven loots left!"
+	},
 	"profile": {
 		"author": "{{name}}'s profile",
 		"information": {
@@ -152,6 +256,10 @@
 		"ruleThree": "Do **NOT** abuse or benefit from bugs. Report it directly to <#729245705578741842> [**$t(glossary:WHA)**]($t(constant:serverInvite))",
 		"ruleTos": "Finally, follow **Discord TOS!!**",
 		"ruleTwo": "Do **NOT** cheat on the bot by any form of automation ||*(self-bot, macros, etc.)*||"
+	},
+	"sell": {
+		"quantity": "{{quantity, number}} ({{currency}})",
+		"success": "Sold successfully {{emoji}} **{{name}}** for {{currency}}!"
 	},
 	"use": {
 		"life": "Your HP has been restored!",

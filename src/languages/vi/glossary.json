@@ -148,6 +148,50 @@
 			"name": "Đá sấm sét"
 		}
 	},
+	"materials": {
+		"Rasaka's Eye": {
+			"name": "Mắt Rasaka"
+		},
+		"Rasaka's Scale": {
+			"name": "Vảy Rasaka"
+		},
+		"Rasaka's Red Scale": {
+			"name": "Vảy Rasaka Đỏ"
+		},
+		"Rasaka's Poison Fang": {
+			"name": "Nanh Độc của Rasaka"
+		},
+		"Raikan's Fang": {
+			"name": "Nanh Raikan"
+		},
+		"Raikan's Fur": {
+			"name": "Lông Raikan"
+		},
+		"Briga's Claw": {
+			"name": "Móng Vuốt Briga"
+		},
+		"Briga's Fur": {
+			"name": "Lông Briga"
+		},
+		"Razan's Fang": {
+			"name": "Nanh Razan"
+		},
+		"Razan's Fur": {
+			"name": "Lông Razan"
+		},
+		"Goblin's Eye": {
+			"name": "Mắt Goblin"
+		},
+		"Goblin's Cloth": {
+			"name": "Áo Goblin"
+		},
+		"Stone Golem's Skin Shard": {
+			"name": "Mảnh Da Người Đá"
+		},
+		"Stone Golem's Core": {
+			"name": "Lõi Người Đá"
+		}
+	},
 	"skills": {
 		"Arrow rain": {
 			"description": "Triệu hồi mưa tên gây sát thương lên kẻ địch từ xa.",

@@ -1177,6 +1177,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/plugin-subcommands@npm:pr-271":
+  version: 3.0.0-pr-271.8a04ac90.0
+  resolution: "@sapphire/plugin-subcommands@npm:3.0.0-pr-271.8a04ac90.0"
+  dependencies:
+    tslib: ^2.4.0
+  checksum: 92d36a31c22a506f4951ecbc5c24173bcab2ead97fb9669f17b3e38bd62eb7aa724ca7830465f8e7e9b7e8183af6a6ce900ddfc5159acd1ee9bc2da65412fb0f
+  languageName: node
+  linkType: hard
+
 "@sapphire/prettier-config@npm:^1.4.3":
   version: 1.4.3
   resolution: "@sapphire/prettier-config@npm:1.4.3"
@@ -6831,6 +6840,7 @@ __metadata:
     "@sapphire/plugin-hmr": ^1.2.0
     "@sapphire/plugin-i18next": ^2.5.2
     "@sapphire/plugin-logger": ^2.2.1
+    "@sapphire/plugin-subcommands": pr-271
     "@sapphire/prettier-config": ^1.4.3
     "@sapphire/time-utilities": ^1.7.4
     "@sapphire/ts-config": ^3.3.4

@@ -18,15 +18,11 @@ export default class UserCommand extends Command {
 			.setName(this.name)
 			.setDescription(this.description)
 			.addStringOption(
-				new SlashCommandStringOption()
-					.setName('language')
-					.setDescription('Language configuration')
-					.setRequired(true)
-					.addChoices(
-						{ name: 'English', value: 'en-US' },
-						{ name: 'Tiếng Việt', value: 'vi' },
-						{ name: 'Bahasa Indonesia', value: 'id-ID' }
-					)
+				new SlashCommandStringOption().setName('language').setDescription('Language configuration').setRequired(true).addChoices(
+					{ name: 'English', value: 'en-US' },
+					{ name: 'Tiếng Việt', value: 'vi' }
+					// { name: 'Bahasa Indonesia', value: 'id-ID' }
+				)
 			);
 
 		this.container.functions.setNameAndDescriptions(

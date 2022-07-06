@@ -8,7 +8,7 @@ import { DurationFormatter } from '@sapphire/time-utilities';
 
 @ApplyOptions<CommandOptions>({
 	name: 'cooldown',
-	preconditions: ['EphemeralDefer'],
+	preconditions: ['EphemeralDefer', 'IsHunter'],
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })

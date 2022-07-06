@@ -98,7 +98,7 @@ export default class UserCommand extends Command {
 					await Promise.all(
 						materials.map(
 							async ([k, v]) =>
-								`${await resolveKey(interaction, 'validation:inventory.item', {
+								`${await resolveKey(interaction, 'validation:inventory.material', {
 									name: k,
 									emoji: `$t(constant:emojis.materials.${k})`,
 									amount: v

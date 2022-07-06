@@ -12,24 +12,44 @@
 	"class": "Class",
 	"consumables": "Consumables",
 	"cooldown": "Cooldown",
+	"create": "Create",
 	"daily": "Daily",
 	"descriptions": {
 		"awakeName": "Your character name",
 		"buyItem": "The item you want to buy.",
 		"buyQuantity": "The amount of items you want to buy.",
+		"giveHunter": "The Hunter you want to give.",
+		"giveQuantity": "The amount of golds you want to give.",
 		"hunterInventory": "The hunter to show.",
 		"hunterProfile": "The hunter to show.",
 		"language": "The language you want",
+		"page": "The page number",
+		"partyCreate": "Create a party",
+		"partyDisband": "Delete the party",
+		"partyGive": "Give the loots to a party member",
+		"partyGiveQuantity": "Loots quantity",
+		"partyInfo": "Party's information",
+		"partyInvite": "Invite another Hunter",
+		"partyKick": "Kick a party member",
+		"partyLeave": "Leaves the party",
+		"partyLoots": "Party's loots",
+		"partyMember": "Party's member",
+		"partyName": "Party's name (\"Leader name's party\")",
+		"partyTransfer": "Transfer the leader role to another member",
+		"sellItem": "The item you want to sell.",
+		"sellQuantity": "The amount of items you want to sell.",
 		"showInventory": "Should the inventory be shown to other people?",
 		"showProfile": "Should the profile be shown to other people?",
 		"term": "The things you need help",
 		"useItem": "The item you wanna use."
 	},
+	"disband": "Disband",
 	"drink": "Drink",
 	"drop": "Drops",
 	"examples": "Examples",
 	"fighter": "Fighter",
 	"gate": "Gate",
+	"give": "Give",
 	"gloves": "Gloves",
 	"guild": "Guild",
 	"heal": "Heal",
@@ -43,7 +63,9 @@
 	"invite": "Invite",
 	"item": "Item",
 	"keys": "Keys",
+	"kick": "Kick",
 	"language": "Language",
+	"leave": "Leave",
 	"level": "Level",
 	"levelDepends": {
 		"amount": "Amount",
@@ -56,6 +78,7 @@
 	},
 	"library": "Library",
 	"links": "Useful links",
+	"loots": "Loots",
 	"mage": "Mage",
 	"materials": "Materials",
 	"max": "Max",
@@ -66,6 +89,7 @@
 	"no": "No",
 	"none": "none",
 	"notEnough": "Not enough {{what}}!",
+	"page": "Page",
 	"party": "Party",
 	"profile": "Profile",
 	"quantity": "Quantity",
@@ -76,6 +100,7 @@
 	"ring": "Ring",
 	"rule": "Rules",
 	"selectMenuPlaceholder": "Make a selection",
+	"sell": "Sell",
 	"sellValue": "Sell value",
 	"server": "Server",
 	"shard": "Shard",
@@ -88,15 +113,37 @@
 	"tanker": "Tanker",
 	"term": "Terms",
 	"timeUnits": {
-		"year": { "1": "year", "DEFAULT": "years" },
-		"month": { "1": "month", "DEFAULT": "months" },
-		"week": { "1": "week", "DEFAULT": "weeks" },
-		"day": { "1": "day", "DEFAULT": "days" },
-		"hour": { "1": "hour", "DEFAULT": "hours" },
-		"minute": { "1": "minute", "DEFAULT": "minutes" },
-		"second": { "1": "second", "DEFAULT": "seconds" }
+		"day": {
+			"1": "day",
+			"DEFAULT": "days"
+		},
+		"hour": {
+			"1": "hour",
+			"DEFAULT": "hours"
+		},
+		"minute": {
+			"1": "minute",
+			"DEFAULT": "minutes"
+		},
+		"month": {
+			"1": "month",
+			"DEFAULT": "months"
+		},
+		"second": {
+			"1": "second",
+			"DEFAULT": "seconds"
+		},
+		"week": {
+			"1": "week",
+			"DEFAULT": "weeks"
+		},
+		"year": {
+			"1": "year",
+			"DEFAULT": "years"
+		}
 	},
 	"timeout": "Time out",
+	"transfer": "Transfer",
 	"type": "Type",
 	"unspecialized": "Unspecialized",
 	"uptime": "Uptime",

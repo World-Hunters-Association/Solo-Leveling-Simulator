@@ -148,6 +148,50 @@
 			"name": "thunder stone"
 		}
 	},
+	"materials": {
+		"Rasaka's Eye": {
+			"name": "Rasaka's Eye"
+		},
+		"Rasaka's Scale": {
+			"name": "Rasaka's Scale"
+		},
+		"Rasaka's Red Scale": {
+			"name": "Rasaka's Red Scale"
+		},
+		"Rasaka's Poison Fang": {
+			"name": "Rasaka's Poison Fang"
+		},
+		"Raikan's Fang": {
+			"name": "Raikan's Fang"
+		},
+		"Raikan's Fur": {
+			"name": "Raikan's Fur"
+		},
+		"Briga's Claw": {
+			"name": "Briga's Claw"
+		},
+		"Briga's Fur": {
+			"name": "Briga's Fur"
+		},
+		"Razan's Fang": {
+			"name": "Razan's Fang"
+		},
+		"Razan's Fur": {
+			"name": "Razan's Fur"
+		},
+		"Goblin's Eye": {
+			"name": "Goblin's Eye"
+		},
+		"Goblin's Cloth": {
+			"name": "Goblin's Cloth"
+		},
+		"Stone Golem's Skin Shard": {
+			"name": "Stone Golem's Skin Shard"
+		},
+		"Stone Golem's Core": {
+			"name": "Stone Golem's Core"
+		}
+	},
 	"skills": {
 		"Arrow rain": {
 			"description": "Summon rain of arrows that deal damage to enemies from far away.",
