@@ -35,7 +35,7 @@ export default class UserCommand extends Command {
 
 	public async autocompleteRun(interaction: AutocompleteInteraction) {
 		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
-		let { name, value } = interaction.options.getFocused(true);
+		const { name, value } = interaction.options.getFocused(true);
 		switch (name) {
 			case this.container.i18n.format('en-US', 'common:item').toLowerCase():
 				await interaction.respond(
@@ -49,7 +49,7 @@ export default class UserCommand extends Command {
 				);
 				break;
 			case this.container.i18n.format('en-US', 'common:quantity').toLowerCase(): {
-				value = Math.abs(Math.floor(Number(value)));
+				const _value = Math.abs(Math.floor(Number(value)));
 				const money = await this.container.db.collection('money').findOne({ uid: interaction.user.id });
 				const item = this.container.constants.ITEMS.find(
 					(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
@@ -99,13 +99,13 @@ export default class UserCommand extends Command {
 					});
 				}
 
-				if (wallet >= item.price * value && Boolean(value))
+				if (wallet >= item.price * _value && Boolean(_value))
 					choices.unshift({
 						name: this.container.i18n.format(locale, 'validation:buy.quantity', {
-							quantity: value,
-							currency: `$t(glossary:currencies.${item.currency}, {"count":${value * item.price},"context":"count"})`
+							quantity: _value,
+							currency: `$t(glossary:currencies.${item.currency}, {"count":${_value * item.price},"context":"count"})`
 						}),
-						value
+						value: _value
 					});
 
 				await interaction.respond(choices);

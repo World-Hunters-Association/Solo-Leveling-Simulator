@@ -35,7 +35,7 @@ export default class UserCommand extends Command {
 
 	public async autocompleteRun(interaction: AutocompleteInteraction) {
 		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
-		let { name, value } = interaction.options.getFocused(true);
+		const { name, value } = interaction.options.getFocused(true);
 		switch (name) {
 			case this.container.i18n.format('en-US', 'common:item').toLowerCase():
 				await interaction.respond(
@@ -49,7 +49,7 @@ export default class UserCommand extends Command {
 				);
 				break;
 			case this.container.i18n.format('en-US', 'common:quantity').toLowerCase(): {
-				value = Math.abs(Math.floor(Number(value || 0)));
+				const _value = Math.abs(Math.floor(Number(value) || 0));
 				const item = this.container.constants.ITEMS.find(
 					(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
 				);
@@ -97,15 +97,15 @@ export default class UserCommand extends Command {
 						}
 					].concat(
 						[1, 10, 100, 1000]
-							.filter((v) => v * Number(value) <= has && value !== 0)
+							.filter((v) => v * Number(_value) <= has && Number(_value) !== 0)
 							.map((v) => ({
 								name: this.container.i18n.format(locale, 'validation:sell.quantity', {
-									quantity: v * Number(value),
+									quantity: v * Number(_value),
 									currency: `$t(glossary:currencies.gold, {"count":${
-										v * Number(value) * (Boolean(drop) ? drop : item)!.sellPrice!
+										v * Number(_value) * (Boolean(drop) ? drop : item)!.sellPrice!
 									},"context":"count"})`
 								}),
-								value: v * Number(value)
+								value: v * Number(_value)
 							}))
 					)
 				);
@@ -188,7 +188,7 @@ export default class UserCommand extends Command {
 				}))
 				.concat(
 					this.container.constants.DROPS.filter((i) => isFinite(i.sellPrice || Infinity)).map((m) => ({
-						label: this.container.i18n.format(locale, `glossary:materials.${m.name}`),
+						label: this.container.i18n.format(locale, `glossary:materials.${m.name}.name`),
 						name: m.name,
 						emoji: m.emoji,
 						value: m as Items | Drops
