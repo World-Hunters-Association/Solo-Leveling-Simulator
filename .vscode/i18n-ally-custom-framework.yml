@@ -1,0 +1,7 @@
+languageIds:
+  - typescript
+  - json
+
+usageMatchRegex:
+  - "\\$t\\((.*?)\\s*?(?:,[\\s\\S]*?)?}?\\)"
+  - '[''"`]((?:(?:(?:common)|(?:glossary)|(?:constant)|(?:validation)):.*?)+)[''"`]'

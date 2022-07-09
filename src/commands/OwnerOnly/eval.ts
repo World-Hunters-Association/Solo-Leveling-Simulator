@@ -70,3 +70,9 @@ export class UserCommand extends Command {
 		return { result, success };
 	}
 }
+
+declare module '@sapphire/framework' {
+	interface CommandStore {
+		get(name: 'eval'): UserCommand;
+	}
+}

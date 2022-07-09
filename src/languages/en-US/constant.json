@@ -1,0 +1,93 @@
+{
+	"botInvite": "https://discord.com/oauth2/authorize?client_id=703043558483034223&permissions=277025770560&scope=bot+applications.commands",
+	"botVote": "https://top.gg/bot/703043558483034223/vote",
+	"donateBot": "https://donatebot.io/checkout/724186681124716544?buyer={{uid}}",
+	"donateBot_markdown": "[Donate Bot](https://donatebot.io/checkout/724186681124716544?buyer={{uid}})",
+	"emojis": {
+		"Status Recovery": "<:s:743406575405891586>",
+		"blacksmith": "<:s:724541953890320384>",
+		"class": {
+			"assassin": "<:s:741716520920678451>",
+			"fighter": "<:s:741716521147170836>",
+			"healer": "<:s:741716521088188476>",
+			"mage": "<:s:741716521109159996>",
+			"ranger": "<:s:741716521083994255>",
+			"tanker": "<:s:741716521365274654>",
+			"unspecialized": "<:s:741716520949776425>"
+		},
+		"currencies": {
+			"gold": "<:s:729535888912154754>",
+			"magicCore": "<:s:729601324013846650>",
+			"manaCrystal": "<:s:729523453706764388>"
+		},
+		"gambling": "<:s:724541954066743347>",
+		"guild": "<:s:724541954796421151>",
+		"keys": {
+			"A-rank key": "<:s:740054291414384770>",
+			"B-rank key": "<:s:740054291984678966>",
+			"C-rank key": "<:s:740054291217252363>",
+			"D-rank key": "<:s:740054291326304408>",
+			"E-rank key": "<:s:740054291158532178>",
+			"S-rank key": "<:s:740054291317784639>",
+			"SS-rank key": "<:s:740423956208812113>",
+			"Uprank key": "<:s:740175804339585024>"
+		},
+		"life potion": "<:s:740053804463947776>",
+		"lottery ticket": "<:s:763331798423044097>",
+		"mana potion": "<:s:740053804480856074>",
+		"materials": {
+			"Briga's Claw": "<:s:749291018763108383>",
+			"Briga's Fur": "<:s:749291018423107675>",
+			"Goblin's Cloth": "<:s:749291059657441290>",
+			"Goblin's Eye": "<:s:749291059615629333>",
+			"Raikan's Fang": "<:s:749290982037782599>",
+			"Raikan's Fur": "<:s:749290981601443942>",
+			"Rasaka's Eye": "<:s:749291094969155644>",
+			"Rasaka's Poison Fang": "<:s:752077738008903681>",
+			"Rasaka's Red Scale": "<:s:749292242497306664>",
+			"Rasaka's Scale": "<:s:749291094570827817>",
+			"Razan's Fang": "<:s:749291136945750147>",
+			"Razan's Fur": "<:s:749291136975241266>",
+			"Stone Golem's Core": "<:s:751417103831138386>",
+			"Stone Golem's Skin Shard": "<:s:749290950072729661>"
+		},
+		"pvp": "<:s:724541953978662972>",
+		"quest": "<:s:724541953961623572>",
+		"random box": "<:s:748805857587757077>",
+		"rank": {
+			"a": "<:s:729856064962691153>",
+			"b": "<:s:729856065143046225>",
+			"c": "<:s:729856065486848030>",
+			"d": "<:s:729856065285521509>",
+			"e": "<:s:729856065168212039>",
+			"national": "<:s:729861742191968339><:s:729861742435500073>",
+			"s": "<:s:729856065088389201>",
+			"ss": "<:s:729861742452146186><:s:729861742380974101>"
+		},
+		"shop": "<:s:724541954150498335>",
+		"stats": {
+			"agi": "<:s:758152007386398750>",
+			"def": "<:s:758151671993598003>",
+			"hp": "<:s:741719020423741510>",
+			"int": "<:s:741719020356501575>",
+			"mp": "<:s:741719020419678258>",
+			"mr": "<:s:741719020549439538>",
+			"str": "<:s:741719020478136365>",
+			"vit": "<:s:758152007126745131>"
+		}
+	},
+	"patreon": "https://www.patreon.com/sololevelingsimulator",
+	"patreon_markdown": "[Patreon](https://www.patreon.com/sololevelingsimulator)",
+	"serverInvite": "https://discord.gg/x8MgGnaNK5",
+	"rank": [
+		"",
+		"$t(glossary:ranks.E-Rank)",
+		"$t(glossary:ranks.D-Rank)",
+		"$t(glossary:ranks.C-Rank)",
+		"$t(glossary:ranks.B-Rank)",
+		"$t(glossary:ranks.A-Rank)",
+		"$t(glossary:ranks.S-Rank)",
+		"$t(glossary:ranks.SS-Rank)",
+		"$t(glossary:ranks.National Level)"
+	]
+}

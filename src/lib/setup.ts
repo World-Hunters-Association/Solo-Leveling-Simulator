@@ -13,15 +13,17 @@ import { config } from 'dotenv-cra';
 import { join } from 'path';
 import { inspect } from 'util';
 
-import { srcDir } from './constants';
-
+import type { InternationalizationContext } from '@sapphire/plugin-i18next';
+import type { Awaitable } from '@sapphire/utilities';
 import type { Snowflake } from 'discord.js';
 import type { Code, Db } from 'mongodb';
+import type ConstantsUtils from '../utils/constants';
+import type FunctionsUtils from '../utils/functions';
 import type {
-	Achievements,
 	Blacklist,
 	Boxes,
 	Busy,
+	Challenges,
 	Config,
 	Cooldowns,
 	Daily,
@@ -44,15 +46,13 @@ import type {
 	Penalty,
 	Potions,
 	Recover,
-	Referral,
-	Spam,
 	Stone,
 	Top
 } from './structures/schemas';
-import type Utils from './Utils';
+import type { UtilsStore } from './structures/UtilsStore';
 
 // Read env var
-config({ path: join(srcDir, '.env') });
+config({ path: join(join(join(__dirname, '..', '..'), 'src'), '.env') });
 
 // Set default inspection depth
 inspect.defaultOptions.depth = 1;
@@ -66,6 +66,12 @@ export interface AlpetaOptions {
 	root: string;
 }
 
+declare module '@sapphire/plugin-i18next' {
+	interface InternationalizationHandler {
+		fetchLanguageWithDefault: (context: InternationalizationContext) => Awaitable<string>;
+	}
+}
+
 declare module '@sapphire/framework' {
 	interface SapphireClient {
 		config: AlpetaOptions;
@@ -74,43 +80,51 @@ declare module '@sapphire/framework' {
 
 declare module '@sapphire/pieces' {
 	interface Container {
+		constants: ConstantsUtils;
 		db: Db;
-		utils: Utils;
+		$db: Db;
+		functions: FunctionsUtils;
 	}
+
+	interface StoreRegistryEntries {
+		utils: UtilsStore;
+	}
+}
+
+interface Collections {
+	blacklist: Blacklist;
+	boxes: Boxes;
+	busy: Busy;
+	challenges: Challenges;
+	code: Code;
+	config: Config;
+	cooldowns: Cooldowns;
+	daily: Daily;
+	dbl: DBL;
+	donator: Donator;
+	equipment: Equipment;
+	gate_channel: GateChannel;
+	gems: Gems;
+	hunter_skills: Hunter_Skills;
+	hunter_fighting: Hunter_Fighting;
+	hunterinfo: HunterInfo;
+	hunterstats: HunterStats;
+	keys: Keys;
+	language: Language;
+	lottery: Lottery;
+	material: Material;
+	mob_fighting: Mob_Fighting;
+	money: Money;
+	party: Party;
+	penalty: Penalty;
+	potions: Potions;
+	recover: Recover;
+	stone: Stone;
+	top: Top;
 }
 
 declare module 'mongodb' {
 	interface Db {
-		collection(name: 'achievements', options?: CollectionOptions | undefined): Collection<Achievements>;
-		collection(name: 'blacklist', options?: CollectionOptions | undefined): Collection<Blacklist>;
-		collection(name: 'boxes', options?: CollectionOptions | undefined): Collection<Boxes>;
-		collection(name: 'busy', options?: CollectionOptions | undefined): Collection<Busy>;
-		collection(name: 'code', options?: CollectionOptions | undefined): Collection<Code>;
-		collection(name: 'config', options?: CollectionOptions | undefined): Collection<Config>;
-		collection(name: 'cooldowns', options?: CollectionOptions | undefined): Collection<Cooldowns>;
-		collection(name: 'daily', options?: CollectionOptions | undefined): Collection<Daily>;
-		collection(name: 'dbl', options?: CollectionOptions | undefined): Collection<DBL>;
-		collection(name: 'donator', options?: CollectionOptions | undefined): Collection<Donator>;
-		collection(name: 'equipment', options?: CollectionOptions | undefined): Collection<Equipment>;
-		collection(name: 'gate_channel', options?: CollectionOptions | undefined): Collection<GateChannel>;
-		collection(name: 'gems', options?: CollectionOptions | undefined): Collection<Gems>;
-		collection(name: 'hunter_skills', options?: CollectionOptions | undefined): Collection<Hunter_Skills>;
-		collection(name: 'hunter_fighting', options?: CollectionOptions | undefined): Collection<Hunter_Fighting>;
-		collection(name: 'hunterinfo', options?: CollectionOptions | undefined): Collection<HunterInfo>;
-		collection(name: 'hunterstats', options?: CollectionOptions | undefined): Collection<HunterStats>;
-		collection(name: 'keys', options?: CollectionOptions | undefined): Collection<Keys>;
-		collection(name: 'language', options?: CollectionOptions | undefined): Collection<Language>;
-		collection(name: 'lottery', options?: CollectionOptions | undefined): Collection<Lottery>;
-		collection(name: 'material', options?: CollectionOptions | undefined): Collection<Material>;
-		collection(name: 'mob_fighting', options?: CollectionOptions | undefined): Collection<Mob_Fighting>;
-		collection(name: 'money', options?: CollectionOptions | undefined): Collection<Money>;
-		collection(name: 'party', options?: CollectionOptions | undefined): Collection<Party>;
-		collection(name: 'penalty', options?: CollectionOptions | undefined): Collection<Penalty>;
-		collection(name: 'potions', options?: CollectionOptions | undefined): Collection<Potions>;
-		collection(name: 'recover', options?: CollectionOptions | undefined): Collection<Recover>;
-		collection(name: 'referral', options?: CollectionOptions | undefined): Collection<Referral>;
-		collection(name: 'spam', options?: CollectionOptions | undefined): Collection<Spam>;
-		collection(name: 'stone', options?: CollectionOptions | undefined): Collection<Stone>;
-		collection(name: 'top', options?: CollectionOptions | undefined): Collection<Top>;
+		collection<T extends keyof Collections>(name: T, options?: CollectionOptions): Collection<Collections[T]>;
 	}
 }

@@ -1,0 +1,391 @@
+{
+	"SLS": "Solo Leveling Simulator",
+	"WHA": "Hiệp hội thợ săn thế giới",
+	"challenges": {
+		"hunterSlayer": "**Thợ Săn Người**: {{count, number}}"
+	},
+	"currencies": {
+		"gold": "Vàng",
+		"gold_count_one": "{{count, number}} $t(glossary:currencies.gold)",
+		"gold_count_other": "{{count, number}} $t(glossary:currencies.gold_other)",
+		"gold_other": "Vàng",
+		"magicCore": "Ma Thạch",
+		"magicCore_count_one": "{{count, number}} $t(glossary:currencies.magicCore)",
+		"magicCore_count_other": "{{count, number}} $t(glossary:currencies.magicCore_other)",
+		"magicCore_other": "Ma Thạch",
+		"manaCrystal": "Đá Năng Lượng",
+		"manaCrystal_count_one": "{{count, number}} $t(glossary:currencies.manaCrystal)",
+		"manaCrystal_count_other": "{{count, number}} $t(glossary:currencies.manaCrystal_other)",
+		"manaCrystal_other": "Đá Năng Lượng",
+		"votePoint": "Điểm bình chọn",
+		"votePoint_count_one": "{{count, number}} $t(glossary:currencies.votePoint)",
+		"votePoint_count_other": "{{count, number}} $t(glossary:currencies.votePoint_other)",
+		"votePoint_other": "Điểm bình chọn"
+	},
+	"effects": {
+		"Bless": "Phước",
+		"Grievous Wounds": "Vết Thương Sâu",
+		"Slow": "Chậm",
+		"Stun": "Choáng"
+	},
+	"equipments": {
+		"Broken Sword": {
+			"description": "Truyền thuyết kể rằng có người thử chém nó lên Rasaka...",
+			"name": "Thanh kiếm mẻ",
+			"type": "$t(common:weapon)"
+		},
+		"Casual Gloves": {
+			"description": "Đôi găng tay mà có thể tìm thấy ở bất cứ cửa hàng dụng cụ nào",
+			"name": "Găng tay thường",
+			"type": "$t(common:gloves)"
+		},
+		"Casual Hood": {
+			"description": "Một chiếc mũ trùm đầu hợp với bất kỳ ai",
+			"name": "Mũ trùm đầu",
+			"type": "$t(common:helmet)"
+		},
+		"Dagger": {
+			"description": "Gì? Bạn muốn một cái tên sang hơn?",
+			"name": "Dao găm",
+			"type": "$t(common:weapon)"
+		},
+		"Grass Ring": {
+			"description": "Tuổi trẻ đáng giá bao nhiêu?",
+			"name": "Nhẫn cỏ",
+			"type": "$t(common:ring)"
+		},
+		"Handwritten Bible": {
+			"description": "Ai đó đã viết cuốn này trong thời gian rảnh rỗi.",
+			"name": "Kinh thánh viết tay",
+			"type": "$t(common:weapon)"
+		},
+		"Hunter's Bow": {
+			"description": "We have a bow, we have a hunter. Uh! Hunter's bow!",
+			"name": "Cung thường",
+			"type": "$t(common:weapon)"
+		},
+		"Leather tunic": {
+			"description": "Áo làm bằng da chất lượng thấp",
+			"name": "Áo da",
+			"type": "$t(common:armor)"
+		},
+		"Seashell Necklace": {
+			"description": "Một chiếc vòng cổ làm bạn chảy máu.",
+			"name": "Vòng cổ vỏ sò",
+			"type": "$t(common:necklace)"
+		},
+		"Stick": {
+			"description": "Hmm… miễn là nó hoạt động.",
+			"name": "Gậy",
+			"type": "$t(common:weapon)"
+		},
+		"Wanderer Shoes": {
+			"description": "Một đôi giày cho những người thích chuyển động",
+			"name": "Giày giang hồ",
+			"type": "$t(common:shoes)"
+		},
+		"Wooden Shield": {
+			"description": "Tôi không nghĩ rằng cái này đáng tin cậy. Bạn nên tìm một cái tốt hơn càng sớm càng tốt.",
+			"name": "Lá chắn gỗ",
+			"type": "$t(common:weapon)"
+		}
+	},
+	"items": {
+		"A-rank key": {
+			"name": "Khóa hạng A"
+		},
+		"B-rank key": {
+			"name": "Khóa hạng B"
+		},
+		"C-rank key": {
+			"name": "Khóa hạng C"
+		},
+		"D-rank key": {
+			"name": "Khóa hạng D"
+		},
+		"E-rank key": {
+			"name": "Khóa hạng E"
+		},
+		"Lottery ticket": {
+			"description": "Dùng để tham gia xổ số. Bạn có thể mua tối đa 5 vé.",
+			"name": "Vé số"
+		},
+		"Random Blessed Box": {
+			"description": "Như tên của nó.",
+			"name": "Rương phước lành ngẫu nhiên"
+		},
+		"Random Box": {
+			"description": "Như tên của nó.",
+			"name": "Rương ngẫu nhiên"
+		},
+		"Random Cursed Box": {
+			"description": "Như tên của nó.",
+			"name": "Rương bị nguyền rủa ngẫu nhiên"
+		},
+		"S-rank key": {
+			"name": "Khóa hạng S"
+		},
+		"SS-rank key": {
+			"name": "Khóa hạng SS"
+		},
+		"Status Recovery": {
+			"description": "Một khả năng của Hệ thống. Nó khôi phục lại HP, MP của bạn. Nó cũng loại bỏ tất cả các tác động xấu nếu có.",
+			"name": "Phục hồi trạng thái"
+		},
+		"Uprank key": {
+			"name": "Chìa khóa thăng hạng"
+		},
+		"life potion": {
+			"description": "một chai máu. Bạn không nhầm đâu. Là máu! \nSử dụng `heal` để khôi phục HP của bạn",
+			"name": "Bình máu"
+		},
+		"mana potion": {
+			"description": "một chai chứa đầy nước. Chỉ có nước!\nSử dụng `drink` để khôi phục lại MP của bạn",
+			"name": "Bình năng lượng"
+		},
+		"thunder stone": {
+			"description": "Một viên đá từ khu vườn của Chúa tể Sấm sét\nĐược sử dụng để đặt lại điểm kĩ năng",
+			"name": "Đá sấm sét"
+		}
+	},
+	"materials": {
+		"Rasaka's Eye": {
+			"name": "Mắt Rasaka"
+		},
+		"Rasaka's Scale": {
+			"name": "Vảy Rasaka"
+		},
+		"Rasaka's Red Scale": {
+			"name": "Vảy Rasaka Đỏ"
+		},
+		"Rasaka's Poison Fang": {
+			"name": "Nanh Độc của Rasaka"
+		},
+		"Raikan's Fang": {
+			"name": "Nanh Raikan"
+		},
+		"Raikan's Fur": {
+			"name": "Lông Raikan"
+		},
+		"Briga's Claw": {
+			"name": "Móng Vuốt Briga"
+		},
+		"Briga's Fur": {
+			"name": "Lông Briga"
+		},
+		"Razan's Fang": {
+			"name": "Nanh Razan"
+		},
+		"Razan's Fur": {
+			"name": "Lông Razan"
+		},
+		"Goblin's Eye": {
+			"name": "Mắt Goblin"
+		},
+		"Goblin's Cloth": {
+			"name": "Áo Goblin"
+		},
+		"Stone Golem's Skin Shard": {
+			"name": "Mảnh Da Người Đá"
+		},
+		"Stone Golem's Core": {
+			"name": "Lõi Người Đá"
+		}
+	},
+	"skills": {
+		"Arrow rain": {
+			"description": "Triệu hồi mưa tên gây sát thương lên kẻ địch từ xa.",
+			"name": "Mưa tên"
+		},
+		"Barrier": {
+			"description": "Bảo vệ đồng minh của bạn bằng một hàng rào ma thuật mạnh mẽ. Hiệu ứng của hàng rào phụ thuộc vào độ \"trâu\" của bạn.",
+			"name": "Bảo vệ"
+		},
+		"Bloodlust": {
+			"description": "Kẻ thù cảm nhận được niềm khao khát muốn giết người vô mạnh mẽ của bạn, khiến chúng rơi vào trạng thái sợ hãi - không thể sử dụng các kỹ năng trong 1 - 2 lượt nếu chúng có ít $t(glossary:stats:str) hơn bạn.",
+			"name": "Khát máu"
+		},
+		"Bone Crunch": {
+			"description": "Razan cắn kẻ thù. Nếu HP của kẻ địch dưới 50%, chúng sẽ bị choáng trong 1 - 2 lượt.",
+			"name": "Ngấu nghiến"
+		},
+		"Buff": {
+			"description": "Nếu sử dụng trên mục tiêu được \"Ban $t(glossary:effects.Bless)\", cường hóa sát thương tiếp theo của mục tiêu. Nếu không, nó sẽ làm giảm sát thương tiếp theo của chúng.",
+			"name": "Cường hóa"
+		},
+		"Camouflage": {
+			"description": "Một câu thần chú để che giấu sự hiện diện của bản thân. Vô hình trong 2-4 lượt",
+			"name": "Ẩn thân"
+		},
+		"Chomp": {
+			"description": "Raikan cắn kẻ thù. Có cơ hội làm chậm mục tiêu trong 4 - 5 lượt. $t(glossary:skills.Heal.name) của $t(common:healer) có thể loại bỏ hiệu ứng này.",
+			"name": "Nhai nuốt"
+		},
+		"Dagger Throw": {
+			"description": "Ném một con dao găm sắc bén vào cổ kẻ thù.",
+			"name": "Phi dao"
+		},
+		"Double punch": {
+			"description": "Tung hai cú đấm vào kẻ thù.",
+			"name": "Song chưởng"
+		},
+		"Evade": {
+			"description": "Cường hóa tốc độ và cố gắng tránh đòn tấn công của kẻ thù. Cơ hội né tránh phụ thuộc vào $t(glossary:stats.agi) và $t(glossary:stats.def)/$t(glossary:stats.mr) của bạn.",
+			"name": "Phản đòn"
+		},
+		"Evolve": {
+			"description": "Quái vật bình thường có thể tiến hóa thành Boss. Chúng sẽ tiến hóa nếu sống sót trong 4 lượt (lượt còn sống + số người đã giết).",
+			"name": "Tiến hóa"
+		},
+		"Flame Spear": {
+			"description": "Tạo ra các ngọn giáo lửa và phóng chúng vào kẻ thù.",
+			"name": "Hỏa thương"
+		},
+		"Heal": {
+			"description": "Nếu kết quả của $t(glossary:skills.Judge.name) là \"$t(glossary:effects.Bless)\" thì kỹ năng này sẽ hồi máu cho mục tiêu, ngược lại sẽ gây sát thương lên chúng.",
+			"name": "Hồi phục"
+		},
+		"Immobile curse": {
+			"description": "Nguyền rủa (các) muc tiêu và làm giảm $t(glossary:stats.agi) của chúng",
+			"name": "Lão hóa"
+		},
+		"Judge": {
+			"description": "Là một linh mục, bạn có thể yêu cầu một phán xét từ Chúa về mục tiêu. Kết quả sẽ ảnh hưởng đến kỹ năng của bạn.",
+			"name": "Phán xử"
+		},
+		"Leap": {
+			"description": "Goblin vồ đến kẻ thù ở xa nhất.",
+			"name": "Vồ"
+		},
+		"Lunge": {
+			"description": "Lao đến và chém một nhát mạnh mẽ nhắm vào đầu kẻ thù. Gây sát thương vật lí dựa theo $t(glossary:stats.str) của bạn",
+			"name": "Lao tới"
+		},
+		"Magic Arrow": {
+			"description": "Triệu hồi một mũi tên mạnh mẽ để bắn vào kẻ thù. Gây sát thương phép theo $t(glossary:stats.int) của bạn.",
+			"name": "Mũi tên xuyên phá"
+		},
+		"Multishoot": {
+			"description": "Bắn nhiều mũi tên vào kẻ thù trong một khoảng vị trí. Giảm 30% khả năng phòng thủ của các mục tiêu trong 1-3 lượt.",
+			"name": "Liên xạ"
+		},
+		"Poison Fang": {
+			"description": "Rasaka phóng nanh đầu độc kẻ thù trong 2 - 3 lượt. Kẻ địch bị nhắm mục tiêu chịu sát thương phép mỗi lượt.",
+			"name": "Nanh độc"
+		},
+		"Power Smash": {
+			"description": "Nghiền tan xương nát thịt kẻ thù.",
+			"name": "Nghiền nát"
+		},
+		"Punch": {
+			"description": "Tung một chưởng vào mặt kẻ thù.",
+			"name": "Đấm"
+		},
+		"Scratch": {
+			"description": "Briga cào kẻ thù. Gây cho chúng những $t(glossary:effects.Grievous Wounds) trong 1 - 2 lượt.",
+			"name": "Xé toạc"
+		},
+		"Seismic Shove": {
+			"description": "Stone Golem hất đối phương đến gần từ 1 đến 2 ô.",
+			"name": "Hất"
+		},
+		"Shoot": {
+			"description": "Bắn kẻ thù bằng cung của bạn.",
+			"name": "Bắn"
+		},
+		"Slash": {
+			"description": "Chém kẻ thù",
+			"name": "Chém"
+		},
+		"Sprint": {
+			"description": "Áp dụng hiệu ứng xuyên giáp cho đòn đánh tiếp theo.",
+			"name": "Gia tốc"
+		},
+		"Stab": {
+			"description": "Đâm kẻ thù.",
+			"name": "Đâm lén"
+		},
+		"Taunt": {
+			"description": "Khiêu khích sự chú ý của kẻ thù, chúng sẽ nhắm vào bạn trong vòng 3 lượt",
+			"name": "Khiêu khích"
+		},
+		"Thunderbolt": {
+			"description": "Một kỹ năng nguyên tố khác sử dụng sấm sét để gây sát thương cho kẻ thù. Có cơ hội nhỏ để gây choáng",
+			"name": "Phóng điện"
+		},
+		"Vitals": {
+			"description": "Tìm điểm yếu của kẻ thù. Đòn tấn công tiếp theo của bạn sẽ gây ra thêm 20% $t(glossary:stats.hp) tối đa của mục tiêu.",
+			"name": "Điểm yếu"
+		},
+		"Water ball": {
+			"description": "Nén các khối nước và ném chúng vào kẻ thù.",
+			"name": "Thủy cầu"
+		}
+	},
+	"stats": {
+		"agi": "Tốc độ",
+		"def": "Giáp",
+		"hp": "Máu",
+		"int": "Trí tuệ",
+		"mp": "Năng lượng",
+		"mr": "Kháng phép",
+		"str": "Sức mạnh",
+		"vit": "Điểm sự sống"
+	},
+	"terms": {
+		"AGILITY": {
+			"description": "Tăng phạm vi di chuyển.\n\n**Lưu ý**: 5/35/80/140/215 $t(glossary:stats.agi) cung cấp cho bạn 1/2/3/4/5 phạm vi di chuyển.",
+			"name": "$t(glossary:stats.agi)"
+		},
+		"DEFENSE": {
+			"description": "Tăng khả năng phòng thủ vật lý của bạn.",
+			"name": "$t(glossary:stats.def)"
+		},
+		"DONATE": {
+			"description": "Donate qua $t(constant:patreon) hoặc $t(constant:donateBot).",
+			"name": "Donate"
+		},
+		"GRIEVOUS WOUNDS": {
+			"description": "Giảm 50% hiệu ứng hồi máu.",
+			"name": "$t(glossary:effects.Grievous Wounds)"
+		},
+		"Hunter Slayer": {
+			"description": "Bạn giết càng nhiều thợ săn, bạn càng kiếm được ít EXP.",
+			"name": "Hunter Slayer"
+		},
+		"INTELLIGENCE": {
+			"description": "Tăng lượng sát thương phép thuật và $t(glossary:stats.mp) của bạn.\n\n**Tỷ lệ**: 2 $t(glossary:stats.int) = 1 $t(glossary:stats.mp).",
+			"name": "$t(glossary:stats.int)"
+		},
+		"MAGIC RESISTANCE": {
+			"description": "Tăng kháng phép của bạn.",
+			"name": "$t(glossary:stats.mr)"
+		},
+		"SLOW": {
+			"description": "Giảm 1 phạm vi di chuyển của mục tiêu.",
+			"name": "$t(glossary:effects.Slow)"
+		},
+		"STRENGTH": {
+			"description": "Tăng sát thương vật lý.",
+			"name": "$t(glossary:stats.str)"
+		},
+		"STUN": {
+			"description": "Làm choáng mục tiêu. Mục tiêu không thể tấn công, di chuyển hoặc sử dụng bình thuốc.",
+			"name": "$t(glossary:effects.Stun)"
+		},
+		"VITALITY": {
+			"description": "Tăng $t(glossary:stats:hp) của bạn.\n\n**Tỷ lệ**: 1 $t(glossary:stats:vit) = 3 $t(glossary:stats:hp).",
+			"name": "$t(glossary:stats.vit)"
+		}
+	},
+	"ranks": {
+		"E-Rank": "Hạng E",
+		"D-Rank": "Hạng D",
+		"C-Rank": "Hạng C",
+		"B-Rank": "Hạng B",
+		"A-Rank": "Hạng A",
+		"S-Rank": "Hạng S",
+		"SS-Rank": "Hạng SS",
+		"National Level": "Cấp Quốc Gia"
+	}
+}

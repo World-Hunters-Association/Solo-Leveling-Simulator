@@ -5,9 +5,6 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 
-import { EMOJIS } from '../../lib/constants';
-import { resolveKey } from '@sapphire/plugin-i18next';
-
 @ApplyOptions<CommandOptions>({
 	name: 'start',
 	description: 'Show start guide',
@@ -15,9 +12,12 @@ import { resolveKey } from '@sapphire/plugin-i18next';
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })
-export default class StartCommand extends Command {
+export default class UserCommand extends Command {
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
-		const builder = new SlashCommandBuilder().setName(this.name).setDescription(this.description);
+		const builder = new SlashCommandBuilder();
+
+		this.container.functions.setNameAndDescriptions(builder, ['common:start', 'validation:help.desccriptions.commands.START']);
+
 		registry.registerChatInputCommand(builder, {
 			idHints: ['964148504962404462'],
 			behaviorWhenNotIdentical: RegisterBehavior.Overwrite
@@ -25,6 +25,7 @@ export default class StartCommand extends Command {
 	}
 
 	public async chatInputRun(interaction: CommandInteraction) {
+		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
 		const message = new PaginatedMessage({
 			template: new MessageEmbed().setColor('BLUE')
 		})
@@ -32,9 +33,9 @@ export default class StartCommand extends Command {
 				[
 					{
 						customId: 'Start:Rule',
-						label: await resolveKey(interaction, 'common:rule'),
+						label: this.container.i18n.getT(locale)('common:rule'),
 						style: 'DANGER',
-						emoji: EMOJIS.UI.RULE,
+						emoji: this.container.constants.EMOJIS.UI.RULE,
 						type: 'BUTTON',
 						run: () => {
 							this.container.applicationCommandRegistries.acquire('rule').command?.chatInputRun!(interaction, {
@@ -45,33 +46,33 @@ export default class StartCommand extends Command {
 					},
 					{
 						customId: 'Start:Help',
-						label: await resolveKey(interaction, 'common:help'),
+						label: this.container.i18n.getT(locale)('common:help'),
 						style: 'SECONDARY',
-						emoji: EMOJIS.UI.HELP,
+						emoji: this.container.constants.EMOJIS.UI.HELP,
 						type: 'BUTTON',
 						run: () => {
 							this.container.applicationCommandRegistries.acquire('help').command?.chatInputRun!(interaction, {
 								commandName: 'help',
-								commandId: ''
+								commandId: '924315533854277632'
 							});
 						}
 					},
 					{
 						customId: 'Start:Choose class',
-						label: await resolveKey(interaction, 'common:chooseClass'),
+						label: this.container.i18n.getT(locale)('common:chooseClass'),
 						style: 'SECONDARY',
-						emoji: EMOJIS.UI.CHOOSE_CLASS,
+						emoji: this.container.constants.EMOJIS.UI.CHOOSE_CLASS,
 						type: 'BUTTON',
 						run: () => {
-							this.container.applicationCommandRegistries.acquire('chooseClass').command?.chatInputRun!(interaction, {
-								commandName: 'chooseClass',
-								commandId: ''
+							this.container.applicationCommandRegistries.acquire('chooseclass').command?.chatInputRun!(interaction, {
+								commandName: 'chooseclass',
+								commandId: '971018017678958602'
 							});
 						}
 					},
 					{
 						url: 'https://linktr.ee/mzato0001',
-						label: await resolveKey(interaction, 'common:links'),
+						label: this.container.i18n.getT(locale)('common:links'),
 						style: 'LINK',
 						type: 'BUTTON'
 					}
@@ -85,19 +86,25 @@ export default class StartCommand extends Command {
 			.addPageEmbed((embed) => embed.setImage('https://media.discordapp.net/attachments/914004331525734410/914004396566790275/SmallTurn1.png'))
 			.addPageEmbed((embed) => embed.setImage('https://media.discordapp.net/attachments/914004331525734410/914004396784885811/SmallTurn2.png'))
 			.addPageEmbed((embed) => embed.setImage('https://media.discordapp.net/attachments/914004331525734410/914004397019758662/SmallTurn3.png'))
-			.setSelectMenuOptions(async (ind) => ({
+			.setSelectMenuOptions((ind) => ({
 				label: [
-					await resolveKey(interaction, 'common:welcome'),
-					await resolveKey(interaction, 'common:profile'),
-					await resolveKey(interaction, 'common:party'),
-					await resolveKey(interaction, 'common:bigTurn'),
-					`${await resolveKey(interaction, 'common:smallTurn')} 1`,
-					`${await resolveKey(interaction, 'common:smallTurn')} 2`,
-					`${await resolveKey(interaction, 'common:smallTurn')} 3`
+					this.container.i18n.getT(locale)('common:welcome'),
+					this.container.i18n.getT(locale)('common:profile'),
+					this.container.i18n.getT(locale)('common:party'),
+					this.container.i18n.getT(locale)('common:bigTurn'),
+					`${this.container.i18n.getT(locale)('common:smallTurn')} 1`,
+					`${this.container.i18n.getT(locale)('common:smallTurn')} 2`,
+					`${this.container.i18n.getT(locale)('common:smallTurn')} 3`
 				][ind - 1]
 			}))
-			.setSelectMenuPlaceholder(await resolveKey(interaction, 'common:selectMenuPlaceholder'));
+			.setSelectMenuPlaceholder(this.container.i18n.getT(locale)('common:selectMenuPlaceholder'));
 
 		await message.run(interaction);
+	}
+}
+
+declare module '@sapphire/framework' {
+	interface CommandStore {
+		get(name: 'start'): UserCommand;
 	}
 }

@@ -12,14 +12,16 @@ import { editLocalized } from '@sapphire/plugin-i18next';
 	requiredClientPermissions: [BigInt(277025770560)],
 	requiredUserPermissions: ['USE_EXTERNAL_EMOJIS']
 })
-export default class AwakeCommand extends Command {
+export default class UserCommand extends Command {
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
-		const builder = new SlashCommandBuilder()
-			.setName(this.name)
-			.setDescription(this.description)
-			.addStringOption(
-				new SlashCommandStringOption().setName('name').setRequired(true).setDescription('Your Solo Leveling Simulator World Name')
-			);
+		const builder = new SlashCommandBuilder().addStringOption(new SlashCommandStringOption().setRequired(true));
+
+		this.container.functions.setNameAndDescriptions(
+			builder,
+			['common:awake', 'validation:help.desccriptions.commands.AWAKE'],
+			['common:name', 'common:descriptions.awakeName']
+		);
+
 		registry.registerChatInputCommand(builder, {
 			idHints: ['964148503146291200'],
 			behaviorWhenNotIdentical: RegisterBehavior.Overwrite
@@ -28,7 +30,7 @@ export default class AwakeCommand extends Command {
 
 	public async chatInputRun(interaction: CommandInteraction) {
 		const { db } = this.container;
-		const { utils } = this.container;
+		const utils = this.container.functions;
 		const hunter = await db.collection('hunterinfo').countDocuments({ uid: interaction.user.id });
 
 		if (hunter) {
@@ -48,8 +50,8 @@ export default class AwakeCommand extends Command {
 			db.collection('hunterstats').insertOne({
 				uid: interaction.user.id,
 				exp: 0,
-				hp: utils.HPMaxCalc(10, 1),
-				mp: utils.MPMaxCalc(10, 1),
+				hp: utils.MaxHPCalc(10, 1),
+				mp: utils.MaxMPCalc(10, 1),
 				int: 10,
 				str: 10,
 				mr: 10,
@@ -58,22 +60,35 @@ export default class AwakeCommand extends Command {
 				vit: 10,
 				agi: 10
 			}),
-			db.collection('money').insertOne({ uid: interaction.user.id, manacrystal: 0, magiccore: 0, golds: 550 }),
-			db.collection('keys').insertOne({ uid: interaction.user.id, e: 10, d: 3, c: 0, b: 0, a: 0, s: 0, ss: 0, uprank: 0 }),
-			db.collection('potions').insertOne({ uid: interaction.user.id, life: 0, mana: 0 }),
+			db.collection('money').insertOne({ uid: interaction.user.id, manaCrystal: 0, magicCore: 0, gold: 550, votePoint: 0 }),
+			db.collection('keys').insertOne({
+				uid: interaction.user.id,
+				keys: {
+					'E-rank key': 10,
+					'D-rank key': 3,
+					'C-rank key': 0,
+					'B-rank key': 0,
+					'A-rank key': 0,
+					'S-rank key': 0,
+					'SS-rank key': 0,
+					'Uprank key': 0
+				}
+			}),
+			db.collection('potions').insertOne({ uid: interaction.user.id, potions: { 'life potion': 0, 'mana potion': 0 } }),
 			db.collection('penalty').insertOne({ uid: interaction.user.id, quest: 0, warn: 0, captcha: 100 }),
-			db.collection('stone').insertOne({ uid: interaction.user.id, thunder: 1 }),
+			db.collection('stone').insertOne({ uid: interaction.user.id, stones: { 'thunder stone': 1 } }),
 			db.collection('recover').insertOne({ uid: interaction.user.id, has: true }),
-			db.collection('cooldowns').insertOne({ uid: interaction.user.id, gate: 0, skills: {} }),
+			db.collection('cooldowns').insertOne({ uid: interaction.user.id, commands: { daily: 0, gate: 0, weekly: 0 }, skills: {} }),
 			db.collection('daily').insertOne({ uid: interaction.user.id, streak: 0 }),
-			db.collection('referral').insertOne({ uid: interaction.user.id, give: 0, receive: 0, codes: [] }),
 			db.collection('lottery').insertOne({ uid: interaction.user.id, amount: 0 }),
 			db.collection('equipment').insertOne({ uid: interaction.user.id, equipped: {}, unequipped: {} }),
-			db.collection('boxes').insertOne({ uid: interaction.user.id }),
+			db
+				.collection('boxes')
+				.insertOne({ uid: interaction.user.id, boxes: { 'Random Box': 0, 'Random Cursed Box': 0, 'Random Blessed Box': 0 } }),
 			db.collection('material').insertOne({ uid: interaction.user.id, materials: {} }),
 			db.collection('hunter_skills').insertOne({ uid: interaction.user.id, skills: { Punch: 0 } }),
 			db.collection('config').insertOne({ uid: interaction.user.id, stats: false, logs: false, ping: true }),
-			db.collection('achievements').insertOne({ uid: interaction.user.id, achievements: {} }),
+			db.collection('challenges').insertOne({ uid: interaction.user.id, challenges: {} }),
 			db.collection('gems').insertOne({ uid: interaction.user.id, gems: {} }),
 			db.collection('language').insertOne({ uid: interaction.user.id, language: 'en-US' })
 		]);
@@ -82,5 +97,11 @@ export default class AwakeCommand extends Command {
 			commandName: 'start',
 			commandId: '964148504962404462'
 		});
+	}
+}
+
+declare module '@sapphire/framework' {
+	interface CommandStore {
+		get(name: 'awake'): UserCommand;
 	}
 }

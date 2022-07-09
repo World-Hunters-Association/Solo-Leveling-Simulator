@@ -34,12 +34,12 @@ jobs:
         uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd # tag=v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
+          cache: npm
       - name: Locate source
         run: cd ~/test/_work/Solo-Leveling-Simulator/Solo-Leveling-Simulator/
       - name: Install dependencies
-        run: yarn install
+        run: npm install
       - name: Build
-        run: yarn build:p
-      - name: Prune Dev-dependencies
-        run: npm prune --production
+        run: npm run build:p
+      # - name: Prune Dev-dependencies
+      #   run: npm prune --production

@@ -4,18 +4,18 @@ import { Collection, GuildEmoji, LimitedCollection, Message } from 'discord.js';
 import { Db, MongoClient } from 'mongodb';
 import { join } from 'path';
 
-import { BucketScope, SapphireClient } from '@sapphire/framework';
+import { Awaitable, BucketScope, SapphireClient } from '@sapphire/framework';
 import { container } from '@sapphire/pieces';
-
-import Utils from './lib/Utils';
 
 import type { InternationalizationContext } from '@sapphire/plugin-i18next';
 import type { AlpetaOptions } from './lib/setup';
+import { UtilsStore } from './lib/structures/UtilsStore';
+import { DurationFormatter } from '@sapphire/time-utilities';
 
 export default class System extends SapphireClient {
 	public config: AlpetaOptions;
 
-	public constructor(config: AlpetaOptions, db: Db) {
+	public constructor(config: AlpetaOptions, { $db, db }: { $db: Db; db: Db }) {
 		super({
 			allowedMentions: { parse: ['users'], repliedUser: true },
 			intents: [
@@ -70,12 +70,28 @@ export default class System extends SapphireClient {
 			i18n: {
 				fetchLanguage: async (context: InternationalizationContext) => {
 					const userSettings = await db.collection('language').findOne({ uid: context.user?.id });
-					return userSettings?.language || 'en-US';
+					return container.constants.SUPPORTED_LANGUAGES.includes(userSettings?.language || '')
+						? userSettings?.language || 'en-US'
+						: 'en-US';
 				},
 				defaultLanguageDirectory: join(__dirname, 'languages'),
 				hmr: {
 					enabled: true
-				}
+				},
+				formatters: [
+					{
+						name: 'lowercase',
+						format: (value: string) => value.toLowerCase()
+					},
+					{
+						name: 'duration',
+						format: (value: number, lng: string) => new DurationFormatter(container.functions.timeUnitsLocalizations(lng)).format(value)
+					},
+					{
+						name: 'eqStats',
+						format: (value: number) => (value >= 0 ? `+` : `-`) + Intl.NumberFormat().format(value)
+					}
+				]
 			},
 			botList: {
 				clientId: '703043558483034223',
@@ -93,14 +109,14 @@ export default class System extends SapphireClient {
 
 		this.config = config;
 
+		this.stores.register(new UtilsStore().registerPath(join(__dirname, 'utils')));
+
 		container.db = db;
-		container.utils = new Utils(this);
+		container.$db = $db;
+
+		container.i18n.fetchLanguageWithDefault = container.i18n.fetchLanguage as (context: InternationalizationContext) => Awaitable<string>;
 
 		process.on('unhandledRejection', () => ({}));
-	}
-
-	public async start() {
-		return this.login(this.config.token);
 	}
 }
 
@@ -111,7 +127,10 @@ void new MongoClient(process.env.MONGO_URL!).connect().then(async (mClient) => {
 			token: process.env.TOKEN!,
 			root: '.'
 		},
-		mClient.db(process.env.DB || 'leveling-solo-simulator')
+		{
+			db: mClient.db(process.env.DB || 'leveling-solo-simulator'),
+			$db: mClient.db(process.env.DB === 'solo-leveling-simulator' ? 'leveling-solo-simulator' : 'solo-leveling-simulator')
+		}
 	);
-	await client.start();
+	await client.login(client.config.token);
 });

@@ -1,18 +1,391 @@
 {
-	"WHA": "World Hunters Association",
 	"SLS": "Solo Leveling Simulator",
+	"WHA": "World Hunters Association",
+	"challenges": {
+		"hunterSlayer": "**Hunter Slayer**: {{count, number}}"
+	},
 	"currencies": {
-		"gold_one": "gold",
-		"gold_other": "golds",
-		"goldWithCount_one": "{{count}} $t(gold_one)",
-		"goldWithCount_other": "{{count}} $t(gold_other)",
-		"manaCrystal_one": "mana crystal",
-		"manaCrystal_other": "mana crystals",
-		"manaCrystalWithCount_one": "{{count}} $t(manacrystal_one)",
-		"manaCrystalWithCount_other": "{{count}} $t(manacrystal_other)",
-		"magicCore_one": "magic core",
-		"magicCore_other": "magic cores",
-		"magicCoreWithCount_one": "{{count}} $t(magiccore_one)",
-		"magicCoreWithCount_other": "{{count}} $t(magiccore_other)"
+		"gold": "Gold",
+		"gold_count_one": "{{count, number}} $t(glossary:currencies.gold)",
+		"gold_count_other": "{{count, number}} $t(glossary:currencies.gold_other)",
+		"gold_other": "Golds",
+		"magicCore": "Magic Core",
+		"magicCore_count_one": "{{count, number}} $t(glossary:currencies.magicCore)",
+		"magicCore_count_other": "{{count, number}} $t(glossary:currencies.magicCore_other)",
+		"magicCore_other": "Magic Cores",
+		"manaCrystal": "Mana Crystal",
+		"manaCrystal_count_one": "{{count, number}} $t(glossary:currencies.manaCrystal)",
+		"manaCrystal_count_other": "{{count, number}} $t(glossary:currencies.manaCrystal_other)",
+		"manaCrystal_other": "Mana Crystals",
+		"votePoint": "Vote Point",
+		"votePoint_count_one": "{{count, number}} $t(glossary:currencies.votePoint)",
+		"votePoint_count_other": "{{count, number}} $t(glossary:currencies.votePoint_other)",
+		"votePoint_other": "Vote Points"
+	},
+	"effects": {
+		"Bless": "Bless",
+		"Grievous Wounds": "Grievous Wounds",
+		"Slow": "Slow",
+		"Stun": "Stun"
+	},
+	"equipments": {
+		"Broken Sword": {
+			"description": "I believe someone tried to use it on a Rasaka…",
+			"name": "Broken Sword",
+			"type": "$t(common:weapon)"
+		},
+		"Casual Gloves": {
+			"description": "A pair of gloves you can find at any equipment shops",
+			"name": "Casual Gloves",
+			"type": "$t(common:gloves)"
+		},
+		"Casual Hood": {
+			"description": "A hood that suits anyone",
+			"name": "Casual Hood",
+			"type": "$t(common:helmet)"
+		},
+		"Dagger": {
+			"description": "What? You want a fancier name?",
+			"name": "Dagger",
+			"type": "$t(common:weapon)"
+		},
+		"Grass Ring": {
+			"description": "How much does youth cost?",
+			"name": "Grass Ring",
+			"type": "$t(common:ring)"
+		},
+		"Handwritten Bible": {
+			"description": "Someone has written this during their free time.",
+			"name": "Handwritten Bible",
+			"type": "$t(common:weapon)"
+		},
+		"Hunter's Bow": {
+			"description": "We have a bow, we have a hunter. Uh! Hunter's bow!",
+			"name": "Hunter's Bow",
+			"type": "$t(common:weapon)"
+		},
+		"Leather tunic": {
+			"description": "A tunic made of low quality leather",
+			"name": "Leather tunic",
+			"type": "$t(common:armor)"
+		},
+		"Seashell Necklace": {
+			"description": "A necklace that hurts your neck.",
+			"name": "Seashell Necklace",
+			"type": "$t(common:necklace)"
+		},
+		"Stick": {
+			"description": "Hmm… as long as it works.",
+			"name": "Stick",
+			"type": "$t(common:weapon)"
+		},
+		"Wanderer Shoes": {
+			"description": "A pair of shoes for those who like to move it move it",
+			"name": "Wanderer Shoes",
+			"type": "$t(common:shoes)"
+		},
+		"Wooden Shield": {
+			"description": "I don't think this is reliable. You should get a better one as soon as possible.",
+			"name": "Wooden Shield",
+			"type": "$t(common:weapon)"
+		}
+	},
+	"items": {
+		"A-rank key": {
+			"name": "A-rank key"
+		},
+		"B-rank key": {
+			"name": "B-rank key"
+		},
+		"C-rank key": {
+			"name": "C-rank key"
+		},
+		"D-rank key": {
+			"name": "D-rank key"
+		},
+		"E-rank key": {
+			"name": "E-rank key"
+		},
+		"Lottery ticket": {
+			"description": "Used to join lottery. You can buy up to 5 tickets.",
+			"name": "Lottery ticket"
+		},
+		"Random Blessed Box": {
+			"description": "As it name.",
+			"name": "Random Blessed Box"
+		},
+		"Random Box": {
+			"description": "As it name.",
+			"name": "Random Box"
+		},
+		"Random Cursed Box": {
+			"description": "As it name.",
+			"name": "Random Cursed Box"
+		},
+		"S-rank key": {
+			"name": "S-rank key"
+		},
+		"SS-rank key": {
+			"name": "SS-rank key"
+		},
+		"Status Recovery": {
+			"description": "One ability of the System. It's restore your HP, MP. It's also remove all bad effects if you have any.",
+			"name": "Status Recovery"
+		},
+		"Uprank key": {
+			"name": "Uprank key"
+		},
+		"life potion": {
+			"description": "a bottle filled with blood. Yes blood!\nUse `heal` to restore your HP",
+			"name": "life potion"
+		},
+		"mana potion": {
+			"description": "a bottle filled with water. Just water!\nUse `drink` to restore your MP",
+			"name": "mana potion"
+		},
+		"thunder stone": {
+			"description": "A stone from The Lightning Monarch's garden\nUsed to reset stats point",
+			"name": "thunder stone"
+		}
+	},
+	"materials": {
+		"Rasaka's Eye": {
+			"name": "Rasaka's Eye"
+		},
+		"Rasaka's Scale": {
+			"name": "Rasaka's Scale"
+		},
+		"Rasaka's Red Scale": {
+			"name": "Rasaka's Red Scale"
+		},
+		"Rasaka's Poison Fang": {
+			"name": "Rasaka's Poison Fang"
+		},
+		"Raikan's Fang": {
+			"name": "Raikan's Fang"
+		},
+		"Raikan's Fur": {
+			"name": "Raikan's Fur"
+		},
+		"Briga's Claw": {
+			"name": "Briga's Claw"
+		},
+		"Briga's Fur": {
+			"name": "Briga's Fur"
+		},
+		"Razan's Fang": {
+			"name": "Razan's Fang"
+		},
+		"Razan's Fur": {
+			"name": "Razan's Fur"
+		},
+		"Goblin's Eye": {
+			"name": "Goblin's Eye"
+		},
+		"Goblin's Cloth": {
+			"name": "Goblin's Cloth"
+		},
+		"Stone Golem's Skin Shard": {
+			"name": "Stone Golem's Skin Shard"
+		},
+		"Stone Golem's Core": {
+			"name": "Stone Golem's Core"
+		}
+	},
+	"skills": {
+		"Arrow rain": {
+			"description": "Summon rain of arrows that deal damage to enemies from far away.",
+			"name": "Arrow rain"
+		},
+		"Barrier": {
+			"description": "Protects your allies with a powerful magic barrier. The barrier effects is depends on how \"tank\" the Tanker is.",
+			"name": "Barrier"
+		},
+		"Bloodlust": {
+			"description": "The enemy felt your immense desire to kill, making them in a state of fear - cannot use skills for 1 - 2 turns if they have less $t(glossary:stats:str) than you.",
+			"name": "Bloodlust"
+		},
+		"Bone Crunch": {
+			"description": "Razan bite the enemy. If the enemy HP is below 50%, they will be stunned for 1 - 2 turn.",
+			"name": "Bone Crunch"
+		},
+		"Buff": {
+			"description": "If use on \"$t(glossary:effects.Bless)\" target, it will increase the next damage of them. Otherwise, it will decrease the next damage of them.",
+			"name": "Buff"
+		},
+		"Camouflage": {
+			"description": "A spell to hide the Healer's presence. Become invisible for 2 - 4 turns",
+			"name": "Camouflage"
+		},
+		"Chomp": {
+			"description": "Raikan chomp on the enemy. There's a chance to slow the target down for 4 - 5 turns. $t(common:healer)'s $t(glossary:skills.Heal.name) can remove this effect.",
+			"name": "Chomp"
+		},
+		"Dagger Throw": {
+			"description": "Throw a sharp dagger towards the enemy's throat.",
+			"name": "Dagger Throw"
+		},
+		"Double punch": {
+			"description": "Punch the enemy twice.",
+			"name": "Double punch"
+		},
+		"Evade": {
+			"description": "Enhance visual and trying to dodge enemy's attack. Dodge chance depends on your $t(glossary:stats.agi) and $t(glossary:stats.def)/$t(glossary:stats.mr).",
+			"name": "Evade"
+		},
+		"Evolve": {
+			"description": "Normal mob can evolve to a boss. They will evolve if they survive for 4 turns (alive turns + killed players (1 turn/kill)).",
+			"name": "Evolve"
+		},
+		"Flame Spear": {
+			"description": "Create spears of fire and launch them at enemies.",
+			"name": "Flame Spear"
+		},
+		"Heal": {
+			"description": "If the $t(glossary:skills.Judge.name)'s result is \"$t(glossary:effects.Bless)\" this skill will heal the target otherwise will deal damage to them.",
+			"name": "Heal"
+		},
+		"Immobile curse": {
+			"description": "Curse the targeted creature(s) and reduce their $t(glossary:stats.agi)",
+			"name": "Immobile curse"
+		},
+		"Judge": {
+			"description": "As a priest, you can ask for a judge from God to the target. The result will affect your skills.",
+			"name": "Judge"
+		},
+		"Leap": {
+			"description": "Goblin leap on the furthest enemy.",
+			"name": "Leap"
+		},
+		"Lunge": {
+			"description": "A powerful slash that aims for the enemy's head. Deal physical damage according to your $t(glossary:stats.str)",
+			"name": "Lunge"
+		},
+		"Magic Arrow": {
+			"description": "Summon a powerful arrow to shoot at the enemy. Deal magical damage according to your $t(glossary:stats.int).",
+			"name": "Magic Arrow"
+		},
+		"Multishoot": {
+			"description": "Shoot multiple arrows at the enemy on the same spot. Decreases their defense by 30% for 1 - 3 turns.",
+			"name": "Multishoot"
+		},
+		"Poison Fang": {
+			"description": "Rasaka launch their fangs to poison the target enemies for 2 - 3 turns. Targeted enemies suffering magic damage every turn.",
+			"name": "Poison Fang"
+		},
+		"Power Smash": {
+			"description": "Launch a heavy smash that breaks the enemy's bones.",
+			"name": "Power Smash"
+		},
+		"Punch": {
+			"description": "Throw a heavy punch to the enemy face.",
+			"name": "Punch"
+		},
+		"Scratch": {
+			"description": "Briga scratch the enemy. Inflict them with $t(glossary:effects.Grievous Wounds) for 1 - 2 turns.",
+			"name": "Scratch"
+		},
+		"Seismic Shove": {
+			"description": "Stone Golem knock the enemy forwards for 1 - 2 blocks.",
+			"name": "Seismic Shove"
+		},
+		"Shoot": {
+			"description": "Shoot enemy with your bow.",
+			"name": "Shoot"
+		},
+		"Slash": {
+			"description": "Slash the enemy",
+			"name": "Slash"
+		},
+		"Sprint": {
+			"description": "Apply the armor penetration effect for the next attack.",
+			"name": "Sprint"
+		},
+		"Stab": {
+			"description": "Stab the enemy.",
+			"name": "Stab"
+		},
+		"Taunt": {
+			"description": "Provoke the enemy to get their attention, they'll now target you for 3 turns",
+			"name": "Taunt"
+		},
+		"Thunderbolt": {
+			"description": "Another elemental skills use thunder to damage the enemy. Has a small chance to stun",
+			"name": "Thunderbolt"
+		},
+		"Vitals": {
+			"description": "Find the vitals of enemies. Your next attack will deal more damage with the amount of 20% target's max $t(glossary:stats.hp).",
+			"name": "Vitals"
+		},
+		"Water ball": {
+			"description": "Compress blocks of water and throw them at the enemies.",
+			"name": "Water ball"
+		}
+	},
+	"stats": {
+		"agi": "Agility",
+		"def": "Defense",
+		"hp": "HP",
+		"int": "Intelligence",
+		"mp": "MP",
+		"mr": "Magic Resistance",
+		"str": "Strength",
+		"vit": "Vitality"
+	},
+	"terms": {
+		"AGILITY": {
+			"description": "Increase move range.\n\n**Note**: 5/35/80/140/215 $t(glossary:stats.agi) give you 1/2/3/4/5 move range.",
+			"name": "$t(glossary:stats.agi)"
+		},
+		"DEFENSE": {
+			"description": "Increase your physical defense.",
+			"name": "$t(glossary:stats.def)"
+		},
+		"DONATE": {
+			"description": "Donate via $t(constant:patreon) or $t(constant:donateBot).",
+			"name": "Donate"
+		},
+		"GRIEVOUS WOUNDS": {
+			"description": "Reduce healing HP effect by 50%.",
+			"name": "$t(glossary:effects.Grievous Wounds)"
+		},
+		"Hunter Slayer": {
+			"description": "The more hunters you kill, the less EXP you can earn.",
+			"name": "Hunter Slayer"
+		},
+		"INTELLIGENCE": {
+			"description": "Increase magic damage output and your MP.\n\n**Rate**: 2 INT = 1 MP.",
+			"name": "$t(glossary:stats.int)"
+		},
+		"MAGIC RESISTANCE": {
+			"description": "Increase your magic defense.",
+			"name": "$t(glossary:stats.mr)"
+		},
+		"SLOW": {
+			"description": "Reduces the move range of target by 1.",
+			"name": "$t(glossary:effects.Slow)"
+		},
+		"STRENGTH": {
+			"description": "Increase physical damage output.",
+			"name": "$t(glossary:stats.str)"
+		},
+		"STUN": {
+			"description": "Stuns the target. The target cannot attack, move or using potions.",
+			"name": "$t(glossary:effects.Stun)"
+		},
+		"VITALITY": {
+			"description": "Increase your $t(glossary:stats:hp).\n\n**Rate**: 1 $t(glossary:stats:vit) = 3 $t(glossary:stats:hp).",
+			"name": "$t(glossary:stats.vit)"
+		}
+	},
+	"ranks": {
+		"E-Rank": "E-Rank",
+		"D-Rank": "D-Rank",
+		"C-Rank": "C-Rank",
+		"B-Rank": "B-Rank",
+		"A-Rank": "A-Rank",
+		"S-Rank": "S-Rank",
+		"SS-Rank": "SS-Rank",
+		"National Level": "National Level"
 	}
 }

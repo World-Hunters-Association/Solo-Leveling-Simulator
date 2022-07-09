@@ -1,6 +1,5 @@
 import type { Snowflake } from 'discord.js';
-import type { CLASSES, KEYS, RANK, RANK_TITLES } from '../constants';
-import type { Mobs } from './mobs';
+import type { CLASSES, KEYS, Mobs, RANK, RANK_TITLES } from '../../utils/constants';
 
 // #region Others
 
@@ -35,11 +34,11 @@ type Effects = {
 
 // #endregion
 
-type AchievementsList = 'Kill:Hunter';
+type ChallengesList = 'Kill:Hunter';
 
-export interface Achievements {
+export interface Challenges {
 	uid: Snowflake;
-	achievements: { [key in AchievementsList]?: number };
+	challenges: { [key in ChallengesList]?: number };
 }
 
 export interface Blacklist {
@@ -53,14 +52,18 @@ export interface Blacklist {
 }
 
 export interface Boxes {
-	blessed?: number;
-	cursed?: number;
-	normal?: number;
+	boxes: {
+		'Random Blessed Box'?: number;
+		'Random Cursed Box'?: number;
+		'Random Box'?: number;
+	};
 	uid: Snowflake;
 }
 
 export interface Busy {
 	uid: Snowflake;
+	reason?: string;
+	messageURL?: string;
 }
 
 export interface Code {
@@ -75,10 +78,12 @@ export interface Config {
 	ping: boolean;
 }
 
+type cooldownCommands = 'gate' | 'daily' | 'weekly';
+
 export interface Cooldowns {
 	uid: Snowflake;
 	skills: { [key: string]: number };
-	gate: number;
+	commands: { [key in cooldownCommands]: number };
 }
 
 export interface Daily {
@@ -88,7 +93,6 @@ export interface Daily {
 
 export interface DBL {
 	uid: Snowflake;
-	points: number;
 	bot?: number;
 	server?: number;
 }
@@ -106,9 +110,16 @@ export interface Equipment {
 	equipped: { [key in EQUIPMENTS]?: string };
 }
 
+interface Rewards extends Partial<Pick<Currencies, 'gold' | 'manaCrystal'>> {
+	exp?: number;
+	drops?: Material['materials'];
+}
+
 export interface GateChannel {
 	cid: `${Snowflake}:${string}`;
 	uid: Snowflake;
+	/** @description Party leader ID */
+	plid?: Snowflake;
 	isRed: boolean;
 	rank: KEYS;
 	/**
@@ -117,12 +128,7 @@ export interface GateChannel {
 	 */
 	logs: { [key: string]: string[] };
 	rewards: {
-		[key: string]: {
-			golds?: number;
-			exp?: number;
-			manacrystal?: number;
-			drops?: { [key: string]: number };
-		};
+		[key: string]: Rewards;
 	};
 }
 
@@ -136,6 +142,8 @@ export interface Gems {
 export interface Hunter_Fighting {
 	uid: Snowflake;
 	cid: Snowflake;
+	/** @description Party leader ID */
+	plid?: Snowflake;
 	class: CLASSES;
 	exp: number;
 	effect: Effects;
@@ -190,17 +198,19 @@ export interface HunterStats {
 
 export interface Keys {
 	uid: Snowflake;
-	a: number;
-	b: number;
-	c: number;
-	d: number;
-	e: number;
-	s: number;
-	ss: number;
-	uprank: number;
+	keys: {
+		'A-rank key': number;
+		'B-rank key': number;
+		'C-rank key': number;
+		'D-rank key': number;
+		'E-rank key': number;
+		'S-rank key': number;
+		'SS-rank key': number;
+		'Uprank key': number;
+	};
 }
 
-type Languages = 'en-US' | 'vi-VN';
+type Languages = 'en-US' | 'vi' | 'id-ID';
 
 export interface Language {
 	uid: Snowflake;
@@ -239,17 +249,22 @@ export interface Mob_Fighting {
 	};
 }
 
-export interface Money {
+export interface Currencies {
+	gold: number;
+	magicCore: number;
+	manaCrystal: number;
+	votePoint: number;
+}
+
+export interface Money extends Currencies {
 	uid: Snowflake;
-	golds: number;
-	magiccore: number;
-	manacrystal: number;
 }
 
 export interface Party {
 	uid: Snowflake;
-	members: Snowflake[];
+	members: { uid: Snowflake; name: string }[];
 	loots: { [key: string]: number };
+	name: string;
 }
 
 export interface Penalty {
@@ -261,8 +276,10 @@ export interface Penalty {
 
 export interface Potions {
 	uid: Snowflake;
-	life: number;
-	mana: number;
+	potions: {
+		'life potion': number;
+		'mana potion': number;
+	};
 }
 
 export interface Recover {
@@ -270,25 +287,19 @@ export interface Recover {
 	has: boolean;
 }
 
-export interface Referral {
-	uid: Snowflake;
-	give: number;
-	receive: number;
-	codes: Snowflake[];
-}
-
-export interface Spam {
-	uid: Snowflake;
-}
-
 export interface Stone {
 	uid: Snowflake;
-	thunder: number;
+	stones: {
+		'thunder stone': number;
+	};
 }
 
 export interface Top {
 	gid: Snowflake;
-	level: string;
-	rank: string;
-	golds: string;
+	date: Date;
+	top: {
+		level: { uid: Snowflake; exp: number; level: number }[];
+		rank: { uid: Snowflake; rank: RANK }[];
+		gold: { uid: Snowflake; gold: number }[];
+	};
 }

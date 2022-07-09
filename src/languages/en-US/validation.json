@@ -3,15 +3,290 @@
 		"awaken": "bruh it's not that easy to reawake you know",
 		"request": "You are new here, right {{mention}}? `/awake`"
 	},
+	"buy": {
+		"max": "Max: {{quantity, number}} ({{currency}})",
+		"quantity": "{{quantity, number}} ({{currency}})",
+		"success": "Successfully bought **{{quantity, number}} {{emoji}} $t(glossary:items.{{name}}.name)** for **$t(glossary:currencies.{{currency}}, {\"count\":{{price}},\"context\":\"count\"})**!"
+	},
+	"chooseClass": {
+		"descriptions": {
+			"assassin": "A class that specializes in dagger and speed. They deal high damage yet has low defenses.",
+			"cancelled": "Canceled!",
+			"confirm": "Are you sure about your choice? **You can't choose your class again after this.**",
+			"confirmed": "Done! Great choice.",
+			"embed": "Click on the button of the class to see the information of it.",
+			"fighter": "A class that specializes on melee weapons. They have good damage output and good defenses.",
+			"healer": "A class that specializes on healing magic and providing attack buffs. Though they are very weak.",
+			"mage": "A class that specializes on magic base attacks, dealing high damage yet having low defenses such as healers.",
+			"ranger": "A class that specializes on ranged attacks.",
+			"tanker": "A class that specializes in defense, attracting magic beasts to themselves and protecting low defense allies."
+		},
+		"twice": "You cannot choose your class twice!"
+	},
+	"cooldown": {
+		"author": "{{name}}'s cooldowns",
+		"command": "{{emoji}} >> {{name}} ({{cooldown}})"
+	},
+	"give": {
+		"notEnoughGold": "A gud guy... But check your money first!",
+		"self": "You cannot give to yoursolf!",
+		"success": "Successfully gave **{{name}} {{quantity}}**"
+	},
+	"help": {
+		"defaultEmbed": {
+			"commands": "$t(constant:emojis:guild) **Statistics commands** $t(constant:emojis:guild)\n`profile` | `inventory` | `top` | `guild`* | `title`\n\n$t(constant:emojis:pvp) **Leveling commands** $t(constant:emojis:quest)\n`gate` | `duel`* | `quest`* | `recover` | `add` | `equip` | `unequip`\n\n$t(constant:emojis:shop) **Economy commands** $t(constant:emojis:shop)\n`shop` | `buy` | `sell` | `open`* | `use` | `trade`* | `give`\n\n$t(constant:emojis:blacksmith) **Working commands** $t(constant:emojis:blacksmith)\n`chop`* | `mine`* | `craft`* | `blacksmith`*\n\n$t(constant:emojis:gambling) **Gambling commands** $t(constant:emojis:gambling)\n`lottery` | `slots`* | `blackjack` | `coinflip` | `dice`* | `threecards`\n\n$t(constant:emojis:gold) ** More Golds** $t(constant:emojis:gold)\n`vote` | `daily` | `weekly` | `redeem`* | `codes`",
+			"footer": "These * commands are not implemented yet.\nClick on the button to see details.",
+			"moreInfo": "**For more information about command/item/skill: `\\help [command/item/skill]`**",
+			"tutorial": "See the tutorial with `\\start`"
+		},
+		"desccriptions": {
+			"commands": {
+				"ADD": "Distribute your stats points into stats.",
+				"AWAKE": "Awake and become a Hunter",
+				"BLACKJACK": "Play blackjack with NPC",
+				"BLACKSMITH": "***Not developed yet***",
+				"BUY": "Buy an item from shop\nUse `\\shop` to show the shop.",
+				"CHOOSE_CLASS": "Choose your hunter class",
+				"CHOP": "***Not developed yet***",
+				"CODES": "Show your available codes (use `redeem` to claim rewards)",
+				"COINFLIP": "Bet your golds by flipping a coin",
+				"CONFIG": "Configure your gate.\n`stats` on will auto show stats each turn.\n`logs` on will show logs each turn.\n`ping` will auto ping you when its your turn.",
+				"COOLDOWN": "Show your cooldowns",
+				"CRAFT": "***Not developed yet***",
+				"DAILY": "Get $t(constant:emojis.currencies.gold), $t(constant:emojis.life potion) and $t(constant:emojis.mana potion) depending on your level and streak",
+				"DICE": "***Not developed yet***",
+				"DONATOR": "Show the donator status\n*(Only works in the $t(glossary:WHA))*",
+				"DRINK": "Use a mana potion in your inventory.",
+				"DUEL": "Fight with the mentioned hunter, the hunter who win the fight will get golds and exp",
+				"EQUIP": "Show your equipments or equip a new item",
+				"GATE": "Open a gate to enter a dungeon\n*`\\guide`* to see more info",
+				"GIVE": "Give another hunter golds",
+				"GUIDE": "Show the guide",
+				"GUILD": "Show your guild or the guild(server) you are playing in\nUse `\\guild help` to see more commands",
+				"HEAL": "Use a life potion in your inventory.",
+				"HELP": "Displays a list of available commands, or detailed information for a specified command/item.",
+				"INFO": "Show info about the bot",
+				"INVENTORY": "Show your inventory",
+				"INVITE": "Get the bot's invite link and support server link",
+				"LANGUAGE": "Language configuration",
+				"LOTTERY": "Buy $t(constant:emojis.lottery ticket) Lottery tickets to join the lottery",
+				"MINE": "***Not developed yet***",
+				"MONEY": "**Donator command**\nShow your money",
+				"OPEN": "***Not developed yet***, Open a `box`\nBoxes are got from quest, or bought in the shop\nUse `\\box` to see more info!",
+				"PARTY": "The more the merrier! You can invite up to 5 people to your party, and do dungeons with them.\nThere's also party bonus in gate's rewards.\n\n**Party leader**\n`\\party invite @user` - adds a user to the party\n`\\party kick @user` - removes a user from the party\n`\\party disband` - deletes the party\n`\\party give @user <loot id> <amount>` - to give the party member the mentioned loot\n`\\party create` - to create a new party\n`\\party transfer` - to transfer the leadership to another member\n**Party member**\n`\\party leave` - to leave the current party\n`\\party info` - to shows information of the party  \n`\\party loots` - to shows the list of drops that the party have earned",
+				"PING": "Ping the bot",
+				"PROFILE": "Show your profile or other hunter's profile",
+				"PROGRESS": "**Donator command**\nShow your progress",
+				"QUEST": "Show your current quest or your quest list",
+				"RECOVER": "Use `status recovery` got from daily quest",
+				"REDEEM": "Redeem some rewards from `codes` (Cannot redeem in beta)",
+				"REFERRAL": "Refer code for some rewards (might be delete soon)",
+				"RULE": "Show the bot's rules",
+				"SELL": "Sell an item into golds.",
+				"SHOP": "Show the shop\nUse `\\buy <item_name> [amount]` to buy an item from it",
+				"SLOTS": "***Not developed yet***",
+				"START": "Show start guide",
+				"STATS": "**Donator command**\nShow your stats\n\nIf you need help with stats, you might wanna find `\\help add` or `\\help <whatever stats>`",
+				"THREECARDS": "Play threecards with NPC",
+				"TITLE": "Choose a title, use `\\title` to see all titles",
+				"TOP": "See the top hunter/guild/etc. in specified category\n**Available categories:**\n> **Server rankings:** `level`, `rank`, `golds` (up to 5 pages)\n> **Global rankings:** `global rank`, `global level`, `global golds`, `shadows`, `guild`",
+				"TRADE": "***Not developed yet*** Trade with **mentioned hunter**",
+				"UNEQUIP": "Unequip an item",
+				"USE": "Use consumable items from your inventory",
+				"VOTE": "You can vote for **$t(glossary:SLS)** and **$t(glossary:WHA)** every 12 hours\nThis commands will show you the cooldowns and the link to vote.\n__*REWARDS*__:\n**$t(glossary:SLS)**\n> 1 vote point (2 in the weekend)\n> $t(constant:emojis.currencies.gold) **Golds** depending on your level\n> **Life potions** | **Mana potion** depending on your level\n> **Keys** depending on your rank\n> **Status Recovery** - Only on weekend (Fri - Sun UTC)\n**$t(glossary:WHA)**\n> 3 vote points",
+				"WEEKLY": "Get $t(constant:emojis.currencies.gold) and $t(constant:emojis.random box) (boxes are not implemented yet)"
+			}
+		},
+		"footer": "This is not what you looking for? Click on other suggestions below."
+	},
+	"inventory": {
+		"author": "{{name}}'s inventory",
+		"item": "{{emoji}} **$t(glossary:items.{{name}}.name)**: {{amount}}",
+		"material": "{{emoji}} **$t(glossary:materials.{{name}}.name)**: {{amount}}"
+	},
+	"invite": {
+		"bot": "Invite me!",
+		"description": "Click on the bottom buttons to invite/join!",
+		"server": "Join Support Server"
+	},
 	"language": {
+		"decline": "Okay, I didn't change your language.",
+		"disclaimer": "This language is **NOT** translated by **$t(glossary:WHA)'s Staff**. **Are you sure about changing language?**.\nIf you have better translation, please contact us!",
 		"success": "Your language has been changed to English."
 	},
+	"links": "[**Invite link**]($t(constant:botInvite)) | [**Support server**]($t(constant:serverInvite)) | [**Vote**]($t(constant:botVote)) | [**Donate (Patreon)**]($t(constant:patreon)) | [**Donate (Donate Bot)**]($t(constant:donateBot, { \"uid\": \"{{uid}}\" }))",
+	"mentionNotHunter": "You cannot do this because **{{mention}}** is not a $t(common:hunter)!",
+	"party": {
+		"create": {
+			"alreadyHave": "You have participated in a party already."
+		},
+		"disband": "Your party has been disbanded!",
+		"give": {
+			"invalidItem": "Please recheck loots name!",
+			"max": "$t(common:max): {{count, number}}",
+			"notEnough": "Your party's loots does not have enough this item to give.",
+			"success": "Gave **{{name}}** {{quantity, number}} $t(constant:emojis.materials.{{item}}) $t(glossary:materials.{{item}}.name)."
+		},
+		"info": {
+			"author": {
+				"name": "{{name}}"
+			},
+			"color": "BLUE",
+			"fields": [
+				{
+					"inline": true,
+					"name": "Members",
+					"value": "{{members}}"
+				},
+				{
+					"inline": true,
+					"name": "Loots (First 5)",
+					"value": "{{loots}}\n*Uses `/{{commandParty}} {{subcommandLoots, lowercase}}` to see more*"
+				}
+			]
+		},
+		"invite": {
+			"accepted": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "{{name}} just joined {{partyName}}!"
+			},
+			"alreadyHave": "**{{name}}** has participated in a party already!",
+			"declined": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "{{name}} declined the invitation!"
+			},
+			"full": "Your party is currently full!",
+			"invitation": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}**, You have been invited to join **{{partyName}}**.\nAnswer with the buttons below.",
+				"footer": {
+					"text": "Answers by clicking on the below buttons."
+				}
+			},
+			"timeout": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "Time up!"
+			}
+		},
+		"kick": {
+			"inGate": "You cannot kick a member that still in the gate!",
+			"success": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}** has been kicked!"
+			}
+		},
+		"leave": {
+			"author": {
+				"name": "{{partyName}}"
+			},
+			"color": "BLUE",
+			"description": "**{{name}}** has left **{{partyName}}**!"
+		},
+		"loots": {
+			"loot": "$t(constant:emojis.materials.{{name}}) **$t(glossary:materials.{{name}}.name)**: {{count, number}}"
+		},
+		"memberInGate": "Aren't there still some members in the gate?",
+		"name": "{{name}}'s party",
+		"noParty": "You aren't participated in any party!",
+		"notInParty": "**{{name}}** aren't member of **{{partyName}}**!",
+		"notLeader": "You aren't the leader of any party!",
+		"transfer": {
+			"author": {
+				"name": "{{partyName}}"
+			},
+			"color": "BLUE",
+			"description": "**{{name}}** has became the leader of **{{partyName}}**!"
+		},
+		"ungivenLoots": "There're still ungiven loots left!"
+	},
+	"profile": {
+		"author": "{{name}}'s profile",
+		"information": {
+			"left": "**$t(common:class)**: $t(constant:emojis.class.{{class}}) $t(common:{{class}})\n**$t(common:rank)**: $t(constant:emojis.rank.{{rank}})",
+			"right": "**$t(common:level)**: {{level, number}} ({{exp, number}} / {{maxExp, number}})\n**$t(common:guild)**: {{guild}}"
+		},
+		"money": {
+			"gold": "$t(constant:emojis.currencies.gold) **$t(glossary:currencies.gold, {\"count\":{{count}}})**: {{count, number}} ",
+			"magicCore": "$t(constant:emojis.currencies.magicCore) **$t(glossary:currencies.magicCore, {\"count\":{{count}}})**: {{count, number}}",
+			"manaCrystal": "$t(constant:emojis.currencies.manaCrystal) **$t(glossary:currencies.manaCrystal, {\"count\":{{count}}})**: {{count, number}}",
+			"money": "$t(validation:profile.money.manaCrystal, {\"count\":{{manaCrystal}}})\n$t(validation:profile.money.gold, {\"count\":{{gold}}})\n$t(validation:profile.money.magicCore, {\"count\":{{magicCore}}})"
+		},
+		"stats": {
+			"agi": "$t(constant:emojis.stats.agi) **$t(glossary:stats:agi)**: {{agi, number}} ({{eqAgi, eqStats}})",
+			"def": "$t(constant:emojis.stats.def) **$t(glossary:stats:def)**: {{def, number}} ({{eqDef, eqStats}})",
+			"hp": "$t(constant:emojis.stats.hp) **$t(glossary:stats:hp)**: {{hp, number}}/{{maxHp, number}}",
+			"int": "$t(constant:emojis.stats.int) **$t(glossary:stats:int)**: {{int, number}} ({{eqInt, eqStats}})",
+			"left": "$t(validation:profile.stats.hp, {\"hp\":\"{{hp}}\",\"maxHp\":\"{{maxHp}}\"})\n$t(validation:profile.stats.str, {\"context\":\"equipment\",\"str\":\"{{str}}\",\"eqStr\":\"{{eqStr}}\"})\n$t(validation:profile.stats.def, {\"context\":\"equipment\",\"def\":\"{{def}}\",\"eqDef\":\"{{eqDef}}\"})\n$t(validation:profile.stats.vit, {\"context\":\"equipment\",\"vit\":\"{{vit}}\",\"eqVit\":\"{{eqVit}}\"})",
+			"mp": "$t(constant:emojis.stats.mp) **$t(glossary:stats:mp)**: {{mp, number}}/{{maxMp, number}}",
+			"mr": "$t(constant:emojis.stats.mr) **$t(glossary:stats:mr)**: {{mr, number}} ({{eqMr, eqStats}})",
+			"right": "$t(validation:profile.stats.mp, {\"mp\":\"{{mp}}\",\"maxMp\":\"{{maxMp}}\"})\n$t(validation:profile.stats.int, {\"context\":\"equipment\",\"int\":\"{{int}}\",\"eqInt\":\"{{eqInt}}\"})\n$t(validation:profile.stats.mr, {\"context\":\"equipment\",\"mr\":\"{{mr}}\",\"eqMr\":\"{{eqMr}}\"})\n$t(validation:profile.stats.agi, {\"context\":\"equipment\",\"agi\":\"{{agi}}\",\"eqAgi\":\"{{eqAgi}}\"})",
+			"str": "$t(constant:emojis.stats.str) **$t(glossary:stats:str)**: {{str, number}} ({{eqStr, eqStats}})",
+			"vit": "$t(constant:emojis.stats.vit) **$t(glossary:stats:vit)**: {{vit, number}} ({{eqVit, eqStats}})"
+		},
+		"statsPoint": "**Available stats points**: {{count, number}}"
+	},
 	"reset": {
-		"warning": "**WARNING!!!!!!** This process is irreversible, are you sure you want to reset your progress **{{mention}}**?",
-		"success": "Reset successfully hunter **{{mention}}**.",
 		"decline": "*Phew, okay...*",
-		"timeout": "Time out! *Phew, so stressful...*",
 		"error": "Something went wrong please reset again!",
-		"processing": "Processing..."
+		"processing": "Processing...",
+		"success": "Reset successfully hunter **{{mention}}**.",
+		"timeout": "$t(common:timeout)! *Phew, so stressful...*",
+		"warning": "**WARNING!!!!!!** This process is irreversible, are you sure you want to reset your progress **{{mention}}**?"
+	},
+	"retry": ["Hmm...try again.", "Somwthing went wrong! Retry?", "Errr.. a lil fast. Re-attempt in a sec."],
+	"rule": {
+		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
+		"ruleFooter": "Breaking any rules above will result in getting banned and blacklisted!",
+		"ruleOne": "Do **NOT** trade/sell in-game currency/items for anything outside the **$t(glossary:WHA)**.",
+		"ruleThree": "Do **NOT** abuse or benefit from bugs. Report it directly to <#729245705578741842> [**$t(glossary:WHA)**]($t(constant:serverInvite))",
+		"ruleTos": "Finally, follow **Discord TOS!!**",
+		"ruleTwo": "Do **NOT** cheat on the bot by any form of automation ||*(self-bot, macros, etc.)*||"
+	},
+	"sell": {
+		"quantity": "{{quantity, number}} ({{currency}})",
+		"success": "Sold successfully {{emoji}} **{{name}}** for {{currency}}!"
+	},
+	"top": {
+		"format": "{{index}}. **{{name}}**",
+		"format_gold": "$t(validation:top.format) ~-~ Golds: {{gold, number}} $t(constant:emojis.currencies.gold)",
+		"format_level": "$t(validation:top.format) ~-~ Level: {{level, number}} ({{exp, number}} EXP)",
+		"format_rank": "$t(validation:top.format) ~-~ Rank: $t(constant:rank.{{rank}})",
+		"global": {
+			"color": "BLUE",
+			"description": "{{data}}\n\n*Updates every 30 minutes | Last update <t:{{date}}:R>*",
+			"title": "GLOBAL LEADERBOARD"
+		},
+		"notFound": "Hmm this server's leaderboard is updating... try again later!",
+		"server": {
+			"footer": "Updates every 5 minutes | Last update <t:{{date}}:R>",
+			"title": "SERVER LEADERBOARD"
+		}
+	},
+	"use": {
+		"life": "Your HP has been restored!",
+		"mana": "Your MP has been restored!",
+		"maxHp": "Your HP is maxed out!",
+		"maxMp": "Your MP is maxed out!",
+		"recovery": {
+			"confirm": "Please confirm that you want to use **$t(constant:emojis.Status Recovery) Status Recovery** right now?",
+			"decline": "Okay, not now.",
+			"success": "You've used $t(constant:emojis.Status Recovery) **$t(glossary:items.Status Recovery.name)** and restored:\n{{hp}} $t(constant:emojis.stats.hp) $t(glossary:stats.hp)\n{{mp}} $t(constant:emojis.stats.mp) $t(glossary:stats.mp)\nAnd all of your bad effects have been removed!"
+		},
+		"runOut": "You're trying to find a **$t(constant:emojis.{{what}}) $t(glossary:items.{{what}}.name)** in your inventory while you don't have any."
 	}
 }

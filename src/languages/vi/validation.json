@@ -1,0 +1,292 @@
+{
+	"awake": {
+		"awaken": "nah nó không dễ để tái thức tỉnh như vậy đâu!",
+		"request": "Bạn là người chơi mới phải không, {{mention}}? `/awake`"
+	},
+	"buy": {
+		"max": "Tối đa: {{quantity, number}} ({{currency}})",
+		"quantity": "{{quantity, number}} ({{currency}})",
+		"success": "Đã mua **{{quantity, number}} {{emoji}} $t(glossary:items.{{name}}.name)** thành công với **$t(glossary:currencies.{{currency}}, {\"count\":{{price}},\"context\":\"count\"})**!"
+	},
+	"chooseClass": {
+		"descriptions": {
+			"assassin": "$t(common:class) chuyên về dao găm và tốc độ. Gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
+			"cancelled": "Đã hủy!",
+			"confirm": "Bạn có chắc chắn với sự lựa chọn của mình không? \n**Bạn không thể chọn lại nghề của mình đâu.**",
+			"confirmed": "Hoàn thành! Đó một lựa chọn tuyệt vời.",
+			"embed": "Bấm vào nút của thên chức tương ứng để xem thông tin của nghề đó.",
+			"fighter": "$t(common:class) chuyên về vũ khí cận chiến. Họ có lượng sát thương ổn định và khả năng phòng thủ tốt.",
+			"healer": "$t(common:class) chuyên về phép thuật chữa trị và cường hóa sát thương. Nhưng họ lại rất mỏng manh.",
+			"mage": "$t(common:class) chuyên về tấn công bằng ma thuật, gây sát thương cao nhưng lại có khả năng phòng thủ thấp.",
+			"ranger": "$t(common:class) chuyên tấn công tầm xa.",
+			"tanker": "Là nghề chuyên về phòng thủ, thu hút ma thú về mình và bảo vệ những đồng minh có sức phòng thủ thấp."
+		},
+		"twice": "Bạn không thể chọn nghề hai lần!"
+	},
+	"cooldown": {
+		"author": "Cooldown của {{name}}",
+		"command": "{{emoji}} >> {{name}} ({{cooldown}})"
+	},
+	"give": {
+		"notEnoughGold": "Bạn là một người tốt.. nhưng hãy xem lại số dư của mình!",
+		"self": "Không thể tự gửi tiền cho chính mình!",
+		"success": "Đã gửi **{{name}} {{quantity}}**"
+	},
+	"help": {
+		"defaultEmbed": {
+			"commands": "$t(constant:emojis:guild) **Statistics commands** $t(constant:emojis:guild)\n`profile` | `inventory` | `top` | `guild`* | `title`\n\n$t(constant:emojis:pvp) **Leveling commands** $t(constant:emojis:quest)\n`gate` | `duel`* | `quest`* | `recover` | `add` | `equip` | `unequip`\n\n$t(constant:emojis:shop) **Economy commands** $t(constant:emojis:shop)\n`shop` | `buy` | `sell` | `open`* | `use` | `trade`* | `give`\n\n$t(constant:emojis:blacksmith) **Working commands** $t(constant:emojis:blacksmith)\n`chop`* | `mine`* | `craft`* | `blacksmith`*\n\n$t(constant:emojis:gambling) **Gambling commands** $t(constant:emojis:gambling)\n`lottery` | `slots`* | `blackjack` | `coinflip` | `dice`* | `threecards`\n\n$t(constant:emojis:gold) ** More Golds** $t(constant:emojis:gold)\n`vote` | `daily` | `weekly` | `redeem`* | `codes`",
+			"footer": "Các lệnh được đánh dấu * là các lệnh chưa thể sử dụng.\nNhấp vào nút để xem chi tiết.",
+			"moreInfo": "**Để biết thêm thông tin về command/item/skill: `\\help [command/item/skill]`**",
+			"tutorial": "Xem hướng dẫn với `\\start`"
+		},
+		"desccriptions": {
+			"commands": {
+				"ADD": "Nâng điểm chỉ số của bạn.",
+				"AWAKE": "Thức tỉnh thành Thợ săn",
+				"BLACKJACK": "Chơi blackjack với NPC",
+				"BLACKSMITH": "***Chưa thể sử dụng***",
+				"BUY": "Mua một vật dụng từ cửa hàng\nSử dụng `\\shop` để hiển thị cửa hàng.",
+				"CHOOSE_CLASS": "Chọn nghề của bạn",
+				"CHOP": "***Chưa thể sử dụng***",
+				"CODES": "Hiển thị các mã nhận thưởng của bạn (sử dụng `redeem` để nhận phần thưởng)",
+				"COINFLIP": "Đặt cược số vàng của bạn bằng cách tung đồng xu",
+				"CONFIG": "Cài đặt cổng của bạn.\nBật `stats` sẽ tự động hiển thị số liệu thống kê mỗi lượt.\nBật `log` sẽ hiển thị các dữ liệu mỗi lượt. \nBật `ping` sẽ tự động ping bạn khi đến lượt của bạn.",
+				"COOLDOWN": "Hiển thị thời gian hồi chiêu của bạn",
+				"CRAFT": "***Chưa thể sử dụng***",
+				"DAILY": "Nhận $t(constant:emojis.currencies.gold), $t(constant:emojis.life potion) và $t(constant:emojis.mana potion) tùy thuộc vào cấp độ và chuỗi của bạn",
+				"DICE": "***Chưa thể sử dụng***",
+				"DONATOR": "Hiển thị trạng thái donater\n*(Chỉ hoạt động trong $t(glossary:WHA))*",
+				"DRINK": "Uống một bình năng lượng trong kho đồ của bạn.",
+				"DUEL": "Chiến đấu với thợ săn được nhắc đến, thợ săn thắng cuộc chiến sẽ nhận được vàng và điểm kinh nghiệm",
+				"EQUIP": "Hiển thị trang bị của bạn hoặc trang bị một vật phẩm mới",
+				"GATE": "Mở cổng để vào hầm ngục\n*`\\guide`* để xem thêm thông tin",
+				"GIVE": "Gửi vàng tới thợ săn khác",
+				"GUIDE": "Hiển thị hướng dẫn",
+				"GUILD": "Hiển thị bang hội của bạn hoặc bang hội (máy chủ) bạn đang chơi\nSử dụng `\\guild help` để xem thêm lệnh",
+				"HEAL": "Sử dụng một bình máu trong kho đồ của bạn.",
+				"HELP": "Hiển thị danh sách lệnh hiện có hoặc thông tin cụ thể của một lệnh/vật dụng.",
+				"INFO": "Hiển thị thông tin về bot",
+				"INVENTORY": "Hiển thị kho đồ của bạn",
+				"INVITE": "Nhận liên kết mời của bot và liên kết máy chủ hỗ trợ",
+				"LANGUAGE": "Tùy chỉnh ngôn ngữ",
+				"LOTTERY": "Mua $t(constant:emojis.lottery ticket) Vé số để tham gia xổ số",
+				"MINE": "***Chưa thể sử dụng***",
+				"MONEY": "**Donator command**\nHiển thị tiền của bạn",
+				"OPEN": "***Chưa thể sử dụng***, Mở hộp\nHộp có được từ nhiệm vụ hoặc mua trong cửa hàng\nSử dụng `\\box` để xem thêm thông tin!",
+				"PARTY": "Càng đông càng vui! Bạn có thể mời tối đa 5 người tham gia tổ đội của mình và vào hầm ngục cùng họ.\nChơi cùng tổ đội sẽ nhận được phần thưởng cộng thêm.\n\n**Chủ tổ đội**\n`\\party invite @user` - thêm người dùng vào tổ đội\n`\\party kick @ user` - xóa một người dùng khỏi tổ đội\n`\\party disband` - xóa tổ đội\n`\\party give @user <loot id> <amount>`- đưa cho thành viên trong tổ đội chiến lợi phẩm đã đề cập\n`\\party create` - để tạo một tổ đội mới\n`\\party transfer` - chuyển giao quyền lãnh đạo cho một thành viên khác\n**Thành viên của tổ đội**\n`\\party left` - rời khỏi tổ đội hiện tại\n`\\party info` - để hiển thị thông tin tổ đội\n`\\party loots` - để hiển thị danh sách các phần thưởng mà tổ đội đã kiếm được",
+				"PING": "Ping bot",
+				"PROFILE": "Hiển thị hồ sơ của bạn hoặc hồ sơ của thợ săn khác",
+				"PROGRESS": "**Donator command**\nMở tiến trình của bạn",
+				"QUEST": "Hiển thị nhiệm vụ hiện tại của bạn hoặc danh sách nhiệm vụ của bạn",
+				"RECOVER": "Sử dụng `phục hồi trạng thái` nhận được từ nhiệm vụ hàng ngày",
+				"REDEEM": "Đổi một số phần thưởng từ `codes` (Không thể đổi trong phiên bản beta)",
+				"REFERRAL": "Giới thiệu mã để nhận một số phần thưởng (có thể bị xóa)",
+				"RULE": "Xem luật của bot",
+				"SELL": "Bán một vật dụng thành vàng.",
+				"SHOP": "Hiển thị cửa hàng\nSử dụng `\\buy <item_name> [số lượng]` để mua một mặt hàng từ đó",
+				"SLOTS": "***Chưa thể sử dụng***",
+				"START": "Mở hướng dẫn chơi",
+				"STATS": "**Donator command**\nHiển thị chỉ số\n\nNếu bạn cần trợ giúp về chỉ số, bạn có thể tìm `\\help add` hoặc` \\help <chỉ số>`",
+				"THREECARDS": "Chơi ba cây với NPC",
+				"TITLE": "Chọn một danh hiệu, sử dụng `\\title` để xem tất cả các danh hiệu",
+				"TOP": "Xem top thợ săn/bang hội/vv. trong danh mục cụ thể\n**Danh mục:**\n> **Thứ hạng máy chủ:** `level`, `rank`, `golds` (tối đa 5 trang)\n> **Bảng xếp hạng toàn cầu:** `global rank`, `global level`, `global golds`, `shadows`, `guild`",
+				"TRADE": "***Chưa thể sử dụng*** Giao dịch với thợ săn khác",
+				"UNEQUIP": "Tháo trang bị",
+				"USE": "Sử dụng các vật phẩm tiêu thụ từ kho của bạn",
+				"VOTE": "You can vote for **$t(glossary:SLS)** and **$t(glossary:WHA)** every 12 hours\nThis commands will show you the cooldowns and the link to vote.\n__*REWARDS*__:\n**$t(glossary:SLS)**\n> 1 vote point (2 in the weekend)\n> $t(constant:emojis.currencies.gold) **Golds** depending on your level\n> **Life potions** | **Mana potion** depending on your level\n> **Keys** depending on your rank\n> **Status Recovery** - Only on weekend (Fri - Sun UTC)\n**$t(glossary:WHA)**\n> 3 vote points",
+				"WEEKLY": "Nhận $t(constant:emojis.currencies.gold) và $t(constant:emojis.random box) (chưa thể sử dụng rương)"
+			}
+		},
+		"footer": "Đây không phải là thứ bạn đang tìm? Nhấp vào các đề xuất khác bên dưới."
+	},
+	"inventory": {
+		"author": "Kho đồ của {{name}}",
+		"item": "{{emoji}} **$t(glossary:items.{{name}}.name)**: {{amount}}",
+		"material": "{{emoji}} **$t(glossary:materials.{{name}}.name)**: {{amount}}"
+	},
+	"invite": {
+		"bot": "Hãy thêm tôi!",
+		"description": "Nhấn vào những nút bên dưới!",
+		"server": "Tham gia Server Hỗ trợ"
+	},
+	"language": {
+		"decline": "Được rồi, tôi không thay đổi ngôn ngữ của bạn.",
+		"disclaimer": "Ngôn ngữ này **KHÔNG ĐƯỢC** dịch bởi **Staff của $t(glossary:WHA:)**. **Bạn có chắc chắn về việc thay đổi ngôn ngữ không?**.\nNếu bạn có bản dịch tốt hơn, xin vui lòng liên hệ với chúng tôi!",
+		"success": "Ngôn ngữ của bạn đã chuyển thành Tiếng Việt."
+	},
+	"links": "[**Invite link**]($t(constant:botInvite)) | [**Support server**]($t(constant:serverInvite)) | [**Vote**]($t(constant:botVote)) | [**Donate (Patreon)**]($t(constant:patreon)) | [**Donate (Donate Bot)**]($t(constant:donateBot, { \"uid\": \"{{uid}}\" }))",
+	"mentionNotHunter": "Không thể thực thi vì **{{mention}}** không phải là một $t(common:hunter)!",
+	"party": {
+		"create": {
+			"alreadyHave": "Hiện giờ bạn đã đang ở trong một tổ đội."
+		},
+		"disband": "Tổ đội của bạn đã giải thể!",
+		"give": {
+			"invalidItem": "Hãy xem lại tên của chiến lợi phẩm mà bạn muốn phát!",
+			"max": "$t(common:max): {{count, number}}",
+			"notEnough": "Không đủ chiến lợi phẩm để phát.",
+			"success": "Đã gửi **{{name}}** {{quantity, number}} $t(constant:emojis.materials.{{item}}) $t(glossary:materials.{{item}}.name)."
+		},
+		"info": {
+			"author": {
+				"name": "{{name}}"
+			},
+			"color": "BLUE",
+			"fields": [
+				{
+					"inline": true,
+					"name": "Thành viên",
+					"value": "{{members}}"
+				},
+				{
+					"inline": true,
+					"name": "Chiến lợi phẩm (5 thứ đầu tiên)",
+					"value": "{{loots}}\n*Sử dụng `/{{commandParty}} {{subcommandLoots, lowercase}}` để xem thêm*"
+				}
+			]
+		},
+		"invite": {
+			"accepted": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}** đã gia nhập **{{partyName}}**!"
+			},
+			"alreadyHave": "**{{name}}** đã đang là thành viên của một tổ đội!",
+			"declined": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "{{name}} đã từ chối lời mòi gia nhập!"
+			},
+			"full": "Tổ đội của bạn hiện đang đầy!",
+			"invitation": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}**, Bạn được mời tham gia **{{partyName}}**.",
+				"footer": {
+					"text": "Trả lời bằng cách nhấn vào các nút bên dưới tin nhắn này."
+				}
+			},
+			"timeout": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "$t(common:timeout)!"
+			}
+		},
+		"kick": {
+			"inGate": "Bạn không thể đá thành viên đang trong cổng!",
+			"success": {
+				"author": {
+					"name": "{{partyName}}"
+				},
+				"color": "BLUE",
+				"description": "**{{name}}** đã bị đá ra khỏi **{{partyName}}**!"
+			}
+		},
+		"leave": {
+			"author": {
+				"name": "{{partyName}}"
+			},
+			"color": "BLUE",
+			"description": "**{{name}}** đã rời khỏi **{{partyName}}**!"
+		},
+		"loots": {
+			"loot": "$t(constant:emojis.materials.{{name}}) **$t(glossary:materials.{{name}}.name)**: {{count, number}}"
+		},
+		"memberInGate": "Vẫn còn thành viên trong cổng!",
+		"name": "Tổ đội của {{name}}",
+		"noParty": "Hiện bạn đang không ở trong một tổ đội nào!",
+		"notInParty": "**{{name}}** không phải là thành viên của **{{partyName}}**!",
+		"notLeader": "Bạn không phải là đội trưởng của bất cứ tổ đội nào!",
+		"transfer": {
+			"author": {
+				"name": "{{partyName}}"
+			},
+			"color": "BLUE",
+			"description": "**{{name}}** đã trở thành đội trưởng của **{{partyName}}**!"
+		},
+		"ungivenLoots": "Vẫn còn chiến lợi phẩm chưa được phân phát!"
+	},
+	"profile": {
+		"author": "Hồ sơ của {{name}}",
+		"information": {
+			"left": "**$t(common:class)**: $t(constant:emojis.class.{{class}}) $t(common:{{class}})\n**$t(common:rank)**: $t(constant:emojis.rank.{{rank}})",
+			"right": "**$t(common:level)**: {{level, number}} ({{exp, number}} / {{maxExp, number}})\n**$t(common:guild)**: {{guild}}"
+		},
+		"money": {
+			"gold": "$t(constant:emojis.currencies.gold) **$t(glossary:currencies.gold, {\"count\":{{count}}})**: {{gold, number}} ",
+			"magicCore": "$t(constant:emojis.currencies.magicCore) **$t(glossary:currencies.magicCore, {\"count\":{{count}}})**: {{magicCore, number}}",
+			"manaCrystal": "$t(constant:emojis.currencies.manaCrystal) **$t(glossary:currencies.manaCrystal, {\"count\":{{count}}})**: {{manaCrystal, number}}",
+			"money": "$t(validation:profile.money.manaCrystal, {\"count\":{{manaCrystal}}})\n$t(validation:profile.money.gold, {\"count\":{{gold}}})\n$t(validation:profile.money.magicCore, {\"count\":{{magicCore}}})"
+		},
+		"stats": {
+			"agi": "$t(constant:emojis.stats.agi) **$t(glossary:stats:agi)**: {{agi, number}} ({{eqAgi, eqStats}})",
+			"def": "$t(constant:emojis.stats.def) **$t(glossary:stats:def)**: {{def, number}} ({{eqDef, eqStats}})",
+			"hp": "$t(constant:emojis.stats.hp) **$t(glossary:stats:hp)**: {{hp, number}}/{{maxHp, number}}",
+			"int": "$t(constant:emojis.stats.int) **$t(glossary:stats:int)**: {{int, number}} ({{eqInt, eqStats}})",
+			"left": "$t(validation:profile.stats.hp, {\"hp\":\"{{hp}}\",\"maxHp\":\"{{maxHp}}\"})\n$t(validation:profile.stats.str, {\"context\":\"equipment\",\"str\":\"{{str}}\",\"eqStr\":\"{{eqStr}}\"})\n$t(validation:profile.stats.def, {\"context\":\"equipment\",\"def\":\"{{def}}\",\"eqDef\":\"{{eqDef}}\"})\n$t(validation:profile.stats.vit, {\"context\":\"equipment\",\"vit\":\"{{vit}}\",\"eqVit\":\"{{eqVit}}\"})",
+			"mp": "$t(constant:emojis.stats.mp) **$t(glossary:stats:mp)**: {{mp, number}}/{{maxMp, number}}",
+			"mr": "$t(constant:emojis.stats.mr) **$t(glossary:stats:mr)**: {{mr, number}} ({{eqMr, eqStats}})",
+			"right": "$t(validation:profile.stats.mp, {\"mp\":\"{{mp}}\",\"maxMp\":\"{{maxMp}}\"})\n$t(validation:profile.stats.int, {\"context\":\"equipment\",\"int\":\"{{int}}\",\"eqInt\":\"{{eqInt}}\"})\n$t(validation:profile.stats.mr, {\"context\":\"equipment\",\"mr\":\"{{mr}}\",\"eqMr\":\"{{eqMr}}\"})\n$t(validation:profile.stats.agi, {\"context\":\"equipment\",\"agi\":\"{{agi}}\",\"eqAgi\":\"{{eqAgi}}\"})",
+			"str": "$t(constant:emojis.stats.str) **$t(glossary:stats:str)**: {{str, number}} ({{eqStr, eqStats}})",
+			"vit": "$t(constant:emojis.stats.vit) **$t(glossary:stats:vit)**: {{vit, number}} ({{eqVit, eqStats}})"
+		},
+		"statsPoint": "**Điểm chỉ số khả dụng**: {{count, number}}"
+	},
+	"reset": {
+		"decline": "*Phew, okay...*",
+		"error": "Đã xảy ra lỗi, vui lòng thử lại!",
+		"processing": "Đang thực thi...",
+		"success": "Đã xóa tiến trình của **{{mention}}** thành công.",
+		"timeout": "$t(common:timeout)! *Phew, okay...*",
+		"warning": "**CHÚ Ý!!!!!!** Quá trình này không thể hoàn tác, bạn có chắc chắn muốn xóa tiến trình của mình không **{{mention}}**?"
+	},
+	"retry": ["Hmm...thử lại nào.", "Có gì đó sai sai. Thử lại đi?", "Hơi nhanh đó. Hãy thử lại."],
+	"rule": {
+		"rule": "> **1**. $t(validation:rule.ruleOne)\n> **2**. $t(validation:rule.ruleTwo)\n> **3**. $t(validation:rule.ruleThree)\n\n$t(validation:rule.ruleTos)\n$t(validation:rule.ruleFooter)",
+		"ruleFooter": "Vi phạm bất kỳ quy tắc nào ở trên sẽ dẫn đến việc bị cấm và đưa vào danh sách đen!",
+		"ruleOne": "**KHÔNG** giao dịch/buôn bán tiền/vật phẩm trong trò chơi cho bất kỳ thứ gì không liên quan đến **$t(glossary:WHA)**.",
+		"ruleThree": "**KHÔNG** lạm dụng hoặc hưởng lợi từ lỗi. Mà hãy báo cáo trực tiếp cho <#729245705578741842> [**$t(glossary:WHA)**]($t(constant:serverInvite)).",
+		"ruleTos": "Cuối cùng, hãy tuân thủ **Discord TOS!!**",
+		"ruleTwo": "**KHÔNG** gian lận bằng bất kỳ hình thức nào ||*(self-bot, macro, v.v.)*||"
+	},
+	"sell": {
+		"quantity": "{{quantity, number}} ({{currency}})",
+		"success": "Đã bán {{emoji}} **{{name}}** với {{currency}}!"
+	},
+	"top": {
+		"format": "{{index}}. **{{name}}**",
+		"format_gold": "$t(validation:top.format) ~-~ Vàng: {{gold, number}} $t(constant:emojis.currencies.gold)",
+		"format_level": "$t(validation:top.format) ~-~ Cấp: {{level, number}} ({{exp, number}} EXP)",
+		"format_rank": "$t(validation:top.format) ~-~ Hạng: $t(constant:rank.{{rank}})",
+		"global": {
+			"color": "BLUE",
+			"description": "{{data}}\n\n*Cập nhật mỗi 30 phút | Lần cập nhật cuối vào <t:{{date}}:R>*",
+			"title": "BẢNG XẾP HẠNG TOÀN CẦU"
+		},
+		"notFound": "Bảng xếp hạng máy chủ này đang được cập nhật... hãy thử lại sau!",
+		"server": {
+			"footer": "Cập nhật mỗi 5 phút | Lần cập nhật cuối vào <t:{{date}}:R>",
+			"title": "BẢNG XẾP HẠNG"
+		}
+	},
+	"use": {
+		"life": "HP của bạn đã được khôi phục!",
+		"mana": "MP của bạn đã được khôi phục!",
+		"maxHp": "HP của bạn đã đạt đến mức tối đa!",
+		"maxMp": "MP của bạn đã đạt mức tối đa!",
+		"recovery": {
+			"confirm": "Bạn có chắc chắn muốn sử dụng **$t(constant:emojis.Status Recovery) Phục hồi trạng thái** bây giờ không?",
+			"decline": "Được rồi, không phải bây giờ.",
+			"success": "Bạn vừa sử dụng $t(constant:emojis.Status Recovery) **$t(glossary:items.Status Recovery.name)** để hồi phục:\n{{hp}} $t(constant:emojis.stats.hp) $t(glossary:stats.hp)\n{{mp}} $t(constant:emojis.stats.mp) $t(glossary:stats.mp)\nVà tất cả các hiệu ứng xấu đã được loại bỏ!"
+		},
+		"runOut": "Bạn đang cố tìm một **$t(constant:emojis.{{what}}) $t(glossary:items.{{what}}.name)** trong túi đồ nhưng nó đã hết."
+	}
+}

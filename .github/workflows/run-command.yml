@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: The pm2 command
+        description: The command to run
         required: true
 
 jobs:
@@ -17,4 +17,4 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - run: pm2 ${{ github.event.inputs.command }} sls
+      - run: ${{ github.event.inputs.command }}
