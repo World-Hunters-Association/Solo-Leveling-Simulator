@@ -261,6 +261,22 @@
 		"quantity": "{{quantity, number}} ({{currency}})",
 		"success": "Đã bán {{emoji}} **{{name}}** với {{currency}}!"
 	},
+	"top": {
+		"format": "{{index}}. **{{name}}**",
+		"format_gold": "$t(validation:top.format) ~-~ Vàng: {{gold, number}} $t(constant:emojis.currencies.gold)",
+		"format_level": "$t(validation:top.format) ~-~ Cấp: {{level, number}} ({{exp, number}} EXP)",
+		"format_rank": "$t(validation:top.format) ~-~ Hạng: $t(constant:rank.{{rank}})",
+		"global": {
+			"color": "BLUE",
+			"description": "{{data}}\n\n*Cập nhật mỗi 30 phút | Lần cập nhật cuối vào <t:{{date}}:R>*",
+			"title": "BẢNG XẾP HẠNG TOÀN CẦU"
+		},
+		"notFound": "Bảng xếp hạng máy chủ này đang được cập nhật... hãy thử lại sau!",
+		"server": {
+			"footer": "Cập nhật mỗi 5 phút | Lần cập nhật cuối vào <t:{{date}}:R>",
+			"title": "BẢNG XẾP HẠNG"
+		}
+	},
 	"use": {
 		"life": "HP của bạn đã được khôi phục!",
 		"mana": "MP của bạn đã được khôi phục!",

@@ -472,9 +472,14 @@ export default class UserCommand extends Subcommand {
 
 		const pageAmount = Math.ceil(loots.length / 10);
 		for (let i = 0; i < pageAmount; i++) {
-			message.addPageEmbed((embed) =>
+			message.addAsyncPageEmbed(async (embed) =>
 				embed.setDescription(
-					`**${i + 1}/${pageAmount}**\n${loots
+					`**${await resolveKey(interaction, 'common:page', {
+						lng: locale,
+						context: 'format',
+						page: i + 1,
+						total: pageAmount
+					})}**\n${loots
 						.slice(i * 10, (i + 1) * 10)
 						.map((l, ind) => `**${i * 10 + 1 + ind}.** ${l}`)
 						.join('\n')}`

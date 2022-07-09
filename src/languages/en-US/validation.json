@@ -261,6 +261,22 @@
 		"quantity": "{{quantity, number}} ({{currency}})",
 		"success": "Sold successfully {{emoji}} **{{name}}** for {{currency}}!"
 	},
+	"top": {
+		"format": "{{index}}. **{{name}}**",
+		"format_gold": "$t(validation:top.format) ~-~ Golds: {{gold, number}} $t(constant:emojis.currencies.gold)",
+		"format_level": "$t(validation:top.format) ~-~ Level: {{level, number}} ({{exp, number}} EXP)",
+		"format_rank": "$t(validation:top.format) ~-~ Rank: $t(constant:rank.{{rank}})",
+		"global": {
+			"color": "BLUE",
+			"description": "{{data}}\n\n*Updates every 30 minutes | Last update <t:{{date}}:R>*",
+			"title": "GLOBAL LEADERBOARD"
+		},
+		"notFound": "Hmm this server's leaderboard is updating... try again later!",
+		"server": {
+			"footer": "Updates every 5 minutes | Last update <t:{{date}}:R>",
+			"title": "SERVER LEADERBOARD"
+		}
+	},
 	"use": {
 		"life": "Your HP has been restored!",
 		"mana": "Your MP has been restored!",

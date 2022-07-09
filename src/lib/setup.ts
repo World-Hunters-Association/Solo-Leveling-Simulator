@@ -46,7 +46,6 @@ import type {
 	Penalty,
 	Potions,
 	Recover,
-	Spam,
 	Stone,
 	Top
 } from './structures/schemas';
@@ -83,6 +82,7 @@ declare module '@sapphire/pieces' {
 	interface Container {
 		constants: ConstantsUtils;
 		db: Db;
+		$db: Db;
 		functions: FunctionsUtils;
 	}
 
@@ -119,7 +119,6 @@ interface Collections {
 	penalty: Penalty;
 	potions: Potions;
 	recover: Recover;
-	spam: Spam;
 	stone: Stone;
 	top: Top;
 }

@@ -1542,6 +1542,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-schedule@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@types/node-schedule@npm:2.1.0"
+  dependencies:
+    "@types/node": "*"
+  checksum: db782544dbdfaddc78488b463cdc474f76c55ebb1ffcec9fc9d3d67e02e23e0ff1d36e6bdca562097db650e6d8a1fac17c3dd03dc5564e5dbb54e5368019e55b
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^17.0.10":
   version: 17.0.31
   resolution: "@types/node@npm:17.0.31"
@@ -2769,6 +2778,16 @@ __metadata:
   version: 1.1.1
   resolution: "create-require@npm:1.1.1"
   checksum: a9a1503d4390d8b59ad86f4607de7870b39cad43d929813599a23714831e81c520bddf61bcdd1f8e30f05fd3a2b71ae8538e946eb2786dc65c2bbc520f692eff
+  languageName: node
+  linkType: hard
+
+"cron-parser@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "cron-parser@npm:3.5.0"
+  dependencies:
+    is-nan: ^1.3.2
+    luxon: ^1.26.0
+  checksum: 80096ac1c30fa4017648ad2fa062ae002e6c0d7775b96a00dbadf1e2d7f9e01b3db0324eef2a33fe6136363be3ffb0d6065cf1b91e6a13fd5ed4d3c168abbc69
   languageName: node
   linkType: hard
 
@@ -4454,6 +4473,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-nan@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "is-nan@npm:1.3.2"
+  dependencies:
+    call-bind: ^1.0.0
+    define-properties: ^1.1.3
+  checksum: 5dfadcef6ad12d3029d43643d9800adbba21cf3ce2ec849f734b0e14ee8da4070d82b15fdb35138716d02587c6578225b9a22779cab34888a139cc43e4e3610a
+  languageName: node
+  linkType: hard
+
 "is-negative-zero@npm:^2.0.2":
   version: 2.0.2
   resolution: "is-negative-zero@npm:2.0.2"
@@ -5377,6 +5406,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"long-timeout@npm:0.1.1":
+  version: 0.1.1
+  resolution: "long-timeout@npm:0.1.1"
+  checksum: 48668e5362cb74c4b77a6b833d59f149b9bb9e99c5a5097609807e2597cd0920613b2a42b89bd0870848298be3691064d95599a04ae010023d07dba39932afa7
+  languageName: node
+  linkType: hard
+
 "longest@npm:^2.0.1":
   version: 2.0.1
   resolution: "longest@npm:2.0.1"
@@ -5397,6 +5433,13 @@ __metadata:
   version: 7.9.0
   resolution: "lru-cache@npm:7.9.0"
   checksum: c91a293a103d11ea4f07de4122ba4f73d8203d0de51852fb612b1764296aebf623a3e11dddef1b3aefdc8d71af97d52b222dad5459dcb967713bbab9a19fed7d
+  languageName: node
+  linkType: hard
+
+"luxon@npm:^1.26.0":
+  version: 1.28.0
+  resolution: "luxon@npm:1.28.0"
+  checksum: 5250cb9f138b6048eeb0b3a9044a4ac994d0058f680c72a0da4b6aeaec8612460385639cba2b1052ef6d5564879e9ed144d686f26d9d97b38ab920d82e18281c
   languageName: node
   linkType: hard
 
@@ -5860,6 +5903,17 @@ __metadata:
   version: 2.0.4
   resolution: "node-releases@npm:2.0.4"
   checksum: b32d6c2032c7b169ae3938b416fc50f123f5bd577d54a79b2ae201febf27b22846b01c803dd35ac8689afe840f8ba4e5f7154723db629b80f359836b6707b92f
+  languageName: node
+  linkType: hard
+
+"node-schedule@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "node-schedule@npm:2.1.0"
+  dependencies:
+    cron-parser: ^3.5.0
+    long-timeout: 0.1.1
+    sorted-array-functions: ^1.3.0
+  checksum: e457e76e633ed551e384ab2404628f0980bd3263057665dd3166a72b0eaca093cd57e42e144f9241b913383c1c58c633d3c782580009cbd51b1b9e2623193d52
   languageName: node
   linkType: hard
 
@@ -6999,6 +7053,7 @@ __metadata:
     "@sapphire/ts-config": ^3.3.4
     "@sapphire/utilities": ^3.7.0
     "@types/node": ^17.0.10
+    "@types/node-schedule": ^2.1.0
     "@types/ws": ^8.5.3
     chokidar-cli: ^3.0.0
     colorette: ^2.0.19
@@ -7015,6 +7070,7 @@ __metadata:
     jest: ^28.1.2
     lint-staged: ^13.0.3
     mongodb: ^4.7.0
+    node-schedule: ^2.1.0
     npm-run-all: ^4.1.5
     prettier: ^2.7.0
     pretty-quick: ^3.1.3
@@ -7024,6 +7080,13 @@ __metadata:
     typescript: ^4.7.3
   languageName: unknown
   linkType: soft
+
+"sorted-array-functions@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "sorted-array-functions@npm:1.3.0"
+  checksum: 673fd39ca3b6c92644d4483eac1700bb7d7555713a536822a7522a35af559bef3e72f10d89356b75042dc394cd7c2e2ab6f40024385218ec3c85bb7335032857
+  languageName: node
+  linkType: hard
 
 "source-map-support@npm:0.5.13":
   version: 0.5.13

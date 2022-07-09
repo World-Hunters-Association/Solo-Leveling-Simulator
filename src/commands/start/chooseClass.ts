@@ -47,8 +47,6 @@ export default class UserCommand extends Command {
 			return;
 		}
 
-		await this.container.db.collection('busy').insertOne({ uid, reason: 'chooseClass' });
-
 		const embedGenerator = () => {
 			return new MessageEmbed()
 				.setTitle(this.container.i18n.getT(locale)('common:chooseClass').toUpperCase())
@@ -124,6 +122,7 @@ export default class UserCommand extends Command {
 		];
 
 		const message = await interaction.editReply({ embeds: [embedGenerator()], components: componentsGenerator() });
+		await this.container.db.collection('busy').insertOne({ uid, reason: 'chooseClass', messageURL: (message as Message).url });
 
 		const collector = (message as Message).createMessageComponentCollector({
 			filter: (i) => i.user.id === interaction.user.id,

@@ -377,5 +377,15 @@
 			"description": "Increase your $t(glossary:stats:hp).\n\n**Rate**: 1 $t(glossary:stats:vit) = 3 $t(glossary:stats:hp).",
 			"name": "$t(glossary:stats.vit)"
 		}
+	},
+	"ranks": {
+		"E-Rank": "E-Rank",
+		"D-Rank": "D-Rank",
+		"C-Rank": "C-Rank",
+		"B-Rank": "B-Rank",
+		"A-Rank": "A-Rank",
+		"S-Rank": "S-Rank",
+		"SS-Rank": "SS-Rank",
+		"National Level": "National Level"
 	}
 }

@@ -15,7 +15,7 @@ import { DurationFormatter } from '@sapphire/time-utilities';
 export default class System extends SapphireClient {
 	public config: AlpetaOptions;
 
-	public constructor(config: AlpetaOptions, db: Db) {
+	public constructor(config: AlpetaOptions, { $db, db }: { $db: Db; db: Db }) {
 		super({
 			allowedMentions: { parse: ['users'], repliedUser: true },
 			intents: [
@@ -112,6 +112,7 @@ export default class System extends SapphireClient {
 		this.stores.register(new UtilsStore().registerPath(join(__dirname, 'utils')));
 
 		container.db = db;
+		container.$db = $db;
 
 		container.i18n.fetchLanguageWithDefault = container.i18n.fetchLanguage as (context: InternationalizationContext) => Awaitable<string>;
 
@@ -126,7 +127,10 @@ void new MongoClient(process.env.MONGO_URL!).connect().then(async (mClient) => {
 			token: process.env.TOKEN!,
 			root: '.'
 		},
-		mClient.db(process.env.DB || 'leveling-solo-simulator')
+		{
+			db: mClient.db(process.env.DB || 'leveling-solo-simulator'),
+			$db: mClient.db(process.env.DB === 'solo-leveling-simulator' ? 'leveling-solo-simulator' : 'solo-leveling-simulator')
+		}
 	);
 	await client.login(client.config.token);
 });

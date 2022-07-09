@@ -63,6 +63,7 @@ export interface Boxes {
 export interface Busy {
 	uid: Snowflake;
 	reason?: string;
+	messageURL?: string;
 }
 
 export interface Code {
@@ -286,10 +287,6 @@ export interface Recover {
 	has: boolean;
 }
 
-export interface Spam {
-	uid: Snowflake;
-}
-
 export interface Stone {
 	uid: Snowflake;
 	stones: {
@@ -299,7 +296,10 @@ export interface Stone {
 
 export interface Top {
 	gid: Snowflake;
-	level: string;
-	rank: string;
-	golds: string;
+	date: Date;
+	top: {
+		level: { uid: Snowflake; exp: number; level: number }[];
+		rank: { uid: Snowflake; rank: RANK }[];
+		gold: { uid: Snowflake; gold: number }[];
+	};
 }

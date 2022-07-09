@@ -377,5 +377,15 @@
 			"description": "Tăng $t(glossary:stats:hp) của bạn.\n\n**Tỷ lệ**: 1 $t(glossary:stats:vit) = 3 $t(glossary:stats:hp).",
 			"name": "$t(glossary:stats.vit)"
 		}
+	},
+	"ranks": {
+		"E-Rank": "Hạng E",
+		"D-Rank": "Hạng D",
+		"C-Rank": "Hạng C",
+		"B-Rank": "Hạng B",
+		"A-Rank": "Hạng A",
+		"S-Rank": "Hạng S",
+		"SS-Rank": "Hạng SS",
+		"National Level": "Cấp Quốc Gia"
 	}
 }
