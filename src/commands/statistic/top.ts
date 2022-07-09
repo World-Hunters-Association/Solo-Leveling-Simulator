@@ -19,18 +19,36 @@ export default class UserCommand extends Subcommand {
 			name: 'server',
 			type: 'group',
 			entries: [
-				{ name: 'level', chatInputRun: 'serverLevelRun' },
-				{ name: 'rank', chatInputRun: 'serverRankRun' },
-				{ name: 'gold', chatInputRun: 'serverGoldRun' }
+				{
+					name: 'level',
+					chatInputRun: async (interaction: Subcommand.ChatInputInteraction<'cached'>) => this.run(interaction, 'server', 'level')
+				},
+				{
+					name: 'rank',
+					chatInputRun: async (interaction: Subcommand.ChatInputInteraction<'cached'>) => this.run(interaction, 'server', 'rank')
+				},
+				{
+					name: 'gold',
+					chatInputRun: async (interaction: Subcommand.ChatInputInteraction<'cached'>) => this.run(interaction, 'server', 'gold')
+				}
 			]
 		},
 		{
 			name: 'global',
 			type: 'group',
 			entries: [
-				{ name: 'level', chatInputRun: 'globalLevelRun' },
-				{ name: 'rank', chatInputRun: 'globalRankRun' },
-				{ name: 'gold', chatInputRun: 'globalGoldRun' }
+				{
+					name: 'level',
+					chatInputRun: async (interaction: Subcommand.ChatInputInteraction<'cached'>) => this.run(interaction, 'global', 'level')
+				},
+				{
+					name: 'rank',
+					chatInputRun: async (interaction: Subcommand.ChatInputInteraction<'cached'>) => this.run(interaction, 'global', 'rank')
+				},
+				{
+					name: 'gold',
+					chatInputRun: async (interaction: Subcommand.ChatInputInteraction<'cached'>) => this.run(interaction, 'global', 'gold')
+				}
 			]
 		}
 	];
@@ -67,30 +85,6 @@ export default class UserCommand extends Subcommand {
 			idHints: ['995208027818962965'],
 			behaviorWhenNotIdentical: RegisterBehavior.Overwrite
 		});
-	}
-
-	public async serverLevelRun(interaction: Subcommand.ChatInputInteraction<'cached'>) {
-		await this.run(interaction, 'server', 'level');
-	}
-
-	public async serverRankRun(interaction: Subcommand.ChatInputInteraction<'cached'>) {
-		await this.run(interaction, 'server', 'rank');
-	}
-
-	public async serverGoldRun(interaction: Subcommand.ChatInputInteraction<'cached'>) {
-		await this.run(interaction, 'server', 'gold');
-	}
-
-	public async globalLevelRun(interaction: Subcommand.ChatInputInteraction<'cached'>) {
-		await this.run(interaction, 'global', 'level');
-	}
-
-	public async globalRankRun(interaction: Subcommand.ChatInputInteraction<'cached'>) {
-		await this.run(interaction, 'global', 'rank');
-	}
-
-	public async globalGoldRun(interaction: Subcommand.ChatInputInteraction<'cached'>) {
-		await this.run(interaction, 'global', 'gold');
 	}
 
 	public async run(interaction: Subcommand.ChatInputInteraction<'cached'>, type: 'global' | 'server', statistic: 'level' | 'rank' | 'gold') {
