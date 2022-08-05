@@ -2,13 +2,13 @@ import type { PieceContext } from '@sapphire/framework';
 import { Locale } from 'discord-api-types/v9';
 import { Collection, Snowflake } from 'discord.js';
 import { join } from 'path';
-import type { Currencies } from '../lib/structures/schemas';
 
 import { Utils } from '../lib/structures/Utils';
-// import { CLASS_EMOJIS, CLASSES, Drops, Equipments, HunterSkills, Items, Mobs, MobSkills, RANK, RANK_EMOJIS } from './types';
+
+import type { Currencies } from '../lib/structures/schemas';
 
 export default class ConstantsUtils extends Utils {
-	public DROPS: Drops[] = [
+	public DROPS = [
 		{
 			name: "Rasaka's Eye",
 			emoji: '<:RasakasEye:749291094969155644>',
@@ -27,13 +27,15 @@ export default class ConstantsUtils extends Utils {
 			name: "Rasaka's Red Scale",
 			emoji: '<:RasakasRedScale:749292242497306664>',
 			species: 'Rasaka',
-			rank: 2
+			rank: 2,
+			sellPrice: undefined
 		},
 		{
 			name: "Rasaka's Poison Fang",
 			emoji: '<:RasakasPoisonFang:752077738008903681>',
 			species: 'Rasaka',
-			rank: 3
+			rank: 3,
+			sellPrice: undefined
 		},
 		{
 			name: "Raikan's Fang",
@@ -105,9 +107,9 @@ export default class ConstantsUtils extends Utils {
 			rank: 1,
 			sellPrice: 100
 		}
-	];
+	] as const;
 
-	public EQUIPMENTS: Equipments[] = [
+	public EQUIPMENTS = [
 		{
 			name: 'Leather tunic',
 			emoji: '<:Leathertunic:765578654800674847>',
@@ -246,9 +248,9 @@ export default class ConstantsUtils extends Utils {
 				def: -1
 			}
 		}
-	];
+	] as const;
 
-	public ITEMS: Items[] = [
+	public ITEMS = [
 		{
 			name: 'life potion',
 			description: 'a bottle filled with blood. Yes blood!\nUse `heal` to restore your HP',
@@ -542,7 +544,7 @@ export default class ConstantsUtils extends Utils {
 			weight: 1000,
 			emoji: this.EQUIPMENTS.find((eq) => eq.name === 'Seashell Necklace')!.emoji
 		}
-	];
+	] as const;
 
 	public EMOJIS = {
 		LOGO: {
@@ -750,9 +752,9 @@ export default class ConstantsUtils extends Utils {
 			SAPPHIRE: '<:Sapphire:922699694591840266>',
 			OPAL: '<:Opal:922699694323433493>'
 		}
-	};
+	} as const;
 
-	public MOBS: readonly Mobs[] = [
+	public MOBS = [
 		{
 			name: "Blue Poison Fang's Rasaka",
 			emoji: this.EMOJIS.MOBS.BOSS_RASAKA,
@@ -1059,9 +1061,9 @@ export default class ConstantsUtils extends Utils {
 				range: 2
 			}
 		}
-	];
+	] as const;
 
-	public HUNTER_SKILLS: readonly HunterSkills[] = [
+	public HUNTER_SKILLS = [
 		// #region Unspecialized
 		{
 			name: 'Punch',
@@ -1420,9 +1422,9 @@ export default class ConstantsUtils extends Utils {
 			}
 		}
 		// #endregion
-	];
+	] as const;
 
-	public MOB_SKILLS: readonly MobSkills[] = [
+	public MOB_SKILLS = [
 		{
 			name: 'Poison Fang',
 			description:
@@ -1484,30 +1486,32 @@ export default class ConstantsUtils extends Utils {
 			species: 'Normal',
 			target: false
 		}
-	];
+	] as const;
 
 	public rootDir = join(__dirname, '..', '..');
 	public srcDir = join(this.rootDir, 'src');
 
-	public SUPPORTED_LANGUAGES = ['en-US', 'vi'];
-	public DISCORD_SUPPORTED_LANGUAGES = Object.values(Locale).filter((l) => this.SUPPORTED_LANGUAGES.includes(l));
+	public SUPPORTED_LANGUAGES = ['en-US', 'vi'] as const;
+	public DISCORD_SUPPORTED_LANGUAGES = Object.values(Locale).filter((l) => this.SUPPORTED_LANGUAGES.includes(`${l}` as 'vi'));
 
 	public CARDS = new Collection<
 		`${'A' | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 'J' | 'Q' | 'K'}${'♥' | '♦' | '♣' | '♠'}`,
 		`${'A' | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 'J' | 'Q' | 'K'}`
 	>();
 
-	public BYPASS_COMMANDS = ['help', 'awake', 'ping', 'jail', 'rule', 'start', 'skills-skill', 'recover'];
+	public BYPASS_COMMANDS = ['help', 'awake', 'ping', 'jail', 'rule', 'start', 'skills-skill', 'recover'] as const;
 
-	public IGNORE_DONATOR_COMMANDS = ['daily', 'weekly'];
+	public NON_DEFERRED_COMMANDS = ['guild create'] as const;
 
-	public PING_COMMANDS = ['profile', 'inventory', 'give'];
+	public IGNORE_DONATOR_COMMANDS = ['daily', 'weekly'] as const;
 
-	public PING_SUB_COMMANDS = ['party-invite'];
+	public PING_COMMANDS = ['profile', 'inventory', 'give'] as const;
 
-	public CAPTCHA_COMMANDS = ['gate', 'mine', 'chop'];
+	public PING_SUB_COMMANDS = ['party-invite'] as const;
 
-	public ISNT_FINISHED_COMMANDS = ['slots', 'dice', 'chop', 'mine', 'craft', 'blacksmith', 'open', 'trade', 'guild', 'quest', 'duel'];
+	public CAPTCHA_COMMANDS = ['gate', 'mine', 'chop'] as const;
+
+	public ISNT_FINISHED_COMMANDS = ['slots', 'dice', 'chop', 'mine', 'craft', 'blacksmith', 'open', 'trade', 'guild', 'quest', 'duel'] as const;
 
 	public BaseStats = {
 		Assassin: {
@@ -1566,7 +1570,7 @@ export default class ConstantsUtils extends Utils {
 			def: 10,
 			mr: 10
 		}
-	};
+	} as const;
 
 	public CLASSES_INFO = {
 		ASSASSIN: {
@@ -1593,7 +1597,7 @@ export default class ConstantsUtils extends Utils {
 			EMOJI: this.EMOJIS.CLASSES[CLASSES['Tanker']],
 			BASE_STATS: this.BaseStats['Tanker']
 		}
-	};
+	} as const;
 
 	public COMMANDS = {
 		HELP: {
@@ -1916,12 +1920,11 @@ export default class ConstantsUtils extends Utils {
 				}
 			}
 		}
-	};
+	} as const;
 
 	public constructor(context: PieceContext) {
 		super(context);
 
-		// eslint-disable-next-line prettier/prettier
 		[
 			'A♥',
 			'A♦',
@@ -1987,7 +1990,7 @@ declare module '../lib/structures/UtilsStore' {
 
 export interface Drops {
 	readonly name: string;
-	readonly sellPrice?: number;
+	readonly sellPrice: number | undefined;
 	readonly species: string;
 	readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>`;
 	readonly rank: 1 | 2 | 3 | 4 | 5 | 6 | 7;

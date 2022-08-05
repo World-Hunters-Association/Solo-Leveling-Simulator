@@ -425,9 +425,9 @@ export default class UserCommand extends Command {
 			ITEMS.filter((i) => !EQUIPMENTS.some((eq) => eq.name.toLowerCase() === i.name.toLowerCase()))
 				.map((i) => ({
 					label: this.container.i18n.format(locale, `glossary:items.${i.name}.name`),
-					name: i.name,
+					name: i.name as string,
 					type: 'ITEMS',
-					aliases: [i.name],
+					aliases: [i.name] as string[],
 					emoji: i.emoji as string | undefined,
 					value: i as object
 				}))
@@ -436,7 +436,7 @@ export default class UserCommand extends Command {
 						label: this.container.i18n.format(locale, `glossary:skills.${sk.name}.name`),
 						name: sk.name,
 						type: 'HUNTER_SKILLS',
-						aliases: sk.aliases!,
+						aliases: [] as string[],
 						emoji: sk.emoji,
 						value: sk
 					}))
@@ -446,7 +446,7 @@ export default class UserCommand extends Command {
 						label: this.container.i18n.format(locale, `glossary:skills.${sk.name}.name`),
 						name: sk.name,
 						type: 'MOB_SKILLS',
-						aliases: sk.aliases!,
+						aliases: [] as string[],
 						emoji: sk.emoji,
 						value: sk
 					}))
@@ -473,11 +473,11 @@ export default class UserCommand extends Command {
 				)
 				.concat(
 					new Collection(Object.entries(CLASSES_INFO)).map((v, k) => ({
-						label: this.container.i18n.format(locale, `common:${k.toLowerCase()}`),
-						name: k,
+						label: this.container.i18n.format(locale, `common:${k.toLowerCase()}`) as string,
+						name: k as string,
 						type: 'CLASSES',
-						aliases: [k],
-						emoji: EMOJIS.CLASSES[CLASSES[k as 'Assassin']],
+						aliases: [k] as string[],
+						emoji: EMOJIS.CLASSES[CLASSES[k as 'Assassin']] as string,
 						value: v
 					}))
 				)

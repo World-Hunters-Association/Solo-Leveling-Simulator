@@ -38,14 +38,21 @@ export default class UserCommand extends Command {
 			return;
 		}
 
+		const name = interaction.options.getString('name', true);
+
+		if (await this.container.db.collection('hunterinfo').findOne({ name })) {
+			await editLocalized(interaction, { keys: 'validation:awake.nameExists' });
+			return;
+		}
+
 		await Promise.all([
 			db.collection('hunterinfo').insertOne({
 				uid: interaction.user.id,
-				gid: undefined,
+				guilds: [],
 				classid: 6,
 				rankid: 1,
 				titleid: 1,
-				name: interaction.options.getString('name', true)
+				name
 			}),
 			db.collection('hunterstats').insertOne({
 				uid: interaction.user.id,

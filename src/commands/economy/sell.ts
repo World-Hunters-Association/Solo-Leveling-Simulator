@@ -52,10 +52,10 @@ export default class UserCommand extends Command {
 				const _value = Math.abs(Math.floor(Number(value) || 0));
 				const item = this.container.constants.ITEMS.find(
 					(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
-				);
+				) as Items;
 				const drop = this.container.constants.DROPS.find(
 					(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
-				);
+				) as Drops;
 
 				// TODO: Equipments
 
@@ -117,10 +117,10 @@ export default class UserCommand extends Command {
 		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
 		const item = this.container.constants.ITEMS.find(
 			(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
-		);
+		) as Items;
 		const drop = this.container.constants.DROPS.find(
 			(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
-		);
+		) as Drops;
 
 		// TODO: Equipments
 
@@ -176,14 +176,14 @@ export default class UserCommand extends Command {
 
 	public fuse(locale: string) {
 		return new Fuse(
-			this.container.constants.ITEMS.filter((i) => isFinite(i.sellPrice || Infinity))
+			this.container.constants.ITEMS.filter((i) => isFinite((i as Items).sellPrice || Infinity))
 				.map((i) => ({
 					label:
 						i.category === 'Equipment'
 							? this.container.i18n.format(locale, `glossary:equipments.${i.name}.name`)
 							: this.container.i18n.format(locale, `glossary:items.${i.name}.name`),
-					name: i.name,
-					emoji: i.emoji,
+					name: i.name as string,
+					emoji: i.emoji as string,
 					value: i as Items | Drops
 				}))
 				.concat(

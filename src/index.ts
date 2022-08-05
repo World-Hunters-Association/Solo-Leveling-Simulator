@@ -1,5 +1,5 @@
-// ! REMOVE BEFORE PUSH
-// import './utils/env';
+import './lib/env-setup';
+
 import { ShardingManager } from 'discord.js';
 import { join } from 'path';
 

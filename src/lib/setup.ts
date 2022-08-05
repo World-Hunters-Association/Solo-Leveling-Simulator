@@ -1,6 +1,3 @@
-// Unless explicitly defined, set NODE_ENV as development:
-process.env.NODE_ENV ??= 'development';
-
 import '@devtomio/plugin-botlist/register';
 import '@kaname-png/plugin-statcord/register';
 import '@sapphire/plugin-hmr/register';
@@ -9,8 +6,6 @@ import '@sapphire/plugin-logger/register';
 import 'reflect-metadata';
 
 import * as colorette from 'colorette';
-import { config } from 'dotenv-cra';
-import { join } from 'path';
 import { inspect } from 'util';
 
 import type { InternationalizationContext } from '@sapphire/plugin-i18next';
@@ -19,6 +14,7 @@ import type { Snowflake } from 'discord.js';
 import type { Code, Db } from 'mongodb';
 import type ConstantsUtils from '../utils/constants';
 import type FunctionsUtils from '../utils/functions';
+import type NotificationsUtils from '../utils/notifications';
 import type {
 	Blacklist,
 	Boxes,
@@ -32,6 +28,7 @@ import type {
 	Equipment,
 	GateChannel,
 	Gems,
+	Guild,
 	HunterInfo,
 	HunterStats,
 	Hunter_Fighting,
@@ -42,6 +39,7 @@ import type {
 	Material,
 	Mob_Fighting,
 	Money,
+	Notifications,
 	Party,
 	Penalty,
 	Potions,
@@ -50,9 +48,6 @@ import type {
 	Top
 } from './structures/schemas';
 import type { UtilsStore } from './structures/UtilsStore';
-
-// Read env var
-config({ path: join(join(join(__dirname, '..', '..'), 'src'), '.env') });
 
 // Set default inspection depth
 inspect.defaultOptions.depth = 1;
@@ -84,6 +79,7 @@ declare module '@sapphire/pieces' {
 		db: Db;
 		$db: Db;
 		functions: FunctionsUtils;
+		notifications: NotificationsUtils;
 	}
 
 	interface StoreRegistryEntries {
@@ -105,6 +101,7 @@ interface Collections {
 	equipment: Equipment;
 	gate_channel: GateChannel;
 	gems: Gems;
+	guild: Guild;
 	hunter_skills: Hunter_Skills;
 	hunter_fighting: Hunter_Fighting;
 	hunterinfo: HunterInfo;
@@ -115,6 +112,7 @@ interface Collections {
 	material: Material;
 	mob_fighting: Mob_Fighting;
 	money: Money;
+	notifications: Notifications;
 	party: Party;
 	penalty: Penalty;
 	potions: Potions;

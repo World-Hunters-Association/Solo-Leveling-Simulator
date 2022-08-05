@@ -32,6 +32,38 @@
 		"self": "Không thể tự gửi tiền cho chính mình!",
 		"success": "Đã gửi **{{name}} {{quantity}}**"
 	},
+	"guild": {
+		"joinRequests": {
+			"description": "**{{name}}** ({{uid}}) - $t(common:level): {{level}} | $(common:rank): {{rank}}"
+		},
+		"create": {
+			"admin": "Bạn phải là một Người Quản Lý để có thể tạo Bang Hội",
+			"alreadyHave": "Bạn đang tham gia vào một Bang Hội khác",
+			"fee": "Phí thành lập Bang hội là 20 $t(glossary:currencies.magicCore)",
+			"inviteInvalid": "Invite code không hợp lệ!",
+			"level": "Cấp độ của bạn phải đạt ít nhất cấp độ 10 để có thể tạo Bang hội",
+			"mfa": "Máy chủ của bạn phải Bật Yêu cầu 2FA để có thể tạo Bang Hội",
+			"modal": {
+				"title": "Đăng Kí Thành Lập Bang Hội"
+			},
+			"nameAlreadyExists": "Tên này đã được sử dụng!",
+			"request": {
+				"description": "Applicant: {{mName}} ({{mid}})",
+				"thumbnail": {
+					"url": "{{icon}}"
+				},
+				"title": "{{name}} ({{gid}})"
+			},
+			"success": "Yêu cầu thành lập của bạn đã được gửi! Hãy nhớ không được rời khỏi $t(glossary:WHA) nếu không yêu cầu của bạn sẽ tự động bị xóa bỏ!"
+		},
+		"lockedCommands": "Mở khóa ở cấp 5!",
+		"logs": {
+			"message": "{{logs_messages}}"
+		},
+		"notMaster": "Bạn không phải là Hội Trưởng của Bang hội này!",
+		"notStaff": "Bạn không phải là Nhân Viên của Bang Hội này!",
+		"notViceMaster": "Bạn không phải là Phó Hội Trưởng của Bang Hội này"
+	},
 	"help": {
 		"defaultEmbed": {
 			"commands": "$t(constant:emojis:guild) **Statistics commands** $t(constant:emojis:guild)\n`profile` | `inventory` | `top` | `guild`* | `title`\n\n$t(constant:emojis:pvp) **Leveling commands** $t(constant:emojis:quest)\n`gate` | `duel`* | `quest`* | `recover` | `add` | `equip` | `unequip`\n\n$t(constant:emojis:shop) **Economy commands** $t(constant:emojis:shop)\n`shop` | `buy` | `sell` | `open`* | `use` | `trade`* | `give`\n\n$t(constant:emojis:blacksmith) **Working commands** $t(constant:emojis:blacksmith)\n`chop`* | `mine`* | `craft`* | `blacksmith`*\n\n$t(constant:emojis:gambling) **Gambling commands** $t(constant:emojis:gambling)\n`lottery` | `slots`* | `blackjack` | `coinflip` | `dice`* | `threecards`\n\n$t(constant:emojis:gold) ** More Golds** $t(constant:emojis:gold)\n`vote` | `daily` | `weekly` | `redeem`* | `codes`",
@@ -72,6 +104,7 @@
 				"LOTTERY": "Mua $t(constant:emojis.lottery ticket) Vé số để tham gia xổ số",
 				"MINE": "***Chưa thể sử dụng***",
 				"MONEY": "**Donator command**\nHiển thị tiền của bạn",
+				"NOTIFICATION": "Mở danh sách thông báo của bạn",
 				"OPEN": "***Chưa thể sử dụng***, Mở hộp\nHộp có được từ nhiệm vụ hoặc mua trong cửa hàng\nSử dụng `\\box` để xem thêm thông tin!",
 				"PARTY": "Càng đông càng vui! Bạn có thể mời tối đa 5 người tham gia tổ đội của mình và vào hầm ngục cùng họ.\nChơi cùng tổ đội sẽ nhận được phần thưởng cộng thêm.\n\n**Chủ tổ đội**\n`\\party invite @user` - thêm người dùng vào tổ đội\n`\\party kick @ user` - xóa một người dùng khỏi tổ đội\n`\\party disband` - xóa tổ đội\n`\\party give @user <loot id> <amount>`- đưa cho thành viên trong tổ đội chiến lợi phẩm đã đề cập\n`\\party create` - để tạo một tổ đội mới\n`\\party transfer` - chuyển giao quyền lãnh đạo cho một thành viên khác\n**Thành viên của tổ đội**\n`\\party left` - rời khỏi tổ đội hiện tại\n`\\party info` - để hiển thị thông tin tổ đội\n`\\party loots` - để hiển thị danh sách các phần thưởng mà tổ đội đã kiếm được",
 				"PING": "Ping bot",
