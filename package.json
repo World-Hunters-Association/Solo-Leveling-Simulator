@@ -23,7 +23,7 @@
 		"chokidar-cli": "^3.0.0",
 		"colorette": "^2.0.19",
 		"discord-api-types": "^0.36.2",
-		"discord.js": "^13.8.1",
+		"discord.js": "13.9.0",
 		"dotenv-cra": "^3.0.2",
 		"fuse.js": "^6.6.2",
 		"mongodb": "4.7.0",
@@ -67,7 +67,7 @@
 		"build:dev": "npm run build&cpy src/languages/**/*.json dist/languages/",
 		"chokidar:dev": "chokidar \"src/languages/**/*.json\" -c \"cpy src/languages/**/*.json dist/languages/\"",
 		"prebuild:dev": "rd /s /q dist",
-		"start:dev": "node dist/client.js",
+		"start:dev": "node dist/index.js",
 		"dev": "npm run build:dev&run-p watch chokidar:dev start:dev"
 	},
 	"lint-staged": {

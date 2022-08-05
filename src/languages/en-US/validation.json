@@ -32,6 +32,38 @@
 		"self": "You cannot give to yoursolf!",
 		"success": "Successfully gave **{{name}} {{quantity}}**"
 	},
+	"guild": {
+		"joinRequests": {
+			"description": "**{{name}}** ({{uid}}) - $t(common:level): {{level}} | $(common:rank): {{rank}}"
+		},
+		"create": {
+			"admin": "You need Administrator permission to create a Guild!",
+			"alreadyHave": "You are participating in another Guild already!",
+			"fee": "You need 20 Magic Cores to create a Guild!",
+			"inviteInvalid": "The invite is invalid!",
+			"level": "You must be at least level 10 to create a Guild",
+			"mfa": "Your server must Enable 2FA Requirement for Moderation to create a Guild",
+			"modal": {
+				"title": "Guild Registration"
+			},
+			"nameAlreadyExists": "This name already taken!",
+			"request": {
+				"description": "Applicant: {{mName}} ({{mid}})",
+				"thumbnail": {
+					"url": "{{icon}}"
+				},
+				"title": "{{name}} ({{gid}})"
+			},
+			"success": "Your request has been sent! Make sure you don't leave the WHA or your request will be automatically declined!"
+		},
+		"lockedCommands": "This command unlocked at level 5!",
+		"logs": {
+			"message": "{{logs_messages}}"
+		},
+		"notMaster": "You aren't Master of this Guild!",
+		"notStaff": "You aren't Staff of this Guild!",
+		"notViceMaster": "You aren't Vice Master of this Guild!"
+	},
 	"help": {
 		"defaultEmbed": {
 			"commands": "$t(constant:emojis:guild) **Statistics commands** $t(constant:emojis:guild)\n`profile` | `inventory` | `top` | `guild`* | `title`\n\n$t(constant:emojis:pvp) **Leveling commands** $t(constant:emojis:quest)\n`gate` | `duel`* | `quest`* | `recover` | `add` | `equip` | `unequip`\n\n$t(constant:emojis:shop) **Economy commands** $t(constant:emojis:shop)\n`shop` | `buy` | `sell` | `open`* | `use` | `trade`* | `give`\n\n$t(constant:emojis:blacksmith) **Working commands** $t(constant:emojis:blacksmith)\n`chop`* | `mine`* | `craft`* | `blacksmith`*\n\n$t(constant:emojis:gambling) **Gambling commands** $t(constant:emojis:gambling)\n`lottery` | `slots`* | `blackjack` | `coinflip` | `dice`* | `threecards`\n\n$t(constant:emojis:gold) ** More Golds** $t(constant:emojis:gold)\n`vote` | `daily` | `weekly` | `redeem`* | `codes`",
@@ -72,6 +104,7 @@
 				"LOTTERY": "Buy $t(constant:emojis.lottery ticket) Lottery tickets to join the lottery",
 				"MINE": "***Not developed yet***",
 				"MONEY": "**Donator command**\nShow your money",
+				"NOTIFICATION": "Open your notifications list",
 				"OPEN": "***Not developed yet***, Open a `box`\nBoxes are got from quest, or bought in the shop\nUse `\\box` to see more info!",
 				"PARTY": "The more the merrier! You can invite up to 5 people to your party, and do dungeons with them.\nThere's also party bonus in gate's rewards.\n\n**Party leader**\n`\\party invite @user` - adds a user to the party\n`\\party kick @user` - removes a user from the party\n`\\party disband` - deletes the party\n`\\party give @user <loot id> <amount>` - to give the party member the mentioned loot\n`\\party create` - to create a new party\n`\\party transfer` - to transfer the leadership to another member\n**Party member**\n`\\party leave` - to leave the current party\n`\\party info` - to shows information of the party  \n`\\party loots` - to shows the list of drops that the party have earned",
 				"PING": "Ping the bot",

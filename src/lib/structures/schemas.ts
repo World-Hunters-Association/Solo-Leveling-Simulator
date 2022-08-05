@@ -1,4 +1,4 @@
-import type { Snowflake } from 'discord.js';
+import type { MessageEmbedOptions, Snowflake } from 'discord.js';
 import type { CLASSES, KEYS, Mobs, RANK, RANK_TITLES } from '../../utils/constants';
 
 // #region Others
@@ -139,6 +139,68 @@ export interface Gems {
 	gems: { [key in GEMS]?: number };
 }
 
+type GUILD_LOGS_ACTIONS =
+	| 'Guild Leave'
+	| 'Guild Upgrade'
+	| 'Newcomer Promote'
+	| 'Member Approve'
+	| 'Member Deny'
+	| 'Member Kick'
+	| 'Member Promote'
+	| 'Member Demote';
+
+export interface Guild {
+	gid: Snowflake;
+	name: string;
+	inviteURL: string;
+	iconURL: string;
+	shardId: number;
+	createdDate: Date;
+	requesting?: boolean;
+	members: {
+		/** Master */
+		mid: Snowflake;
+		/** Vice Masters */
+		vids?: Snowflake[];
+		/** Staffs */
+		sids?: Snowflake[];
+		/** Members */
+		uids?: Snowflake[];
+	};
+	otherMembers: {
+		/** Newcomers */
+		nids?: Snowflake[];
+		/** Pendings */
+		pids?: Snowflake[];
+	};
+	level: {
+		bonus: number;
+		vault: number;
+		members: number;
+		shopSlots: number;
+	};
+	vault: {
+		money: Omit<Currencies, 'votePoint'> & { token: number };
+		materials: Material['materials'];
+		// TODO: Equipment
+	};
+	/** Members item requesting */
+	itemRequests: {
+		[key: string]: {
+			materials: Material['materials'];
+			// TODO: Equipment
+		};
+	};
+	shop: { uid: Snowflake; itemName: string; price: number }[];
+	logs: {
+		author: string;
+		action: GUILD_LOGS_ACTIONS;
+		message: `${'common' | 'constant' | 'glossary' | 'validation'}:${string}`;
+		date: Date;
+		options: Record<string, string>;
+	}[];
+}
+
 export interface Hunter_Fighting {
 	uid: Snowflake;
 	cid: Snowflake;
@@ -175,7 +237,7 @@ export interface Hunter_Skills {
 
 export interface HunterInfo {
 	uid: Snowflake;
-	gid?: Snowflake;
+	guilds: { gid: Snowflake; joinedDate: Date; leftDate?: Date }[];
 	classid: CLASSES;
 	rankid: RANK;
 	titleid: RANK_TITLES;
@@ -210,7 +272,7 @@ export interface Keys {
 	};
 }
 
-type Languages = 'en-US' | 'vi' | 'id-ID';
+type Languages = 'en-US' | 'vi';
 
 export interface Language {
 	uid: Snowflake;
@@ -258,6 +320,13 @@ export interface Currencies {
 
 export interface Money extends Currencies {
 	uid: Snowflake;
+}
+
+export interface Notifications {
+	uids: Snowflake[];
+	message?: string;
+	embed?: MessageEmbedOptions;
+	options?: Record<string, string>;
 }
 
 export interface Party {

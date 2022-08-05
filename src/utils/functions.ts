@@ -20,8 +20,11 @@ import { resolveKey } from '@sapphire/plugin-i18next';
 
 import { Utils } from '../lib/structures/Utils';
 
+import type ConstantsUtils from './constants';
+
 import type { DurationFormatAssetsTime } from '@sapphire/time-utilities';
 import type { APIMessage, LocalizationMap } from 'discord.js/node_modules/discord-api-types/v10';
+
 export default class FunctionsUtils extends Utils {
 	public constructor(context: PieceContext) {
 		super(context);
@@ -133,6 +136,55 @@ export default class FunctionsUtils extends Utils {
 		return this.container.i18n.format(locale, 'common:timeUnits', { returnObjects: true });
 	}
 
+	public getObjectTypeFromName<
+		drops extends ConstantsUtils['DROPS'][number],
+		items extends ConstantsUtils['ITEMS'][number],
+		equipments extends ConstantsUtils['EQUIPMENTS'][number],
+		hunterSkills extends ConstantsUtils['HUNTER_SKILLS'][number],
+		mobSkills extends ConstantsUtils['MOB_SKILLS'][number],
+		mobs extends ConstantsUtils['MOBS'][number],
+		Tname extends (drops | items | equipments | hunterSkills | mobSkills | mobs)['name']
+	>(name: Tname) {
+		return this.container.constants.DROPS.find((i) => i.name === name)
+			? 'DROPS'
+			: this.container.constants.ITEMS.find((i) => i.name === name)
+			? 'ITEMS'
+			: this.container.constants.EQUIPMENTS.find((i) => i.name === name)
+			? 'EQUIPMENTS'
+			: this.container.constants.HUNTER_SKILLS.find((i) => i.name === name)
+			? 'HUNTER_SKILLS'
+			: this.container.constants.MOB_SKILLS.find((i) => i.name === name)
+			? 'MOB_SKILLS'
+			: this.container.constants.MOBS.find((i) => i.name === name)
+			? 'MOBS'
+			: undefined;
+	}
+
+	public getObjectFromName<drops extends ConstantsUtils['DROPS'][number], Tname extends drops['name']>(name: Tname): drops;
+	public getObjectFromName<items extends ConstantsUtils['ITEMS'][number], Tname extends items['name']>(name: Tname): items;
+	public getObjectFromName<equipments extends ConstantsUtils['EQUIPMENTS'][number], Tname extends equipments['name']>(name: Tname): equipments;
+	public getObjectFromName<hunterSkills extends ConstantsUtils['HUNTER_SKILLS'][number], Tname extends hunterSkills['name']>(
+		name: Tname
+	): hunterSkills;
+
+	public getObjectFromName<mobSkills extends ConstantsUtils['MOB_SKILLS'][number], Tname extends mobSkills['name']>(name: Tname): mobSkills;
+	public getObjectFromName<mobs extends ConstantsUtils['MOBS'][number], Tname extends mobs['name']>(name: Tname): mobs;
+	public getObjectFromName<
+		drops extends ConstantsUtils['DROPS'][number],
+		items extends ConstantsUtils['ITEMS'][number],
+		equipments extends ConstantsUtils['EQUIPMENTS'][number],
+		hunterSkills extends ConstantsUtils['HUNTER_SKILLS'][number],
+		mobSkills extends ConstantsUtils['MOB_SKILLS'][number],
+		mobs extends ConstantsUtils['MOBS'][number],
+		Tname extends (drops | items | equipments | hunterSkills | mobSkills | mobs)['name']
+	>(name: Tname): drops | items | equipments | hunterSkills | mobSkills | mobs {
+		return (
+			this.container.constants[
+				this.getObjectTypeFromName(name) as 'DROPS' | 'ITEMS' | 'EQUIPMENTS' | 'HUNTER_SKILLS' | 'MOB_SKILLS' | 'MOBS'
+			] as unknown as any[]
+		).find((i) => i.name === name);
+	}
+
 	public slashNameLocalizations(key: string): LocalizationMap {
 		return Object.fromEntries(
 			this.container.constants.SUPPORTED_LANGUAGES.map((locale) => {
@@ -176,8 +228,8 @@ export default class FunctionsUtils extends Utils {
 		nameKey: string,
 		descriptionKey: string,
 		choices?: string[],
-		_?: Partial<options>,
-		__?: type
+		options?: Partial<options>,
+		_?: type
 	) {
 		const names = this.slashNameLocalizations(nameKey);
 		const descriptions = this.slashDescriptionLocalizations(descriptionKey);
@@ -185,6 +237,19 @@ export default class FunctionsUtils extends Utils {
 		Reflect.set(constructor, 'description', descriptions['en-US']);
 		Reflect.set(constructor, 'name_localizations', names);
 		Reflect.set(constructor, 'description_localizations', descriptions);
+
+		if ((options as unknown as OptionTypes['Number']).choices) {
+			Reflect.set(
+				constructor,
+				'choices',
+				(options as unknown as OptionTypes['Number']).choices?.map((c) => {
+					const names = this.slashDescriptionLocalizations(c.name);
+					return { name: names['en-US'], name_localizations: names, value: c.value };
+				})
+			);
+			return;
+		}
+
 		if (choices)
 			Reflect.set(
 				constructor,

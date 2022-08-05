@@ -6,12 +6,12 @@ import { join } from 'path';
 
 import { Awaitable, BucketScope, SapphireClient } from '@sapphire/framework';
 import { container } from '@sapphire/pieces';
+import { DurationFormatter } from '@sapphire/time-utilities';
+
+import { UtilsStore } from './lib/structures/UtilsStore';
 
 import type { InternationalizationContext } from '@sapphire/plugin-i18next';
 import type { AlpetaOptions } from './lib/setup';
-import { UtilsStore } from './lib/structures/UtilsStore';
-import { DurationFormatter } from '@sapphire/time-utilities';
-
 export default class System extends SapphireClient {
 	public config: AlpetaOptions;
 
@@ -27,7 +27,8 @@ export default class System extends SapphireClient {
 				'GUILD_MESSAGES',
 				'GUILD_MESSAGE_REACTIONS',
 				'DIRECT_MESSAGES',
-				'DIRECT_MESSAGE_REACTIONS'
+				'DIRECT_MESSAGE_REACTIONS',
+				'GUILD_INVITES'
 			],
 			loadMessageCommandListeners: true,
 			defaultPrefix: 'sl ',
@@ -70,9 +71,7 @@ export default class System extends SapphireClient {
 			i18n: {
 				fetchLanguage: async (context: InternationalizationContext) => {
 					const userSettings = await db.collection('language').findOne({ uid: context.user?.id });
-					return container.constants.SUPPORTED_LANGUAGES.includes(userSettings?.language || '')
-						? userSettings?.language || 'en-US'
-						: 'en-US';
+					return container.constants.SUPPORTED_LANGUAGES.includes(userSettings!.language) ? userSettings?.language || 'en-US' : 'en-US';
 				},
 				defaultLanguageDirectory: join(__dirname, 'languages'),
 				hmr: {
@@ -116,7 +115,7 @@ export default class System extends SapphireClient {
 
 		container.i18n.fetchLanguageWithDefault = container.i18n.fetchLanguage as (context: InternationalizationContext) => Awaitable<string>;
 
-		process.on('unhandledRejection', () => ({}));
+		// process.on('unhandledRejection', () => ({}));
 	}
 }
 

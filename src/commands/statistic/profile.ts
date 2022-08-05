@@ -5,7 +5,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 import { resolveKey } from '@sapphire/plugin-i18next';
 
-import { CLASSES, RANK, RANK_TITLES } from '../../utils/constants';
+import { CLASSES, Equipments, RANK, RANK_TITLES } from '../../utils/constants';
 
 @ApplyOptions<CommandOptions>({
 	name: 'profile',
@@ -63,10 +63,10 @@ export default class UserCommand extends Command {
 		} = equipments
 			.filter((equip) => Boolean(equip))
 			.map((equip) => equip?.stats)
-			.reduce((stats, equipmentStat) => {
+			.reduce<Equipments['stats']>((stats, equipmentStat) => {
 				for (const statsName in equipmentStat!)
 					if (Object.prototype.hasOwnProperty.call(equipmentStat, statsName))
-						stats![statsName as 'hp'] = (stats![statsName as 'hp'] ?? 0) + equipmentStat![statsName as 'hp']!;
+						stats![statsName as 'hp'] = (stats![statsName as 'hp'] ?? 0) + (equipmentStat as Equipments['stats'])![statsName as 'hp']!;
 				return stats;
 			}, {});
 

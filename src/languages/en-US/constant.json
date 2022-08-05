@@ -76,9 +76,9 @@
 			"vit": "<:s:758152007126745131>"
 		}
 	},
+	"notification": "{{notification_message}}",
 	"patreon": "https://www.patreon.com/sololevelingsimulator",
 	"patreon_markdown": "[Patreon](https://www.patreon.com/sololevelingsimulator)",
-	"serverInvite": "https://discord.gg/x8MgGnaNK5",
 	"rank": [
 		"",
 		"$t(glossary:ranks.E-Rank)",
@@ -89,5 +89,6 @@
 		"$t(glossary:ranks.S-Rank)",
 		"$t(glossary:ranks.SS-Rank)",
 		"$t(glossary:ranks.National Level)"
-	]
+	],
+	"serverInvite": "https://discord.gg/x8MgGnaNK5"
 }
