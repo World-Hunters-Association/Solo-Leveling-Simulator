@@ -8,7 +8,7 @@
 		"@devtomio/plugin-botlist": "^1.2.0",
 		"@discordjs/builders": "^1.0.0",
 		"@kaname-png/plugin-statcord": "^2.1.0",
-		"@sapphire/decorators": "^4.3.8",
+		"@sapphire/decorators": "^5.0.0",
 		"@sapphire/discord-utilities": "^2.11.4",
 		"@sapphire/discord.js-utilities": "^4.11.3",
 		"@sapphire/fetch": "^2.4.1",
