@@ -88,7 +88,7 @@ export abstract class GuildCommands extends GuildMemberCommands {
 			members: { mid: interaction.user.id },
 			otherMembers: {},
 			level: { bonus: 0, members: 0, shopSlots: 0, vault: 0 },
-			vault: { materials: {}, money: { gold: 0, magicCore: 0, manaCrystal: 0, token: 0 } },
+			vault: { materials: {} as any, money: { gold: 0, magicCore: 0, manaCrystal: 0, token: 0 } },
 			itemRequests: {},
 			shop: [],
 			logs: []

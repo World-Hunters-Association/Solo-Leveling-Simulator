@@ -3,7 +3,6 @@ import { editLocalized } from '@sapphire/plugin-i18next';
 import { GuildCommands } from './other';
 
 import type { Subcommand } from '@sapphire/plugin-subcommands';
-
 export abstract class GuildMasterCommands extends GuildCommands {
 	public async memberPromoteRun(interaction: Subcommand.ChatInputInteraction<'cached'>) {
 		const { locale, userGuild: guild, hunterinfo } = await this.init(interaction, true);

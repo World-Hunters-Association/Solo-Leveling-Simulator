@@ -1,5 +1,5 @@
 import type { MessageEmbedOptions, Snowflake } from 'discord.js';
-import type { CLASSES, KEYS, Mobs, RANK, RANK_TITLES } from '../../utils/constants';
+import type { Constants } from '../../utils/constants';
 
 // #region Others
 
@@ -121,7 +121,7 @@ export interface GateChannel {
 	/** @description Party leader ID */
 	plid?: Snowflake;
 	isRed: boolean;
-	rank: KEYS;
+	rank: Constants.KEYS;
 	/**
 	 * @type 0 - Physic
 	 * @type 1 - Magic
@@ -206,7 +206,7 @@ export interface Hunter_Fighting {
 	cid: Snowflake;
 	/** @description Party leader ID */
 	plid?: Snowflake;
-	class: CLASSES;
+	class: Constants.CLASSES;
 	exp: number;
 	effect: Effects;
 	player: number;
@@ -225,7 +225,8 @@ export interface Hunter_Fighting {
 		int: number;
 		def: number;
 		mr: number;
-		vit: number;
+		// vit: number;
+		luk: number;
 		agi: number;
 	};
 }
@@ -238,9 +239,9 @@ export interface Hunter_Skills {
 export interface HunterInfo {
 	uid: Snowflake;
 	guilds: { gid: Snowflake; joinedDate: Date; leftDate?: Date }[];
-	classid: CLASSES;
-	rankid: RANK;
-	titleid: RANK_TITLES;
+	classid: Constants.CLASSES;
+	rankid: Constants.RANK;
+	titleid: Constants.RANK_TITLES;
 	name: string;
 }
 
@@ -251,7 +252,8 @@ export interface HunterStats {
 	int: number;
 	mr: number;
 	str: number;
-	vit: number;
+	// vit: number;
+	luk: number;
 	exp: number;
 	hp: number;
 	mp: number;
@@ -286,29 +288,20 @@ export interface Lottery {
 
 export interface Material {
 	uid: Snowflake;
-	materials: { [key: string]: number };
+	materials: Record<Constants['DROPS'][number]['name'], number>;
 }
 
 export interface Mob_Fighting {
 	cid: Snowflake;
 	mid: Snowflake;
-	mob: Mobs;
+	mob: Constants.Mobs;
 	effect: Effects;
 	position: { x: number; y: number };
 	aliveFor: number;
 	useSkill: boolean;
 	killed: number;
 	skills: { [key: string]: number };
-	stats: {
-		hp: number;
-		hp_max: number;
-		str: number;
-		int: number;
-		def: number;
-		mr: number;
-		agi: number;
-		range: number;
-	};
+	stats: Record<keyof Constants.Mobs['stats'] | 'level' | 'hp' | 'mp', number>;
 }
 
 export interface Currencies {
@@ -346,8 +339,8 @@ export interface Penalty {
 export interface Potions {
 	uid: Snowflake;
 	potions: {
-		'life potion': number;
-		'mana potion': number;
+		'Life Potion I': number;
+		'Mana Potion I': number;
 	};
 }
 
@@ -359,7 +352,7 @@ export interface Recover {
 export interface Stone {
 	uid: Snowflake;
 	stones: {
-		'thunder stone': number;
+		'Thunder Stone': number;
 	};
 }
 
@@ -368,7 +361,7 @@ export interface Top {
 	date: Date;
 	top: {
 		level: { uid: Snowflake; exp: number; level: number }[];
-		rank: { uid: Snowflake; rank: RANK }[];
+		rank: { uid: Snowflake; rank: Constants.RANK }[];
 		gold: { uid: Snowflake; gold: number }[];
 	};
 }

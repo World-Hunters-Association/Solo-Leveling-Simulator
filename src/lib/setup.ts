@@ -12,9 +12,10 @@ import type { InternationalizationContext } from '@sapphire/plugin-i18next';
 import type { Awaitable } from '@sapphire/utilities';
 import type { Snowflake } from 'discord.js';
 import type { Code, Db } from 'mongodb';
-import type ConstantsUtils from '../utils/constants';
+import type { Constants } from '../utils/constants';
 import type FunctionsUtils from '../utils/functions';
 import type NotificationsUtils from '../utils/notifications';
+import type { RPG } from './structures/RPG';
 import type {
 	Blacklist,
 	Boxes,
@@ -31,7 +32,6 @@ import type {
 	Guild,
 	HunterInfo,
 	HunterStats,
-	Hunter_Fighting,
 	Hunter_Skills,
 	Keys,
 	Language,
@@ -75,7 +75,7 @@ declare module '@sapphire/framework' {
 
 declare module '@sapphire/pieces' {
 	interface Container {
-		constants: ConstantsUtils;
+		constants: Constants;
 		db: Db;
 		$db: Db;
 		functions: FunctionsUtils;
@@ -103,7 +103,7 @@ interface Collections {
 	gems: Gems;
 	guild: Guild;
 	hunter_skills: Hunter_Skills;
-	hunter_fighting: Hunter_Fighting;
+	hunter: RPG.Hunter;
 	hunterinfo: HunterInfo;
 	hunterstats: HunterStats;
 	keys: Keys;

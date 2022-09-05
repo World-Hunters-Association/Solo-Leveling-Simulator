@@ -25,6 +25,7 @@
 	"effects": {
 		"Bless": "Bless",
 		"Grievous Wounds": "Grievous Wounds",
+		"Poison": "Poison",
 		"Slow": "Slow",
 		"Stun": "Stun"
 	},
@@ -135,62 +136,72 @@
 		"Uprank key": {
 			"name": "Uprank key"
 		},
-		"life potion": {
+		"Life Potion I": {
 			"description": "a bottle filled with blood. Yes blood!\nUse `heal` to restore your HP",
-			"name": "life potion"
+			"name": "Life Potion I"
 		},
-		"mana potion": {
+		"Mana Potion I": {
 			"description": "a bottle filled with water. Just water!\nUse `drink` to restore your MP",
-			"name": "mana potion"
+			"name": "Mana Potion I"
 		},
-		"thunder stone": {
+		"Thunder Stone": {
 			"description": "A stone from The Lightning Monarch's garden\nUsed to reset stats point",
-			"name": "thunder stone"
+			"name": "Thunder Stone"
 		}
 	},
 	"materials": {
-		"Rasaka's Eye": {
-			"name": "Rasaka's Eye"
+		"Briga Claw": {
+			"name": "Briga Claw"
 		},
-		"Rasaka's Scale": {
-			"name": "Rasaka's Scale"
+		"Briga Fur": {
+			"name": "Briga Fur"
 		},
-		"Rasaka's Red Scale": {
-			"name": "Rasaka's Red Scale"
+		"Goblin Cloth": {
+			"name": "Goblin Cloth"
 		},
-		"Rasaka's Poison Fang": {
-			"name": "Rasaka's Poison Fang"
+		"Goblin Eye": {
+			"name": "Goblin Eye"
 		},
-		"Raikan's Fang": {
-			"name": "Raikan's Fang"
+		"Raikan Fang": {
+			"name": "Raikan Fang"
 		},
-		"Raikan's Fur": {
-			"name": "Raikan's Fur"
+		"Raikan Fur": {
+			"name": "Raikan Fur"
 		},
-		"Briga's Claw": {
-			"name": "Briga's Claw"
+		"Rasaka Eye": {
+			"name": "Rasaka Eye"
 		},
-		"Briga's Fur": {
-			"name": "Briga's Fur"
+		"Rasaka Poison Fang": {
+			"name": "Rasaka Poison Fang"
 		},
-		"Razan's Fang": {
-			"name": "Razan's Fang"
+		"Rasaka Red Scale": {
+			"name": "Rasaka Red Scale"
 		},
-		"Razan's Fur": {
-			"name": "Razan's Fur"
+		"Rasaka Scale": {
+			"name": "Rasaka Scale"
 		},
-		"Goblin's Eye": {
-			"name": "Goblin's Eye"
+		"Razan Fang": {
+			"name": "Razan Fang"
 		},
-		"Goblin's Cloth": {
-			"name": "Goblin's Cloth"
+		"Razan Fur": {
+			"name": "Razan Fur"
 		},
-		"Stone Golem's Skin Shard": {
-			"name": "Stone Golem's Skin Shard"
+		"Stone Golem Core": {
+			"name": "Stone Golem Core"
 		},
-		"Stone Golem's Core": {
-			"name": "Stone Golem's Core"
+		"Stone Golem Skin Shard": {
+			"name": "Stone Golem Skin Shard"
 		}
+	},
+	"ranks": {
+		"A-Rank": "A-Rank",
+		"B-Rank": "B-Rank",
+		"C-Rank": "C-Rank",
+		"D-Rank": "D-Rank",
+		"E-Rank": "E-Rank",
+		"National Level": "National Level",
+		"S-Rank": "S-Rank",
+		"SS-Rank": "SS-Rank"
 	},
 	"skills": {
 		"Arrow rain": {
@@ -327,6 +338,7 @@
 		"def": "Defense",
 		"hp": "HP",
 		"int": "Intelligence",
+		"luk": "Luck",
 		"mp": "MP",
 		"mr": "Magic Resistance",
 		"str": "Strength",
@@ -334,7 +346,7 @@
 	},
 	"terms": {
 		"AGILITY": {
-			"description": "Increase move range.\n\n**Note**: 5/35/80/140/215 $t(glossary:stats.agi) give you 1/2/3/4/5 move range.",
+			"description": "This is how fast you are. It controls how far you move and chance to take action faster.\\n\\n**Note**: 5/35/80/140/215 $t(glossary:stats.agi) give you 1/2/3/4/5 move range.",
 			"name": "$t(glossary:stats.agi)"
 		},
 		"DEFENSE": {
@@ -354,8 +366,12 @@
 			"name": "Hunter Slayer"
 		},
 		"INTELLIGENCE": {
-			"description": "Increase magic damage output and your MP.\n\n**Rate**: 2 INT = 1 MP.",
+			"description": "Increase magic damage output.",
 			"name": "$t(glossary:stats.int)"
+		},
+		"LUCK": {
+			"description": "This controls if you will contract a state or not. The higher your luck, the lower chance you have of getting a certain state, such as poison.",
+			"name": "$t(glossary:stats.luk)"
 		},
 		"MAGIC RESISTANCE": {
 			"description": "Increase your magic defense.",
@@ -377,15 +393,5 @@
 			"description": "Increase your $t(glossary:stats:hp).\n\n**Rate**: 1 $t(glossary:stats:vit) = 3 $t(glossary:stats:hp).",
 			"name": "$t(glossary:stats.vit)"
 		}
-	},
-	"ranks": {
-		"E-Rank": "E-Rank",
-		"D-Rank": "D-Rank",
-		"C-Rank": "C-Rank",
-		"B-Rank": "B-Rank",
-		"A-Rank": "A-Rank",
-		"S-Rank": "S-Rank",
-		"SS-Rank": "SS-Rank",
-		"National Level": "National Level"
 	}
 }

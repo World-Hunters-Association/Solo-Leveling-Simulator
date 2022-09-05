@@ -3,12 +3,11 @@ import { MessageEmbed } from 'discord.js';
 import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { editLocalized, resolveKey } from '@sapphire/plugin-i18next';
 
+import { Constants } from '../../../utils/constants';
 import { GuildMasterCommands } from './master';
 
 import type { Subcommand } from '@sapphire/plugin-subcommands';
 import type { Parameters } from 'ts-toolbelt/out/Function/Parameters';
-import { RANK } from '../../../utils/constants';
-
 export abstract class GuildStaffCommands extends GuildMasterCommands {
 	public async joinRequestsRun(interaction: Subcommand.ChatInputInteraction<'cached'>) {
 		const { locale, userGuild: guild } = await this.init(interaction);
@@ -29,7 +28,7 @@ export abstract class GuildStaffCommands extends GuildMasterCommands {
 				.map((info, i) => ({
 					uid: info.uid,
 					name: info.name,
-					rank: RANK[info.rankid],
+					rank: Constants.RANK[info.rankid],
 					level: this.container.functions.HunterLevelCalc(hunterstats[i].exp)
 				}))
 				.map(async (hunter) => resolveKey(interaction, 'validation:guild.joinRequests.description', { lng: locale, ...hunter }))

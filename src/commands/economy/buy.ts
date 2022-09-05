@@ -145,14 +145,14 @@ export default class UserCommand extends Command {
 		// TODO Lottery ticket
 
 		if (item.type === 'stone')
-			await this.container.db.collection('stone').updateOne({ uid: interaction.user.id }, { $inc: { 'stones.thunder stone': quantity } });
+			await this.container.db.collection('stone').updateOne({ uid: interaction.user.id }, { $inc: { 'stones.Thunder Stone': quantity } });
 
 		if (this.container.constants.EQUIPMENTS.find((eq) => item.name === eq.name)) {
 			const eq = this.container.constants.EQUIPMENTS.find((eq) => item.name === eq.name)!;
 
 			await this.container.db
 				.collection('equipment')
-				.updateOne({ uid: interaction.user.id }, { $inc: { [`unequipped.${eq.uniqueCode}`]: quantity } }, { upsert: true });
+				.updateOne({ uid: interaction.user.id }, { $inc: { [`unequipped.${eq.eid}`]: quantity } }, { upsert: true });
 		}
 
 		if (item.type === 'potion')

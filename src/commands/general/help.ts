@@ -15,7 +15,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 import { resolveKey } from '@sapphire/plugin-i18next';
 
-import { CLASSES, Equipments, HunterSkills, Items, Mobs, MobSkills, RANK, STATS } from '../../utils/constants';
+import { Constants } from '../../utils/constants';
 
 @ApplyOptions<CommandOptions>({
 	name: 'help',
@@ -96,7 +96,7 @@ export default class UserCommand extends Command {
 					(_value, key, coll) => coll.map((_v, k) => k).indexOf(key) <= Math.ceil(coll.size / 2) - 1
 				);
 				const skills = HUNTER_SKILLS.filter(
-					(skill) => skill.class === CLASSES[type[0].item.name.toLowerCase().replace(/^\w/, (l) => l.toUpperCase()) as 'Assassin']
+					(skill) => skill.class === Constants.CLASSES[type[0].item.name.toLowerCase().replace(/^\w/, (l) => l.toUpperCase()) as 'Assassin']
 				);
 
 				embed
@@ -111,7 +111,7 @@ export default class UserCommand extends Command {
 								.map(
 									(value, key) =>
 										`${
-											EMOJIS.STATS[STATS[key as 'agi']?.toUpperCase().replace(/ /g, '_') as 'AGILITY']
+											EMOJIS.STATS[Constants.STATS[key as 'agi']?.toUpperCase().replace(/ /g, '_') as 'AGILITY']
 										} **${this.container.i18n.format(locale, `glossary:stats.${key}`)}**: ${value}`
 								)
 								.join('\n'),
@@ -123,7 +123,7 @@ export default class UserCommand extends Command {
 								.map(
 									(value, key) =>
 										`${
-											EMOJIS.STATS[STATS[key as 'agi']?.toUpperCase().replace(/ /g, '_') as 'AGILITY']
+											EMOJIS.STATS[Constants.STATS[key as 'agi']?.toUpperCase().replace(/ /g, '_') as 'AGILITY']
 										} **${this.container.i18n.format(locale, `glossary:stats.${key}`)}**: ${value}`
 								)
 								.join('\n'),
@@ -161,7 +161,7 @@ export default class UserCommand extends Command {
 				break;
 			}
 			case 'HUNTER_SKILLS': {
-				const info = type[0].item.value as HunterSkills;
+				const info = type[0].item.value as Constants.HunterSkills;
 				const [big, small] = new Collection(Object.entries(info.levelDepends)).partition(
 					(_value, key, coll) => coll.map((_v, k) => k).indexOf(key) <= Math.ceil(coll.size / 2) - 1
 				);
@@ -172,12 +172,12 @@ export default class UserCommand extends Command {
 						[
 							{
 								name: `${await resolveKey(interaction, 'common:class', { lng: locale })}:`,
-								value: `${EMOJIS.CLASSES[info.class]} ${CLASSES[info.class]}`,
+								value: `${EMOJIS.CLASSES[info.class]} ${Constants.CLASSES[info.class]}`,
 								inline: true
 							},
 							{
 								name: `${await resolveKey(interaction, 'common:rank', { lng: locale })}:`,
-								value: `${EMOJIS.RANKS[info.rank]} ${RANK[info.rank]}`,
+								value: `${EMOJIS.RANKS[info.rank]} ${Constants.RANK[info.rank]}`,
 								inline: true
 							},
 							{ name: '** **', value: '** **', inline: true }
@@ -209,7 +209,7 @@ export default class UserCommand extends Command {
 				break;
 			}
 			case 'MOB_SKILLS': {
-				const { amount, size, turns, species, name, emoji } = type[0].item.value as MobSkills;
+				const { amount, size, turns, species, name, emoji } = type[0].item.value as Constants.MobSkills;
 				const [big, small] = new Collection<string, `${number}:${number}`>(Object.entries({ amount, size, turns } as any))
 					.filter((v) => Boolean(v))
 					.partition((_value, key, coll) => coll.map((_v, k) => k).indexOf(key) <= Math.ceil(coll.size / 2) - 1);
@@ -248,7 +248,7 @@ export default class UserCommand extends Command {
 				break;
 			}
 			case 'ITEMS': {
-				const info = type[0].item.value as Items;
+				const info = type[0].item.value as Constants.Items;
 				embed.setTitle(type[0].item.label.toUpperCase());
 				if (isFinite(info.price))
 					embed.addField(
@@ -266,7 +266,7 @@ export default class UserCommand extends Command {
 				break;
 			}
 			case 'EQUIPMENTS': {
-				const info = type[0].item.value as Equipments;
+				const info = type[0].item.value as Constants.Equipments;
 				const [big, small] = new Collection(Object.entries(info.stats)).partition(
 					(_value, key, coll) => coll.map((_v, k) => k).indexOf(key) <= Math.ceil(coll.size / 2) - 1
 				);
@@ -298,7 +298,7 @@ export default class UserCommand extends Command {
 				break;
 			}
 			case 'MOBS': {
-				const mob = type[0].item.value as Mobs;
+				const mob = type[0].item.value as Constants.Mobs;
 				const [big, small] = new Collection(Object.entries(mob.stats)).partition(
 					(_value, key, coll) => coll.map((_v, k) => k).indexOf(key) <= Math.ceil(coll.size / 2) - 1
 				);
@@ -307,7 +307,7 @@ export default class UserCommand extends Command {
 					.setTitle(`**${mob.name.toUpperCase()}**`)
 					.setDescription(
 						`**${await resolveKey(interaction, 'common:rank', { lng: locale })}**: ${EMOJIS.RANKS[mob.rank]} ${
-							RANK[mob.rank]
+							Constants.RANK[mob.rank]
 						}\n**${await resolveKey(interaction, 'common:skills', { lng: locale })}**: ${skill?.emoji} ${
 							skill?.name
 						}\n**${await resolveKey(interaction, 'common:drop', { lng: locale })}**: ${DROPS.filter(
@@ -477,7 +477,7 @@ export default class UserCommand extends Command {
 						name: k as string,
 						type: 'CLASSES',
 						aliases: [k] as string[],
-						emoji: EMOJIS.CLASSES[CLASSES[k as 'Assassin']] as string,
+						emoji: EMOJIS.CLASSES[Constants.CLASSES[k as 'Assassin']] as string,
 						value: v
 					}))
 				)

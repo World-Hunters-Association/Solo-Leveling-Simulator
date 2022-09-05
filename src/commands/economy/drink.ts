@@ -26,7 +26,7 @@ export default class UserCommand extends Command {
 		await this.container.stores
 			.get('commands')
 			.get('use')
-			.use(interaction, 'mana potion', await this.container.i18n.fetchLanguageWithDefault(interaction));
+			.use(interaction, 'Mana Potion I', await this.container.i18n.fetchLanguageWithDefault(interaction));
 	}
 }
 

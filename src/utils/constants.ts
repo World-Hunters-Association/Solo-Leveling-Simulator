@@ -5,104 +5,106 @@ import { join } from 'path';
 
 import { Utils } from '../lib/structures/Utils';
 
+import type { RPG } from '../lib/structures/RPG';
+import type { Types } from '../lib/structures/Types';
 import type { Currencies } from '../lib/structures/schemas';
 
-export default class ConstantsUtils extends Utils {
+export class Constants extends Utils {
 	public DROPS = [
 		{
-			name: "Rasaka's Eye",
-			emoji: '<:RasakasEye:749291094969155644>',
+			name: 'Rasaka Eye',
+			emoji: '<:s:749291094969155644>',
 			species: 'Rasaka',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Rasaka's Scale",
-			emoji: '<:RasakasScale:749291094570827817>',
+			name: 'Rasaka Scale',
+			emoji: '<:s:749291094570827817>',
 			species: 'Rasaka',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Rasaka's Red Scale",
-			emoji: '<:RasakasRedScale:749292242497306664>',
+			name: 'Rasaka Red Scale',
+			emoji: '<:s:749292242497306664>',
 			species: 'Rasaka',
 			rank: 2,
 			sellPrice: undefined
 		},
 		{
-			name: "Rasaka's Poison Fang",
-			emoji: '<:RasakasPoisonFang:752077738008903681>',
+			name: 'Rasaka Poison Fang',
+			emoji: '<:s:752077738008903681>',
 			species: 'Rasaka',
 			rank: 3,
 			sellPrice: undefined
 		},
 		{
-			name: "Raikan's Fang",
-			emoji: '<:RaikansSteelFang:749290982037782599>',
+			name: 'Raikan Fang',
+			emoji: '<:s:749290982037782599>',
 			species: 'Raikan',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Raikan's Fur",
-			emoji: '<:RaikansFur:749290981601443942>',
+			name: 'Raikan Fur',
+			emoji: '<:s:749290981601443942>',
 			species: 'Raikan',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Briga's Claw",
-			emoji: '<:BrigasClaw:749291018763108383>',
+			name: 'Briga Claw',
+			emoji: '<:s:749291018763108383>',
 			species: 'Briga',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Briga's Fur",
-			emoji: '<:BrigasFur:749291018423107675>',
+			name: 'Briga Fur',
+			emoji: '<:s:749291018423107675>',
 			species: 'Briga',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Razan's Fang",
-			emoji: '<:RazansFang:749291136945750147>',
+			name: 'Razan Fang',
+			emoji: '<:s:749291136945750147>',
 			species: 'Razan',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Razan's Fur",
-			emoji: '<:RazansFur:749291136975241266>',
+			name: 'Razan Fur',
+			emoji: '<:s:749291136975241266>',
 			species: 'Razan',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Goblin's Eye",
-			emoji: '<:Goblinseye:749291059615629333>',
+			name: 'Goblin Eye',
+			emoji: '<:s:749291059615629333>',
 			species: 'Goblin',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Goblin's Cloth",
-			emoji: '<:GoblinsCloth:749291059657441290>',
+			name: 'Goblin Cloth',
+			emoji: '<:s:749291059657441290>',
 			species: 'Goblin',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Stone Golem's Skin Shard",
-			emoji: '<:StoneGolemsSkin:749290950072729661>',
+			name: 'Stone Golem Skin Shard',
+			emoji: '<:s:749290950072729661>',
 			species: 'Stone Golem',
 			rank: 1,
 			sellPrice: 100
 		},
 		{
-			name: "Stone Golem's Core",
-			emoji: '<:StoneGolem_sCore:751417103831138386>',
+			name: 'Stone Golem Core',
+			emoji: '<:s:751417103831138386>',
 			species: 'Stone Golem',
 			rank: 1,
 			sellPrice: 100
@@ -112,8 +114,8 @@ export default class ConstantsUtils extends Utils {
 	public EQUIPMENTS = [
 		{
 			name: 'Leather tunic',
-			emoji: '<:Leathertunic:765578654800674847>',
-			uniqueCode: 'nj3MH',
+			emoji: '<:s:765578654800674847>',
+			eid: '765578654800674847',
 			class: 0,
 			type: 'armor',
 			stats: {
@@ -124,8 +126,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Casual Hood',
-			emoji: '<:Casualhood:765578655342133248>',
-			uniqueCode: 'sLJF9',
+			emoji: '<:s:765578655342133248>',
+			eid: '765578655342133248',
 			class: 0,
 			type: 'helmet',
 			stats: {
@@ -136,8 +138,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Casual Gloves',
-			emoji: '<:Casualgloves:765578655153258496>',
-			uniqueCode: '2n7DG',
+			emoji: '<:s:765578655153258496>',
+			eid: '765578655153258496',
 			class: 0,
 			type: 'gloves',
 			stats: {
@@ -146,8 +148,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Wanderer Shoes',
-			emoji: '<:Wanderershoes:765578655199920188>',
-			uniqueCode: 'zoW4H',
+			emoji: '<:s:765578655199920188>',
+			eid: '765578655199920188',
 			class: 0,
 			type: 'shoes',
 			stats: {
@@ -158,8 +160,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Broken Sword',
-			emoji: '<:Brokensword:765578611628965889>',
-			uniqueCode: 'B2q4Y',
+			emoji: '<:s:765578611628965889>',
+			eid: '765578611628965889',
 			class: 0,
 			type: 'weapon',
 			stats: {
@@ -169,8 +171,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Stick',
-			emoji: '<:Stick:765578611947339797>',
-			uniqueCode: '7iGHn',
+			emoji: '<:s:765578611947339797>',
+			eid: '765578611947339797',
 			class: 0,
 			type: 'weapon',
 			stats: {
@@ -180,8 +182,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Wooden Shield',
-			emoji: '<:Woodensheild:765578611649544213>',
-			uniqueCode: '5UFWg',
+			emoji: '<:s:765578611649544213>',
+			eid: '765578611649544213',
 			class: 0,
 			type: 'weapon',
 			stats: {
@@ -191,8 +193,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: "Hunter's Bow",
-			emoji: '<:HuntersBow:926067144079319080>',
-			uniqueCode: 'PTT3a',
+			emoji: '<:s:926067144079319080>',
+			eid: '926067144079319080',
 			class: 0,
 			type: 'weapon',
 			stats: {
@@ -203,8 +205,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Handwritten Bible',
-			emoji: '<:HandwrittenBible:926067144293244929>',
-			uniqueCode: 'jL4oT',
+			emoji: '<:s:926067144293244929>',
+			eid: '926067144293244929',
 			class: 0,
 			type: 'weapon',
 			stats: {
@@ -216,8 +218,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Dagger',
-			emoji: '<:Dagger:926067146046439464>',
-			uniqueCode: 'Y6rTi',
+			emoji: '<:s:926067146046439464>',
+			eid: '926067146046439464',
 			class: 0,
 			type: 'weapon',
 			stats: {
@@ -227,8 +229,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Grass Ring',
-			emoji: '<:GrassRing:926067089679204353>',
-			uniqueCode: 'oYF4Q',
+			emoji: '<:s:926067089679204353>',
+			eid: '926067089679204353',
 			class: 0,
 			type: 'ring',
 			stats: {
@@ -238,8 +240,8 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Seashell Necklace',
-			emoji: '<:SeashellNecklace:926067089813438484>',
-			uniqueCode: '4hAKk',
+			emoji: '<:s:926067089813438484>',
+			eid: '926067089813438484',
 			class: 0,
 			type: 'necklace',
 			stats: {
@@ -252,25 +254,25 @@ export default class ConstantsUtils extends Utils {
 
 	public ITEMS = [
 		{
-			name: 'life potion',
+			name: 'Life Potion I',
 			description: 'a bottle filled with blood. Yes blood!\nUse `heal` to restore your HP',
 			price: 100,
 			sellPrice: 70,
 			currency: 'gold',
 			type: 'potion',
 			category: 'Consumables',
-			emoji: '<:Lifepotion1000:740053804463947776>',
+			emoji: '<:s:740053804463947776>',
 			weight: 1
 		},
 		{
-			name: 'mana potion',
+			name: 'Mana Potion I',
 			description: 'a bottle filled with water. Just water!\nUse `drink` to restore your MP',
 			price: 100,
 			sellPrice: 70,
 			currency: 'gold',
 			type: 'potion',
 			category: 'Consumables',
-			emoji: '<:Manapotion1000:740053804480856074>',
+			emoji: '<:s:740053804480856074>',
 			weight: 2
 		},
 		{
@@ -280,7 +282,7 @@ export default class ConstantsUtils extends Utils {
 			currency: 'manaCrystal',
 			type: 'key',
 			category: 'Keys',
-			emoji: '<:KeyE:740054291158532178>',
+			emoji: '<:s:740054291158532178>',
 			weight: 1
 		},
 		{
@@ -290,7 +292,7 @@ export default class ConstantsUtils extends Utils {
 			currency: 'manaCrystal',
 			type: 'key',
 			category: 'Keys',
-			emoji: '<:KeyD:740054291326304408>',
+			emoji: '<:s:740054291326304408>',
 			weight: 2
 		},
 		{
@@ -300,7 +302,7 @@ export default class ConstantsUtils extends Utils {
 			currency: 'manaCrystal',
 			type: 'key',
 			category: 'Keys',
-			emoji: '<:KeyC:740054291217252363>',
+			emoji: '<:s:740054291217252363>',
 			weight: 3
 		},
 		{
@@ -310,7 +312,7 @@ export default class ConstantsUtils extends Utils {
 			currency: 'manaCrystal',
 			type: 'key',
 			category: 'Keys',
-			emoji: '<:KeyB:740054291984678966>',
+			emoji: '<:s:740054291984678966>',
 			weight: 4
 		},
 		{
@@ -320,7 +322,7 @@ export default class ConstantsUtils extends Utils {
 			currency: 'manaCrystal',
 			type: 'key',
 			category: 'Keys',
-			emoji: '<:KeyA:740054291414384770>',
+			emoji: '<:s:740054291414384770>',
 			weight: 5
 		},
 		{
@@ -330,7 +332,7 @@ export default class ConstantsUtils extends Utils {
 			currency: 'manaCrystal',
 			type: 'key',
 			category: 'Keys',
-			emoji: '<:KeyS:740054291317784639>',
+			emoji: '<:s:740054291317784639>',
 			weight: 6
 		},
 		{
@@ -341,7 +343,7 @@ export default class ConstantsUtils extends Utils {
 			type: 'key',
 			category: 'Keys',
 			weight: 7,
-			emoji: '<:keySS2:740423956208812113>'
+			emoji: '<:s:740423956208812113>'
 		},
 		{
 			name: 'Uprank key',
@@ -350,17 +352,17 @@ export default class ConstantsUtils extends Utils {
 			type: 'key',
 			category: 'Keys',
 			weight: 8,
-			emoji: '<:KeyUprank:740175804339585024>'
+			emoji: '<:s:740175804339585024>'
 		},
 		{
-			name: 'thunder stone',
+			name: 'Thunder Stone',
 			description: "A stone from The Lightning Monarch's garden\nUsed to reset stats point",
 			price: 40,
 			currency: 'votePoint',
 			type: 'stone',
 			category: 'Consumables',
 			weight: 3,
-			emoji: '<:Thunderstone:740174046657904680>'
+			emoji: '<:s:740174046657904680>'
 		},
 		{
 			name: 'Status Recovery',
@@ -370,7 +372,7 @@ export default class ConstantsUtils extends Utils {
 			type: 'other',
 			category: 'Consumables',
 			weight: 4,
-			emoji: '<:StatusRecovery:743406575405891586>'
+			emoji: '<:s:743406575405891586>'
 		},
 		{
 			name: 'Random Blessed Box',
@@ -380,7 +382,7 @@ export default class ConstantsUtils extends Utils {
 			type: 'other',
 			category: 'Consumables',
 			weight: 6,
-			emoji: '<:RandomBlessedBox:748611676294611036>'
+			emoji: '<:s:748611676294611036>'
 		},
 		{
 			name: 'Random Cursed Box',
@@ -390,7 +392,7 @@ export default class ConstantsUtils extends Utils {
 			type: 'other',
 			category: 'Consumables',
 			weight: 7,
-			emoji: '<:RandomCursedBox:748611676756246598>'
+			emoji: '<:s:748611676756246598>'
 		},
 		{
 			name: 'Random Box',
@@ -400,7 +402,7 @@ export default class ConstantsUtils extends Utils {
 			type: 'other',
 			category: 'Consumables',
 			weight: 5,
-			emoji: '<:RandomBox:748805857587757077>'
+			emoji: '<:s:748805857587757077>'
 		},
 		{
 			name: 'Lottery ticket',
@@ -410,7 +412,7 @@ export default class ConstantsUtils extends Utils {
 			category: 'Consumables',
 			type: 'other',
 			weight: 8,
-			emoji: '<:Lotteryticket:763331798423044097>'
+			emoji: '<:s:763331798423044097>'
 		},
 		{
 			name: 'Leather tunic',
@@ -548,49 +550,50 @@ export default class ConstantsUtils extends Utils {
 
 	public EMOJIS = {
 		LOGO: {
-			SMALL: '<:sololeveling:723734142000300134><:simulator:723734142474518670>'
+			SMALL: '<:s:723734142000300134><:s:723734142474518670>'
 		},
-		CLASSES: CLASS_EMOJIS,
-		RANKS: RANK_EMOJIS,
+		CLASSES: Constants.CLASS_EMOJIS,
+		RANKS: Constants.RANK_EMOJIS,
 		MAIN_FEATURE: {
-			GUILD: '<:Guild:724541954796421151>',
-			SHOP: '<:Shop:724541954150498335>',
-			GAMBLING: '<:Gambling:724541954066743347>',
-			PVP: '<:PvP:724541953978662972>',
-			QUEST: '<:Quest:724541953961623572>',
-			BLACKSMITH: '<:BlackSmith:724541953890320384>'
+			GUILD: '<:s:724541954796421151>',
+			SHOP: '<:s:724541954150498335>',
+			GAMBLING: '<:s:724541954066743347>',
+			PVP: '<:s:724541953978662972>',
+			QUEST: '<:s:724541953961623572>',
+			BLACKSMITH: '<:s:724541953890320384>'
 		},
 		GATES: {
 			NORMAL: 'https://media.discordapp.net/attachments/726408486526910494/730044642812231690/Gate_2.gif?width=432&height=432',
 			RED: 'https://media.discordapp.net/attachments/726402638328889405/730044690682085456/Gate_2_red.gif?width=432&height=432'
 		},
 		MONEY: {
-			MANA_CRYSTAL: '<:ManaCrystal:729523453706764388>',
-			GOLDS: '<:Golds:729535888912154754>',
-			MAGIC_CORE: '<:MagicCores:729601324013846650>'
+			MANA_CRYSTAL: '<:s:729523453706764388>',
+			GOLDS: '<:s:729535888912154754>',
+			MAGIC_CORE: '<:s:729601324013846650>'
 		},
 		STATS: {
-			HP: '<:HP:741719020423741510>',
-			MP: '<:MP:741719020419678258>',
-			INTELLIGENCE: '<:Intelligent:741719020356501575>',
-			STRENGTH: '<:str:741719020478136365>',
-			DEFENCE: '<:Defence:758151671993598003>',
-			MAGIC_RESISTANCE: '<:mr:741719020549439538>',
-			AGILITY: '<:Agility:758152007386398750>',
-			VITALITY: '<:Vitality:758152007126745131>'
+			HP: '<:s:741719020423741510>',
+			MP: '<:s:741719020419678258>',
+			INTELLIGENCE: '<:s:741719020356501575>',
+			STRENGTH: '<:s:741719020478136365>',
+			DEFENCE: '<:s:758151671993598003>',
+			MAGIC_RESISTANCE: '<:s:741719020549439538>',
+			AGILITY: '<:s:758152007386398750>',
+			VITALITY: '<:s:758152007126745131>',
+			LUCK: '<:s:758152007474610226>'
 		},
 		TEXT: {
-			LEVEL: '<:Level1:729641396226490424><:Level2:729641396662829166><:Level3:729641396687994900>',
-			CLASS: '<:Class1:729652658465669161><:Class2:729652658247303169><:Class3:729652658461343804>',
-			RANK: '<:Rank1:729677858976301076><:Rank2:729677859756703746><:Rank3:729677859949379726>',
-			GUILD: '<:Guild1:729690301861724201><:Guild2:729690302163583077><:Guild3:729690302419435610>'
+			LEVEL: '<:s:729641396226490424><:s:729641396662829166><:s:729641396687994900>',
+			CLASS: '<:s:729652658465669161><:s:729652658247303169><:s:729652658461343804>',
+			RANK: '<:s:729677858976301076><:s:729677859756703746><:s:729677859949379726>',
+			GUILD: '<:s:729690301861724201><:s:729690302163583077><:s:729690302419435610>'
 		},
 		LOTTERY_TICKET: this.ITEMS.find((item) => item.name === 'Lottery ticket')!.emoji!,
-		COOLDOWNS: '<:Cooldown3:751415280990683166>',
-		READY: '<:Ready:751415280512663603>',
+		COOLDOWNS: '<:s:751415280990683166>',
+		READY: '<:s:751415280512663603>',
 		ITEMS: {
-			LIFE_POTION: this.ITEMS.find((item) => item.name === 'life potion')!.emoji!,
-			MANA_POTION: this.ITEMS.find((item) => item.name === 'mana potion')!.emoji!,
+			LIFE_POTION: this.ITEMS.find((item) => item.name === 'Life Potion I')!.emoji!,
+			MANA_POTION: this.ITEMS.find((item) => item.name === 'Mana Potion I')!.emoji!,
 			KEY_E: this.ITEMS.find((item) => item.name === 'E-rank key')!.emoji!,
 			KEY_D: this.ITEMS.find((item) => item.name === 'D-rank key')!.emoji!,
 			KEY_C: this.ITEMS.find((item) => item.name === 'C-rank key')!.emoji!,
@@ -599,7 +602,7 @@ export default class ConstantsUtils extends Utils {
 			KEY_S: this.ITEMS.find((item) => item.name === 'S-rank key')!.emoji!,
 			KEY_SS: this.ITEMS.find((item) => item.name === 'SS-rank key')!.emoji!,
 			KEY_UPRANK: this.ITEMS.find((item) => item.name === 'Uprank key')!.emoji!,
-			THUNDER_STONE: this.ITEMS.find((item) => item.name === 'thunder stone')!.emoji!,
+			THUNDER_STONE: this.ITEMS.find((item) => item.name === 'Thunder Stone')!.emoji!,
 			STATUS_RECOVERY: this.ITEMS.find((item) => item.name === 'Status Recovery')!.emoji!,
 			RANDOM_BOX: this.ITEMS.find((item) => item.name === 'Random Box')!.emoji!,
 			RANDOM_BLESSED_BOX: this.ITEMS.find((item) => item.name === 'Random Blessed Box')!.emoji!,
@@ -620,137 +623,137 @@ export default class ConstantsUtils extends Utils {
 			SEASHELL_NECKLACE: this.EQUIPMENTS.find((item) => item.name === 'Seashell Necklace')!.emoji!
 		},
 		SKILLS: {
-			SLASH: '<:Slash:868850352500404224>',
-			EVADE: '<:Evade:868850352542330920>',
-			RIPOSTE: '<:Riposte:848237306262716427>',
-			LUNGE: '<:Lunge:848237306590134272>',
-			WEAKSPOTS: '<:Weakspots:848237306547666994>',
-			PUNCH: '<:Punch:848237446226378762>',
-			STATS: '<:Stats:848237446282084422>',
-			WATER_BALL: '<:WaterBall:868850352500383784>',
-			FLAMESPEAR: '<:Flamespear:848237391252422716>',
-			IMMOBILE_CURSE: '<:ImmobileCurse:868850352479432704>',
-			THUNDERBOLT: '<:Thunderbolt:848237391343910952>',
-			DOUBLE_PUNCH: '<:DoublePunch:868850352466833458>',
-			TAUNT: '<:Taunt:848237528103780462>',
-			POWERSMASH: '<:Powersmash:848237527998529556>',
-			BARRIER: '<:Barrier:848237528078090250>',
-			JUDGE: '<:Judge:868850352533950484>',
-			HEAL: '<:Heal:848237358763212800>',
-			CAMOUFLAGE: '<:Camouflage:848237358821670952>',
-			BUFF: '<:Buff:848237358897037312>',
-			STAB: '<:Stab:868850352638803968>',
-			SPRINT: '<:Sprint:848237264080207903>',
-			BLOODLUST: '<:Bloodlust:848237264139452466>',
-			DAGGER_THROW: '<:Daggerthrow:848237263866822687>',
-			SHOOT: '<:Shoot:868850352496201729>',
-			MULTISHOOT: '<:Multishot:848237492296744961>',
-			MAGIC_ARROW: '<:Magicarrow:848237492826013736>',
-			ARROWS_RAIN: '<:Arrowrain:848237492598865960>',
-			POISON_FANG: '<:PoisonFang:918783195401584680>',
-			CHOMP: '<:Chomp:918783195309297704>',
-			BONE_CRUNCH: '<:BoneCrunch:918783195292504084>',
-			SCRATCH: '<:Scratch:918783195305082911>',
-			LEAP: '<:Leap:920609719020826624>',
-			SEISMIC_SHOVE: '<:SeismicShove:918783195317665812>',
-			EVOLVE: '<:Evolve:922355064448897024>'
+			SLASH: '<:s:868850352500404224>',
+			EVADE: '<:s:868850352542330920>',
+			RIPOSTE: '<:s:848237306262716427>',
+			LUNGE: '<:s:848237306590134272>',
+			WEAKSPOTS: '<:s:848237306547666994>',
+			PUNCH: '<:s:848237446226378762>',
+			STATS: '<:s:848237446282084422>',
+			WATER_BALL: '<:s:868850352500383784>',
+			FLAMESPEAR: '<:s:848237391252422716>',
+			IMMOBILE_CURSE: '<:s:868850352479432704>',
+			THUNDERBOLT: '<:s:848237391343910952>',
+			DOUBLE_PUNCH: '<:s:868850352466833458>',
+			TAUNT: '<:s:848237528103780462>',
+			POWERSMASH: '<:s:848237527998529556>',
+			BARRIER: '<:s:848237528078090250>',
+			JUDGE: '<:s:868850352533950484>',
+			HEAL: '<:s:848237358763212800>',
+			CAMOUFLAGE: '<:s:848237358821670952>',
+			BUFF: '<:s:848237358897037312>',
+			STAB: '<:s:868850352638803968>',
+			SPRINT: '<:s:848237264080207903>',
+			BLOODLUST: '<:s:848237264139452466>',
+			DAGGER_THROW: '<:s:848237263866822687>',
+			SHOOT: '<:s:868850352496201729>',
+			MULTISHOOT: '<:s:848237492296744961>',
+			MAGIC_ARROW: '<:s:848237492826013736>',
+			ARROWS_RAIN: '<:s:848237492598865960>',
+			POISON_FANG: '<:s:918783195401584680>',
+			CHOMP: '<:s:918783195309297704>',
+			BONE_CRUNCH: '<:s:918783195292504084>',
+			SCRATCH: '<:s:918783195305082911>',
+			LEAP: '<:s:920609719020826624>',
+			SEISMIC_SHOVE: '<:s:918783195317665812>',
+			EVOLVE: '<:s:922355064448897024>'
 		},
 		UI: {
-			GUIDE: '<:Guide:864020382033772554>',
-			READY: '<:Ready:864020381756293121>',
-			LEAVE: '<:Leave:864020382155276288>',
-			PASS_TURN: '<:PassTurn:864051358159994921>',
-			MOVE: '<:Move:864051358179786762>',
-			FIGHT: '<:Fight:864051358067327006>',
-			CHOOSE_CLASS: '<:ChooseClass:864360839796359226>',
-			RULE: '<:Rule:864360839876575232>',
-			HELP: '<:Help:864360839551909900>',
-			RETURN: '<:Return:864360798393991178>',
-			CANCEL: '<:Cancel:864360798045601895>',
-			YES: '<:Yes:864360798410375179>'
+			GUIDE: '<:s:864020382033772554>',
+			READY: '<:s:864020381756293121>',
+			LEAVE: '<:s:864020382155276288>',
+			PASS_TURN: '<:s:864051358159994921>',
+			MOVE: '<:s:864051358179786762>',
+			FIGHT: '<:s:864051358067327006>',
+			CHOOSE_CLASS: '<:s:864360839796359226>',
+			RULE: '<:s:864360839876575232>',
+			HELP: '<:s:864360839551909900>',
+			RETURN: '<:s:864360798393991178>',
+			CANCEL: '<:s:864360798045601895>',
+			YES: '<:s:864360798410375179>'
 		},
 		MAP: {
 			NORMAL: {
-				A: '<:A_:864065871504867338>',
-				B: '<:B_:864065871471181844>',
-				C: '<:C_:864065871084257331>',
-				D: '<:D_:864065871125938197>',
-				E: '<:E_:864065871503687691>',
-				F: '<:F_:864065871315206155>',
-				G: '<:G_:864065871643017216>',
-				H: '<:H_:864065871545761823>',
-				I: '<:I_:864065871658876938>',
+				A: '<:s:864065871504867338>',
+				B: '<:s:864065871471181844>',
+				C: '<:s:864065871084257331>',
+				D: '<:s:864065871125938197>',
+				E: '<:s:864065871503687691>',
+				F: '<:s:864065871315206155>',
+				G: '<:s:864065871643017216>',
+				H: '<:s:864065871545761823>',
+				I: '<:s:864065871658876938>',
 				0: ':white_square_button:',
-				1: '<:1_:864066276015865877>',
-				2: '<:2_:864066276485234688>',
-				3: '<:3_:864066276230299668>',
-				4: '<:4_:864066276204478464>',
-				5: '<:5_:864066276073799711>',
-				6: '<:6_:864066276200939520>',
-				7: '<:7_:864066276208410664>',
-				8: '<:8_:864066275931717653>',
-				9: '<:9_:864066276170792961>'
+				1: '<:s:864066276015865877>',
+				2: '<:s:864066276485234688>',
+				3: '<:s:864066276230299668>',
+				4: '<:s:864066276204478464>',
+				5: '<:s:864066276073799711>',
+				6: '<:s:864066276200939520>',
+				7: '<:s:864066276208410664>',
+				8: '<:s:864066275931717653>',
+				9: '<:s:864066276170792961>'
 			},
 			RED: {
-				A: '<:A_:864066359104634910>',
-				B: '<:B_:864066360208392202>',
-				C: '<:C_:864066360258985994>',
-				D: '<:D_:864066360392286213>',
-				E: '<:E_:864066360292016138>',
-				F: '<:F_:864066360035639307>',
-				G: '<:G_:864066360283496458>',
-				H: '<:H_:864066360261738546>',
-				I: '<:I_:864066360383242240>',
+				A: '<:s:864066359104634910>',
+				B: '<:s:864066360208392202>',
+				C: '<:s:864066360258985994>',
+				D: '<:s:864066360392286213>',
+				E: '<:s:864066360292016138>',
+				F: '<:s:864066360035639307>',
+				G: '<:s:864066360283496458>',
+				H: '<:s:864066360261738546>',
+				I: '<:s:864066360383242240>',
 				0: ':white_square_button:',
-				1: '<:1_:864066482203787265>',
-				2: '<:2_:864066482257395755>',
-				3: '<:3_:864066482195660802>',
-				4: '<:4_:864066482258444329>',
-				5: '<:5_:864066482430017537>',
-				6: '<:6_:864066482451251200>',
-				7: '<:7_:864066482493456435>',
-				8: '<:8_:864066482501844992>',
-				9: '<:9_:864066482563448873>'
+				1: '<:s:864066482203787265>',
+				2: '<:s:864066482257395755>',
+				3: '<:s:864066482195660802>',
+				4: '<:s:864066482258444329>',
+				5: '<:s:864066482430017537>',
+				6: '<:s:864066482451251200>',
+				7: '<:s:864066482493456435>',
+				8: '<:s:864066482501844992>',
+				9: '<:s:864066482563448873>'
 			}
 		},
 		EFFECTS: {
-			POISON: '<:Poison:914807899467939890>',
-			MAGIC_PENETRATION: '<:MagicPenetration:914807899656683530>',
-			ARMOR_PENETRATION: '<:ArmorPenetration:914807899493138442>',
-			ARMOR_N_MAGIC_PENETRATION: '<:ArmorMagicPenetration:917303874291925022>',
-			STUN: '<:Stun:914807899459575848>',
-			SLOW: '<:Slow:914807899585380362>',
-			GRIEVOUS_WOUNDS: '<:GrievousWounds:920609656269864970>',
-			AIRBORNE: '<:Airborne:920609656072732682>'
+			POISON: '<:s:914807899467939890>',
+			MAGIC_PENETRATION: '<:s:914807899656683530>',
+			ARMOR_PENETRATION: '<:s:914807899493138442>',
+			ARMOR_N_MAGIC_PENETRATION: '<:s:917303874291925022>',
+			STUN: '<:s:914807899459575848>',
+			SLOW: '<:s:914807899585380362>',
+			GRIEVOUS_WOUNDS: '<:s:920609656269864970>',
+			AIRBORNE: '<:s:920609656072732682>'
 		},
 		MOBS: {
-			BOSS_RASAKA: '<:_BluePoisonFangsRasaka:922326433957814272>',
-			GREEN_RASAKA: '<:GreenRasaka:917308349077417984>',
-			PURPLE_RASAKA: '<:PurpleRasaka:917308349110964264>',
-			BOSS_RAIKAN: '<:_SteelFangedRaikan:922326433483882507>',
-			BLUE_RAIKAN: '<:RaikanBlue:740615341591232533>',
-			YELLOW_RAIKAN: '<:RaikanYellow:740615341847085148>',
-			BOSS_RAZAN: '<:_BlackShadowRazan:922326433517424692>',
-			PURPLE_RAZAN: '<:RazanPurple:740623388099346473>',
-			RED_RAZAN: '<:RazanRed:740623388292284556>',
-			BOSS_BRIGA: '<:_RazorClawBriga:922326433756491806>',
-			BLUE_BRIGA: '<:RazorClawBrigaBlue:740836166206619659>',
-			GRAY_BRIGA: '<:RazorClawBrigaGray:740836166286180414>',
-			BOSS_GOBLIN: '<:_Goblin:922326433857142795>',
-			BLUE_GOBLIN: '<:GoblinBlue:740836086506324079>',
-			RED_GOBLIN: '<:GoblinRed:740836086607249439>',
-			BOSS_STONE_GOLEM: '<:_StoneGolem:922326433798434856>',
-			BROWN_STONE_GOLEM: '<:StoneGolemBrown:740866921779691600>',
-			GREEN_STONE_GOLEM: '<:StoneGolemGreen:740866882445508629>'
+			BOSS_RASAKA: '<:s:922326433957814272>',
+			GREEN_RASAKA: '<:s:917308349077417984>',
+			PURPLE_RASAKA: '<:s:917308349110964264>',
+			BOSS_RAIKAN: '<:s:922326433483882507>',
+			BLUE_RAIKAN: '<:s:740615341591232533>',
+			YELLOW_RAIKAN: '<:s:740615341847085148>',
+			BOSS_RAZAN: '<:s:922326433517424692>',
+			PURPLE_RAZAN: '<:s:740623388099346473>',
+			RED_RAZAN: '<:s:740623388292284556>',
+			BOSS_BRIGA: '<:s:922326433756491806>',
+			BLUE_BRIGA: '<:s:740836166206619659>',
+			GRAY_BRIGA: '<:s:740836166286180414>',
+			BOSS_GOBLIN: '<:s:922326433857142795>',
+			BLUE_GOBLIN: '<:s:740836086506324079>',
+			RED_GOBLIN: '<:s:740836086607249439>',
+			BOSS_STONE_GOLEM: '<:s:922326433798434856>',
+			BROWN_STONE_GOLEM: '<:s:740866921779691600>',
+			GREEN_STONE_GOLEM: '<:s:740866882445508629>'
 		},
 		GEMS: {
-			TOPAZ: '<:Topaz:922699694877081621>',
-			DIAMOND: '<:Diamond:922699694709309520>',
-			AMETHYST: '<:Amethyst:922699694533128242>',
-			EMERALD: '<:Emerald:922699694222757960>',
-			RUBY: '<:Ruby:922699694675738655>',
-			SAPPHIRE: '<:Sapphire:922699694591840266>',
-			OPAL: '<:Opal:922699694323433493>'
+			TOPAZ: '<:s:922699694877081621>',
+			DIAMOND: '<:s:922699694709309520>',
+			AMETHYST: '<:s:922699694533128242>',
+			EMERALD: '<:s:922699694222757960>',
+			RUBY: '<:s:922699694675738655>',
+			SAPPHIRE: '<:s:922699694591840266>',
+			OPAL: '<:s:922699694323433493>'
 		}
 	} as const;
 
@@ -758,306 +761,342 @@ export default class ConstantsUtils extends Utils {
 		{
 			name: "Blue Poison Fang's Rasaka",
 			emoji: this.EMOJIS.MOBS.BOSS_RASAKA,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: true,
 			species: 'Rasaka',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Rasaka'),
 			stats: {
-				hp: 200,
+				hpMax: 200,
+				mpMax: 0,
 				str: 40,
 				int: 60,
 				def: 85,
 				mr: 85,
 				agi: 3,
+				luk: 0,
 				range: 3
 			}
 		},
 		{
 			name: 'Green Rasaka',
 			emoji: this.EMOJIS.MOBS.GREEN_RASAKA,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Rasaka',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Rasaka'),
 			stats: {
-				hp: 80,
+				hpMax: 80,
+				mpMax: 0,
 				str: 30,
 				int: 10,
 				def: 30,
 				mr: 30,
 				agi: 2,
+				luk: 0,
 				range: 2
 			}
 		},
 		{
 			name: 'Purple Rasaka',
 			emoji: this.EMOJIS.MOBS.PURPLE_RASAKA,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Rasaka',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Rasaka'),
 			stats: {
-				hp: 80,
+				hpMax: 80,
+				mpMax: 0,
 				str: 10,
 				int: 30,
 				def: 30,
 				mr: 30,
 				agi: 2,
+				luk: 0,
 				range: 2
 			}
 		},
 		{
 			name: 'Steel Fanged Raikan',
 			emoji: this.EMOJIS.MOBS.BOSS_RAIKAN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: true,
 			species: 'Raikan',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Raikan'),
 			stats: {
-				hp: 200,
+				hpMax: 200,
+				mpMax: 0,
 				str: 95,
 				int: 10,
 				def: 60,
 				mr: 60,
 				agi: 4,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Blue Raikan',
 			emoji: this.EMOJIS.MOBS.BLUE_RAIKAN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Raikan',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Raikan'),
 			stats: {
-				hp: 90,
+				hpMax: 90,
+				mpMax: 0,
 				str: 50,
 				int: 10,
 				def: 10,
 				mr: 10,
 				agi: 3,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Yellow Raikan',
 			emoji: this.EMOJIS.MOBS.YELLOW_RAIKAN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Raikan',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Raikan'),
 			stats: {
-				hp: 100,
+				hpMax: 100,
+				mpMax: 0,
 				str: 30,
 				int: 10,
 				def: 30,
 				mr: 30,
 				agi: 3,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Black Shadow Razan',
 			emoji: this.EMOJIS.MOBS.BOSS_RAZAN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: true,
 			species: 'Razan',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Razan'),
 			stats: {
-				hp: 200,
+				hpMax: 200,
+				mpMax: 0,
 				str: 70,
 				int: 10,
 				def: 100,
 				mr: 90,
 				agi: 3,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Purple Razan',
 			emoji: this.EMOJIS.MOBS.PURPLE_RAZAN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Razan',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Razan'),
 			stats: {
-				hp: 90,
+				hpMax: 90,
+				mpMax: 0,
 				str: 20,
 				int: 10,
 				def: 40,
 				mr: 60,
 				agi: 2,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Red Razan',
 			emoji: this.EMOJIS.MOBS.RED_RAZAN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Razan',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Razan'),
 			stats: {
-				hp: 90,
+				hpMax: 90,
+				mpMax: 0,
 				str: 30,
 				int: 10,
 				def: 50,
 				mr: 30,
 				agi: 2,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Razor Claw Briga',
 			emoji: this.EMOJIS.MOBS.BOSS_BRIGA,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: true,
 			species: 'Briga',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Briga'),
 			stats: {
-				hp: 200,
+				hpMax: 200,
+				mpMax: 0,
 				str: 100,
 				int: 10,
 				def: 30,
 				mr: 30,
 				agi: 3,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Blue Briga',
 			emoji: this.EMOJIS.MOBS.BLUE_BRIGA,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Briga',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Briga'),
 			stats: {
-				hp: 90,
+				hpMax: 90,
+				mpMax: 0,
 				str: 50,
 				int: 10,
 				def: 10,
 				mr: 10,
 				agi: 3,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Gray Briga',
 			emoji: this.EMOJIS.MOBS.GRAY_BRIGA,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Briga',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Briga'),
 			stats: {
-				hp: 90,
+				hpMax: 90,
+				mpMax: 0,
 				str: 30,
 				int: 10,
 				def: 30,
 				mr: 30,
 				agi: 3,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Goblin',
 			emoji: this.EMOJIS.MOBS.BOSS_GOBLIN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: true,
 			species: 'Goblin',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Goblin'),
 			stats: {
-				hp: 200,
+				hpMax: 200,
+				mpMax: 0,
 				str: 70,
 				int: 30,
 				def: 30,
 				mr: 30,
 				agi: 4,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Blue Goblin',
 			emoji: this.EMOJIS.MOBS.BLUE_GOBLIN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Goblin',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Goblin'),
 			stats: {
-				hp: 60,
+				hpMax: 60,
+				mpMax: 0,
 				str: 50,
 				int: 20,
 				def: 10,
 				mr: 10,
 				agi: 4,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Red Goblin',
 			emoji: this.EMOJIS.MOBS.RED_GOBLIN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Goblin',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Goblin'),
 			stats: {
-				hp: 50,
+				hpMax: 50,
+				mpMax: 0,
 				str: 60,
 				int: 20,
 				def: 10,
 				mr: 10,
 				agi: 4,
+				luk: 0,
 				range: 1
 			}
 		},
 		{
 			name: 'Stone Golem',
 			emoji: this.EMOJIS.MOBS.BOSS_STONE_GOLEM,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: true,
 			species: 'Stone Golem',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Stone Golem'),
 			stats: {
-				hp: 300,
+				hpMax: 300,
+				mpMax: 0,
 				str: 20,
 				int: 20,
 				def: 120,
 				mr: 120,
 				agi: 1,
+				luk: 0,
 				range: 2
 			}
 		},
 		{
 			name: 'Brown Stone Golem',
 			emoji: this.EMOJIS.MOBS.BROWN_STONE_GOLEM,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Stone Golem',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Stone Golem'),
 			stats: {
-				hp: 150,
+				hpMax: 150,
+				mpMax: 0,
 				str: 20,
 				int: 10,
 				def: 50,
 				mr: 50,
 				agi: 1,
+				luk: 0,
 				range: 2
 			}
 		},
 		{
 			name: 'Green Stone Golem',
 			emoji: this.EMOJIS.MOBS.GREEN_STONE_GOLEM,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			isBoss: false,
 			species: 'Stone Golem',
 			drops: [...this.DROPS].filter((drop) => drop.species === 'Stone Golem'),
 			stats: {
-				hp: 150,
+				hpMax: 150,
+				mpMax: 0,
 				str: 10,
 				int: 20,
 				def: 50,
 				mr: 50,
 				agi: 1,
+				luk: 0,
 				range: 2
 			}
 		}
@@ -1067,9 +1106,9 @@ export default class ConstantsUtils extends Utils {
 		// #region Unspecialized
 		{
 			name: 'Punch',
-			class: CLASSES['Unspecialized'],
+			class: Constants.CLASSES['Unspecialized'],
 			emoji: this.EMOJIS.SKILLS.PUNCH,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 1,
 			description: 'Throw a heavy punch to the enemy face.',
 			levelDepends: {
@@ -1082,9 +1121,9 @@ export default class ConstantsUtils extends Utils {
 		// #region Healer
 		{
 			name: 'Judge',
-			class: CLASSES['Healer'],
+			class: Constants.CLASSES['Healer'],
 			emoji: this.EMOJIS.SKILLS.JUDGE,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			description: 'As a priest, you can ask for a judge from God to the target. The result will affect your skills.',
 			target: 1,
 			levelDepends: {
@@ -1096,9 +1135,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Heal',
-			class: CLASSES['Healer'],
+			class: Constants.CLASSES['Healer'],
 			emoji: this.EMOJIS.SKILLS.HEAL,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 0,
 			description:
 				'You can\'t use this skill if the target hasn\'t had a Judge (the default is "Bless"). If the Judge\'s result is "Bless" this skill will heal the target otherwise will deal damage to them.',
@@ -1111,9 +1150,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Camouflage',
-			class: CLASSES['Healer'],
+			class: Constants.CLASSES['Healer'],
 			emoji: this.EMOJIS.SKILLS.CAMOUFLAGE,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: false,
 			description: "A spell to hide the Healer's presence. Become invisible for 2 - 4 turns",
 			levelDepends: {
@@ -1124,9 +1163,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Buff',
-			class: CLASSES['Healer'],
+			class: Constants.CLASSES['Healer'],
 			emoji: this.EMOJIS.SKILLS.BUFF,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 0,
 			description: 'If use on "Bless" target, it will increase the next damage of them. Otherwise, it will decrease the next damage of them.',
 			levelDepends: {
@@ -1140,9 +1179,9 @@ export default class ConstantsUtils extends Utils {
 		// #region Mage
 		{
 			name: 'Water ball',
-			class: CLASSES['Mage'],
+			class: Constants.CLASSES['Mage'],
 			emoji: this.EMOJIS.SKILLS.WATER_BALL,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			description: 'Compress blocks of water and throw them at the enemies.',
 			target: 1,
 			levelDepends: {
@@ -1155,10 +1194,10 @@ export default class ConstantsUtils extends Utils {
 		{
 			name: 'Flame Spear',
 			aliases: ['flamespear'],
-			class: CLASSES['Mage'],
+			class: Constants.CLASSES['Mage'],
 			emoji: this.EMOJIS.SKILLS.FLAMESPEAR,
 			target: 1,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			description: 'Create spears of fire and launch them at enemies.',
 			levelDepends: {
 				cost: '25:30:40',
@@ -1170,10 +1209,10 @@ export default class ConstantsUtils extends Utils {
 		{
 			name: 'Thunderbolt',
 			aliases: ['thunder bolt'],
-			class: CLASSES['Mage'],
+			class: Constants.CLASSES['Mage'],
 			emoji: this.EMOJIS.SKILLS.THUNDERBOLT,
 			target: 1,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			description: 'Another elemental skills use thunder to damage the enemy. Has a small chance to stun',
 			levelDepends: {
 				cost: '15:20:30',
@@ -1183,9 +1222,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Immobile curse',
-			class: CLASSES['Mage'],
+			class: Constants.CLASSES['Mage'],
 			emoji: this.EMOJIS.SKILLS.IMMOBILE_CURSE,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 1,
 			description: 'Curse the targeted creature(s) and reduce their agility',
 			levelDepends: {
@@ -1199,9 +1238,9 @@ export default class ConstantsUtils extends Utils {
 		// #region Tanker
 		{
 			name: 'Double punch',
-			class: CLASSES['Tanker'],
+			class: Constants.CLASSES['Tanker'],
 			emoji: this.EMOJIS.SKILLS.DOUBLE_PUNCH,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			description: 'Punch the enemy twice.',
 			target: 1,
 			levelDepends: {
@@ -1212,9 +1251,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Taunt',
-			class: CLASSES['Tanker'],
+			class: Constants.CLASSES['Tanker'],
 			emoji: this.EMOJIS.SKILLS.TAUNT,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: false,
 			description: "Provoke the enemy to get their attention, they'll now target you for 3 turns",
 			levelDepends: {
@@ -1226,9 +1265,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Barrier',
-			class: CLASSES['Tanker'],
+			class: Constants.CLASSES['Tanker'],
 			emoji: this.EMOJIS.SKILLS.BARRIER,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 0,
 			description: 'Protects your allies with a powerful magic barrier. The barrier effects is depends on how "tank" the Tanker is.',
 			levelDepends: {
@@ -1241,9 +1280,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Power Smash',
-			class: CLASSES['Tanker'],
+			class: Constants.CLASSES['Tanker'],
 			emoji: this.EMOJIS.SKILLS.POWERSMASH,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: false,
 			description: "Launch a heavy smash that breaks the enemy's bones.",
 			levelDepends: {
@@ -1256,9 +1295,9 @@ export default class ConstantsUtils extends Utils {
 		// #region Fighter
 		{
 			name: 'Slash',
-			class: CLASSES['Fighter'],
+			class: Constants.CLASSES['Fighter'],
 			emoji: this.EMOJIS.SKILLS.SLASH,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			description: 'Slash the enemy',
 			target: 1,
 			levelDepends: {
@@ -1269,9 +1308,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Lunge',
-			class: CLASSES['Fighter'],
+			class: Constants.CLASSES['Fighter'],
 			emoji: this.EMOJIS.SKILLS.LUNGE,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 1,
 			description: "A powerful slash that aims for the enemy's head. Deal physical damage according to your STR",
 			levelDepends: {
@@ -1282,9 +1321,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Evade',
-			class: CLASSES['Fighter'],
+			class: Constants.CLASSES['Fighter'],
 			emoji: this.EMOJIS.SKILLS.EVADE,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: false,
 			description: "Enhance visual and trying to dodge enemy's attack. Dodge chance depends on your Agility and Defence/Magic Resistance.",
 			levelDepends: {
@@ -1294,9 +1333,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Vitals',
-			class: CLASSES['Fighter'],
+			class: Constants.CLASSES['Fighter'],
 			emoji: this.EMOJIS.SKILLS.WEAKSPOTS,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 1,
 			description: "Find the vitals of enemies. Your next attack will deal more damage with the amount of 20% target's max HP.",
 			levelDepends: {
@@ -1310,9 +1349,9 @@ export default class ConstantsUtils extends Utils {
 		// #region Assassin
 		{
 			name: 'Stab',
-			class: CLASSES['Assassin'],
+			class: Constants.CLASSES['Assassin'],
 			emoji: this.EMOJIS.SKILLS.STAB,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			description: 'Stab the enemy',
 			target: 1,
 			levelDepends: {
@@ -1323,9 +1362,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Sprint',
-			class: CLASSES['Assassin'],
+			class: Constants.CLASSES['Assassin'],
 			emoji: this.EMOJIS.SKILLS.SPRINT,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: false,
 			description: 'Apply the armor penetration effect for the next attack.',
 			levelDepends: {
@@ -1336,9 +1375,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Bloodlust',
-			class: CLASSES['Assassin'],
+			class: Constants.CLASSES['Assassin'],
 			emoji: this.EMOJIS.SKILLS.BLOODLUST,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 1,
 			description:
 				'The enemy felt your immense desire to kill, making them in a state of fear - cannot use skills for 1 - 2 turns if they have less Strength than you.',
@@ -1352,9 +1391,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Dagger Throw',
-			class: CLASSES['Assassin'],
+			class: Constants.CLASSES['Assassin'],
 			emoji: this.EMOJIS.SKILLS.DAGGER_THROW,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 1,
 			description: 'Throw a sharp dagger towards the enemy’s throat. Dealing physical damage according to your STR',
 			levelDepends: {
@@ -1368,9 +1407,9 @@ export default class ConstantsUtils extends Utils {
 		// #region Ranger
 		{
 			name: 'Shoot',
-			class: CLASSES['Ranger'],
+			class: Constants.CLASSES['Ranger'],
 			emoji: this.EMOJIS.SKILLS.SHOOT,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			description: 'Shoot enemy with your bow',
 			target: 1,
 			levelDepends: {
@@ -1382,10 +1421,10 @@ export default class ConstantsUtils extends Utils {
 		{
 			name: 'Multishoot',
 			aliases: ['multi shoot', 'multi-shoot'],
-			class: CLASSES['Ranger'],
+			class: Constants.CLASSES['Ranger'],
 			emoji: this.EMOJIS.SKILLS.MULTISHOOT,
 			target: 1,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			description: 'Shoot multiple arrows at the enemy on the same spot. Decreases their defense by 30% for 1 - 3 turns',
 			levelDepends: {
 				cost: '20:25:35',
@@ -1396,9 +1435,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Magic Arrow',
-			class: CLASSES['Ranger'],
+			class: Constants.CLASSES['Ranger'],
 			emoji: this.EMOJIS.SKILLS.MAGIC_ARROW,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: 1,
 			description: 'Summon a powerful arrow to shoot at the enemy. Deal magical damage according to your INT',
 			levelDepends: {
@@ -1409,9 +1448,9 @@ export default class ConstantsUtils extends Utils {
 		},
 		{
 			name: 'Arrow rain',
-			class: CLASSES['Ranger'],
+			class: Constants.CLASSES['Ranger'],
 			emoji: this.EMOJIS.SKILLS.ARROWS_RAIN,
-			rank: RANK['E-Rank'],
+			rank: Constants.RANK['E-Rank'],
 			target: true,
 			description: 'Summon rain of arrows that deal damage to enemies from far away.',
 			levelDepends: {
@@ -1515,86 +1554,100 @@ export default class ConstantsUtils extends Utils {
 
 	public BaseStats = {
 		Assassin: {
-			str: 20,
-			agi: 20,
-			int: 5,
-			vit: 5,
-			def: 5,
-			mr: 5
+			hp: 38,
+			mp: 20,
+			str: 14,
+			def: 15,
+			int: 13,
+			mr: 16,
+			agi: 37,
+			luk: 39
 		},
 		Fighter: {
-			str: 20,
-			def: 20,
-			int: 5,
-			vit: 5,
-			agi: 5,
-			mr: 5
+			hp: 54,
+			mp: 14,
+			str: 19,
+			def: 17,
+			int: 15,
+			mr: 17,
+			agi: 29,
+			luk: 27
 		},
 		Healer: {
-			int: 30,
-			vit: 0,
-			agi: 10,
-			str: 5,
-			def: 10,
-			mr: 5
+			hp: 30,
+			mp: 44,
+			str: 13,
+			def: 14,
+			int: 14,
+			mr: 15,
+			agi: 24,
+			luk: 32
 		},
 		Mage: {
-			int: 40,
-			vit: 5,
-			str: 0,
-			agi: 5,
-			def: 5,
-			mr: 5
+			hp: 30,
+			mp: 44,
+			str: 12,
+			def: 11,
+			int: 21,
+			mr: 20,
+			agi: 22,
+			luk: 18
 		},
 		Ranger: {
-			str: 20,
-			int: 20,
-			vit: 5,
-			agi: 5,
-			def: 5,
-			mr: 5
+			hp: 34,
+			mp: 23,
+			str: 17,
+			def: 14,
+			int: 15,
+			mr: 16,
+			agi: 33,
+			luk: 31
 		},
 		Tanker: {
-			def: 20,
-			mr: 15,
-			vit: 15,
-			str: 5,
-			agi: 5,
-			int: 0
+			hp: 59,
+			mp: 17,
+			str: 18,
+			def: 18,
+			int: 15,
+			mr: 20,
+			agi: 25,
+			luk: 21
 		},
 		Unspecialized: {
-			str: 10,
-			agi: 10,
-			int: 10,
-			vit: 10,
-			def: 10,
-			mr: 10
+			hp: 45,
+			mp: 30,
+			str: 16,
+			def: 16,
+			int: 16,
+			mr: 16,
+			agi: 32,
+			luk: 32
 		}
 	} as const;
 
 	public CLASSES_INFO = {
 		ASSASSIN: {
-			EMOJI: this.EMOJIS.CLASSES[CLASSES['Assassin']],
+			EMOJI: this.EMOJIS.CLASSES[Constants.CLASSES['Assassin']],
 			BASE_STATS: this.BaseStats['Assassin']
 		},
 		FIGHTER: {
-			EMOJI: this.EMOJIS.CLASSES[CLASSES['Fighter']],
+			EMOJI: this.EMOJIS.CLASSES[Constants.CLASSES['Fighter']],
 			BASE_STATS: this.BaseStats['Fighter']
 		},
 		HEALER: {
-			EMOJI: this.EMOJIS.CLASSES[CLASSES['Healer']],
+			EMOJI: this.EMOJIS.CLASSES[Constants.CLASSES['Healer']],
 			BASE_STATS: this.BaseStats['Healer']
 		},
 		MAGE: {
-			EMOJI: this.EMOJIS.CLASSES[CLASSES['Mage']],
+			EMOJI: this.EMOJIS.CLASSES[Constants.CLASSES['Mage']],
 			BASE_STATS: this.BaseStats['Mage']
 		},
 		RANGER: {
-			EMOJI: this.EMOJIS.CLASSES[CLASSES['Ranger']],
+			EMOJI: this.EMOJIS.CLASSES[Constants.CLASSES['Ranger']],
 			BASE_STATS: this.BaseStats['Ranger']
 		},
 		TANKER: {
-			EMOJI: this.EMOJIS.CLASSES[CLASSES['Tanker']],
+			EMOJI: this.EMOJIS.CLASSES[Constants.CLASSES['Tanker']],
 			BASE_STATS: this.BaseStats['Tanker']
 		}
 	} as const;
@@ -1657,7 +1710,7 @@ export default class ConstantsUtils extends Utils {
 				},
 				ADD: {
 					ALIASES: '`add`',
-					USAGE: '`sl add <str|int|def|mr|vit|agi> <amount>`',
+					USAGE: '`sl add <str|int|def|mr|luk|agi> <amount>`',
 					EXAMPLES: `sl add def 36`
 				},
 				COOLDOWN: {
@@ -1715,7 +1768,7 @@ export default class ConstantsUtils extends Utils {
 				USE: {
 					ALIASES: '`use`',
 					USAGE: '`sl use <item_name> [amount]`',
-					EXAMPLES: `sl use mana potion`
+					EXAMPLES: `sl use Mana Potion I`
 				}
 			},
 			MORE_GOLDS: {
@@ -1868,11 +1921,19 @@ export default class ConstantsUtils extends Utils {
 						description: 'Increase magic damage output and your MP.\n\n**Rate**: 2 INT = 1 MP.'
 					}
 				},
-				VITALITY: {
-					ALIASES: '`vit` | `vitality`',
-					EMOJI: this.EMOJIS.STATS.VITALITY,
+				// VITALITY: {
+				// 	ALIASES: '`vit` | `vitality`',
+				// 	EMOJI: this.EMOJIS.STATS.VITALITY,
+				// 	EMBED: {
+				// 		description: 'Increase your HP.\n\n**Rate**: 1 VIT = 3 HP.'
+				// 	}
+				// },
+				LUCK: {
+					ALIASES: '`luk` | `luck`',
+					EMOJI: this.EMOJIS.STATS.LUCK,
 					EMBED: {
-						description: 'Increase your HP.\n\n**Rate**: 1 VIT = 3 HP.'
+						description:
+							'This controls if you will contract a state or not. The higher your luck, the lower chance you have of getting a certain state, such as poison.'
 					}
 				},
 				DEFENSE: {
@@ -1982,196 +2043,235 @@ export default class ConstantsUtils extends Utils {
 	}
 }
 
-declare module '../lib/structures/UtilsStore' {
-	interface UtilsStore {
-		get(name: 'constants'): ConstantsUtils;
+export namespace Constants {
+	export interface Drops {
+		readonly name: string;
+		readonly sellPrice: number | undefined;
+		readonly species: string;
+		readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>`;
+		readonly rank: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+	}
+
+	export interface Equipments {
+		readonly name: string;
+		readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>`;
+		readonly eid: Snowflake;
+		readonly class: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+		readonly type: 'armor' | 'shoes' | 'gloves' | 'helmet' | 'ring' | 'necklace' | 'weapon';
+		readonly sellPrice?: number;
+		readonly stats: {
+			hp?: number;
+			mp?: number;
+			def?: number;
+			mr?: number;
+			str?: number;
+			int?: number;
+			// vit?: number;
+			luk?: number;
+			agi?: number;
+		};
+	}
+
+	export interface Items {
+		readonly name: string;
+		readonly description?: string;
+		readonly price: number;
+		readonly sellPrice?: number;
+		readonly currency: keyof Currencies;
+		readonly type: 'potion' | 'key' | 'stone' | 'other';
+		readonly category?: 'Consumables' | 'Keys' | 'Items' | 'Equipment';
+		readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>`;
+		readonly weight: number;
+	}
+
+	export interface Mobs {
+		readonly name: string;
+		readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>` | string;
+		readonly rank: RANK;
+		readonly isBoss: boolean;
+		readonly species: string;
+		readonly drops?: Drops[];
+		readonly stats: {
+			readonly hpMax: number;
+			readonly mpMax: number;
+			readonly str: number;
+			readonly def: number;
+			readonly int: number;
+			readonly mr: number;
+			readonly agi: number;
+			readonly luk: number;
+			readonly range: number;
+		};
+	}
+
+	type levelDepends = `${number}:${number}:${number}`;
+	type typeDepends = `${number}:${number}`;
+
+	export interface Skill {
+		readonly id: number;
+		readonly name: string;
+		readonly description: string;
+		readonly emoji?: `<${'a' | ''}:s:${Snowflake}>` | string;
+		readonly type?: Types.Skill;
+		readonly mpCost: number;
+		readonly scope: RPG.UsableItem.Scope;
+		readonly invocation: RPG.UsableItem.Invocation;
+		readonly damage?: RPG.Damage;
+		readonly effects?: RPG.Effect[];
+		readonly requiredWeaponType?: string[];
+	}
+
+	// interface Action<condition = 'Always' | 'Turn' | 'HP' | 'MP' | 'State' | 'Party Level'> {
+	// 	skill: Skill['name'];
+	// 	/**
+	// 	 * Priority of the action. Of all actions meeting the conditions, the one with the highest rating will
+	// 	 * be the standard, and the one within 2 rating points of the standard will be used. Actions 1
+	// 	 * rating point away will be used 2/3 of the time and those 2 rating points away will be used 1/3
+	// 	 * of the time.
+	// 	 */
+	// 	Rating: number;
+	// 	/**
+	// 	 * Conditions for possible actions
+	// 	 * @Always Possible as long as the specified action can be performed.
+	// 	 * @Turn Possible as long as the specified turn has beed surpassed. Specifies the turn count with A + B * X.
+	// 	 * @Turn_Example A = 1 and B = 3, the condition will be met at turn 1, 4, 7, and so on.
+	// 	 * @HP_MP Possible when the HP/MP of this Mob is in the specified range.
+	// 	 * @State Possible when this Mob is in the specified State
+	// 	 * @PartyLevel Possible when the party's highest level is equal to, or exceeds the specified number.
+	// 	 */
+	// 	condition?: condition extends 'Always'
+	// 		? undefined
+	// 		: condition extends 'Turn'
+	// 		? Record<'a' | 'b', number>
+	// 		: condition extends 'HP'
+	// 		? Record<'min' | 'max', number>
+	// 		: condition extends 'MP'
+	// 		? Record<'min' | 'max', number>
+	// 		: condition extends 'State'
+	// 		? State['name']
+	// 		: condition extends 'Party Level'
+	// 		? number
+	// 		: never;
+	// }
+
+	export interface HunterSkills extends Skill {
+		readonly class: CLASSES;
+		readonly rank: RANK;
+		readonly levelDepends: {
+			/** sô lượng mp tốn trong 1 lần sử dụng */
+			readonly cost: levelDepends;
+			/** tầm sử dụng */
+			readonly range?: levelDepends;
+			/** bán kính của skill */
+			readonly size?: levelDepends;
+			/** số mục tiêu */
+			readonly amount?: levelDepends;
+			/** thời gian tồn tại */
+			readonly turns?: levelDepends;
+			/** E.g.: 1:1:1 cách 1 turn mới hồi */
+			readonly cooldown?: levelDepends;
+			/** số lần sử dụng skill để lên level */
+			readonly exp?: levelDepends;
+		};
+	}
+
+	export interface MobSkills extends Skill {
+		readonly species: string;
+		/** số mục tiêu */
+		readonly amount?: typeDepends;
+		/** bán kính của skill */
+		readonly size?: typeDepends;
+		/** thời gian tồn tại */
+		readonly turns?: typeDepends;
+	}
+
+	export enum RANK_TITLES {
+		"Yes, I'm a Hunter" = 1,
+		"I'm better now!",
+		'???',
+		'????',
+		'ELITE HUNTER',
+		'??????',
+		'???????',
+		'????????'
+	}
+
+	export enum CLASSES {
+		Assassin,
+		Fighter,
+		Healer,
+		Mage,
+		Ranger,
+		Tanker,
+		Unspecialized
+	}
+
+	export enum CLASS_EMOJIS {
+		'<:s:741716520920678451>',
+		'<:s:741716521147170836>',
+		'<:s:741716521088188476>',
+		'<:s:741716521109159996>',
+		'<:s:741716521083994255>',
+		'<:s:741716521365274654>',
+		'<:s:741716520949776425>'
+	}
+
+	export enum RANK {
+		'E-Rank' = 1,
+		'D-Rank',
+		'C-Rank',
+		'B-Rank',
+		'A-Rank',
+		'S-Rank',
+		'SS-Rank',
+		'National Level'
+	}
+
+	export enum RANK_EMOJIS {
+		'<:s:729856065168212039>' = 1,
+		'<:s:729856065285521509>',
+		'<:s:729856065486848030>',
+		'<:s:729856065143046225>',
+		'<:s:729856064962691153>',
+		'<:s:729856065088389201>',
+		'<:s:729861742452146186><:s:729861742380974101>',
+		'<:s:729861742191968339><:s:729861742435500073>'
+	}
+
+	export enum KEYS {
+		'e' = 1,
+		'd',
+		'c',
+		'b',
+		'a',
+		's',
+		'ss',
+		'uprank'
+	}
+
+	export enum GEMS {
+		TOPAZ,
+		SAPPHIRE,
+		RUBY,
+		EMERALD,
+		DIAMOND,
+		AMETHYST,
+		OPAL
+	}
+
+	export enum STATS {
+		'str' = 'Strength',
+		'agi' = 'Agility',
+		'int' = 'Intelligence',
+		// 'vit' = 'Vitality',
+		'luk' = 'Luck',
+		'def' = 'Defence',
+		'mr' = 'Magic Resistance'
 	}
 }
 
-export interface Drops {
-	readonly name: string;
-	readonly sellPrice: number | undefined;
-	readonly species: string;
-	readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>`;
-	readonly rank: 1 | 2 | 3 | 4 | 5 | 6 | 7;
-}
-
-export interface Equipments {
-	readonly name: string;
-	readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>`;
-	readonly uniqueCode: string;
-	readonly class: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-	readonly type: 'armor' | 'shoes' | 'gloves' | 'helmet' | 'ring' | 'necklace' | 'weapon';
-	readonly sellPrice?: number;
-	readonly stats: {
-		hp?: number;
-		mp?: number;
-		def?: number;
-		mr?: number;
-		str?: number;
-		int?: number;
-		vit?: number;
-		agi?: number;
-	};
-}
-
-export interface Items {
-	readonly name: string;
-	readonly description?: string;
-	readonly price: number;
-	readonly sellPrice?: number;
-	readonly currency: keyof Currencies;
-	readonly type: 'potion' | 'key' | 'stone' | 'other';
-	readonly category?: 'Consumables' | 'Keys' | 'Items' | 'Equipment';
-	readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>`;
-	readonly weight: number;
-}
-
-export interface Mobs {
-	readonly name: string;
-	readonly emoji: `<${'a' | ''}:${string}:${Snowflake}>` | string;
-	readonly rank: RANK;
-	readonly isBoss: boolean;
-	readonly species: string;
-	readonly drops?: Drops[];
-	readonly stats: {
-		readonly hp: number;
-		readonly str: number;
-		readonly int: number;
-		readonly def: number;
-		readonly mr: number;
-		readonly agi: number;
-		readonly range: number;
-	};
-}
-
-type levelDepends = `${number}:${number}:${number}`;
-type typeDepends = `${number}:${number}`;
-
-interface Skill {
-	readonly name: string;
-	readonly aliases?: string[];
-	readonly emoji?: `<${'a' | ''}:${string}:${Snowflake}>` | string;
-	readonly description?: string;
-	/**
-	 * | 0 target chính bản thân
-	 * | 1 target khác bản thân
-	 * | true chọn tọa độ
-	 * | false không chọn tọa độ
-	 */
-	readonly target: 0 | 1 | true | false;
-}
-
-export interface HunterSkills extends Skill {
-	readonly class: CLASSES;
-	readonly rank: RANK;
-	readonly levelDepends: {
-		/** sô lượng mp tốn trong 1 lần sử dụng */
-		readonly cost: levelDepends;
-		/** tầm sử dụng */
-		readonly range?: levelDepends;
-		/** bán kính của skill */
-		readonly size?: levelDepends;
-		/** số mục tiêu */
-		readonly amount?: levelDepends;
-		/** thời gian tồn tại */
-		readonly turns?: levelDepends;
-		/** E.g.: 1:1:1 cách 1 turn mới hồi */
-		readonly cooldown?: levelDepends;
-		/** số lần sử dụng skill để lên level */
-		readonly exp?: levelDepends;
-	};
-}
-
-export interface MobSkills extends Skill {
-	readonly species: string;
-	/** số mục tiêu */
-	readonly amount?: typeDepends;
-	/** bán kính của skill */
-	readonly size?: typeDepends;
-	/** thời gian tồn tại */
-	readonly turns?: typeDepends;
-}
-
-export enum RANK_TITLES {
-	"Yes, I'm a Hunter" = 1,
-	"I'm better now!",
-	'???',
-	'????',
-	'ELITE HUNTER',
-	'??????',
-	'???????',
-	'????????'
-}
-
-export enum CLASSES {
-	Assassin,
-	Fighter,
-	Healer,
-	Mage,
-	Ranger,
-	Tanker,
-	Unspecialized
-}
-
-export enum CLASS_EMOJIS {
-	'<:Assassin:741716520920678451>',
-	'<:Fighter:741716521147170836>',
-	'<:Healer:741716521088188476>',
-	'<:Mage:741716521109159996>',
-	'<:Ranger:741716521083994255>',
-	'<:Tanker:741716521365274654>',
-	'<:Unspecialized:741716520949776425>'
-}
-
-export enum RANK {
-	'E-Rank' = 1,
-	'D-Rank',
-	'C-Rank',
-	'B-Rank',
-	'A-Rank',
-	'S-Rank',
-	'SS-Rank',
-	'National Level'
-}
-
-export enum RANK_EMOJIS {
-	'<:E_:729856065168212039>' = 1,
-	'<:D_:729856065285521509>',
-	'<:C_:729856065486848030>',
-	'<:B_:729856065143046225>',
-	'<:A_:729856064962691153>',
-	'<:S_:729856065088389201>',
-	'<:SS1:729861742452146186><:SS2:729861742380974101>',
-	'<:NL1:729861742191968339><:NL2:729861742435500073>'
-}
-
-export enum KEYS {
-	'e' = 1,
-	'd',
-	'c',
-	'b',
-	'a',
-	's',
-	'ss',
-	'uprank'
-}
-
-export enum GEMS {
-	TOPAZ,
-	SAPPHIRE,
-	RUBY,
-	EMERALD,
-	DIAMOND,
-	AMETHYST,
-	OPAL
-}
-
-export enum STATS {
-	'str' = 'Strength',
-	'agi' = 'Agility',
-	'int' = 'Intelligence',
-	'vit' = 'Vitality',
-	'def' = 'Defence',
-	'mr' = 'Magic Resistance'
+declare module '../lib/structures/UtilsStore' {
+	interface UtilsStore {
+		get(name: 'constants'): Constants;
+	}
 }

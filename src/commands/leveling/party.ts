@@ -162,7 +162,7 @@ export default class UserCommand extends Subcommand {
 		}
 
 		// ? Check hunter left in gate
-		if (Boolean(await this.container.db.collection('hunter_fighting').countDocuments({ plid: party?.uid }))) {
+		if (Boolean(await this.container.db.collection('hunter').countDocuments({ plid: party?.uid }))) {
 			await editLocalized(interaction, { keys: 'validation:party.memberInGate', formatOptions: { lng: locale } });
 			return;
 		}
@@ -227,7 +227,7 @@ export default class UserCommand extends Subcommand {
 			return;
 		}
 
-		if (Boolean(await this.container.db.collection('hunter_fighting').countDocuments({ plid: party?.uid }))) {
+		if (Boolean(await this.container.db.collection('hunter').countDocuments({ plid: party?.uid }))) {
 			await editLocalized(interaction, { keys: 'validation:party.memberInGate', formatOptions: { lng: locale } });
 			return;
 		}
@@ -411,7 +411,7 @@ export default class UserCommand extends Subcommand {
 			return;
 		}
 
-		if (Boolean(await this.container.db.collection('hunter_fighting').countDocuments({ uid: user.id }))) {
+		if (Boolean(await this.container.db.collection('hunter').countDocuments({ uid: user.id }))) {
 			await editLocalized(interaction, {
 				keys: 'validation:party.kick.inGate',
 				formatOptions: { lng: locale, name: uName, partyName: party?.name }

@@ -25,6 +25,7 @@
 	"effects": {
 		"Bless": "Phước",
 		"Grievous Wounds": "Vết Thương Sâu",
+		"Poison": "Độc",
 		"Slow": "Chậm",
 		"Stun": "Choáng"
 	},
@@ -135,62 +136,72 @@
 		"Uprank key": {
 			"name": "Chìa khóa thăng hạng"
 		},
-		"life potion": {
+		"Life Potion I": {
 			"description": "một chai máu. Bạn không nhầm đâu. Là máu! \nSử dụng `heal` để khôi phục HP của bạn",
 			"name": "Bình máu"
 		},
-		"mana potion": {
+		"Mana Potion I": {
 			"description": "một chai chứa đầy nước. Chỉ có nước!\nSử dụng `drink` để khôi phục lại MP của bạn",
 			"name": "Bình năng lượng"
 		},
-		"thunder stone": {
+		"Thunder Stone": {
 			"description": "Một viên đá từ khu vườn của Chúa tể Sấm sét\nĐược sử dụng để đặt lại điểm kĩ năng",
 			"name": "Đá sấm sét"
 		}
 	},
 	"materials": {
-		"Rasaka's Eye": {
-			"name": "Mắt Rasaka"
-		},
-		"Rasaka's Scale": {
-			"name": "Vảy Rasaka"
-		},
-		"Rasaka's Red Scale": {
-			"name": "Vảy Rasaka Đỏ"
-		},
-		"Rasaka's Poison Fang": {
-			"name": "Nanh Độc của Rasaka"
-		},
-		"Raikan's Fang": {
-			"name": "Nanh Raikan"
-		},
-		"Raikan's Fur": {
-			"name": "Lông Raikan"
-		},
-		"Briga's Claw": {
+		"Briga Claw": {
 			"name": "Móng Vuốt Briga"
 		},
-		"Briga's Fur": {
+		"Briga Fur": {
 			"name": "Lông Briga"
 		},
-		"Razan's Fang": {
-			"name": "Nanh Razan"
-		},
-		"Razan's Fur": {
-			"name": "Lông Razan"
-		},
-		"Goblin's Eye": {
-			"name": "Mắt Goblin"
-		},
-		"Goblin's Cloth": {
+		"Goblin Cloth": {
 			"name": "Áo Goblin"
 		},
-		"Stone Golem's Skin Shard": {
-			"name": "Mảnh Da Người Đá"
+		"Goblin Eye": {
+			"name": "Mắt Goblin"
 		},
-		"Stone Golem's Core": {
+		"Raikan Fang": {
+			"name": "Nanh Raikan"
+		},
+		"Raikan Fur": {
+			"name": "Lông Raikan"
+		},
+		"Rasaka Eye": {
+			"name": "Mắt Rasaka"
+		},
+		"Rasaka Poison Fang": {
+			"name": "Nanh Độc của Rasaka"
+		},
+		"Rasaka Red Scale": {
+			"name": "Vảy Rasaka Đỏ"
+		},
+		"Rasaka Scale": {
+			"name": "Vảy Rasaka"
+		},
+		"Razan Fang": {
+			"name": "Nanh Razan"
+		},
+		"Razan Fur": {
+			"name": "Lông Razan"
+		},
+		"Stone Golem Core": {
 			"name": "Lõi Người Đá"
+		},
+		"Stone Golem Skin Shard": {
+			"name": "Mảnh Da Người Đá"
 		}
+	},
+	"ranks": {
+		"A-Rank": "Hạng A",
+		"B-Rank": "Hạng B",
+		"C-Rank": "Hạng C",
+		"D-Rank": "Hạng D",
+		"E-Rank": "Hạng E",
+		"National Level": "Cấp Quốc Gia",
+		"S-Rank": "Hạng S",
+		"SS-Rank": "Hạng SS"
 	},
 	"skills": {
 		"Arrow rain": {
@@ -327,6 +338,7 @@
 		"def": "Giáp",
 		"hp": "Máu",
 		"int": "Trí tuệ",
+		"luk": "May mắn",
 		"mp": "Năng lượng",
 		"mr": "Kháng phép",
 		"str": "Sức mạnh",
@@ -334,7 +346,7 @@
 	},
 	"terms": {
 		"AGILITY": {
-			"description": "Tăng phạm vi di chuyển.\n\n**Lưu ý**: 5/35/80/140/215 $t(glossary:stats.agi) cung cấp cho bạn 1/2/3/4/5 phạm vi di chuyển.",
+			"description": "Tốc độ của bạn. Tăng phạm vi di chuyển và cơ hội hành động nhanh hơn.\n\n**Lưu ý**: 5/35/80/140/215 $t(glossary:stats.agi) cung cấp cho bạn 1/2/3/4/5 phạm vi di chuyển.",
 			"name": "$t(glossary:stats.agi)"
 		},
 		"DEFENSE": {
@@ -354,8 +366,12 @@
 			"name": "Hunter Slayer"
 		},
 		"INTELLIGENCE": {
-			"description": "Tăng lượng sát thương phép thuật và $t(glossary:stats.mp) của bạn.\n\n**Tỷ lệ**: 2 $t(glossary:stats.int) = 1 $t(glossary:stats.mp).",
+			"description": "Tăng lượng sát thương phép thuật mà bạn có thể gây ra.",
 			"name": "$t(glossary:stats.int)"
+		},
+		"LUCK": {
+			"description": "Tăng độ may mắn. Độ may mắn càng cao, bạn có càng ít cơ hội nhận những trạng thái bất lợi, ví dụ như $t(glossary:effects.Poison)",
+			"name": "$t(glossary:stats.luk)"
 		},
 		"MAGIC RESISTANCE": {
 			"description": "Tăng kháng phép của bạn.",
@@ -377,15 +393,5 @@
 			"description": "Tăng $t(glossary:stats:hp) của bạn.\n\n**Tỷ lệ**: 1 $t(glossary:stats:vit) = 3 $t(glossary:stats:hp).",
 			"name": "$t(glossary:stats.vit)"
 		}
-	},
-	"ranks": {
-		"E-Rank": "Hạng E",
-		"D-Rank": "Hạng D",
-		"C-Rank": "Hạng C",
-		"B-Rank": "Hạng B",
-		"A-Rank": "Hạng A",
-		"S-Rank": "Hạng S",
-		"SS-Rank": "Hạng SS",
-		"National Level": "Cấp Quốc Gia"
 	}
 }

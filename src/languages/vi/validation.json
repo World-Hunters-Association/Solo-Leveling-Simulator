@@ -85,7 +85,7 @@
 				"CONFIG": "Cài đặt cổng của bạn.\nBật `stats` sẽ tự động hiển thị số liệu thống kê mỗi lượt.\nBật `log` sẽ hiển thị các dữ liệu mỗi lượt. \nBật `ping` sẽ tự động ping bạn khi đến lượt của bạn.",
 				"COOLDOWN": "Hiển thị thời gian hồi chiêu của bạn",
 				"CRAFT": "***Chưa thể sử dụng***",
-				"DAILY": "Nhận $t(constant:emojis.currencies.gold), $t(constant:emojis.life potion) và $t(constant:emojis.mana potion) tùy thuộc vào cấp độ và chuỗi của bạn",
+				"DAILY": "Nhận $t(constant:emojis.currencies.gold), $t(constant:emojis.Life Potion I) và $t(constant:emojis.Mana Potion I) tùy thuộc vào cấp độ và chuỗi của bạn",
 				"DICE": "***Chưa thể sử dụng***",
 				"DONATOR": "Hiển thị trạng thái donater\n*(Chỉ hoạt động trong $t(glossary:WHA))*",
 				"DRINK": "Uống một bình năng lượng trong kho đồ của bạn.",
@@ -264,12 +264,12 @@
 			"def": "$t(constant:emojis.stats.def) **$t(glossary:stats:def)**: {{def, number}} ({{eqDef, eqStats}})",
 			"hp": "$t(constant:emojis.stats.hp) **$t(glossary:stats:hp)**: {{hp, number}}/{{maxHp, number}}",
 			"int": "$t(constant:emojis.stats.int) **$t(glossary:stats:int)**: {{int, number}} ({{eqInt, eqStats}})",
-			"left": "$t(validation:profile.stats.hp, {\"hp\":\"{{hp}}\",\"maxHp\":\"{{maxHp}}\"})\n$t(validation:profile.stats.str, {\"context\":\"equipment\",\"str\":\"{{str}}\",\"eqStr\":\"{{eqStr}}\"})\n$t(validation:profile.stats.def, {\"context\":\"equipment\",\"def\":\"{{def}}\",\"eqDef\":\"{{eqDef}}\"})\n$t(validation:profile.stats.vit, {\"context\":\"equipment\",\"vit\":\"{{vit}}\",\"eqVit\":\"{{eqVit}}\"})",
+			"left": "$t(validation:profile.stats.hp, {\"hp\":\"{{hp}}\",\"maxHp\":\"{{maxHp}}\"})\n$t(validation:profile.stats.str, {\"context\":\"equipment\",\"str\":\"{{str}}\",\"eqStr\":\"{{eqStr}}\"})\n$t(validation:profile.stats.def, {\"context\":\"equipment\",\"def\":\"{{def}}\",\"eqDef\":\"{{eqDef}}\"})\n$t(validation:profile.stats.luk, {\"context\":\"equipment\",\"luk\":\"{{luk}}\",\"eqLuk\":\"{{eqLuk}}\"})",
 			"mp": "$t(constant:emojis.stats.mp) **$t(glossary:stats:mp)**: {{mp, number}}/{{maxMp, number}}",
 			"mr": "$t(constant:emojis.stats.mr) **$t(glossary:stats:mr)**: {{mr, number}} ({{eqMr, eqStats}})",
 			"right": "$t(validation:profile.stats.mp, {\"mp\":\"{{mp}}\",\"maxMp\":\"{{maxMp}}\"})\n$t(validation:profile.stats.int, {\"context\":\"equipment\",\"int\":\"{{int}}\",\"eqInt\":\"{{eqInt}}\"})\n$t(validation:profile.stats.mr, {\"context\":\"equipment\",\"mr\":\"{{mr}}\",\"eqMr\":\"{{eqMr}}\"})\n$t(validation:profile.stats.agi, {\"context\":\"equipment\",\"agi\":\"{{agi}}\",\"eqAgi\":\"{{eqAgi}}\"})",
 			"str": "$t(constant:emojis.stats.str) **$t(glossary:stats:str)**: {{str, number}} ({{eqStr, eqStats}})",
-			"vit": "$t(constant:emojis.stats.vit) **$t(glossary:stats:vit)**: {{vit, number}} ({{eqVit, eqStats}})"
+			"luk": "$t(constant:emojis.stats.luk) **$t(glossary:stats:luk)**: {{luk, number}} ({{eqLuk, eqStats}})"
 		},
 		"statsPoint": "**Điểm chỉ số khả dụng**: {{count, number}}"
 	},

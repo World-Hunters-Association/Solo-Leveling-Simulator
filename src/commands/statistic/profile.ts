@@ -5,7 +5,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 import { resolveKey } from '@sapphire/plugin-i18next';
 
-import { CLASSES, Equipments, RANK, RANK_TITLES } from '../../utils/constants';
+import { Constants } from '../../utils/constants';
 
 @ApplyOptions<CommandOptions>({
 	name: 'profile',
@@ -43,7 +43,7 @@ export default class UserCommand extends Command {
 		const target = interaction.options.getUser('hunter');
 		const tid = target?.id || interaction.user.id;
 		const { titleid, name, classid, rankid } = (await this.container.db.collection('hunterinfo').findOne({ uid: tid }))!;
-		const { exp, hp, mp, int, str, mr, def, sp, vit, agi } = (await this.container.db.collection('hunterstats').findOne({ uid: tid }))!;
+		const { exp, hp, mp, int, str, mr, def, sp, luk, agi } = (await this.container.db.collection('hunterstats').findOne({ uid: tid }))!;
 		const { challenges } = (await this.container.db.collection('challenges').findOne({ uid: tid }))!;
 		const { magicCore, manaCrystal, gold } = (await this.container.db.collection('money').findOne({ uid: tid }))!;
 		const { equipped } = (await this.container.db.collection('equipment').findOne({ uid: tid }))!;
@@ -51,22 +51,23 @@ export default class UserCommand extends Command {
 		const level = this.container.functions.HunterLevelCalc(exp);
 
 		const equipments = new Collection(Object.entries(equipped)).mapValues(
-			(code) => this.container.constants.EQUIPMENTS.find((equipment) => equipment.uniqueCode === code)!
+			(code) => this.container.constants.EQUIPMENTS.find((equipment) => equipment.eid === code)!
 		);
 		const {
 			str: eqStr,
 			int: eqInt,
 			def: eqDef,
 			mr: eqMr,
-			vit: eqVit,
+			luk: eqLuk,
 			agi: eqAgi
 		} = equipments
 			.filter((equip) => Boolean(equip))
 			.map((equip) => equip?.stats)
-			.reduce<Equipments['stats']>((stats, equipmentStat) => {
+			.reduce<Constants.Equipments['stats']>((stats, equipmentStat) => {
 				for (const statsName in equipmentStat!)
 					if (Object.prototype.hasOwnProperty.call(equipmentStat, statsName))
-						stats![statsName as 'hp'] = (stats![statsName as 'hp'] ?? 0) + (equipmentStat as Equipments['stats'])![statsName as 'hp']!;
+						stats![statsName as 'hp'] =
+							(stats![statsName as 'hp'] ?? 0) + (equipmentStat as Constants.Equipments['stats'])![statsName as 'hp']!;
 				return stats;
 			}, {});
 
@@ -76,15 +77,15 @@ export default class UserCommand extends Command {
 				name: await resolveKey(interaction, 'validation:profile.author', { name, lng: locale }),
 				iconURL: (target ? target : interaction.user).displayAvatarURL({ dynamic: true })
 			})
-			.setTitle(RANK_TITLES[titleid as 1])
+			.setTitle(Constants.RANK_TITLES[titleid as 1])
 			.setThumbnail((target ? target : interaction.user).displayAvatarURL({ dynamic: true }))
 			.addFields(
 				{
 					name: await resolveKey(interaction, 'common:information', { lng: locale }),
 					value: (
 						await resolveKey(interaction, 'validation:profile.information.left', {
-							class: CLASSES[classid].toLowerCase(),
-							rank: RANK[rankid].toLowerCase().split(/-| /)[0],
+							class: Constants.CLASSES[classid].toLowerCase(),
+							rank: Constants.RANK[rankid].toLowerCase().split(/-| /)[0],
 							lng: locale
 						})
 					).replace(/\*\*(\w)(\w*)\*\*/g, (_, $1, $2) => `**${$1.toUpperCase()}${$2}**`),
@@ -113,13 +114,16 @@ export default class UserCommand extends Command {
 					name: await resolveKey(interaction, 'common:baseStats', { lng: locale }),
 					value: await resolveKey(interaction, 'validation:profile.stats.left', {
 						hp,
-						maxHp: this.container.functions.MaxHPCalc(vit, level),
+						maxHp: this.container.functions.MaxHPCalc(
+							this.container.constants.BaseStats[Constants.CLASSES[classid] as 'Assassin'].hp,
+							level
+						),
 						str,
 						eqStr: eqStr || 0,
 						def,
 						eqDef: eqDef || 0,
-						vit,
-						eqVit: eqVit || 0,
+						luk,
+						eqLuk: eqLuk || 0,
 						lng: locale
 					}),
 					inline: true
@@ -128,7 +132,10 @@ export default class UserCommand extends Command {
 					name: '** **',
 					value: await resolveKey(interaction, 'validation:profile.stats.right', {
 						mp,
-						maxMp: this.container.functions.MaxMPCalc(int, level),
+						maxMp: this.container.functions.OtherStatsCalc(
+							this.container.constants.BaseStats[Constants.CLASSES[classid] as 'Assassin'].mp,
+							level
+						),
 						int,
 						eqInt: eqInt || 0,
 						mr,

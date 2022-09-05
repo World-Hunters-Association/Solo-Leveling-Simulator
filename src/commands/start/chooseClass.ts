@@ -14,7 +14,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command, CommandOptions, RegisterBehavior } from '@sapphire/framework';
 import { editLocalized } from '@sapphire/plugin-i18next';
 
-import { CLASSES, STATS } from '../../utils/constants';
+import { Constants } from '../../utils/constants';
 
 @ApplyOptions<CommandOptions>({
 	name: 'chooseclass',
@@ -58,7 +58,7 @@ export default class UserCommand extends Command {
 		const componentsGenerator = () => [
 			new MessageActionRow().addComponents([
 				new MessageSelectMenu()
-					.setCustomId(`chooseClass:Classes:${uid}`)
+					.setCustomId(`chooseClass:Constants.Classes:${uid}`)
 					.setMaxValues(1)
 					.setPlaceholder(this.container.i18n.getT(locale)('common:selectMenuPlaceholder'))
 					.addOptions([
@@ -151,15 +151,9 @@ export default class UserCommand extends Command {
 
 					embed.setDescription(this.container.i18n.getT(locale)('validation:chooseClass.descriptions.confirmed'));
 
-					const baseStats = { ...BaseStats[CLASSES[Number(i.customId.split(':')[2])] as 'Assassin'] };
-					const stats = {
-						str: baseStats.str - 10,
-						int: baseStats.int - 10,
-						agi: baseStats.agi - 10,
-						vit: baseStats.vit - 10,
-						def: baseStats.def - 10,
-						mr: baseStats.mr - 10
-					};
+					const baseStats = BaseStats[Constants.CLASSES[Number(i.customId.split(':')[2])] as 'Assassin'];
+					const UnspecializedBaseStats = Object.entries(BaseStats['Unspecialized']);
+					const stats = Object.fromEntries(UnspecializedBaseStats.map(([key, value]) => [key, baseStats[key as 'hp'] - value]));
 
 					const skills: { [key: string]: number } = {};
 					HUNTER_SKILLS.filter((skill) => skill.class === Number(i.customId.split(':')[2])).forEach((skill) => (skills[skill.name] = 0));
@@ -197,7 +191,7 @@ export default class UserCommand extends Command {
 					const [big, small] = new Collection(Object.entries(classInfo.BASE_STATS)).partition(
 						(_value, key, coll) => coll.map((_v, k) => k).indexOf(key) <= Math.ceil(coll.size / 2) - 1
 					);
-					const skills = HUNTER_SKILLS.filter((skill) => skill.class === CLASSES[$class as 'Assassin']);
+					const skills = HUNTER_SKILLS.filter((skill) => skill.class === Constants.CLASSES[$class as 'Assassin']);
 
 					embed
 						.setDescription(this.container.i18n.getT(locale)('validation:chooseClass.descriptions.confirm'))
@@ -211,10 +205,9 @@ export default class UserCommand extends Command {
 								value: big
 									.map(
 										(value, key) =>
-											`${EMOJIS.STATS[STATS[key as 'agi']?.toUpperCase().replace(/ /g, '_') as 'AGILITY']} **${key.replace(
-												/^\w/,
-												(l) => l.toUpperCase()
-											)}**: ${value}`
+											`${
+												EMOJIS.STATS[Constants.STATS[key as 'agi']?.toUpperCase().replace(/ /g, '_') as 'AGILITY']
+											} **${key.replace(/^\w/, (l) => l.toUpperCase())}**: ${value}`
 									)
 									.join('\n'),
 								inline: true
@@ -224,10 +217,9 @@ export default class UserCommand extends Command {
 								value: small
 									.map(
 										(value, key) =>
-											`${EMOJIS.STATS[STATS[key as 'agi']?.toUpperCase().replace(/ /g, '_') as 'AGILITY']} **${key.replace(
-												/^\w/,
-												(l) => l.toUpperCase()
-											)}**: ${value}`
+											`${
+												EMOJIS.STATS[Constants.STATS[key as 'agi']?.toUpperCase().replace(/ /g, '_') as 'AGILITY']
+											} **${key.replace(/^\w/, (l) => l.toUpperCase())}**: ${value}`
 									)
 									.join('\n'),
 								inline: true
@@ -269,7 +261,7 @@ export default class UserCommand extends Command {
 						new MessageButton()
 							.setLabel(this.container.i18n.getT(locale)('common:yes'))
 							.setEmoji(EMOJIS.UI.YES)
-							.setCustomId(`chooseClass:Yes:${CLASSES[$class as 'Assassin']}:${interaction.user.id}`)
+							.setCustomId(`chooseClass:Yes:${Constants.CLASSES[$class as 'Assassin']}:${interaction.user.id}`)
 							.setStyle('SECONDARY')
 							.setDisabled(false)
 					]);

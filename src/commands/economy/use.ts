@@ -8,12 +8,15 @@ import { editLocalized } from '@sapphire/plugin-i18next';
 import {
 	AutocompleteInteraction,
 	BaseCommandInteraction,
+	Collection,
 	CommandInteraction,
 	Message,
 	MessageActionRow,
 	MessageButton,
 	MessageComponentInteraction
 } from 'discord.js';
+import { Constants } from '../../utils/constants';
+import type { HunterStats } from '../../lib/structures/schemas';
 
 @ApplyOptions<CommandOptions>({
 	name: 'use',
@@ -32,9 +35,9 @@ export default class UserCommand extends Command {
 				'common:item',
 				'common:descriptions.useItem',
 				[
-					'glossary:items.life potion.name',
-					'glossary:items.mana potion.name',
-					'glossary:items.thunder stone.name',
+					'glossary:items.Life Potion I.name',
+					'glossary:items.Mana Potion I.name',
+					'glossary:items.Thunder Stone.name',
 					'glossary:items.Status Recovery.name'
 				]
 			]
@@ -75,29 +78,32 @@ export default class UserCommand extends Command {
 
 		switch (item.name.toLowerCase()) {
 			default:
-				await this.use(interaction, item.name.toLowerCase() as 'life potion', locale);
+				await this.use(interaction, item.name.toLowerCase() as 'Life Potion I', locale);
 		}
 	}
 
 	public async use(
 		interaction: BaseCommandInteraction | MessageComponentInteraction,
-		name: 'life potion' | 'mana potion' | 'thunder stone' | 'status recovery',
+		name: 'Life Potion I' | 'Mana Potion I' | 'Thunder Stone' | 'status recovery',
 		locale: string
 	) {
-		const { hp, vit, exp, int, mp } = (await this.container.db.collection('hunterstats').findOne({ uid: interaction.user.id }))!;
+		const { hp, exp, mp } = (await this.container.db.collection('hunterstats').findOne({ uid: interaction.user.id }))!;
+		const { classid } = (await this.container.db.collection('hunterinfo').findOne({ uid: interaction.user.id }))!;
+
 		const level = this.container.functions.HunterLevelCalc(exp);
+		const baseStats = this.container.constants.BaseStats[Constants.CLASSES[classid] as 'Assassin'];
 
 		switch (name) {
-			case 'life potion': {
+			case 'Life Potion I': {
 				const { potions } = (await this.container.db.collection('potions').findOne({ uid: interaction.user.id }))!;
-				if (potions['life potion'] <= 0) {
+				if (potions['Life Potion I'] <= 0) {
 					await editLocalized(interaction, {
 						keys: 'validation:use.runOut',
-						formatOptions: { lng: locale, what: 'life potion' }
+						formatOptions: { lng: locale, what: 'Life Potion I' }
 					});
 					return;
 				}
-				const hpMax = this.container.functions.MaxHPCalc(vit, level);
+				const hpMax = this.container.functions.MaxHPCalc(baseStats.hp, level);
 				if (hp === hpMax) {
 					await editLocalized(interaction, { keys: 'validation:use.maxHp', formatOptions: { lng: locale } });
 					return;
@@ -105,22 +111,22 @@ export default class UserCommand extends Command {
 
 				await editLocalized(interaction, { keys: 'validation:use.life', formatOptions: { lng: locale } });
 				await Promise.all([
-					this.container.db.collection('potions').updateOne({ uid: interaction.user.id }, { $inc: { 'life potion': -1 } }),
+					this.container.db.collection('potions').updateOne({ uid: interaction.user.id }, { $inc: { 'Life Potion I': -1 } }),
 					this.container.db.collection('hunterstats').updateOne({ uid: interaction.user.id }, { $set: { hp: hpMax } })
 				]);
 
 				break;
 			}
-			case 'mana potion': {
+			case 'Mana Potion I': {
 				const { potions } = (await this.container.db.collection('potions').findOne({ uid: interaction.user.id }))!;
-				if (potions['mana potion'] <= 0) {
+				if (potions['Mana Potion I'] <= 0) {
 					await editLocalized(interaction, {
 						keys: 'validation:use.runOut',
-						formatOptions: { lng: locale, what: 'mana potion' }
+						formatOptions: { lng: locale, what: 'Mana Potion I' }
 					});
 					return;
 				}
-				const mpMax = this.container.functions.MaxMPCalc(int, level);
+				const mpMax = this.container.functions.OtherStatsCalc(baseStats.mp, level);
 				if (mp === mpMax) {
 					await editLocalized(interaction, { keys: 'validation:use.maxMp', formatOptions: { lng: locale } });
 					return;
@@ -128,23 +134,60 @@ export default class UserCommand extends Command {
 
 				await editLocalized(interaction, { keys: 'validation:use.mana', formatOptions: { lng: locale } });
 				await Promise.all([
-					this.container.db.collection('potions').updateOne({ uid: interaction.user.id }, { $inc: { 'mana potion': -1 } }),
+					this.container.db.collection('potions').updateOne({ uid: interaction.user.id }, { $inc: { 'Mana Potion I': -1 } }),
 					this.container.db.collection('hunterstats').updateOne({ uid: interaction.user.id }, { $set: { mp: mpMax } })
 				]);
 
 				break;
 			}
-			case 'thunder stone': {
+			case 'Thunder Stone': {
 				const { stones } = (await this.container.db.collection('stone').findOne({ uid: interaction.user.id }))!;
-				if (stones['thunder stone'] <= 0) {
+				if (stones['Thunder Stone'] <= 0) {
 					await editLocalized(interaction, {
 						keys: 'validation:use.runOut',
-						formatOptions: { lng: locale, what: 'thunder stone' }
+						formatOptions: { lng: locale, what: 'Thunder Stone' }
 					});
 					return;
 				}
 
-				// TODO
+				const { equipped } = (await this.container.db.collection('equipment').findOne({ uid: interaction.user.id }))!;
+				const { classid } = (await this.container.db.collection('hunterinfo').findOne({ uid: interaction.user.id }))!;
+				const baseStats = this.container.constants.BaseStats[Constants.CLASSES[classid] as 'Assassin'] as unknown as Record<
+					keyof HunterStats,
+					number
+				>;
+				const level = this.container.functions.HunterLevelCalc(exp);
+
+				const equipments = new Collection(Object.entries(equipped)).mapValues((code) =>
+					this.container.constants.EQUIPMENTS.find((equipment) => equipment.eid === code)
+				);
+
+				baseStats.sp = level * 2;
+				baseStats.hp = this.container.functions.MaxHPCalc(baseStats.hp, level);
+				baseStats.str = this.container.functions.OtherStatsCalc(baseStats.str, level);
+				baseStats.def = this.container.functions.OtherStatsCalc(baseStats.def, level);
+				baseStats.int = this.container.functions.OtherStatsCalc(baseStats.int, level);
+				baseStats.mr = this.container.functions.OtherStatsCalc(baseStats.mr, level);
+				baseStats.agi = this.container.functions.OtherStatsCalc(baseStats.agi, level);
+				baseStats.luk = this.container.functions.OtherStatsCalc(baseStats.luk, level);
+
+				const equipmentStats = equipments
+					.filter((equip) => Boolean(equip))
+					.map((equip) => equip?.stats)
+					.reduce<Constants.Equipments['stats']>((stats, equipmentStat) => {
+						for (const statsName in equipmentStat!)
+							if (Object.prototype.hasOwnProperty.call(equipmentStat, statsName))
+								stats![statsName as 'agi'] =
+									(stats![statsName as 'agi'] ?? 0) + (equipmentStat as Record<string, number>)[statsName]!;
+
+						return stats;
+					}, {});
+
+				await editLocalized(interaction, { keys: 'validation:use.thunder', formatOptions: { lng: locale } });
+				await Promise.all([
+					this.container.db.collection('stone').updateOne({ uid: interaction.user.id }, { $inc: { 'Thunder Stone': -1 } }),
+					this.container.db.collection('hunterstats').updateOne({ uid: interaction.user.id }, { $set: equipmentStats })
+				]);
 			}
 			case 'status recovery': {
 				const { has } = (await this.container.db.collection('recover').findOne({ uid: interaction.user.id }))!;
@@ -199,17 +242,17 @@ export default class UserCommand extends Command {
 									{ uid: interaction.user.id },
 									{
 										$set: {
-											hp: this.container.functions.MaxHPCalc(vit, level),
-											mp: this.container.functions.MaxMPCalc(int, level)
+											hp: this.container.functions.MaxHPCalc(baseStats.hp, level),
+											mp: this.container.functions.OtherStatsCalc(baseStats.mp, level)
 										}
 									}
 								),
-								this.container.db.collection('hunter_fighting').updateOne(
+								this.container.db.collection('hunter').updateOne(
 									{ uid: interaction.user.id },
 									{
 										$set: {
-											'stats.hp': this.container.functions.MaxHPCalc(vit, level),
-											'stats.mp': this.container.functions.MaxMPCalc(int, level),
+											'stats.hp': this.container.functions.MaxHPCalc(baseStats.hp, level),
+											'stats.mp': this.container.functions.OtherStatsCalc(baseStats.mp, level),
 											recovery: false
 										}
 									}

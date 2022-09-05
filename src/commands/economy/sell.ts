@@ -5,8 +5,8 @@ import { editLocalized } from '@sapphire/plugin-i18next';
 
 import type { AutocompleteInteraction, CommandInteraction } from 'discord.js';
 import Fuse from 'fuse.js';
-import type { Keys, Material, Potions } from '../../lib/structures/schemas';
-import type { Drops, Items } from '../../utils/constants';
+import type { Equipment, Keys, Material, Potions } from '../../lib/structures/schemas';
+import type { Constants } from '../../utils/constants';
 
 @ApplyOptions<CommandOptions>({
 	name: 'sell',
@@ -50,16 +50,15 @@ export default class UserCommand extends Command {
 				break;
 			case this.container.i18n.format('en-US', 'common:quantity').toLowerCase(): {
 				const _value = Math.abs(Math.floor(Number(value) || 0));
-				const item = this.container.constants.ITEMS.find(
-					(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
-				) as Items;
-				const drop = this.container.constants.DROPS.find(
-					(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
-				) as Drops;
 
-				// TODO: Equipments
+				const itemType = this.container.functions.getObjectTypeFromName(
+					interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase()) as
+						| 'Life Potion I'
+						| 'Rasaka Eye'
+						| 'Stick'
+				);
 
-				if (!item && !drop) {
+				if (itemType !== 'DROPS' && itemType !== 'EQUIPMENTS' && itemType !== 'ITEMS') {
 					await interaction.respond([
 						{
 							name: this.container.functions.reduceString(
@@ -74,24 +73,36 @@ export default class UserCommand extends Command {
 					return;
 				}
 
+				const argItem = interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase(), true);
+				const item = this.container.functions.getObjectFromName(argItem as 'Life Potion I' | 'Rasaka Eye' | 'Stick');
+
 				const doc = (await this.container.db
-					.collection(Boolean(drop) ? 'material' : item?.type === 'potion' ? 'potions' : 'keys')
+					.collection(
+						itemType === 'DROPS'
+							? 'material'
+							: itemType === 'EQUIPMENTS'
+							? 'equipment'
+							: (item as unknown as Constants.Items).type === 'potion'
+							? 'potions'
+							: 'keys'
+					)
 					.findOne({ uid: interaction.user.id }))!;
 
-				const has = Boolean(drop)
-					? (doc as Material).materials[drop!.name]
-					: item?.type === 'potion'
-					? (doc as Potions).potions[item!.name as keyof Potions['potions']]
-					: (doc as Keys).keys[item!.name as keyof Keys['keys']];
+				const has =
+					itemType === 'DROPS'
+						? (doc as Material).materials[item.name as 'Rasaka Eye']
+						: itemType === 'EQUIPMENTS'
+						? (doc as Equipment).unequipped[(item as unknown as Constants.Equipments).eid]
+						: (item as unknown as Constants.Items).type === 'potion'
+						? (doc as Potions).potions[item.name as keyof Potions['potions']]
+						: (doc as Keys).keys[item.name as keyof Keys['keys']];
 
 				await interaction.respond(
 					[
 						{
 							name: this.container.i18n.format(locale, 'validation:sell.quantity', {
 								quantity: has,
-								currency: `$t(glossary:currencies.gold, {"count":${
-									has * (Boolean(drop) ? drop : item)!.sellPrice!
-								},"context":"count"})`
+								currency: `$t(glossary:currencies.gold, {"count":${has * item.sellPrice!},"context":"count"})`
 							}),
 							value: has
 						}
@@ -101,9 +112,7 @@ export default class UserCommand extends Command {
 							.map((v) => ({
 								name: this.container.i18n.format(locale, 'validation:sell.quantity', {
 									quantity: v * Number(_value),
-									currency: `$t(glossary:currencies.gold, {"count":${
-										v * Number(_value) * (Boolean(drop) ? drop : item)!.sellPrice!
-									},"context":"count"})`
+									currency: `$t(glossary:currencies.gold, {"count":${v * Number(_value) * item.sellPrice!},"context":"count"})`
 								}),
 								value: v * Number(_value)
 							}))
@@ -115,18 +124,13 @@ export default class UserCommand extends Command {
 
 	public async chatInputRun(interaction: CommandInteraction) {
 		const locale = await this.container.i18n.fetchLanguageWithDefault(interaction);
-		const item = this.container.constants.ITEMS.find(
-			(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
-		) as Items;
-		const drop = this.container.constants.DROPS.find(
-			(i) => i.name === interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase())
-		) as Drops;
-
-		// TODO: Equipments
+		const argItem = interaction.options.getString(this.container.i18n.format('en-US', 'common:item').toLowerCase(), true);
+		const itemType = this.container.functions.getObjectTypeFromName(argItem as 'Life Potion I' | 'Rasaka Eye' | 'Stick');
+		const item = this.container.functions.getObjectFromName(argItem as 'Life Potion I' | 'Rasaka Eye' | 'Stick');
 
 		const quantity = interaction.options.getNumber(this.container.i18n.format('en-US', 'common:quantity').toLowerCase()) || 1;
 
-		if (!item && !drop) {
+		if (itemType !== 'DROPS' && itemType !== 'EQUIPMENTS' && itemType !== 'ITEMS') {
 			await editLocalized(interaction, {
 				keys: 'common:missingField',
 				formatOptions: {
@@ -141,42 +145,60 @@ export default class UserCommand extends Command {
 			await editLocalized(interaction, {
 				keys: 'common:notEnough',
 				formatOptions: {
-					what: `$t(glossary:currencies.gold, {"count":${(Boolean(drop) ? item : drop)!.sellPrice}})`,
+					what: `$t(glossary:currencies.gold, {"count":${(Boolean(item) ? item : item)!.sellPrice}})`,
 					lng: locale
 				}
 			});
 			return;
 		}
 
-		if (Boolean(drop))
-			await this.container.db.collection('material').updateOne({ uid: interaction.user.id }, { $inc: { [drop!.name]: -quantity } });
-		else if (item?.type === 'potion')
-			await this.container.db
-				.collection('potions')
-				.updateOne({ uid: interaction.user.id }, { $inc: { [item!.name as keyof Potions['potions']]: -quantity } });
-		else if (item?.type === 'key')
-			await this.container.db
-				.collection('keys')
-				.updateOne({ uid: interaction.user.id }, { $inc: { [item!.name as keyof Keys['keys']]: -quantity } });
+		if (itemType === 'DROPS')
+			await this.container.db.collection('material').updateOne({ uid: interaction.user.id }, { $inc: { [item!.name]: -quantity } });
+
+		if (itemType === 'EQUIPMENTS') {
+			const after = await this.container.db
+				.collection('equipment')
+				.findOneAndUpdate(
+					{ uid: interaction.user.id },
+					{ $inc: { [(item as unknown as Constants.Equipments).eid]: -quantity } },
+					{ returnDocument: 'after' }
+				);
+			if (!after.value?.unequipped[(item as unknown as Constants.Equipments).eid]) {
+				await this.container.db
+					.collection('equipment')
+					.updateOne({ uid: interaction.user.id }, { $unset: { [(item as unknown as Constants.Equipments).eid]: '' } });
+			}
+		}
+
+		if (itemType === 'ITEMS') {
+			if ((item as Constants.Items).type === 'potion')
+				await this.container.db
+					.collection('potions')
+					.updateOne({ uid: interaction.user.id }, { $inc: { [item!.name as keyof Potions['potions']]: -quantity } });
+			if ((item as Constants.Items).type === 'key')
+				await this.container.db
+					.collection('keys')
+					.updateOne({ uid: interaction.user.id }, { $inc: { [item!.name as keyof Keys['keys']]: -quantity } });
+		}
 
 		await this.container.db
 			.collection('money')
-			.updateOne({ uid: interaction.user.id }, { $inc: { gold: quantity * (Boolean(drop) ? drop : item)!.sellPrice! } });
+			.updateOne({ uid: interaction.user.id }, { $inc: { gold: quantity * (Boolean(item) ? item : item)!.sellPrice! } });
 		await editLocalized(interaction, {
 			keys: 'validation:sell.success',
 			formatOptions: {
 				lng: locale,
 				quantity,
-				emoji: (Boolean(drop) ? item : drop)!.emoji,
-				name: (Boolean(drop) ? item : drop)!.name,
-				currency: `$t(glossary:currencies.gold, {"count":${quantity * (Boolean(drop) ? drop : item)!.sellPrice!},"context":"count"})`
+				emoji: (Boolean(item) ? item : item)!.emoji,
+				name: (Boolean(item) ? item : item)!.name,
+				currency: `$t(glossary:currencies.gold, {"count":${quantity * (Boolean(item) ? item : item)!.sellPrice!},"context":"count"})`
 			}
 		});
 	}
 
 	public fuse(locale: string) {
 		return new Fuse(
-			this.container.constants.ITEMS.filter((i) => isFinite((i as Items).sellPrice || Infinity))
+			this.container.constants.ITEMS.filter((i) => isFinite((i as Constants.Items).sellPrice || Infinity))
 				.map((i) => ({
 					label:
 						i.category === 'Equipment'
@@ -184,14 +206,14 @@ export default class UserCommand extends Command {
 							: this.container.i18n.format(locale, `glossary:items.${i.name}.name`),
 					name: i.name as string,
 					emoji: i.emoji as string,
-					value: i as Items | Drops
+					value: i as Constants.Items | Constants.Drops
 				}))
 				.concat(
 					this.container.constants.DROPS.filter((i) => isFinite(i.sellPrice || Infinity)).map((m) => ({
 						label: this.container.i18n.format(locale, `glossary:materials.${m.name}.name`),
 						name: m.name,
 						emoji: m.emoji,
-						value: m as Items | Drops
+						value: m as Constants.Items | Constants.Drops
 					}))
 				),
 			{ keys: ['label', 'name'], threshold: 0.7, fieldNormWeight: 1 }

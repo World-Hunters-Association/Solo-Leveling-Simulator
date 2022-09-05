@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import type {
 	SlashCommandAttachmentOption,
 	SlashCommandBooleanOption,
@@ -20,30 +21,33 @@ import { resolveKey } from '@sapphire/plugin-i18next';
 
 import { Utils } from '../lib/structures/Utils';
 
-import type ConstantsUtils from './constants';
-
+import type { Constants } from './constants';
 import type { DurationFormatAssetsTime } from '@sapphire/time-utilities';
 import type { APIMessage, LocalizationMap } from 'discord.js/node_modules/discord-api-types/v10';
+import type { Union } from 'ts-toolbelt';
 
 export default class FunctionsUtils extends Utils {
 	public constructor(context: PieceContext) {
 		super(context);
 	}
 
-	public MaxHPCalc(vit: number, level: number) {
-		return Math.round(100 + level * 5 + vit * 3);
+	public MaxHPCalc(base: number, level: number) {
+		return Math.floor(((base * 100) / 99) * level);
 	}
 
-	public MaxMPCalc(int: number, level: number) {
-		return Math.round(100 + level * 5 + int * 0.5);
+	public OtherStatsCalc(base: number, level: number) {
+		return Math.floor(((base * 10) / 99) * level);
 	}
 
 	public MaxLevelExpCalc(level: number) {
-		let maxLevelExp = 280;
-		for (let i = 1; i < level; i++) {
-			maxLevelExp += Math.round((110 * (i + 1) ** (3 / 2)) / 10) * 10;
-		}
-		return level ? maxLevelExp : 0;
+		const base = 30;
+		const extra = 20;
+		const acc_a = 30;
+		const acc_b = 30;
+
+		return Math.round(
+			(base * Math.pow(level - 1, 0.9 + acc_a / 250) * level * (level + 1)) / (6 + Math.pow(level, 2) / 50 / acc_b) + (level - 1) * extra
+		);
 	}
 
 	public HunterLevelCalc(exp: number) {
@@ -53,6 +57,8 @@ export default class FunctionsUtils extends Utils {
 		}
 		return level;
 	}
+
+	// public MobStatsCalc(level, )
 
 	public formatNumber(number: number): string {
 		return this.container.functions.formatNumber(number);
@@ -136,15 +142,7 @@ export default class FunctionsUtils extends Utils {
 		return this.container.i18n.format(locale, 'common:timeUnits', { returnObjects: true });
 	}
 
-	public getObjectTypeFromName<
-		drops extends ConstantsUtils['DROPS'][number],
-		items extends ConstantsUtils['ITEMS'][number],
-		equipments extends ConstantsUtils['EQUIPMENTS'][number],
-		hunterSkills extends ConstantsUtils['HUNTER_SKILLS'][number],
-		mobSkills extends ConstantsUtils['MOB_SKILLS'][number],
-		mobs extends ConstantsUtils['MOBS'][number],
-		Tname extends (drops | items | equipments | hunterSkills | mobSkills | mobs)['name']
-	>(name: Tname) {
+	public getObjectTypeFromName<T extends keyof ConstantInterfaces, Tname extends ConstantInterfaces[T]['name']>(name: Tname) {
 		return this.container.constants.DROPS.find((i) => i.name === name)
 			? 'DROPS'
 			: this.container.constants.ITEMS.find((i) => i.name === name)
@@ -160,29 +158,10 @@ export default class FunctionsUtils extends Utils {
 			: undefined;
 	}
 
-	public getObjectFromName<drops extends ConstantsUtils['DROPS'][number], Tname extends drops['name']>(name: Tname): drops;
-	public getObjectFromName<items extends ConstantsUtils['ITEMS'][number], Tname extends items['name']>(name: Tname): items;
-	public getObjectFromName<equipments extends ConstantsUtils['EQUIPMENTS'][number], Tname extends equipments['name']>(name: Tname): equipments;
-	public getObjectFromName<hunterSkills extends ConstantsUtils['HUNTER_SKILLS'][number], Tname extends hunterSkills['name']>(
-		name: Tname
-	): hunterSkills;
-
-	public getObjectFromName<mobSkills extends ConstantsUtils['MOB_SKILLS'][number], Tname extends mobSkills['name']>(name: Tname): mobSkills;
-	public getObjectFromName<mobs extends ConstantsUtils['MOBS'][number], Tname extends mobs['name']>(name: Tname): mobs;
-	public getObjectFromName<
-		drops extends ConstantsUtils['DROPS'][number],
-		items extends ConstantsUtils['ITEMS'][number],
-		equipments extends ConstantsUtils['EQUIPMENTS'][number],
-		hunterSkills extends ConstantsUtils['HUNTER_SKILLS'][number],
-		mobSkills extends ConstantsUtils['MOB_SKILLS'][number],
-		mobs extends ConstantsUtils['MOBS'][number],
-		Tname extends (drops | items | equipments | hunterSkills | mobSkills | mobs)['name']
-	>(name: Tname): drops | items | equipments | hunterSkills | mobSkills | mobs {
-		return (
-			this.container.constants[
-				this.getObjectTypeFromName(name) as 'DROPS' | 'ITEMS' | 'EQUIPMENTS' | 'HUNTER_SKILLS' | 'MOB_SKILLS' | 'MOBS'
-			] as unknown as any[]
-		).find((i) => i.name === name);
+	public getObjectFromName<T extends keyof ConstantInterfaces, Tname extends ConstantInterfaces[T]['name']>(name: Tname): ObjectType[Tname] {
+		const type = this.getObjectTypeFromName(name);
+		if (!type) return undefined as unknown as any;
+		return (this.container.constants[type] as unknown as any[]).find((i) => i.name === name);
 	}
 
 	public slashNameLocalizations(key: string): LocalizationMap {
@@ -238,7 +217,7 @@ export default class FunctionsUtils extends Utils {
 		Reflect.set(constructor, 'name_localizations', names);
 		Reflect.set(constructor, 'description_localizations', descriptions);
 
-		if ((options as unknown as OptionTypes['Number']).choices) {
+		if ((options as unknown as OptionTypes['Number'])?.choices) {
 			Reflect.set(
 				constructor,
 				'choices',
@@ -267,6 +246,29 @@ declare module '../lib/structures/UtilsStore' {
 		get(name: 'functions'): FunctionsUtils;
 	}
 }
+
+interface ConstantInterfaces {
+	DROPS: Constants['DROPS'][number];
+	ITEMS: Constants['ITEMS'][number];
+	EQUIPMENTS: Constants['EQUIPMENTS'][number];
+	HUNTER_SKILLS: Constants['HUNTER_SKILLS'][number];
+	MOB_SKILLS: Constants['MOB_SKILLS'][number];
+	MOBS: Constants['MOBS'][number];
+}
+
+type ObjectType = {
+	[Key in ConstantInterfaces['DROPS']['name']]: Constants.Drops;
+} & {
+	[Key in ConstantInterfaces['EQUIPMENTS']['name']]: Constants.Equipments;
+} & {
+	[Key in Union.Diff<ConstantInterfaces['ITEMS']['name'], ConstantInterfaces['EQUIPMENTS']['name']>]: Constants.Items;
+} & {
+	[Key in ConstantInterfaces['HUNTER_SKILLS']['name']]: Constants.HunterSkills;
+} & {
+	[Key in ConstantInterfaces['MOB_SKILLS']['name']]: Constants.MobSkills;
+} & {
+	[Key in ConstantInterfaces['MOBS']['name']]: Constants.Mobs;
+};
 
 interface OptionTypes {
 	String: SlashCommandStringOption;
