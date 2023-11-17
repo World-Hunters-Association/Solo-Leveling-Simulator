@@ -13,7 +13,7 @@
 		"@sapphire/discord.js-utilities": "^4.11.3",
 		"@sapphire/fetch": "^2.4.1",
 		"@sapphire/framework": "next",
-		"@sapphire/plugin-hmr": "^1.2.2",
+		"@sapphire/plugin-hmr": "^2.0.3",
 		"@sapphire/plugin-i18next": "^2.5.4",
 		"@sapphire/plugin-logger": "^2.2.3",
 		"@sapphire/plugin-subcommands": "pr-271",

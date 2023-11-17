@@ -1251,13 +1251,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/plugin-hmr@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "@sapphire/plugin-hmr@npm:1.2.2"
+"@sapphire/plugin-hmr@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@sapphire/plugin-hmr@npm:2.0.3"
   dependencies:
     chokidar: ^3.5.3
-    tslib: 2.x
-  checksum: 1c4dabadd001ddfc3e37bcd1d6fd4159d964a06953ef1e8f35052841eb9dae23a08c29ec0904f3cfefbbf142fc62cb2a70a20bc3202b903da17552ec8f83e0b9
+  checksum: 40b7e64dbb2579babfc29f7445005d159a307e925d21ee9d7a445b891727cde17939ab24cd0e709f221f9417bdcbdabbc4ec0e84fda8b9f1962e896ef0d5484c
   languageName: node
   linkType: hard
 
@@ -7194,7 +7193,7 @@ __metadata:
     "@sapphire/eslint-config": ^4.3.7
     "@sapphire/fetch": ^2.4.1
     "@sapphire/framework": next
-    "@sapphire/plugin-hmr": ^1.2.2
+    "@sapphire/plugin-hmr": ^2.0.3
     "@sapphire/plugin-i18next": ^2.5.4
     "@sapphire/plugin-logger": ^2.2.3
     "@sapphire/plugin-subcommands": pr-271
@@ -7812,17 +7811,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.x, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "tslib@npm:2.4.0"
-  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
-  languageName: node
-  linkType: hard
-
 "tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "tslib@npm:2.4.0"
+  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
   languageName: node
   linkType: hard
 
