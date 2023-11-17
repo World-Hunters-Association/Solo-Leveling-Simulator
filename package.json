@@ -15,7 +15,7 @@
 		"@sapphire/framework": "next",
 		"@sapphire/plugin-hmr": "^1.2.2",
 		"@sapphire/plugin-i18next": "^2.5.4",
-		"@sapphire/plugin-logger": "^2.2.3",
+		"@sapphire/plugin-logger": "^3.0.7",
 		"@sapphire/plugin-subcommands": "pr-271",
 		"@sapphire/time-utilities": "^1.7.5",
 		"@sapphire/ts-config": "^3.3.4",
