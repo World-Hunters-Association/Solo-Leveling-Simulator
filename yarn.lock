@@ -1294,12 +1294,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/prettier-config@npm:^1.4.3":
-  version: 1.4.3
-  resolution: "@sapphire/prettier-config@npm:1.4.3"
+"@sapphire/prettier-config@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@sapphire/prettier-config@npm:2.0.0"
   dependencies:
-    prettier: ^2.6.2
-  checksum: 95ed7d3b67f9a2373936282b47f13f81141ce3a61f26c630feca32f8a711c1b49198673579072310f290dd86c5ddbd39a3ca382ca3800b211318cd19ae226395
+    prettier: ^3.0.0
+  checksum: 5e7aa2f3c29587d8bd409d66e75ffa5ff6d6b98df6bdfb82dedb6d43b6134a5ba764d95dfc6b252b92bb4a56f125b22b83737449ee8dbf1d2ff41b0f1b6e87f7
   languageName: node
   linkType: hard
 
@@ -6556,6 +6556,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier@npm:^3.0.0":
+  version: 3.4.2
+  resolution: "prettier@npm:3.4.2"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 061c84513db62d3944c8dc8df36584dad82883ce4e49efcdbedd8703dce5b173c33fd9d2a4e1725d642a3b713c932b55418342eaa347479bc4a9cca114a04cd0
+  languageName: node
+  linkType: hard
+
 "pretty-format@npm:^28.1.3":
   version: 28.1.3
   resolution: "pretty-format@npm:28.1.3"
@@ -7198,7 +7207,7 @@ __metadata:
     "@sapphire/plugin-i18next": ^2.5.4
     "@sapphire/plugin-logger": ^2.2.3
     "@sapphire/plugin-subcommands": pr-271
-    "@sapphire/prettier-config": ^1.4.3
+    "@sapphire/prettier-config": ^2.0.0
     "@sapphire/time-utilities": ^1.7.5
     "@sapphire/ts-config": ^3.3.4
     "@sapphire/utilities": ^3.7.0
