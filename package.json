@@ -32,7 +32,7 @@
 		"reflect-metadata": "^0.1.13"
 	},
 	"devDependencies": {
-		"@commitlint/config-conventional": "^17.0.3",
+		"@commitlint/config-conventional": "^19.8.0",
 		"@sapphire/eslint-config": "^4.3.7",
 		"@sapphire/prettier-config": "^1.4.3",
 		"@types/node": "^17.0.10",
@@ -40,7 +40,7 @@
 		"@types/ws": "^8.5.3",
 		"@typescript-eslint/eslint-plugin": "^5.30.7",
 		"@typescript-eslint/parser": "^5.30.7",
-		"commitlint": "^17.0.3",
+		"commitlint": "^19.8.0",
 		"cpy-cli": "^4.1.0",
 		"cz-conventional-changelog": "^3.3.0",
 		"eslint": "^8.17.0",
