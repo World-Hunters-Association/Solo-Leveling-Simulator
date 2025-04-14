@@ -31,7 +31,7 @@ jobs:
           repository: ${{ github.event.inputs.repository || 'World-Hunters-Association/Solo-Leveling-Simulator' }}
           ref: ${{ github.event.inputs.ref || 'main' }}
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
+        uses: actions/setup-node@dbe1369d7be17e7823f8c1ee1ae8bec5779239dd # v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
